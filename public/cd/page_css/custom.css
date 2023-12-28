@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+.hair {
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.login-page, .create-acount , .forgot-page,.page_color {
+    background-color: #ccd0d8;
+}
+
+#mf{
+    display: flex;
+    justify-content: space-around;
+}
+
+.appointment{
+    max-width: 953px;
+}
+
+.payment_methods{
+    column-gap: 10px;
+}
+.login_text{
+    padding-top: 30px;
+    color: grey;
+}
+/*.login_content{*/
+/*    margin-bottom: 45px;*/
+/*    margin-top: 45px;*/
+/*}*/
+.login_logo{
+    color: lightgrey;
+}
+.appointment_content{
+    margin-top: 20px;
+}
+.registrastion_contant{
+    margin-bottom: 20px;
+}
+.text_simple{
+    color: #000000bd;
+}
+.simple_btn{
+    float: right;
+}
