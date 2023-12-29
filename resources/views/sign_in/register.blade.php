@@ -13,86 +13,59 @@
 
     <div class="container login-box d-flex justify-content-center">
         <div class="registration-form">
-            <form action="{{route('user.info.store')}}" enctype="multipart/form-data" method="post">
-                @csrf
-                <div class="form-icon">
-                    <span><i class="icon icon-user"></i></span>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control item" id="username" name="firstname"
-                           placeholder="Enter your firstname">
-                    @error('firstname')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control item" id="password" name="lastname"
-                           placeholder="Enter your lastname">
-                    @error('lastname')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group clearfix">
-                    <div class="icheck-primary d-inline">
-                        <input type="radio" id="radioPrimary1" name="gender" value="male">
-                        <label for="radioPrimary1">
-                            Male
-                        </label>
-                    </div>
-                    <div class="icheck-primary d-inline">
-                        <input type="radio" id="radioPrimary2" name="gender" value="female">
-                        <label for="radioPrimary2">
-                            Female
-                        </label>
-                    </div>
-                    @error('gender')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input item" name="date"
-                               data-target="#reservationdate" placeholder="Enter your DOB">
-                        <div class="input-group-append" data-target="#reservationdate"
-                             data-toggle="datetimepicker">
-                            <div class="input-group-text item"><i class="fa fa-calendar"></i></div>
-                        </div>
-                    </div>
-                    @error('date')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <input type="number" class="form-control item" name="number" id="name"
-                           placeholder="Enter your mobile">
-                    @error('number')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
 
-                <div class="form-group">
-                    <input type="email" class="form-control item" name="email" placeholder="Email">
-                    @error('email')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+            {!! Form::open(['route' => 'user.info.store' , 'method' => 'post'])!!}
 
-                <div class="form-group">
-                    <input type="password" class="form-control item" name="password" placeholder="Password">
-                    @error('password')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+            <div class="form-group">
+                {!! Form::text('firstname' ,null,['class'=>'form-control item','placeholder'=>'Enter your firstname']) !!}
+
+            </div>
+            <div class="form-group">
+                {!! Form::text('lastname' ,null,['class'=>'form-control item','placeholder'=>'Enter your lastname']) !!}
+            </div>
+            <div class="form-group clearfix">
+
+
+                <div class="col-sm-9" style="margin:auto">
+                    <div class="form-check form-check-inline">
+                        {{Form::radio('gender','male',1,['class'=>'form-check-input'])}}
+                        <label class="form-check-label ml-2" for="inlineRadio1">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        {{Form::radio('gender','female',0,['class'=>'form-check-input'])}}
+                        <label class="form-check-label ml-2" for="inlineRadio2">Female</label>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="password" class="form-control item" name="repassword" placeholder="Retype Password">
-                    @error('repassword')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
+            </div>
+            <div class="form-group">
+                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    {!! Form::text('date',null, ['class' => 'form-control datetimepicker-input item', 'data-target' => '#reservationdate' ,'placeholder'=> 'Enter your DOB']) !!}
+
+                    <div class="input-group-append" data-target="#reservationdate"
+                         data-toggle="datetimepicker">
+                        <div class="input-group-text item"><i class="fa fa-calendar"></i></div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block create-account">Create Account</button>
-                </div>
-            </form>
+            </div>
+            <div class="form-group">
+                {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Enter your mobile' , 'id' => 'name']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Password']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::password('repassword',['class' =>'form-control item' , 'placeholder'=>'Reenter Password']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::button('Create Account',['type' => 'submit', 'class' => 'btn btn-block create-account']) !!}
+            </div>
+            {!! Form::close() !!}
             <div class="social-media">
                 <a href="{{route('user.login')}}" class="text-center">I already have a account</a>
             </div>

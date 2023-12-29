@@ -53,24 +53,16 @@
                                         <label for="Billing">Buyer name</label>
                                         <input type="text" class="form-control" id="Billing"
                                                placeholder="Enter your name" name="buyer_name">
-                                        @error('buyer_name')
-                                        <div class="error text-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="Billing_email">Buyer email</label>
                                         <input type="text" class="form-control" id="Billing_email"
                                                placeholder="Enter your email" name="buyer_email">
-                                        @error('buyer_email')
-                                        <div class="error text-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="Buyer_Address">Buyer Address</label>
-                                        <textarea id="Buyer_Address" class="form-control" rows="2" name="buyer_address"></textarea>
-                                        @error('buyer_address')
-                                        <div class="error text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <textarea id="Buyer_Address" class="form-control" rows="2"
+                                                  name="buyer_address"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -102,9 +94,6 @@
                                     <div class="form-group">
                                         <label for="cardnumber">Enter card number</label>
                                         <input type="text" id="cardnumber" class="form-control" name="cd_number">
-                                        @error('cd_number')
-                                        <div class="error text-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8">
@@ -112,7 +101,8 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="month">
+                                                        <select class="form-control select2bs4" style="width: 100%;"
+                                                                name="month">
                                                             <option selected disabled>month</option>
                                                             <option>1</option>
                                                             <option>2</option>
@@ -128,13 +118,11 @@
                                                             <option>12</option>
                                                         </select>
                                                     </div>
-                                                    @error('month')
-                                                    <div class="error text-danger">{{ $message }}</div>
-                                                    @enderror
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <select class="form-control select2bs4" style="width: 100%;" name="year">
+                                                        <select class="form-control select2bs4" style="width: 100%;"
+                                                                name="year">
                                                             <option selected disabled>year</option>
                                                             <option>1</option>
                                                             <option>2</option>
@@ -150,9 +138,6 @@
                                                             <option>12</option>
                                                         </select>
                                                     </div>
-                                                    @error('year')
-                                                    <div class="error text-danger">{{ $message }}</div>
-                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -160,9 +145,6 @@
                                             <div class="form-group">
                                                 <label for="cvv">cvv</label>
                                                 <input type="text" id="cvv" class="form-control" name="cvv">
-                                                @error('cvv')
-                                                <div class="error text-danger">{{ $message }}</div>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -178,4 +160,13 @@
             </form>
         </div>
     </div>
+@endsection
+@section('custom_js')
+    <script>
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
+    </script>
 @endsection

@@ -20,17 +20,10 @@
             <div class="form-group">
                 <label for="inputStatus">Select package</label>
                 {!! Form::select('package[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $package : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
-
-                @error('package')
-                <div class="error text-danger">{{ $message }}</div>
-                @enderror
             </div>
             <div class="form-group">
                 <label for="inputStatus">if possible, i prefer my appointment to be with</label>
                 {!! Form::select('stylist', ['' => 'Select one', 'Alaska' => 'Alaska','California' => 'California','Delaware' => 'Delaware','Texas' => 'Texas',], null, ['class' => 'form-control custom-select']) !!}
-                @error('stylist')
-                <div class="error text-danger">{{ $message }}</div>
-                @enderror
             </div>
             <div class="form-group">
                 <label>Preferred booking date and time</label>
@@ -41,9 +34,6 @@
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>
-                @error('appointment_time')
-                <div class="error text-danger">{{ $message }}</div>
-                @enderror
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-md simple_btn" type="submit">Book my appointment</button>
@@ -102,5 +92,12 @@
                 }
             })
         })
+    </script>
+    <script>
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
     </script>
 @endsection

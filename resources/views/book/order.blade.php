@@ -23,9 +23,6 @@
                 <div class="form-group">
                     <label>Select package</label>
                     {!! Form::select('package[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $package : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
-                    @error('package')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
                 </div>
 
 
@@ -38,18 +35,12 @@
                     <div class="form-group">
                         <label>Select categories</label>
                         {!! Form::select('categories[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $categories : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
-                        @error('categories')
-                        <div class="error text-danger">{{ $message }}</div>
-                        @enderror
                     </div>
                 </div>
                 <div class="ser">
                     <div class="form-group">
                         <label>Select service</label>
                         {!! Form::select('service[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $service : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
-                        @error('service')
-                        <div class="error text-danger">{{ $message }}</div>
-                        @enderror
                     </div>
                 </div>
                 <div class="dropdown-divider"> </div>
@@ -57,9 +48,6 @@
                     <div class="form-group col-md-12">
                         <label for="inputDescription">Address</label>
                         {!! Form::textarea('address',null,['class'=>'form-control','rows'=>'4', 'style'=>'width: 100%;']) !!}
-                        @error('address')
-                        <div class="error text-danger">{{ $message }}</div>
-                        @enderror
                     </div>
                 </div>
                 <div class="row">
@@ -67,18 +55,12 @@
                         <div class="form-group">
                             <label>City</label>
                             {!! Form::select('city', ['' => 'Select one', 'ahmedabad' => 'ahmedabad','rajkot' => 'rajkot'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
-                            @error('city')
-                            <div class="error text-danger">{{ $message }}</div>
-                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>State</label>
                             {!! Form::select('state', ['' => 'Select one', 'gujrat' => 'gujrat','pune' => 'pune'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
-                            @error('state')
-                            <div class="error text-danger">{{ $message }}</div>
-                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -86,9 +68,6 @@
                             <label for="zipcode">Zipcode</label>
                             {{--                            <input type="number" class="form-control" id="zipcode" placeholder="" name="zipcode">--}}
                             {!! Form::number('zipcode',  null, ['class' => 'form-control','style'=>'width: 100%;']) !!}
-                            @error('zipcode')
-                            <div class="error text-danger">{{ $message }}</div>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -101,9 +80,6 @@
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                     </div>
-                    @error('appointment_time')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-md simple_btn" type="submit">Confirm Booking</button>
@@ -118,6 +94,13 @@
     </div>
 @endsection
 @section('custom_js')
+    <script>
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
+    </script>
     <script>
         $(function () {
             //Initialize Select2 Elements

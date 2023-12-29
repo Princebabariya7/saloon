@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 d-none d-md-block">
                     <div class="hero-image">
-                        <img class="rounded-circle" src="{{asset('cd/img/about.jpg')}}" alt="Hero Image">
+                        <img src="{{asset('cd/img/hero.png')}}" alt="Hero Image">
                     </div>
                 </div>
             </div>

@@ -13,28 +13,24 @@
 
     <div class="container login-box  d-flex justify-content-center">
         <div class="registration-form">
-            <form action="{{route('user.info.login')}}" method="post">
-                @csrf
-                <div class="form-icon">
-                    <span><i class="icon icon-user"></i></span>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control item" name="email" placeholder="Email" value="{{old('email')}}">
-                    @error('email')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+            {!! Form::open(['route' => 'user.info.login' , 'method' => 'post'])!!}
 
-                <div class="form-group">
-                    <input type="password" class="form-control item" name="password" placeholder="Password">
-                    @error('password')
-                    <div class="error text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block create-account">Log In</button>
-                </div>
-            </form>
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+            <div class="form-group">
+
+                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email' ,'value' => '{{old(email)}}']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::password('password',['class' => 'form-control item' ,'placeholder' => 'Enter Password']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::button('Log In', ['type' =>'submit','class'=>'btn btn-block create-account']) !!}
+            </div>
+
+            {!! Form::close() !!}
+
             <div class="social-media">
                 <p class="mb-1">
                     <a href="{{route('forgot')}}" class="text_simple">I forgot my password</a>
@@ -45,4 +41,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('custom_js')
+    <script>
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
+    </script>
 @endsection
