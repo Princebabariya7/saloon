@@ -50,6 +50,14 @@
 @endsection
 @section('custom_js')
     <script>
+        @if (\Session::has('msg'))
+        Swal.fire({
+            title: "Your booking has been confirmed",
+            text: "Check your email for more details",
+            icon: "success"
+        });
+        {{\Session::forget('msg')}}
+        @endif
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()

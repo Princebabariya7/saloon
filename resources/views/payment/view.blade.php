@@ -42,3 +42,16 @@
         </table>
     </div>
 @endsection
+
+@section('custom_js')
+    <script>
+        @if (\Session::has('msg'))
+        Swal.fire({
+            title: "Payment successful",
+            text: "Check your email for more details",
+            icon: "success"
+        });
+        {{\Session::forget('msg')}}
+        @endif
+    </script>
+@endsection

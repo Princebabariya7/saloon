@@ -7,11 +7,10 @@
                     <div class="col-md-6">
                         <div class="footer-contact">
                             <h2>Salon Address</h2>
-                            <p><i class="fa fa-map-marker-alt"></i>39, Kameshwar Park Society, NR. Krishna Vihar,
+                            <p><i class="fas fa-building"></i>39, Kameshwar Park Society, NR. Krishna Vihar,
                                 B/S
                                 Shukan Bunglows, Nikol Naroda Road, Ahmedabad</p>
-                            <p><i class="fa fa-phone-alt"></i>+91 99952 52456</p>
-                            <p><i class="fa fa-envelope"></i>Hs@info.com</p>
+                            <p><i class="fa fa-envelope"></i>haricksaloon@gmail.com</p>
                             <div class="footer-social">
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>

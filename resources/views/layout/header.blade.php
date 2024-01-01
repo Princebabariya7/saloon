@@ -45,22 +45,19 @@
 <div class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container-fluid">
         <a href="{{route('home')}}" class="navbar-brand hair">Hairck <span>Saloon</span></a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-collapse justify-content-between collapse" id="navbarCollapse">
             <div class="navbar-nav ml-auto">
                 <a href="{{route('home')}}" class="nav-item nav-link">Home</a>
                 <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
                 <a href="{{route('price')}}" class="nav-item nav-link">Price</a>
                 <a href="{{route('team')}}" class="nav-item nav-link">Barber</a>
                 <a href="{{route('gallery')}}" class="nav-item nav-link">Gallery</a>
-                {{--                <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>--}}
                 @if(auth()->user() == null)
 
                 @else
-
                     <div class="nav-item dropdown">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown">
@@ -70,6 +67,7 @@
                             <a href="{{route('appointment.create')}}" class="dropdown-item">Book Appointment <i
                                     class="fa fa-calendar" aria-hidden="true"></i></a>
                             <a href="{{route('online.create')}}" class="dropdown-item">Book Order</a>
+                            <a href="{{route('price.create')}}" class="dropdown-item">price</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -80,6 +78,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{route('appointment.index')}}" class="dropdown-item"> Appointments list</a>
                             <a href="{{route('online.index')}}" class="dropdown-item"> online orders list</a>
+                            <a href="{{route('price.index')}}" class="dropdown-item"> price  list</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">

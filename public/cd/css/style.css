@@ -1416,6 +1416,12 @@ a:focus {
         text-align: center;
     }
 }
+@media (max-width: 496px) {
+    .table{
+        overflow: scroll;
+        display: inline-block;
+    }
+}
 
 ----
 

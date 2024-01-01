@@ -26,9 +26,17 @@
             <div class="form-group">
                 {!! Form::text('lastname' ,null,['class'=>'form-control item','placeholder'=>'Enter your lastname']) !!}
             </div>
+            <div class="form-group">
+                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    {!! Form::text('date',null, ['class' => 'form-control datetimepicker-input item', 'data-target' => '#reservationdate' ,'placeholder'=> 'Enter your DOB']) !!}
+
+                    <div class="input-group-append" data-target="#reservationdate"
+                         data-toggle="datetimepicker">
+                        <div class="input-group-text item"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group clearfix">
-
-
                 <div class="col-sm-9" style="margin:auto">
                     <div class="form-check form-check-inline">
                         {{Form::radio('gender','male',1,['class'=>'form-check-input'])}}
@@ -37,16 +45,6 @@
                     <div class="form-check form-check-inline">
                         {{Form::radio('gender','female',0,['class'=>'form-check-input'])}}
                         <label class="form-check-label ml-2" for="inlineRadio2">Female</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    {!! Form::text('date',null, ['class' => 'form-control datetimepicker-input item', 'data-target' => '#reservationdate' ,'placeholder'=> 'Enter your DOB']) !!}
-
-                    <div class="input-group-append" data-target="#reservationdate"
-                         data-toggle="datetimepicker">
-                        <div class="input-group-text item"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>
             </div>

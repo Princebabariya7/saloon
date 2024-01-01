@@ -22,80 +22,45 @@ class OnlineorderController extends Controller
 
     public function store(OnlineorderRequest $request)
     {
-
-
-//        if ($request->package != '')
-//        {
-//            $request->validate([
-//                'package'          => 'required',
-//                'address'          => 'required',
-//                'city'             => 'required',
-//                'state'            => 'required',
-//                'zipcode'          => 'required',
-//                'appointment_time' => 'required',
-//
-//            ]);
-//        }
-//        elseif ($request->categories || $request->categories != '')
-//        {
-//            $request->validate([
-//                'categories'       => 'required',
-//                'service'          => 'required',
-//                'address'          => 'required',
-//                'city'             => 'required',
-//                'state'            => 'required',
-//                'zipcode'          => 'required',
-//                'appointment_time' => 'required',
-//            ]);
-//        }
-//        else
-//        {
-//            $request->validate([
-//                'package'          => 'required',
-//                'categories'       => 'required',
-//                'service'          => 'required',
-//                'address'          => 'required',
-//                'city'             => 'required',
-//                'state'            => 'required',
-//                'zipcode'          => 'required',
-//                'appointment_time' => 'required',
-//            ]);
-//
-//        }
-
-
-        if ($request->package != '')
+        try
         {
-            $str1 = implode(',', $request->package);
-        }
+            if ($request->package != '')
+            {
+                $str1 = implode(',', $request->package);
+            }
 
-        if ($request->categories != '')
+            if ($request->categories != '')
+            {
+                $str2 = implode(',', $request->categories);
+            }
+
+            if ($request->service != '')
+            {
+                $str3 = implode(',', $request->service);
+            }
+
+            $carbonDateTime = Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time);
+
+            Onlineorder::create([
+                'package'          => isset($str1) ? $str1 : '',
+                'categories'       => isset($str2) ? $str2 : '',
+                'service'          => isset($str3) ? $str3 : '',
+                'address'          => $request->address,
+                'city'             => $request->city,
+                'state'            => $request->state,
+                'zipcode'          => $request->zipcode,
+                'appointment_time' => $carbonDateTime->format('Y-m-d H:i:s'),
+                'updated_at'       => now(),
+                'created_at'       => Carbon::now(),
+            ]);
+
+            session()->put('msg','ok');
+            return redirect(route('online.create'));
+        }
+        catch (\Exception $e)
         {
-            $str2 = implode(',', $request->categories);
+            return redirect()->back()->with('error', $e->getMessage());
         }
-
-        if ($request->service != '')
-        {
-            $str3 = implode(',', $request->service);
-        }
-
-        $carbonDateTime = Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time);
-
-        Onlineorder::create([
-            'package'          => isset($str1) ? $str1 : '',
-            'categories'       => isset($str2) ? $str2 : '',
-            'service'          => isset($str3) ? $str3 : '',
-            'address'          => $request->address,
-            'city'             => $request->city,
-            'state'            => $request->state,
-            'zipcode'          => $request->zipcode,
-            'appointment_time' => $carbonDateTime->format('Y-m-d H:i:s'),
-            'updated_at'       => now(),
-            'created_at'       => Carbon::now(),
-        ]);
-
-        return redirect(route('online.create'));
-
     }
 
     public function show($id)

@@ -22,17 +22,24 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
-
-        $carbonDateTime = Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time);
-        $str1           = implode(',', $request->package);
-        Appointment::create([
-            'package'          => $str1,
-            'stylist'          => $request->stylist,
-            'appointment_time' => $carbonDateTime->format('Y-m-d H:i:s'),
-            'updated_at'       => now(),
-            'created_at'       => Carbon::now(),
-        ]);
-        return redirect(route('appointment.create'));
+        try
+        {
+            $carbonDateTime = Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time);
+            $str1           = implode(',', $request->package);
+            Appointment::create([
+                'package'          => $str1,
+                'stylist'          => $request->stylist,
+                'appointment_time' => $carbonDateTime->format('Y-m-d H:i:s'),
+                'updated_at'       => now(),
+                'created_at'       => Carbon::now(),
+            ]);
+            session()->put('msg', 'qqq');
+            return redirect(route('appointment.create'));
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     public function show($id)
@@ -65,11 +72,22 @@ class AppointmentController extends Controller
 
     public function destroy($id)
     {
-        $appointment = Appointment::find($id);
-        if ($appointment)
+        try
         {
-            $appointment->delete();
+            $appointment = Appointment::find($id);
+            if ($appointment)
+            {
+                $appointment->delete();
+            }
+
+            return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
-        return redirect(route('appointment.index'));
+        catch (\Exception $e)
+        {
+            return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
+        }
+
     }
+
+
 }

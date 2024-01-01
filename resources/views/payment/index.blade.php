@@ -21,21 +21,22 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <!-- <th>ID</th> -->
                                 <th>service</th>
                                 <th>price</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <!-- <td>1</td> -->
                                 <td>John Doe</td>
-                                <td>$100</td>
+                                <td><i class="fa fa-inr" aria-hidden="true"></i>
+                                    100
+                                </td>
                             </tr>
                             <tr>
-                                <!-- <td>2</td> -->
                                 <td>Alexander Pierce</td>
-                                <td>$200</td>
+                                <td><i class="fa fa-inr" aria-hidden="true"></i>
+                                    200
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -163,6 +164,12 @@
 @endsection
 @section('custom_js')
     <script>
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
+
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');

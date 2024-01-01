@@ -82,7 +82,7 @@
                             time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
                             for
                             a haircut.</p>
-{{--                        <a class="btn" href="#">Learn More</a>--}}
+                        {{--                        <a class="btn" href="#">Learn More</a>--}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -95,7 +95,7 @@
                             Different
                             face shapes should highlight certain facial features—not every style looks great on every
                             guy. </p>
-{{--                        <a class="btn" href="#">Learn More</a>--}}
+                        {{--                        <a class="btn" href="#">Learn More</a>--}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -107,7 +107,7 @@
                         <p> Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
                             cuticle
                             layer of your hair it is also known as semi-permanent hair color.</p>
-{{--                        <a class="btn" href="#">Learn More</a>--}}
+                        {{--                        <a class="btn" href="#">Learn More</a>--}}
                     </div>
                 </div>
             </div>
@@ -352,4 +352,25 @@
         </div>
     </div>
     <!-- Team End -->
+@endsection
+
+@section('custom_js')
+    <script>
+        @if (!empty($success))
+        Swal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+        });
+        @endif
+
+        @if (\Session::has('msg'))
+        Swal.fire({
+            title: "{{auth()->user()->firstname}}",
+            text: "You are successfully logged in",
+            icon: "success"
+        });
+        {{\Session::forget('msg')}}
+        @endif
+    </script>
 @endsection

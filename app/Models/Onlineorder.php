@@ -19,7 +19,7 @@ class Onlineorder extends Model
         'state' => 'not selected', // Set your default value here
         'zipcode' => '', // Set your default value here
         'appointment_time' => 'not selected', // Set your default value here
-
     ];
+
     protected $table = 'onlineorders';
 }

@@ -12,8 +12,6 @@
     </div>
     <div class="container login-box  d-flex justify-content-center">
         <div class="registration-form">
-            {{--            <form action="{{route('online.info.store')}}" method="post">--}}
-            {{--                @csrf--}}
             @if($editMode)
                 {!!  Form::model($online, ['route' => ['online.update', 'id' => $online->id], 'method'=>'put']) !!}
             @else
@@ -99,6 +97,14 @@
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
         @endforeach
+        @endif
+        @if (\Session::has('msg'))
+        Swal.fire({
+            title: "Your order has been confirmed",
+            text: " Check your email for more detail",
+            icon: "success"
+        });
+        {{\Session::forget('msg')}}
         @endif
     </script>
     <script>

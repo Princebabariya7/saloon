@@ -10,20 +10,17 @@
             </div>
         </div>
     </div>
-
     <div class="container login-box  d-flex justify-content-center">
         <div class="registration-form">
             {!! Form::open(['route' => 'user.info.login' , 'method' => 'post'])!!}
-
             <div class="form-icon">
                 <span><i class="icon icon-user"></i></span>
             </div>
             <div class="form-group">
-
                 {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email' ,'value' => '{{old(email)}}']) !!}
             </div>
             <div class="form-group">
-                {!! Form::password('password',['class' => 'form-control item' ,'placeholder' => 'Enter Password']) !!}
+                {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Password']) !!}
             </div>
             <div class="form-group">
                 {!! Form::button('Log In', ['type' =>'submit','class'=>'btn btn-block create-account']) !!}
@@ -42,12 +39,20 @@
         </div>
     </div>
 @endsection
+
 @section('custom_js')
     <script>
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
         @endforeach
+        @endif
+        @if (\Session::has('msg'))
+        Swal.fire({
+            text: "Your password was changed!",
+            icon: "success"
+        });
+        {{\Session::forget('msg')}}
         @endif
     </script>
 @endsection

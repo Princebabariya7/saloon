@@ -1,30 +1,14 @@
 <?php
 
-
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OnlineorderController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\RegisterDate;
+use App\Models\Price;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Route::get('payment', function ()
-//{
-//    return view('payment.index');
-//})->name('payment');
-
 
 Route::get('', [DashboardController::class, 'index'])->name('home');
 
@@ -42,7 +26,7 @@ Route::prefix('home')->group(function ()
 
     Route::get('/price', function ()
     {
-        return view('price.index');
+        return view('price.index')->with('services',Price::all());
     })->name('price');
 
     Route::get('/team', function ()
@@ -56,10 +40,8 @@ Route::prefix('home')->group(function ()
     })->name('gallery');
 });
 
-
 Route::group(['prefix' => 'appointment', 'middleware' => 'PreventBackButtonMiddleware'], function ()
 {
-
     Route::post('store', [AppointmentController::class, 'store'])->name('appointment.info.store');
     Route::get('index', [AppointmentController::class, 'index'])->name('appointment.index');
     Route::get('{id}/edit', [AppointmentController::class, 'edit'])->name('appointment.edit');
@@ -67,6 +49,7 @@ Route::group(['prefix' => 'appointment', 'middleware' => 'PreventBackButtonMiddl
     Route::get('{id}/delete', [AppointmentController::class, 'destroy'])->name('appointment.delete');
     Route::get('create', [AppointmentController::class, 'create'])->name('appointment.create');
 });
+
 Route::group(['prefix' => 'onlineorder', 'middleware' => 'PreventBackButtonMiddleware'], function ()
 {
     Route::get('/', function ()
@@ -83,12 +66,10 @@ Route::group(['prefix' => 'onlineorder', 'middleware' => 'PreventBackButtonMiddl
     {
         return view('order.orderlist');
     })->name('orderlist');
-
 });
 
 Route::group(['prefix' => 'payment', 'middleware' => 'PreventBackButtonMiddleware'], function ()
 {
-
     Route::get('/', function ()
     {
         return view('payment.index');
@@ -100,9 +81,7 @@ Route::group(['prefix' => 'payment', 'middleware' => 'PreventBackButtonMiddlewar
     {
         return view('order.orderInvoice');
     });
-
 });
-
 
 Route::get('/forgot', function ()
 {
@@ -117,10 +96,23 @@ Route::get('register', function ()
 {
     return view('sign_in.register');
 })->name('user.register');
-
-
 Route::get('logout', [DashboardController::class, 'logout'])->name('logout');
 Route::post('store', [RegisterDate::class, 'store'])->name('user.info.store');
 Route::post('logins', [RegisterDate::class, 'login'])->name('user.info.login');
 Route::post('forgot', [RegisterDate::class, 'forgot'])->name('user.info.forgot');
 
+
+Route::group(['prefix' => 'price', 'middleware' => 'PreventBackButtonMiddleware'], function ()
+{
+    Route::get('', function ()
+    {
+        return view('price.priceAdd');
+    })->name('price.page');
+    Route::post('store', [PriceController::class, 'store'])->name('price.info.store');
+    Route::get('create', [PriceController::class, 'create'])->name('price.create');
+    Route::get('index', [PriceController::class, 'index'])->name('price.index');
+    Route::put('{id}/update', [PriceController::class, 'update'])->name('price.update');
+    Route::get('{id}/edit', [PriceController::class, 'edit'])->name('price.edit');
+    Route::get('{id}/delete', [PriceController::class, 'destroy'])->name('price.delete');
+
+});

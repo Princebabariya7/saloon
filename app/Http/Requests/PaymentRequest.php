@@ -17,12 +17,12 @@ class PaymentRequest extends FormRequest
     {
         return [
             'buyer_name'    => 'required',
-            'buyer_email'   => 'required',
+            'buyer_email'   => 'required|email',
             'buyer_address' => 'required',
-            'cd_number'     => 'required',
-            'month'         => 'required',
-            'year'          => 'required',
-            'cvv'           => 'required',
+            'cd_number'     => 'required|numeric',
+            'month'         => 'required|numeric',
+            'year'          => 'required|numeric',
+            'cvv'           => 'required|numeric',
         ];
     }
 }
