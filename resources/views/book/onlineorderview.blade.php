@@ -103,7 +103,8 @@
                             {{ $orders->links() }}
                         </div>
                         @if(request('search') != '' || request('city') != '')
-                            <button type="button" class="btn  btn-light border btn-sm clear">Clear</button>
+                            <i class="fa fa-filter"></i> {{ $orders->total()}} Records Match
+                            <a href="#" class="btn-link    clear">Clear</a>
                         @endif
                     </div>
                 </div>

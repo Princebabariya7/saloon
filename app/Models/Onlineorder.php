@@ -17,7 +17,7 @@ class Onlineorder extends Model
         'address' => 'not selected',
         'city' => 'nt selected',
         'state' => 'not selected',
-        'zipcode' => '',
+        'zipcode' => 'not selected',
         'appointment_time' => 'not selected',
     ];
 

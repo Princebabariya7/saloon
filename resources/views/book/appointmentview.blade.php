@@ -94,7 +94,8 @@
                             {{ $appointments->links() }}
                         </div>
                         @if(request('search') != '' || request('package') != '')
-                            <button type="button" class="btn  btn-light border btn-sm clear">Clear</button>
+                            <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
+                            <a href="#" class="btn-link    clear">Clear</a>
                         @endif
                     </div>
                 </div>

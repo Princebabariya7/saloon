@@ -34,7 +34,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">service</th>
-                                <th scope="col">@sortablelink('price')</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">image</th>
                                 <th scope="col" class="text-right">Action</th>
                             </tr>
@@ -95,6 +95,7 @@
                             {{ $prices->links() }}
                         </div>
                         @if(request('search') != '' || request('city') != '')
+                            <i class="fa fa-filter"></i> {{ $prices->total()}} Records Match
                             <a href="#" class="btn-link    clear">Clear</a>
                         @endif
                     </div>
