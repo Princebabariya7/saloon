@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PriceRequest;
 use App\Models\Price;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class PriceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('price.view')->with('price', Price::all());
+        $search = $request->input('search', '');
+
+        $prices = Price::when($search, function ($query, $search)
+        {
+            return $query->where('service', 'LIKE', '%' . $search . '%')
+                ->orWhere('price', 'LIKE', '%' . $search . '%');
+        })->sortable(['price' => 'asc'])
+            ->paginate(5);
+
+        return view('price.view')->with('prices', $prices);
     }
 
     public function create()
@@ -18,7 +28,7 @@ class PriceController extends Controller
         return view('price.priceAdd')->with('editMode', false);
     }
 
-    public function store(Request $request)
+    public function store(PriceRequest $request)
     {
 
         $price          = new Price;
@@ -35,13 +45,6 @@ class PriceController extends Controller
         $price->save();
         return redirect(route('price.create'));
     }
-
-
-    public function show($id)
-    {
-        //
-    }
-
 
     public function edit($id)
     {
@@ -76,9 +79,7 @@ class PriceController extends Controller
 
         $price->update();
 
-
-        session()->put('update', 'ok');
-
+        session()->put('update', 'your price was updated');
         return redirect(route('price.index'));
     }
 
@@ -103,7 +104,6 @@ class PriceController extends Controller
             {
                 return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
             }
-
         }
     }
 }

@@ -23,12 +23,13 @@
                 <h2>We Provide Best Price in the City</h2>
             </div>
             <div class="row">
-            @foreach($services as $service)
+                @foreach($services as $service)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="price-item">
                             <div class="price-img">
                                 <a href="#" data-toggle="modal" data-target="#exampleModal{{ $service->id }}">
-                                    <img style="height: 100px; width: 100px;" src="{{ asset('uploads/gallery/'.$service->image) }}" alt="Image">
+                                    <img style="height: 100px; width: 100px;"
+                                         src="{{ asset('uploads/gallery/'.$service->image) }}" alt="Image">
                                 </a>
                             </div>
                             <div class="price-text">
@@ -39,8 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection

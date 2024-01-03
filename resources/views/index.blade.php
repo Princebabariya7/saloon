@@ -82,7 +82,6 @@
                             time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
                             for
                             a haircut.</p>
-                        {{--                        <a class="btn" href="#">Learn More</a>--}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -95,7 +94,6 @@
                             Different
                             face shapes should highlight certain facial features—not every style looks great on every
                             guy. </p>
-                        {{--                        <a class="btn" href="#">Learn More</a>--}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -107,7 +105,6 @@
                         <p> Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
                             cuticle
                             layer of your hair it is also known as semi-permanent hair color.</p>
-                        {{--                        <a class="btn" href="#">Learn More</a>--}}
                     </div>
                 </div>
             </div>
@@ -120,146 +117,31 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Best Pricing</p>
-                <h2>We Provide Best Price in the City</h2>
+                <h2>Best Price in the City</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-1.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Hair Cut</h2>
-                            <h3><i class="fa fa-rupee"></i>299</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-2.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Hair Wash</h2>
-                            <h3><i class="fa fa-rupee"></i>199</h3>
+                @foreach($services as $service)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="price-item">
+                            <div class="price-img">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal{{ $service->id }}">
+                                    <img style="height: 100px; width: 100px;"
+                                         src="{{ asset('uploads/gallery/'.$service->image) }}" alt="Image">
+                                </a>
+                            </div>
+                            <div class="price-text">
+                                <h2>
+                                    {{$service->service}}
+                                </h2>
+                                <h3><i class="fa fa-inr" aria-hidden="true"></i>{{$service->price}}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-3.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Hair Color</h2>
-                            <h3><i class="fa fa-rupee"></i>999</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-4.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Hair Shave</h2>
-                            <h3><i class="fa fa-rupee"></i>599</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-5.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Hair Straight</h2>
-                            <h3><i class="fa fa-rupee"></i>4999</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-6.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Facial</h2>
-                            <h3><i class="fa fa-rupee"></i>499</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-7.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Shampoo</h2>
-                            <h3><i class="fa fa-rupee"></i>299</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-8.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Beard Trim</h2>
-                            <h3><i class="fa fa-rupee"></i>499</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-1.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Beard Shave</h2>
-                            <h3><i class="fa fa-rupee"></i>499</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-1.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Wedding Cut</h2>
-                            <h3><i class="fa fa-rupee"></i>1999</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-1.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Clean Up</h2>
-                            <h3><i class="fa fa-rupee"></i>899</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="price-item">
-                        <div class="price-img">
-                            <img src="{{asset('cd/img/price-1.jpg')}}" alt="Image">
-                        </div>
-                        <div class="price-text">
-                            <h2>Massage</h2>
-                            <h3><i class="fa fa-rupee"></i>2999</h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
     <!-- Pricing End -->
-
 
     <!-- Testimonial Start -->
     <div class="testimonial">
@@ -296,6 +178,7 @@
         </div>
     </div>
     <!-- Testimonial End -->
+
     <!-- Team Start -->
     <div class="team">
         <div class="container">
@@ -365,11 +248,7 @@
         @endif
 
         @if (\Session::has('msg'))
-        Swal.fire({
-            title: "{{auth()->user()->firstname}}",
-            text: "You are successfully logged in",
-            icon: "success"
-        });
+        toastr.success('You are successfully logged in');
         {{\Session::forget('msg')}}
         @endif
     </script>

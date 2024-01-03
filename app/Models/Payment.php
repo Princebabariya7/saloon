@@ -11,7 +11,7 @@ class Payment extends Model
     protected $fillable = ['buyer_name','buyer_email','buyer_address','cd_number','month','year','cvv'];
 
     protected $attributes = [
-        'buyer_name' => 'not selected', // Set your default value here
+        'buyer_name' => 'not selected',
         'buyer_email' => 'not selected',
         'buyer_address' => 'not selected',
         'cd_number' => 'not selected',

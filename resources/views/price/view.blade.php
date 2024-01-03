@@ -11,55 +11,97 @@
         </div>
     </div>
     <div class="container">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">service</th>
-                <th scope="col">price</th>
-                <th scope="col">image</th>
-                <th scope="col ">Action</th>
-            </tr>
-            </thead>
-            <tbody>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card my-5">
+                    <div class="card-header p-0">
+                        {{ Form::open(['route' => ['price.index'], 'method'=>'get']) }}
+                        <div class="row">
+                            <div class=" col-md-2 mx-2">
+                                <div class="input-group pt-3 pb-3">
+                                    {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','placeholder' => 'Search','autocomplete' =>'off']) !!}
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sm btn-secondary search-btn" type="submit">
+                                            <i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">service</th>
+                                <th scope="col">@sortablelink('price')</th>
+                                <th scope="col">image</th>
+                                <th scope="col" class="text-right">Action</th>
+                            </tr>
+                            </thead>
+                            @if(count($prices) != 0)
+                                <tbody>
+                                @foreach($prices as $price)
+                                    <tr>
+                                        <td>{{$price->service}}</td>
+                                        <td>{{$price->price}}</td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal{{ $price->id }}">
+                                                <img src="{{ asset('uploads/gallery/'.$price->image) }}" width="40px"
+                                                     alt="Image">
+                                            </a>
+                                        </td>
+                                        <td class="project-actions text-right">
+                                            <button type="button"
+                                                    class="btn  btn-light border btn-sm dropdown-toggle"
+                                                    data-bs-toggle="dropdown">
+                                                Action
+                                            </button>
+                                            <div class="btn-group">
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="{{route('price.edit',$price->id)}}">
+                                                            <i class="fa fa-edit"> </i> Edit
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-divider"></li>
+                                                    <li>
+                                                        <a class="dropdown-item  delete_popup text-danger"
+                                                           href="#"
+                                                           data-href="{{route('price.delete',$price->id)}}">
+                                                            <i class="fa fa-trash"></i> Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            @else
+                                <tfoot>
+                                <tr>
+                                    <td colspan="4" class="text-center">
+                                        <h6 class="text-danger text-bold  pt-2">No Data Found</h6>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            @endif
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pagination pagination-sm  float-right">
+                            {{ $prices->links() }}
+                        </div>
+                        @if(request('search') != '' || request('city') != '')
+                            <a href="#" class="btn-link    clear">Clear</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            @foreach($price as $n)
-                <tr>
-                    <th>{{$n->id}}</th>
-                    <td>{{$n->service}}</td>
-                    <td>{{$n->price}}</td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#exampleModal{{ $n->id }}">
-                            <img src="{{ asset('uploads/gallery/'.$n->image) }}" width="40px"
-                                 alt="Image">
-                        </a>
-                    </td>
-                    <td class="project-actions">
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle"
-                                data-bs-toggle="dropdown">
-                            Action
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item  small "
-                                   href="{{route('price.edit',$n->id)}}">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <a class="dropdown-item small gallery-delete text-danger"
-                                   href="#"
-                                   data-href="{{route('price.delete',$n->id)}}">
-                                    <i class="fa fa-trash"> </i> Delete
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
     </div>
 @endsection
 
@@ -78,7 +120,8 @@
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
-                    if (result.isConfirmed) {
+                    if (result.isConfirmed)
+                    {
                         let url = $_this.data('href');
                         $.get(url).done(function (res) {
                             $_this.parent().closest('tr').remove();
@@ -91,16 +134,17 @@
                 });
             });
         });
-
+        $('.clear').click(function () {
+            $('#search').val('');
+            $('.search-btn').trigger('click');
+        });
         @if (\Session::has('add'))
-
         toastr.success('Your Data Has Successfully Added!');
         {{ \Session::forget('add') }}
         @endif
 
         @if (\Session::has('update'))
-
-        toastr.success('Your Data Has Successfully Updated!');
+        toastr.success('Your price Has Successfully Updated!');
         {{ \Session::forget('update') }}
         @endif
     </script>

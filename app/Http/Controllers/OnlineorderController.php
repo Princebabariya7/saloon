@@ -10,9 +10,34 @@ use Illuminate\Support\Carbon;
 
 class OnlineorderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('book.onlineorderview')->with('data', Onlineorder::all());
+
+        $search = $request->input('search', '');
+        $city   = $request->input('city', '');
+
+        if ($search != '')
+        {
+            $orders = Onlineorder::when($search, function ($query, $search)
+            {
+                return
+                    $query->where('package', 'LIKE', '%' . $search . '%')
+                        ->orWhere('city', 'LIKE', '%' . $search . '%');
+            })->paginate(5);
+        }
+        elseif ($city != '')
+        {
+            $orders = Onlineorder::when($city, function ($query, $city)
+            {
+                return
+                    $query->where('city', 'LIKE', '%' . $city . '%');
+            })->paginate(5);
+        }
+        else
+        {
+            $orders = Onlineorder::paginate(5);
+        }
+        return view('book.onlineorderview')->with('orders', $orders);
     }
 
     public function create()
@@ -24,37 +49,20 @@ class OnlineorderController extends Controller
     {
         try
         {
-            if ($request->package != '')
-            {
-                $str1 = implode(',', $request->package);
-            }
-
-            if ($request->categories != '')
-            {
-                $str2 = implode(',', $request->categories);
-            }
-
-            if ($request->service != '')
-            {
-                $str3 = implode(',', $request->service);
-            }
-
-            $carbonDateTime = Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time);
-
             Onlineorder::create([
-                'package'          => isset($str1) ? $str1 : '',
-                'categories'       => isset($str2) ? $str2 : '',
-                'service'          => isset($str3) ? $str3 : '',
+                'package'          => $this->customImplode($request->package),
+                'categories'       => $this->customImplode($request->categories),
+                'service'          => $this->customImplode($request->service),
                 'address'          => $request->address,
                 'city'             => $request->city,
                 'state'            => $request->state,
                 'zipcode'          => $request->zipcode,
-                'appointment_time' => $carbonDateTime->format('Y-m-d H:i:s'),
+                'appointment_time' => Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time)->format('Y-m-d H:i:s'),
                 'updated_at'       => now(),
                 'created_at'       => Carbon::now(),
             ]);
 
-            session()->put('msg','ok');
+            session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));
         }
         catch (\Exception $e)
@@ -63,65 +71,53 @@ class OnlineorderController extends Controller
         }
     }
 
-    public function show($id)
+    public function customImplode($value)
     {
-        //
+        return (!empty($value)) ? implode(',', $value) : '';
     }
 
     public function edit($id)
     {
         $online   = Onlineorder::find($id);
-        $dateTime = Carbon::create($online->appointment_time)->format('m-d-y H:i:s');
-
-//        dd($dateTime);
-        return view('book.order')
+                return view('book.order')
             ->with('online', $online)
             ->with('package', explode(',', $online->package))
             ->with('categories', explode(',', $online->categories))
             ->with('service', explode(',', $online->service))
-            ->with('appointment_time', ($dateTime))
+            ->with('appointment_time', (Carbon::create($online->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true);
     }
 
     public function update(OnlineorderEditRequest $request, $id)
     {
-
-        if ($request->package != '')
-        {
-            $str1 = implode(',', $request->package);
-        }
-
-        if ($request->categories != '')
-        {
-            $str2 = implode(',', $request->categories);
-        }
-
-        if ($request->service != '')
-        {
-            $str3 = implode(',', $request->service);
-        }
-
-        $dateTime                 = Carbon::create($request->appointment_time)->format('Y-m-d H:i:s');
         $online                   = Onlineorder::find($id);
-        $online->package          = isset($str1) ? $str1 : '';
-        $online->categories       = isset($str2) ? $str2 : '';
-        $online->service          = isset($str3) ? $str3 : '';
+        $online->package          = $this->customImplode($request->package);
+        $online->categories       = $this->customImplode($request->categories);
+        $online->service          = $this->customImplode($request->service);
         $online->address          = $request->input('address');
         $online->city             = $request->input('city');
         $online->state            = $request->input('state');
         $online->zipcode          = $request->input('zipcode');
-        $online->appointment_time = $dateTime;
+        $online->appointment_time = Carbon::create($request->appointment_time)->format('Y-m-d H:i:s');
         $online->update();
+        session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));
     }
 
     public function destroy($id)
     {
-        $online = Onlineorder::find($id);
-        if ($online)
+        try
         {
-            $online->delete();
+            $online = Onlineorder::find($id);
+            if ($online)
+            {
+                $online->delete();
+            }
+            return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
-        return redirect(route('online.index'));
+        catch (\Exception $e)
+        {
+            return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
+        }
     }
 }

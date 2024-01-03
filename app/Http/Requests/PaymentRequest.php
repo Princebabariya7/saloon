@@ -11,8 +11,6 @@ class PaymentRequest extends FormRequest
     {
         return true;
     }
-
-
     public function rules()
     {
         return [

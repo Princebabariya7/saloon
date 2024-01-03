@@ -13,11 +13,6 @@ class PaymentController extends Controller
         return view('payment.view')->with('data', Payment::all());
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function store(PaymentRequest $request)
     {
         Payment::create([
@@ -33,28 +28,6 @@ class PaymentController extends Controller
         ]);
 
         session()->put('msg', 'qqq');
-
         return redirect(route('payment.index'));
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }

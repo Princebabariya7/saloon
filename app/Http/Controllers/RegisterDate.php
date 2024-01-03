@@ -13,18 +13,15 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterDate extends Controller
 {
-
     public function index()
     {
         $register = Register::all();
         return view('sign_in.index', compact('register'));
     }
-
     public function store(RegisterRequest $request)
     {
         try
         {
-            $dateTime = Carbon::create($request->date)->format('Y-m-d');
             User::create([
                 'firstname'  => $request->firstname,
                 'lastname'   => $request->lastname,
@@ -32,7 +29,7 @@ class RegisterDate extends Controller
                 'mobile'     => $request->number,
                 'password'   => Hash::make($request->password),
                 'gender'     => $request->gender == 'male' ? 'm' : 'f',
-                'dob'        => $dateTime, // Default value if not provided
+                'dob'        => Carbon::create($request->date)->format('Y-m-d'),
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);
@@ -41,8 +38,6 @@ class RegisterDate extends Controller
         catch (\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
         }
-
-
     }
 
     public function login(LoginRequest $request)
@@ -52,7 +47,7 @@ class RegisterDate extends Controller
             $credit = $request->only('email', 'password');
             if (Auth::attempt($credit))
             {
-                session()->put('msg','qqq');
+                session()->put('msg','your are login');
                 return redirect()->route('home');
             }
             else
@@ -73,7 +68,7 @@ class RegisterDate extends Controller
             $user           = User::whereEmail($request->email)->first();
             $user->password = Hash::make($request->input('password'));
             $user->update();
-            session()->put('msg','qqq');
+            session()->put('msg','your password has been changed');
             return view('sign_in.login');
         }
         catch (\Exception $e)

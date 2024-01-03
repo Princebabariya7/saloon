@@ -43,7 +43,7 @@ class OnlineorderRequest extends FormRequest
             'address'          => 'required',
             'city'             => 'required',
             'state'            => 'required',
-            'zipcode'          => 'required',
+            'zipcode'          => 'required|numeric',
             'appointment_time' => 'required',
         ];
     }

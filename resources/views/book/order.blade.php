@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">Online Booking</h1>
+                <h1 class="font-weight-normal">Online Booking</h1>
             </div>
         </div>
     </div>
@@ -29,17 +29,19 @@
                         <label>-OR-</label>
                     </div>
                 </div>
-                <div class="cate">
+                <div class="row">
+                <div class="cate col-md-6">
                     <div class="form-group">
                         <label>Select categories</label>
                         {!! Form::select('categories[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $categories : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                     </div>
                 </div>
-                <div class="ser">
+                <div class="ser col-md-6">
                     <div class="form-group">
                         <label>Select service</label>
                         {!! Form::select('service[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $service : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                     </div>
+                </div>
                 </div>
                 <div class="dropdown-divider"> </div>
                 <div class="row">
@@ -65,14 +67,14 @@
                         <div class="form-group">
                             <label for="zipcode">Zipcode</label>
                             {{--                            <input type="number" class="form-control" id="zipcode" placeholder="" name="zipcode">--}}
-                            {!! Form::number('zipcode',  null, ['class' => 'form-control','style'=>'width: 100%;']) !!}
+                            {!! Form::text('zipcode',  null, ['class' => 'form-control','style'=>'width: 100%;','autocomplete'=>'off']) !!}
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Preferred booking date and time</label>
                     <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                        {!! Form::text('appointment_time', ($editMode) ? $appointment_time : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime']) !!}
+                        {!! Form::text('appointment_time', ($editMode) ? $appointment_time : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime','autocomplete'=>'off']) !!}
                         <div class="input-group-append" data-target="#reservationdatetime"
                              data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -80,7 +82,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-md simple_btn" type="submit">Confirm Booking</button>
+                    <button class="btn btn-primary btn-sm simple_btn" type="submit">Confirm Booking</button>
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -99,15 +101,9 @@
         @endforeach
         @endif
         @if (\Session::has('msg'))
-        Swal.fire({
-            title: "Your order has been confirmed",
-            text: " Check your email for more detail",
-            icon: "success"
-        });
+        toastr.success('your order has been booked');
         {{\Session::forget('msg')}}
         @endif
-    </script>
-    <script>
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()

@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">Book Appointment</h1>
+                <h1 class=" font-weight-normal">Book Appointment</h1>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label>Preferred booking date and time</label>
                 <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                    {!! Form::text('appointment_time', ($editMode) ? $appointment_time : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime']) !!}
+                    {!! Form::text('appointment_time', ($editMode) ? $appointment_time : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime' , 'autocomplete' => 'off']) !!}
                     <div class="input-group-append" data-target="#reservationdatetime"
                          data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -36,26 +36,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-md simple_btn" type="submit">Book my appointment</button>
+                <button class="btn btn-primary btn-sm simple_btn" type="submit">Book my appointment</button>
             </div>
             {!! Form::close() !!}
         </div>
 
         <div class="social-media">
-            <label>Also Call Us For Appointment
-                <br>
-                +91 99952 52456</label>
+            <label>Also Call Us For Appointment<br>+91 99952 52456</label>
         </div>
     </div>
 @endsection
 @section('custom_js')
     <script>
         @if (\Session::has('msg'))
-        Swal.fire({
-            title: "Your booking has been confirmed",
-            text: "Check your email for more details",
-            icon: "success"
-        });
+        toastr.success('your appointment has been booked');
         {{\Session::forget('msg')}}
         @endif
         $(function () {
@@ -71,10 +65,12 @@
             $('#datemask').inputmask('dd/mm/yyyy', {
                 'placeholder': 'dd/mm/yyyy'
             })
+
             //Datemask2 mm/dd/yyyy
             $('#datemask2').inputmask('mm/dd/yyyy', {
                 'placeholder': 'mm/dd/yyyy'
             })
+
             //Money Euro
             $('[data-mask]').inputmask()
 
@@ -82,14 +78,12 @@
             $('#reservationdate').datetimepicker({
                 format: 'L'
             });
-
             //Date and time picker
             $('#reservationdatetime').datetimepicker({
                 icons: {
                     time: 'far fa-clock'
                 }
             });
-
             //Date range picker
             $('#reservation').daterangepicker()
             $('#reservationtime').daterangepicker({
@@ -100,8 +94,6 @@
                 }
             })
         })
-    </script>
-    <script>
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');

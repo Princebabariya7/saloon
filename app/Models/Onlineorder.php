@@ -11,14 +11,14 @@ class Onlineorder extends Model
     protected $fillable = ['package','categories','service','address','city','state','zipcode','appointment_time'];
 
     protected $attributes = [
-        'package' => 'not selected', // Set your default value here
-        'categories' => 'not selected', // Set your default value here
-        'service' => 'not selected', // Set your default value here
-        'address' => 'not selected', // Set your default value here
-        'city' => 'nt selected', // Set your default value here
-        'state' => 'not selected', // Set your default value here
-        'zipcode' => '', // Set your default value here
-        'appointment_time' => 'not selected', // Set your default value here
+        'package' => 'not selected',
+        'categories' => 'not selected',
+        'service' => 'not selected',
+        'address' => 'not selected',
+        'city' => 'nt selected',
+        'state' => 'not selected',
+        'zipcode' => '',
+        'appointment_time' => 'not selected',
     ];
 
     protected $table = 'onlineorders';

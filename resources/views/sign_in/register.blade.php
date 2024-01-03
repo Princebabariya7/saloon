@@ -20,15 +20,15 @@
                 <span><i class="icon icon-user"></i></span>
             </div>
             <div class="form-group">
-                {!! Form::text('firstname' ,null,['class'=>'form-control item','placeholder'=>'Enter your firstname']) !!}
+                {!! Form::text('firstname' ,null,['class'=>'form-control item','placeholder'=>'Enter your firstname' , 'autocomplete' => 'off']) !!}
 
             </div>
             <div class="form-group">
-                {!! Form::text('lastname' ,null,['class'=>'form-control item','placeholder'=>'Enter your lastname']) !!}
+                {!! Form::text('lastname' ,null,['class'=>'form-control item','placeholder'=>'Enter your lastname', 'autocomplete' =>'off']) !!}
             </div>
             <div class="form-group">
                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    {!! Form::text('date',null, ['class' => 'form-control datetimepicker-input item', 'data-target' => '#reservationdate' ,'placeholder'=> 'Enter your DOB']) !!}
+                    {!! Form::text('date',null, ['class' => 'form-control datetimepicker-input item', 'data-target' => '#reservationdate' ,'placeholder'=> 'Enter your DOB' , 'autocomplete' =>'off']) !!}
 
                     <div class="input-group-append" data-target="#reservationdate"
                          data-toggle="datetimepicker">
@@ -49,10 +49,10 @@
                 </div>
             </div>
             <div class="form-group">
-                {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Enter your mobile' , 'id' => 'name']) !!}
+                {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Enter your mobile' , 'id' => 'name' ,'autocomplete' =>'off']) !!}
             </div>
             <div class="form-group">
-                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email']) !!}
+                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email' ,'autocomplete'=>'off']) !!}
             </div>
             <div class="form-group">
                 {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Password']) !!}

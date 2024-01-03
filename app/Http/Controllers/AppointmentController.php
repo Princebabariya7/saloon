@@ -10,9 +10,33 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('book.appointmentview')->with('data', Appointment::paginate(5));
+        $search  = $request->input('search', '');
+        $package = $request->input('package', '');
+        if ($search != '')
+        {
+            $appointments = Appointment::when($search, function ($query, $search)
+            {
+                return
+                    $query->where('package', 'LIKE', '%' . $search . '%')
+                        ->orWhere('stylist', 'LIKE', '%' . $search . '%');
+            })->paginate(5);
+        }
+        elseif ($package != '')
+        {
+            $appointments = Appointment::when($package, function ($query, $package)
+            {
+                return
+                    $query->where('package', 'LIKE', '%' . $package . '%');
+            })->paginate(5);
+        }
+        else
+        {
+            $appointments = Appointment::paginate(5);
+        }
+
+        return view('book.appointmentview')->with('appointments', $appointments);
     }
 
     public function create()
@@ -24,16 +48,14 @@ class AppointmentController extends Controller
     {
         try
         {
-            $carbonDateTime = Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time);
-            $str1           = implode(',', $request->package);
             Appointment::create([
-                'package'          => $str1,
+                'package'          => implode(',', $request->package),
                 'stylist'          => $request->stylist,
-                'appointment_time' => $carbonDateTime->format('Y-m-d H:i:s'),
+                'appointment_time' => Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time)->format('Y-m-d H:i:s'),
                 'updated_at'       => now(),
                 'created_at'       => Carbon::now(),
             ]);
-            session()->put('msg', 'qqq');
+            session()->put('msg', 'Appointment booked');
             return redirect(route('appointment.create'));
         }
         catch (\Exception $e)
@@ -42,33 +64,29 @@ class AppointmentController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $appointment = Appointment::find($id);
-        $dateTime    = Carbon::create($appointment->appointment_time)->format('m-d-y H:i:s');
         return view('book.appointment')
             ->with('appointment', $appointment)
             ->with('package', explode(',', $appointment->package))
-            ->with('appointment_time', ($dateTime))
+            ->with('appointment_time', (Carbon::create($appointment->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true);
     }
 
+
     public function update(AppointmentEditRequest $request, $id)
     {
-        $str1                          = implode(',', $request->package);
-        $dateTime                      = Carbon::create($request->appointment_time)->format('Y-m-d H:i:s');
         $appointment                   = Appointment::find($id);
-        $appointment->package          = $str1;
+        $appointment->package          = implode(',', $request->package);
         $appointment->stylist          = $request->input('stylist');
-        $appointment->appointment_time = $dateTime;
+        $appointment->appointment_time = Carbon::create($request->appointment_time)->format('Y-m-d H:i:s');;
         $appointment->update();
+
+        session()->put('update', 'your appointment was updated');
         return redirect(route('appointment.index'));
     }
+
 
     public function destroy($id)
     {
@@ -79,15 +97,11 @@ class AppointmentController extends Controller
             {
                 $appointment->delete();
             }
-
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
         catch (\Exception $e)
         {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
-
     }
-
-
 }

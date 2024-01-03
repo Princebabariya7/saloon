@@ -26,13 +26,6 @@
     padding-top: 30px;
     color: grey;
 }
-/*.login_content{*/
-/*    margin-bottom: 45px;*/
-/*    margin-top: 45px;*/
-/*}*/
-.login_logo{
-    color: lightgrey;
-}
 .appointment_content{
     margin-top: 20px;
 }
@@ -44,4 +37,7 @@
 }
 .simple_btn{
     float: right;
+}
+.pagination .pagination{
+    margin: 0;
 }
