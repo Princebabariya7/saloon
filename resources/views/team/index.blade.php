@@ -9,10 +9,6 @@ Stylist
                 <div class="col-12">
                     <h2>Barber</h2>
                 </div>
-                <div class="col-12">
-                    <a href="">Home</a>
-                    <a href="">Barber</a>
-                </div>
             </div>
         </div>
     </div>

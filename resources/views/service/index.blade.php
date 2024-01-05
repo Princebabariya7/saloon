@@ -10,10 +10,6 @@
                 <div class="col-12">
                     <h2>Service</h2>
                 </div>
-                <div class="col-12">
-                    <a href="#">Home</a>
-                    <a href="#">Service</a>
-                </div>
             </div>
         </div>
     </div>

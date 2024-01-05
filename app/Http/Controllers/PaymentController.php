@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PaymentRequest;
 use App\Models\Payment;
-use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -29,5 +28,15 @@ class PaymentController extends Controller
 
         session()->put('msg', 'qqq');
         return redirect(route('payment.index'));
+    }
+
+    public function view()
+    {
+        return view('payment.index');
+    }
+
+    public function invoice()
+    {
+        return view('order.orderInvoice');
     }
 }

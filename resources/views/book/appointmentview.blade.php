@@ -66,7 +66,7 @@
                                                     </li>
                                                     <li class="dropdown-divider"></li>
                                                     <li>
-                                                        <a class="dropdown-item  delete_popup text-danger"
+                                                        <a class="dropdown-item  delete_appointment text-danger"
                                                            href="#"
                                                            data-href="{{route('appointment.delete',$appointment->id)}}">
                                                             <i class="fa fa-trash"></i> Delete
@@ -107,7 +107,7 @@
 @section('custom_js')
     <script>
         $(document).ready(function () {
-            $('.delete_popup').click(function () {
+            $('.delete_appointment').click(function () {
                 var $_this = $(this);
                 Swal.fire({
                     title: 'Are you sure?',

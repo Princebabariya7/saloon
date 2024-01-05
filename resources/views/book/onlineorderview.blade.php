@@ -75,7 +75,7 @@
                                                     </li>
                                                     <li class="dropdown-divider"></li>
                                                     <li>
-                                                        <a class="dropdown-item  delete_popup text-danger"
+                                                        <a class="dropdown-item  delete_pop text-danger"
                                                            href="#"
                                                            data-href="{{route('online.delete',$order->id)}}">
                                                             <i class="fa fa-trash"></i> Delete

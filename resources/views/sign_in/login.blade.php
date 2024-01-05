@@ -23,7 +23,7 @@
                 {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Password']) !!}
             </div>
             <div class="form-group">
-                {!! Form::button('Log In', ['type' =>'submit','class'=>'btn btn-block create-account']) !!}
+                {!! Form::button('Log In', ['type' =>'submit','class'=>'btn btn-sm btn-block create-account']) !!}
             </div>
 
             {!! Form::close() !!}

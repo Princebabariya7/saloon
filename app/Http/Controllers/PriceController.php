@@ -17,8 +17,8 @@ class PriceController extends Controller
         {
             return $query->where('service', 'LIKE', '%' . $search . '%')
                 ->orWhere('price', 'LIKE', '%' . $search . '%');
-        })->sortable(['price' => 'asc'])
-            ->paginate(5);
+        })
+            ->sortable(['price' => 'asc'])->paginate(5);
 
         return view('price.view')->with('prices', $prices);
     }
@@ -105,5 +105,10 @@ class PriceController extends Controller
                 return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
             }
         }
+    }
+
+    public function view()
+    {
+        return view('price.priceAdd');
     }
 }

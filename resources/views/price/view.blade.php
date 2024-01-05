@@ -34,7 +34,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">service</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">@sortablelink('Price')</th>
                                 <th scope="col">image</th>
                                 <th scope="col" class="text-right">Action</th>
                             </tr>
@@ -109,7 +109,7 @@
 @section('custom_js')
     <script>
         $(document).ready(function () {
-            $('.gallery-delete').click(function () {
+            $('.delete_popup ').click(function () {
                 var $_this = $(this);
 
                 Swal.fire({

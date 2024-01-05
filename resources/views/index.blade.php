@@ -55,7 +55,6 @@
                             health and radiance of your hair and skin. Our commitment to natural ingredients reflects
                             our
                             dedication to your overall well-being. </p>
-                        <a class="btn" href="#">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +92,8 @@
                         <p> The ultimate goal of your beard style is to add contrast and dimension to your face.
                             Different
                             face shapes should highlight certain facial features—not every style looks great on every
-                            guy. </p>
+                            guy.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -133,7 +133,10 @@
                                 <h2>
                                     {{$service->service}}
                                 </h2>
-                                <h3><i class="fa fa-inr" aria-hidden="true"></i>{{$service->price}}</h3>
+                                <h3>
+                                    <i class="fa fa-inr" aria-hidden="true"></i>
+                                    {{$service->price}}
+                                </h3>
                             </div>
                         </div>
                     </div>

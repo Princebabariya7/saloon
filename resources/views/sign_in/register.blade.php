@@ -61,7 +61,7 @@
                 {!! Form::password('repassword',['class' =>'form-control item' , 'placeholder'=>'Reenter Password']) !!}
             </div>
             <div class="form-group">
-                {!! Form::button('Create Account',['type' => 'submit', 'class' => 'btn btn-block create-account']) !!}
+                {!! Form::button('Create Account',['type' => 'submit', 'class' => 'btn btn-sm btn-block create-account']) !!}
             </div>
             {!! Form::close() !!}
             <div class="social-media">

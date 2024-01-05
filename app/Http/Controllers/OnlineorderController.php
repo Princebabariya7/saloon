@@ -16,27 +16,20 @@ class OnlineorderController extends Controller
         $search = $request->input('search', '');
         $city   = $request->input('city', '');
 
-        if ($search != '')
+
+        $orders = Onlineorder::when($search, function ($query) use ($search)
         {
-            $orders = Onlineorder::when($search, function ($query, $search)
+            return $query->where(function ($query) use ($search)
             {
-                return
-                    $query->where('package', 'LIKE', '%' . $search . '%')
-                        ->orWhere('city', 'LIKE', '%' . $search . '%');
-            })->paginate(5);
-        }
-        elseif ($city != '')
+                $query->orwhere('package', 'LIKE', '%' . $search . '%')
+                    ->orWhere('city', 'LIKE', '%' . $search . '%');
+            });
+        })->when($city, function ($query) use ($city)
         {
-            $orders = Onlineorder::when($city, function ($query, $city)
-            {
-                return
-                    $query->where('city', 'LIKE', '%' . $city . '%');
-            })->paginate(5);
-        }
-        else
-        {
-            $orders = Onlineorder::paginate(5);
-        }
+            return
+                $query->where('city', $city);
+        })->paginate(5);
+
         return view('book.onlineorderview')->with('orders', $orders);
     }
 
@@ -78,8 +71,8 @@ class OnlineorderController extends Controller
 
     public function edit($id)
     {
-        $online   = Onlineorder::find($id);
-                return view('book.order')
+        $online = Onlineorder::find($id);
+        return view('book.order')
             ->with('online', $online)
             ->with('package', explode(',', $online->package))
             ->with('categories', explode(',', $online->categories))
@@ -119,5 +112,15 @@ class OnlineorderController extends Controller
         {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
+    }
+
+    public function view()
+    {
+        return view('book.order');
+    }
+
+    public function orderlist()
+    {
+        return view('order.orderlist');
     }
 }

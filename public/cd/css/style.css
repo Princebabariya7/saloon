@@ -1469,13 +1469,15 @@ body{
 
 .registration-form .create-account{
     /*border-radius: 30px;*/
-    padding: 10px 20px;
-    font-size: 18px;
+    /*padding: 10px 20px;*/
+    font-size: 14px;
     font-weight: bold;
     background-color: #5791ff;
     border: none;
     color: white;
-    margin-top: 20px;
+    float: right;
+    /*margin-top: 20px;*/
+
 }
 
 .registration-form .social-media{

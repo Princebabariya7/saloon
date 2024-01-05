@@ -12,29 +12,20 @@ class AppointmentController extends Controller
 {
     public function index(Request $request)
     {
-        $search  = $request->input('search', '');
-        $package = $request->input('package', '');
-        if ($search != '')
+        $search       = $request->input('search', '');
+        $package      = $request->input('package', '');
+        $appointments = Appointment::when($search, function ($query) use ($search)
         {
-            $appointments = Appointment::when($search, function ($query, $search)
+            return $query->where(function ($query) use ($search)
             {
-                return
-                    $query->where('package', 'LIKE', '%' . $search . '%')
-                        ->orWhere('stylist', 'LIKE', '%' . $search . '%');
-            })->paginate(5);
-        }
-        elseif ($package != '')
+                $query->orwhere('package', 'LIKE', '%' . $search . '%')
+                    ->orWhere('stylist', 'LIKE', '%' . $search . '%');
+            });
+        })->when($package, function ($query) use ($package)
         {
-            $appointments = Appointment::when($package, function ($query, $package)
-            {
-                return
-                    $query->where('package', 'LIKE', '%' . $package . '%');
-            })->paginate(5);
-        }
-        else
-        {
-            $appointments = Appointment::paginate(5);
-        }
+            return
+                $query->where('package', $package);
+        })->paginate(5);
 
         return view('book.appointmentview')->with('appointments', $appointments);
     }

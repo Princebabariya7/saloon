@@ -9,10 +9,6 @@
                 <div class="col-12">
                     <h2>Gallery</h2>
                 </div>
-                <div class="col-12">
-                    <a href="">Home</a>
-                    <a href="">Gallery</a>
-                </div>
             </div>
         </div>
     </div>
