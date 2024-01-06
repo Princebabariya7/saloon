@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Requests\PaymentRequest;
+use App\Http\Requests\frontend\PaymentRequest;
 use App\Models\Payment;
 use Illuminate\Routing\Controller;
 
@@ -10,7 +10,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        return view('payment.view')->with('data', Payment::all());
+        return view('frontend.payment.view')->with('data', Payment::all());
     }
 
     public function store(PaymentRequest $request)
@@ -33,11 +33,11 @@ class PaymentController extends Controller
 
     public function view()
     {
-        return view('payment.index');
+        return view('frontend.payment.index');
     }
 
     public function invoice()
     {
-        return view('order.orderInvoice');
+        return view('frontend.order.orderInvoice');
     }
 }

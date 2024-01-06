@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Requests\ForgotRequest;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\frontend\ForgotRequest;
+use App\Http\Requests\frontend\LoginRequest;
+use App\Http\Requests\frontend\RegisterRequest;
 use App\Models\Register;
 use App\Models\User;
 use Carbon\Carbon;
@@ -17,7 +17,7 @@ class RegisterDate extends Controller
     public function index()
     {
         $register = Register::all();
-        return view('sign_in.index', compact('register'));
+        return view('frontend.sign_in.index', compact('register'));
     }
     public function store(RegisterRequest $request)
     {
@@ -34,7 +34,7 @@ class RegisterDate extends Controller
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);
-            return view('sign_in.login')->withSuccess('IT WORKS!');
+            return view('frontend.sign_in.login')->withSuccess('IT WORKS!');
         }
         catch (\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());

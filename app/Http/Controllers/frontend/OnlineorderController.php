@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Requests\OnlineorderEditRequest;
-use App\Http\Requests\OnlineorderRequest;
+use App\Http\Requests\frontend\OnlineorderEditRequest;
+use App\Http\Requests\frontend\OnlineorderRequest;
 use App\Models\Onlineorder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -30,12 +30,12 @@ class OnlineorderController extends Controller
                 $query->where('city', $city);
         })->paginate(5);
 
-        return view('book.onlineorderview')->with('orders', $orders);
+        return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
     public function create()
     {
-        return view('book.order')->with('editMode', false);
+        return view('frontend.book.order')->with('editMode', false);
     }
 
     public function store(OnlineorderRequest $request)
@@ -72,7 +72,7 @@ class OnlineorderController extends Controller
     public function edit($id)
     {
         $online = Onlineorder::find($id);
-        return view('book.order')
+        return view('frontend.book.order')
             ->with('online', $online)
             ->with('package', explode(',', $online->package))
             ->with('categories', explode(',', $online->categories))
@@ -116,11 +116,11 @@ class OnlineorderController extends Controller
 
     public function view()
     {
-        return view('book.order');
+        return view('frontend.book.order');
     }
 
     public function orderlist()
     {
-        return view('order.orderlist');
+        return view('frontend.order.orderlist');
     }
 }

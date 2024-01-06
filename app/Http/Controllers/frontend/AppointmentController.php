@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Requests\AppointmentAddRequest;
-use App\Http\Requests\AppointmentEditRequest;
+use App\Http\Requests\frontend\AppointmentAddRequest;
+use App\Http\Requests\frontend\AppointmentEditRequest;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -28,12 +28,12 @@ class AppointmentController extends Controller
                 $query->where('package', $package);
         })->paginate(5);
 
-        return view('book.appointmentview')->with('appointments', $appointments);
+        return view('frontend.book.appointmentview')->with('appointments', $appointments);
     }
 
     public function create()
     {
-        return view('book.appointment')->with('editMode', false);
+        return view('frontend.book.appointment')->with('editMode', false);
     }
 
     public function store(AppointmentAddRequest $request)
@@ -59,7 +59,7 @@ class AppointmentController extends Controller
     public function edit($id)
     {
         $appointment = Appointment::find($id);
-        return view('book.appointment')
+        return view('frontend.book.appointment')
             ->with('appointment', $appointment)
             ->with('package', explode(',', $appointment->package))
             ->with('appointment_time', (Carbon::create($appointment->appointment_time)->format('m-d-y H:i:s')))

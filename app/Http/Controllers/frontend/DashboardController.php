@@ -11,50 +11,50 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('index')->with('services', Price::all());
+        return view('frontend.index')->with('services', Price::all());
     }
 
     public function register()
     {
-        return view('sign_in.register');
+        return view('frontend.sign_in.register');
     }
 
     public function login()
     {
-        return view('sign_in.login');
+        return view('frontend.sign_in.login');
     }
 
     public function forgot()
     {
-        return view('sign_in.forgot');
+        return view('frontend.sign_in.forgot');
     }
 
     public function gallery()
     {
-        return view('gallery.index');
+        return view('frontend.gallery.index');
 
     }
 
     public function team()
     {
-        return view('team.index');
+        return view('frontend.team.index');
     }
 
     public function price()
     {
-        return view('price.index')->with('services', Price::all());
+        return view('frontend.price.index')->with('services', Price::all());
     }
 
     public function service()
     {
-        return view('service.index');
+        return view('frontend.service.index');
     }
 
 
     public function logout()
     {
         Auth::logout();
-        return view('index')->with('services', Price::all());
+        return view('frontend.index')->with('services', Price::all());
     }
 }
 

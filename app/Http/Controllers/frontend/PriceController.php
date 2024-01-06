@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Requests\PriceRequest;
+use App\Http\Requests\frontend\PriceRequest;
 use App\Models\Price;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -20,12 +20,12 @@ class PriceController extends Controller
         })
             ->sortable(['price' => 'asc'])->paginate(5);
 
-        return view('price.view')->with('prices', $prices);
+        return view('frontend.price.view')->with('prices', $prices);
     }
 
     public function create()
     {
-        return view('price.priceAdd')->with('editMode', false);
+        return view('frontend.price.priceAdd')->with('editMode', false);
     }
 
     public function store(PriceRequest $request)
@@ -53,7 +53,7 @@ class PriceController extends Controller
     {
         $price = Price::find($id);
 
-        return view('price.priceAdd')
+        return view('frontend.price.priceAdd')
             ->with('price', $price)
             ->with('editMode', true);
     }
