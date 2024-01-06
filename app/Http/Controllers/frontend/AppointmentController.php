@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\AppointmentAddRequest;
 use App\Http\Requests\AppointmentEditRequest;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class AppointmentController extends Controller
 {

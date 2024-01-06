@@ -30,8 +30,6 @@
                             A haircut is what a barber does when he trims your hair with scissors. You might decide it's
                             time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
                             for a haircut. </p>
-                        <a class="btn" href="#">Learn
-                            More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -44,8 +42,6 @@
                             The ultimate goal of your beard style is to add contrast and dimension to your face.
                             Different face shapes should highlight certain facial features—not every style looks great
                             on every guy. </p>
-                        <a class="btn" href="#">Learn
-                            More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -57,8 +53,6 @@
                         <p>
                             Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
                             cuticle layer of your hair it is also known as semi-permanent hair color.</p>
-                        <a class="btn" href="#">Learn
-                            More</a>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\OnlineorderEditRequest;
 use App\Http\Requests\OnlineorderRequest;

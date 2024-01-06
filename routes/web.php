@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OnlineorderController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PriceController;
-use App\Http\Controllers\RegisterDate;
+use App\Http\Controllers\frontend\AppointmentController;
+use App\Http\Controllers\frontend\DashboardController;
+use App\Http\Controllers\frontend\OnlineorderController;
+use App\Http\Controllers\frontend\PaymentController;
+use App\Http\Controllers\frontend\PriceController;
+use App\Http\Controllers\frontend\RegisterDate;
 use Illuminate\Support\Facades\Route;
+
+
+
 
 Route::get('', [DashboardController::class, 'index'])->name('home');
 

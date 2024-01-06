@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\PaymentRequest;
 use App\Models\Payment;
+use Illuminate\Routing\Controller;
 
 class PaymentController extends Controller
 {
@@ -26,7 +27,7 @@ class PaymentController extends Controller
             'created_at'    => now(),
         ]);
 
-        session()->put('msg', 'qqq');
+        session()->put('msg', 'payment accepted');
         return redirect(route('payment.index'));
     }
 

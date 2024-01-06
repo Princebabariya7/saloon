@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\ForgotRequest;
 use App\Http\Requests\LoginRequest;
@@ -8,6 +8,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\Register;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 

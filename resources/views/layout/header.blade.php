@@ -42,6 +42,7 @@
 <!-- Top Bar End -->
 
 <!-- Nav Bar Start -->
+
 <div class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container-fluid">
         <a href="{{route('home')}}" class="navbar-brand hair">Hairck <span>Saloon</span></a>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\PriceRequest;
 use App\Models\Price;
@@ -42,7 +42,10 @@ class PriceController extends Controller
             $price->image = $filename;
 
         }
+
         $price->save();
+        session()->put('add', 'your price was added');
+
         return redirect(route('price.create'));
     }
 

@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="Select Image">Select Image</label>
-                {!! Form::file('image', ['class' => 'form-control border-0']) !!}
+                {!! Form::file('image', ['class' => 'form-control form-control-sm border-0']) !!}
                 @if(($editMode))
                     <a href="#">
                         <img src="{{ asset('uploads/gallery/'.$price->image) }}"
@@ -47,6 +47,11 @@
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
         @endforeach
+        @endif
+
+        @if (\Session::has('add'))
+        toastr.success('Your Data Has Successfully Added!');
+        {{ \Session::forget('add') }}
         @endif
     </script>
 @endsection

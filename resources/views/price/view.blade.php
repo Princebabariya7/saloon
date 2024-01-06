@@ -139,10 +139,6 @@
             $('#search').val('');
             $('.search-btn').trigger('click');
         });
-        @if (\Session::has('add'))
-        toastr.success('Your Data Has Successfully Added!');
-        {{ \Session::forget('add') }}
-        @endif
 
         @if (\Session::has('update'))
         toastr.success('Your price Has Successfully Updated!');

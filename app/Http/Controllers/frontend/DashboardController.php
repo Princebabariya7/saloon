@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use App\Models\Price;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 

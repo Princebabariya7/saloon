@@ -23,11 +23,11 @@
                     <div class="col-md-6">
                         <div class="footer-link">
                             <h2>Quick Links</h2>
-                            <a href="">Terms of use</a>
-                            <a href="">Privacy policy</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
+                            <a href="#">Terms of use</a>
+                            <a href="#">Privacy policy</a>
+                            <a href="#">Cookies</a>
+                            <a href="#">Help</a>
+                            <a href="#">FQAs</a>
                         </div>
                     </div>
                 </div>
