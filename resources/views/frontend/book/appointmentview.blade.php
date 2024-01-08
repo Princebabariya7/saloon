@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-2">
-                                {!! Form::select('package',[''=>'Please Select' ,'hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'], request('package'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
+                                {!! Form::select('service',[''=>'Please Select' ,'hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'], request('service'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </div>
                         </div>
                         {!! Form::close() !!}
@@ -36,7 +36,7 @@
                         <table class="table table-striped table-sm">
                             <thead>
                             <tr>
-                                <th scope="col">Package</th>
+                                <th scope="col">Service</th>
                                 <th scope="col">Stylist</th>
                                 <th scope="col">Date</th>
                                 <th class="text-right" scope="col">Action</th>
@@ -46,7 +46,7 @@
                                 <tbody>
                                 @foreach($appointments as $appointment)
                                     <tr>
-                                        <td>{{$appointment->package}}</td>
+                                        <td>{{$appointment->service}}</td>
                                         <td>{{$appointment->stylist}}</td>
                                         <td>{{$appointment->appointment_time}}</td>
 
@@ -93,7 +93,7 @@
                         <div class="pagination pagination-sm  float-right">
                             {{ $appointments->links() }}
                         </div>
-                        @if(request('search') != '' || request('package') != '')
+                        @if(request('search') != '' || request('service') != '')
                             <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
                             <a href="#" class="btn-link    clear">Clear</a>
                         @endif

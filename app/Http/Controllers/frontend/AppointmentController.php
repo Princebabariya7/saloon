@@ -14,18 +14,18 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $search       = $request->input('search', '');
-        $package      = $request->input('package', '');
+        $service      = $request->input('service', '');
         $appointments = Appointment::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orwhere('package', 'LIKE', '%' . $search . '%')
+                $query->orwhere('service', 'LIKE', '%' . $search . '%')
                     ->orWhere('stylist', 'LIKE', '%' . $search . '%');
             });
-        })->when($package, function ($query) use ($package)
+        })->when($service, function ($query) use ($service)
         {
             return
-                $query->where('package', $package);
+                $query->where('package', $service);
         })->paginate(5);
 
         return view('frontend.book.appointmentview')->with('appointments', $appointments);
@@ -41,7 +41,7 @@ class AppointmentController extends Controller
         try
         {
             Appointment::create([
-                'package'          => implode(',', $request->package),
+                'service'          => implode(',', $request->service),
                 'stylist'          => $request->stylist,
                 'appointment_time' => Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time)->format('Y-m-d H:i:s'),
                 'updated_at'       => now(),
@@ -61,7 +61,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::find($id);
         return view('frontend.book.appointment')
             ->with('appointment', $appointment)
-            ->with('package', explode(',', $appointment->package))
+            ->with('service', explode(',', $appointment->service))
             ->with('appointment_time', (Carbon::create($appointment->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true);
     }
@@ -70,7 +70,7 @@ class AppointmentController extends Controller
     public function update(AppointmentEditRequest $request, $id)
     {
         $appointment                   = Appointment::find($id);
-        $appointment->package          = implode(',', $request->package);
+        $appointment->service          = implode(',', $request->service);
         $appointment->stylist          = $request->input('stylist');
         $appointment->appointment_time = Carbon::create($request->appointment_time)->format('Y-m-d H:i:s');;
         $appointment->update();

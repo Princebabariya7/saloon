@@ -6,27 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAppointmentsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('appointment', function (Blueprint $table) {
             $table->id();
-            $table->string('package',50);
+            $table->string('service',50);
             $table->string('stylist',50);
             $table->dateTime('appointment_time');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('appointments');

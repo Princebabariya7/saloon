@@ -18,8 +18,8 @@
         @endif
         <div class="ap_form>">
             <div class="form-group">
-                <label for="inputStatus">Select package</label>
-                {!! Form::select('package[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $package : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                <label for="inputStatus">Select Service</label>
+                {!! Form::select('service[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $service : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
             </div>
             <div class="form-group">
                 <label for="inputStatus">if possible, i prefer my appointment to be with</label>

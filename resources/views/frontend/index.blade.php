@@ -152,29 +152,35 @@
             <div class="owl-carousel testimonials-carousel">
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut mollis mauris. Vivamus
-                        egestas
-                        eleifend dui ac consequat. Fusce venenatis at lectus in malesuada. Suspendisse sit amet dolor et
-                        odio varius mattis. </p>
-                    <h2>Client Name</h2>
+                    <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
+                        ensure that every treatment not only leaves you looking stunning but also promotes the
+                        long-term
+                        health and radiance of your hair and skin. Our commitment to natural ingredients reflects
+                        our
+                        dedication to your overall well-being.  </p>
+                    <h2>nord charls</h2>
                     <h3>Profession</h3>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut mollis mauris. Vivamus
-                        egestas
-                        eleifend dui ac consequat. Fusce venenatis at lectus in malesuada. Suspendisse sit amet dolor et
-                        odio varius mattis. </p>
-                    <h2>Client Name</h2>
+                    <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
+                        ensure that every treatment not only leaves you looking stunning but also promotes the
+                        long-term
+                        health and radiance of your hair and skin. Our commitment to natural ingredients reflects
+                        our
+                        dedication to your overall well-being.  </p>
+                    <h2>adam vice</h2>
                     <h3>Profession</h3>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut mollis mauris. Vivamus
-                        egestas
-                        eleifend dui ac consequat. Fusce venenatis at lectus in malesuada. Suspendisse sit amet dolor et
-                        odio varius mattis. </p>
-                    <h2>Client Name</h2>
+                    <p>  At Harick Salon, we believe in the power of nature. We exclusively use natural products to
+                        ensure that every treatment not only leaves you looking stunning but also promotes the
+                        long-term
+                        health and radiance of your hair and skin. Our commitment to natural ingredients reflects
+                        our
+                        dedication to your overall well-being.  </p>
+                    <h2>john doe</h2>
                     <h3>Profession</h3>
                 </div>
             </div>

@@ -15,7 +15,7 @@ class AppointmentAddRequest extends FormRequest
     public function rules()
     {
         return [
-            'package'          => 'required',
+            'service'          => 'required',
             'stylist'          => 'required',
             'appointment_time' => 'required'
         ];

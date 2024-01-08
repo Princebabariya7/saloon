@@ -9,12 +9,14 @@ class Appointment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['package','stylist','appointment_time'];
+    protected $fillable = ['service','stylist','appointment_time'];
 
     protected $attributes = [
-        'package' => 'Unknown',
+        'service' => 'Unknown',
         'stylist' => 'Not selected',
         'appointment_time' => 'no appointment',
     ];
+
     protected $table = 'appointment';
+
 }

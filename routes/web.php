@@ -41,6 +41,7 @@ Route::group(['middleware' => 'PreventBackButtonMiddleware'], function ()
         Route::put('{id}/update', [AppointmentController::class, 'update'])->name('appointment.update');
         Route::get('{id}/delete', [AppointmentController::class, 'destroy'])->name('appointment.delete');
         Route::get('create', [AppointmentController::class, 'create'])->name('appointment.create');
+
     });
 
     Route::group(['prefix' => 'onlineorder'], function ()
