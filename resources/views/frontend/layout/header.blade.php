@@ -65,8 +65,8 @@
                             <i class="fa fa-user text-light" aria-hidden="true"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="{{route('appointment.create')}}" class="dropdown-item"><i
-                                    class="fa fa-calendar" aria-hidden="true"></i> Book Appointment</a>
+{{--                            <a href="{{route('appointment.create')}}" class="dropdown-item"><i--}}
+{{--                                    class="fa fa-calendar" aria-hidden="true"></i> Book Appointment</a>--}}
                             <a href="{{route('online.create')}}" class="dropdown-item"><i class="fa fa-cart-arrow-down"></i> Book Order</a>
                             <a href="{{route('price.create')}}" class="dropdown-item"><i class="fa fa-money" aria-hidden="true"></i>
                                  price</a>
@@ -78,8 +78,8 @@
                             <i class="fa fa-shopping-cart  text-light" aria-hidden="true"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="{{route('appointment.index')}}" class="dropdown-item"><i
-                                    class="fa fa-calendar" aria-hidden="true"></i> Appointments list</a>
+{{--                            <a href="{{route('appointment.index')}}" class="dropdown-item"><i--}}
+{{--                                    class="fa fa-calendar" aria-hidden="true"></i> Appointments list</a>--}}
                             <a href="{{route('online.index')}}" class="dropdown-item"><i class="fa fa-cart-arrow-down"></i> online orders list</a>
                             <a href="{{route('price.index')}}" class="dropdown-item"><i class="fa fa-money" aria-hidden="true"></i>
                                 price  list</a>

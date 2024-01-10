@@ -23,6 +23,10 @@ class RegisterRequest extends FormRequest
             'email'      => 'required|email',
             'password'   => 'required',
             'repassword' => 'required|same:password',
+            'address'          => 'required',
+            'city'             => 'required',
+            'state'            => 'required',
+            'zipcode'          => 'required|numeric',
         ];
     }
     public function messages()

@@ -8,18 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Onlineorder extends Model
 {
     use HasFactory;
-    protected $fillable = ['package','categories','service','address','city','state','zipcode','appointment_time'];
+
+    protected $fillable = ['categories', 'service', 'type', 'date', 'status', 'user_id'];
 
     protected $attributes = [
-        'package' => 'not selected',
         'categories' => 'not selected',
-        'service' => 'not selected',
-        'address' => 'not selected',
-        'city' => 'nt selected',
-        'state' => 'not selected',
-        'zipcode' => 'not selected',
-        'appointment_time' => 'not selected',
+        'service'    => 'not selected',
+        'type'       => 'not selected',
+        'date'       => 'not selected',
+        'status'     => 'not selected',
     ];
 
     protected $table = 'onlineorders';
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

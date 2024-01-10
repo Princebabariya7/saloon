@@ -36,7 +36,6 @@
                         <table class="table table-striped table-sm ordertable">
                             <thead>
                             <tr>
-                                <th scope="col">Package</th>
                                 <th scope="col">Categories</th>
                                 <th scope="col">Service</th>
                                 <th scope="col">Address</th>
@@ -51,14 +50,13 @@
                                 <tbody>
                                 @foreach($orders as $order)
                                     <tr>
-                                        <td>{{$order->package}}</td>
                                         <td>{{$order->categories}}</td>
                                         <td>{{$order->service}}</td>
                                         <td>{{$order->address}}</td>
                                         <td>{{$order->city}}</td>
                                         <td>{{$order->state}}</td>
                                         <td>{{$order->zipcode}}</td>
-                                        <td>{{$order->appointment_time}}</td>
+                                        <td>{{$order->date}}</td>
                                         <td class="project-actions text-right">
                                             <button type="button"
                                                     class="btn  btn-light border btn-sm dropdown-toggle"

@@ -12,13 +12,15 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('firstname',50);
             $table->string('lastname',50);
-            $table->enum('gender',['m','f']);
-            $table->date('dob');
-            $table->string('mobile',10);
             $table->string('email')->unique();
             $table->string('password');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->enum('gender',['m','f'])->nullable();
+            $table->date('dob')->nullable();
+            $table->string('mobile',10)->unique()->nullable();
+            $table->string('address',100)->nullable();
+            $table->string('city',20)->nullable();
+            $table->string('state',20)->nullable();
+            $table->integer('zipcode')->nullable();
             $table->timestamps();
         });
     }

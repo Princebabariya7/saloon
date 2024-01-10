@@ -18,63 +18,44 @@
                 {{ Form::open(['route' => ['online.info.store'], 'method'=>'post']) }}
             @endif
             <div class="ap_form>">
-                <div class="form-group">
-                    <label>Select package</label>
-                    {!! Form::select('package[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $package : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                <div class="row">
+                    <div class="cate col-md-12">
+                        <div class="form-group">
+                            <label>Select categories</label>
+                            {!! Form::select('categories[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $categories : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                        </div>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Select service</label>
+                            {!! Form::select('service[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $service : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
 
 
-                <div class="text-center">
-                    <div class="form-group m-0">
-                        <label>-OR-</label>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="cate col-md-6">
-                    <div class="form-group">
-                        <label>Select categories</label>
-                        {!! Form::select('categories[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $categories : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
-                    </div>
-                </div>
-                <div class="ser col-md-6">
-                    <div class="form-group">
-                        <label>Select service</label>
-                        {!! Form::select('service[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $service : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
-                    </div>
-                </div>
-                </div>
-                <div class="dropdown-divider"> </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="inputDescription">Address</label>
-                        {!! Form::textarea('address',null,['class'=>'form-control','rows'=>'4', 'style'=>'width: 100%;']) !!}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>City</label>
-                            {!! Form::select('city', ['' => 'Select one', 'ahmedabad' => 'ahmedabad','rajkot' => 'rajkot'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
+                <div class="form-group clearfix">
+                    <label>Preferred booking type</label>
+                    <div class="col-md-12  text-center" style="margin:auto">
+                        <div class="form-check form-check-inline">
+                            {{Form::radio('type','appointment',0,['class'=>'form-check-input'])}}
+                            <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>State</label>
-                            {!! Form::select('state', ['' => 'Select one', 'gujrat' => 'gujrat','pune' => 'pune'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="zipcode">Zipcode</label>
-                            {{--                            <input type="number" class="form-control" id="zipcode" placeholder="" name="zipcode">--}}
-                            {!! Form::text('zipcode',  null, ['class' => 'form-control','style'=>'width: 100%;','autocomplete'=>'off']) !!}
+                        <div class="form-check form-check-inline">
+                            {{Form::radio('type','order',0,['class'=>'form-check-input'])}}
+                            <label class="form-check-label ml-2" for="inlineRadio2">Order</label>
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label>Preferred booking date and time</label>
+
                     <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                        {!! Form::text('appointment_time', ($editMode) ? $appointment_time : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime','autocomplete'=>'off']) !!}
+                        {!! Form::text('date', ($editMode) ? $date : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime','autocomplete'=>'off']) !!}
                         <div class="input-group-append" data-target="#reservationdatetime"
                              data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -146,8 +127,6 @@
                     format: 'Y-m-d H:i:s'
                 }
             })
-
         })
-
     </script>
 @endsection

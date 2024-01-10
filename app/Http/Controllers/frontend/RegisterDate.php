@@ -31,9 +31,14 @@ class RegisterDate extends Controller
                 'password'   => Hash::make($request->password),
                 'gender'     => $request->gender == 'male' ? 'm' : 'f',
                 'dob'        => Carbon::create($request->date)->format('Y-m-d'),
+                'address'     => $request->address,
+                'city'     => $request->city,
+                'zipcode'     => $request->zipcode,
+                'state'     => $request->state,
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);
+
             return view('frontend.sign_in.login')->withSuccess('IT WORKS!');
         }
         catch (\Exception $e){

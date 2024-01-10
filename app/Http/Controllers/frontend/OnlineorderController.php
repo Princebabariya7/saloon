@@ -13,24 +13,24 @@ class OnlineorderController extends Controller
     public function index(Request $request)
     {
 
-        $search = $request->input('search', '');
-        $city   = $request->input('city', '');
+        $search  = $request->input('search', '');
+        $service = $request->input('service', '');
+
 
 
         $orders = Onlineorder::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orwhere('package', 'LIKE', '%' . $search . '%')
-                    ->orWhere('city', 'LIKE', '%' . $search . '%');
+                $query->orWhere('service', 'LIKE', '%' . $search . '%');
             });
-        })->when($city, function ($query) use ($city)
+        })->when($service, function ($query) use ($service)
         {
             return
-                $query->where('city', $city);
+                $query->where('service', $service);
         })->paginate(5);
 
-        return view('frontend.book.onlineorderview')->with('orders', $orders);
+        return view('frontend.book.onlineorderview')->with('orders', $orders );
     }
 
     public function create()
@@ -42,19 +42,18 @@ class OnlineorderController extends Controller
     {
         try
         {
-            Onlineorder::create([
-                'package'          => $this->customImplode($request->package),
-                'categories'       => $this->customImplode($request->categories),
-                'service'          => $this->customImplode($request->service),
-                'address'          => $request->address,
-                'city'             => $request->city,
-                'state'            => $request->state,
-                'zipcode'          => $request->zipcode,
-                'appointment_time' => Carbon::createFromFormat('m/d/Y g:i A', $request->appointment_time)->format('Y-m-d H:i:s'),
-                'updated_at'       => now(),
-                'created_at'       => Carbon::now(),
-            ]);
 
+
+             Onlineorder::create([
+                'categories' => $this->customImplode($request->categories),
+                'service'    => $this->customImplode($request->service),
+                'type'       => $request->type == 'appointment' ? 'appointment' : 'order',
+                'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
+                'user_id'    => auth()->user()->id,
+                'status'     => 'Active',
+                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+            ]);
             session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));
         }
@@ -71,27 +70,23 @@ class OnlineorderController extends Controller
 
     public function edit($id)
     {
-        $online = Onlineorder::find($id);
+        $online  = Onlineorder::find($id);
+
         return view('frontend.book.order')
             ->with('online', $online)
-            ->with('package', explode(',', $online->package))
             ->with('categories', explode(',', $online->categories))
             ->with('service', explode(',', $online->service))
-            ->with('appointment_time', (Carbon::create($online->appointment_time)->format('m-d-y H:i:s')))
+            ->with('date', (Carbon::create($online->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true);
     }
 
     public function update(OnlineorderEditRequest $request, $id)
     {
-        $online                   = Onlineorder::find($id);
-        $online->package          = $this->customImplode($request->package);
-        $online->categories       = $this->customImplode($request->categories);
-        $online->service          = $this->customImplode($request->service);
-        $online->address          = $request->input('address');
-        $online->city             = $request->input('city');
-        $online->state            = $request->input('state');
-        $online->zipcode          = $request->input('zipcode');
-        $online->appointment_time = Carbon::create($request->appointment_time)->format('Y-m-d H:i:s');
+        $online             = Onlineorder::find($id);
+        $online->categories = $this->customImplode($request->categories);
+        $online->service    = $this->customImplode($request->service);
+        $online->type       = $request->input('type');
+        $online->date       = Carbon::create($request->date)->format('Y-m-d H:i:s');
         $online->update();
         session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));

@@ -2,15 +2,16 @@
 
 @section('title')
     Hairck Saloon
-@endsection
-@section('mainContent')
-    <!-- Hero Start -->
+    @endsection
+    @section('mainContent')
+            <!-- Hero Start -->
     <div class="hero">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <div class="hero-text">
                         <h1>Welcome To Hairck Saloon</h1>
+
                         <p> Welcome to Hairck Saloon, where beauty meets sophistication. Our salon is a haven of
                             elegance
                             and expertise, dedicated to delivering the ultimate in grooming and pampering
@@ -40,6 +41,7 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="section-header text-left">
                         <p>Learn About Us</p>
+
                         <h2>25 Years Experience</h2>
                     </div>
                     <div class="about-text">
@@ -49,6 +51,7 @@
                             highly
                             trained professionals is dedicated to enhancing your natural beauty while prioritizing the
                             well-being of your hair and skin. </p>
+
                         <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
                             ensure that every treatment not only leaves you looking stunning but also promotes the
                             long-term
@@ -68,6 +71,7 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Salon Services</p>
+
                 <h2>Best Salon and Barber Services for You</h2>
             </div>
             <div class="row">
@@ -77,6 +81,7 @@
                             <img src="{{asset('cd/img/service-1.jpg')}}" alt="Image">
                         </div>
                         <h3>Hair Cut</h3>
+
                         <p> A haircut is what a barber does when he trims your hair with scissors. You might decide it's
                             time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
                             for
@@ -89,6 +94,7 @@
                             <img src="{{asset('cd/img/service-2.jpg')}}" alt="Image">
                         </div>
                         <h3>Beard Style</h3>
+
                         <p> The ultimate goal of your beard style is to add contrast and dimension to your face.
                             Different
                             face shapes should highlight certain facial features—not every style looks great on every
@@ -102,6 +108,7 @@
                             <img src="{{asset('cd/img/service-3.jpg')}}" alt="Image">
                         </div>
                         <h3>Color & Wash</h3>
+
                         <p> Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
                             cuticle
                             layer of your hair it is also known as semi-permanent hair color.</p>
@@ -117,6 +124,7 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Best Pricing</p>
+
                 <h2>Best Price in the City</h2>
             </div>
             <div class="row">
@@ -133,6 +141,7 @@
                                 <h2>
                                     {{$service->service}}
                                 </h2>
+
                                 <h3>
                                     <i class="fa fa-inr" aria-hidden="true"></i>
                                     {{$service->price}}
@@ -152,36 +161,45 @@
             <div class="owl-carousel testimonials-carousel">
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
+
                     <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
                         ensure that every treatment not only leaves you looking stunning but also promotes the
                         long-term
                         health and radiance of your hair and skin. Our commitment to natural ingredients reflects
                         our
-                        dedication to your overall well-being.  </p>
+                        dedication to your overall well-being. </p>
+
                     <h2>nord charls</h2>
-                    <h3>Profession</h3>
+
+                    <p>Beard Expert</p>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
+
                     <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
                         ensure that every treatment not only leaves you looking stunning but also promotes the
                         long-term
                         health and radiance of your hair and skin. Our commitment to natural ingredients reflects
                         our
-                        dedication to your overall well-being.  </p>
+                        dedication to your overall well-being. </p>
+
                     <h2>adam vice</h2>
-                    <h3>Profession</h3>
+
+                    <p>Master Barber</p>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-                    <p>  At Harick Salon, we believe in the power of nature. We exclusively use natural products to
+
+                    <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
                         ensure that every treatment not only leaves you looking stunning but also promotes the
                         long-term
                         health and radiance of your hair and skin. Our commitment to natural ingredients reflects
                         our
-                        dedication to your overall well-being.  </p>
+                        dedication to your overall well-being. </p>
+
                     <h2>john doe</h2>
-                    <h3>Profession</h3>
+
+                    <p>Hair Expert</p>
                 </div>
             </div>
         </div>
@@ -193,6 +211,7 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Barber Team</p>
+
                 <h2>Meet Our Hair Cut Expert Barber</h2>
             </div>
             <div class="row">
@@ -203,6 +222,7 @@
                         </div>
                         <div class="team-text">
                             <h2>Adam Phillips</h2>
+
                             <p>Master Barber</p>
                         </div>
                     </div>
@@ -214,6 +234,7 @@
                         </div>
                         <div class="team-text">
                             <h2>Dylan Adams</h2>
+
                             <p>Hair Expert</p>
                         </div>
                     </div>
@@ -225,6 +246,7 @@
                         </div>
                         <div class="team-text">
                             <h2>Gloria Edwards</h2>
+
                             <p>Beard Expert</p>
                         </div>
                     </div>
@@ -236,6 +258,7 @@
                         </div>
                         <div class="team-text">
                             <h2>Josh Dunn</h2>
+
                             <p>Color Expert</p>
                         </div>
                     </div>
@@ -250,10 +273,10 @@
     <script>
         @if (!empty($success))
         Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-        });
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success"
+                });
         @endif
 
         @if (\Session::has('msg'))
