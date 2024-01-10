@@ -30,11 +30,15 @@
                             <tbody>
                             <tr>
                                 <td>Category:</td>
-                                <td>{{ $service->category }}</td>
+                                <td>{{ $service->categories->type }}</td>
                             </tr>
                             <tr>
                                 <td>Service:</td>
                                 <td>{{$service->service}}</td>
+                            </tr>
+                            <tr>
+                                <td>Detail:</td>
+                                <td>{{$service->detail}}</td>
                             </tr>
                             <tr>
                                 <td>Price:</td>

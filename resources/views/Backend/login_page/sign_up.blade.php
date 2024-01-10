@@ -12,7 +12,7 @@
             {!! Form::open(['route' => 'admin.user.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="input-group">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Full name', 'autocomplete' => 'off']) !!}
+                {!! Form::text('firstname', null, ['class' => 'form-control', 'placeholder' => 'First Name', 'autocomplete' => 'off']) !!}
 
                 <div class="input-group-append">
                     <div class="input-group-text">
@@ -20,7 +20,15 @@
                     </div>
                 </div>
             </div>
+            <div class="input-group mt-3">
+                {!! Form::text('lastname', null, ['class' => 'form-control', 'placeholder' => 'Last Name', 'autocomplete' => 'off']) !!}
 
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fa fa-user"></span>
+                    </div>
+                </div>
+            </div>
             <div class="input-group mt-3">
                 {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'autocomplete' => 'off']) !!}
                 <div class="input-group-append">

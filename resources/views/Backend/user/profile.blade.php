@@ -11,12 +11,10 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img class="profile-user-img img-fluid img-circle"
-                                     src="{{ asset('assets/img/team-3.jpg') }}"
+                                     src="{{ asset('backend/assets/img/team-3.jpg') }}"
                                      alt="User profile picture">
                             </div>
-
-
-                            <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
+                            <h3 class="profile-username text-center">{{ auth()->user()->firstname }}</h3>
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
                                     <b>Email</b>

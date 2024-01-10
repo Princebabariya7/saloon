@@ -74,6 +74,9 @@
                                     Service
                                 </th>
                                 <th>
+                                    Detail
+                                </th>
+                                <th>
                                     Price
                                 </th>
                                 <th>
@@ -93,11 +96,14 @@
                                     <tr>
                                         <td>
                                             <a href="{{route('admin.service.edit',$service->id)}}">
-                                                {{$service->category}}
+                                                {{$service->categories->type}}
                                             </a>
                                         </td>
                                         <td>
                                             {{$service->service}}
+                                        </td>
+                                        <td>
+                                            {{$service->detail}}
                                         </td>
                                         <td>
                                             {{$service->price}}

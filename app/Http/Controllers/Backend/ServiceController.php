@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\ServiceStoreRequest;
 use App\Http\Requests\Backend\ServiceUpdateRequest;
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -29,20 +30,22 @@ class ServiceController extends Controller
 
     public function create()
     {
-        return view('Backend.service.service_form')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive']);
+        $category = Category::pluck('type', 'id')->toArray();
+        return view('Backend.service.service_form')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])->with('category', $category);
 
     }
 
     public function store(ServiceStoreRequest $request)
     {
         Service::create([
-            'category'   => $request->category,
-            'service'    => $request->service,
-            'price'      => $request->price,
-            'duration'   => $request->duration,
-            'status'     => $request->status,
-            'updated_at' => now(),
-            'created_at' => now(),
+            'category_id' => $request->category_id,
+            'service'     => $request->service,
+            'detail'      => $request->detail,
+            'price'       => $request->price,
+            'duration'    => $request->duration,
+            'status'      => $request->status,
+            'updated_at'  => now(),
+            'created_at'  => now(),
         ]);
 
         session()->put('add', 'data add');
@@ -59,23 +62,26 @@ class ServiceController extends Controller
 
     public function edit($id)
     {
-        $service = Service::find($id);
+        $category = Category::pluck('type', 'id')->toArray();
 
+        $service = Service::find($id);
         return view('Backend.service.service_form')
             ->with('service', $service)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
-            ->with('editMode', true);
+            ->with('editMode', true)
+            ->with('category', $category);
     }
 
     public function update(ServiceUpdateRequest $request, $id)
     {
 
-        $service           = Service::find($id);
-        $service->category = $request->input('category');
-        $service->service  = $request->input('service');
-        $service->price    = $request->input('price');
-        $service->duration = $request->input('duration');
-        $service->status   = $request->input('status');
+        $service              = Service::find($id);
+        $service->category_id = $request->input('category_id');
+        $service->service     = $request->input('service');
+        $service->detail      = $request->input('detail');
+        $service->price       = $request->input('price');
+        $service->duration    = $request->input('duration');
+        $service->status      = $request->input('status');
         $service->update();
 
         session()->put('update', 'data update');

@@ -68,19 +68,16 @@
                             <thead>
                             <tr>
                                 <th>
-                                    Customer
+                                    Category
                                 </th>
                                 <th>
                                     @sortablelink('Service')
                                 </th>
                                 <th>
-                                    Stylist
-                                </th>
-                                <th>
-                                    Number
-                                </th>
-                                <th>
                                     Date
+                                </th>
+                                <th>
+                                    Type
                                 </th>
                                 <th class="text-center">
                                     Status
@@ -96,21 +93,18 @@
                                     <tr>
                                         <td>
                                             <a href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                {{$appointment->customer_name}}
+                                                {{$appointment->categories}}
                                             </a>
                                         </td>
                                         <td>
                                             {{$appointment->service}}
                                         </td>
                                         <td>
-                                            {{$appointment->stylist}}
+                                            {{$appointment->date}}
                                         </td>
-                                        <td>
-                                            {{$appointment->mobile}}
 
-                                        </td>
                                         <td>
-                                            {{$appointment->date_time}}
+                                            {{$appointment->type}}
                                         </td>
                                         <td class="project-state">
 

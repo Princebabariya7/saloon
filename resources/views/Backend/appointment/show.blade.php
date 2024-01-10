@@ -28,25 +28,20 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <td>Customer Name:</td>
-                                <td>{{ $appointment->customer_name }}</td>
+                                <td>Category:</td>
+                                <td>{{ $appointment->categories }}</td>
                             </tr>
-                            <tr>
-                                <td>Mobile Number:</td>
-                                <td>{{$appointment->mobile}}</td>
-                            </tr>
-                            <tr>
-                                <td>Stylist Name:</td>
-                                <td>{{$appointment->stylist}}</td>
-                            </tr>
-                            <tr>
                             <tr>
                                 <td>Service:</td>
                                 <td>{{$appointment->service}}</td>
                             </tr>
                             <tr>
+                                <td>Type:</td>
+                                <td>{{$appointment->type}}</td>
+                            </tr>
+                            <tr>
                                 <td>Date Time:</td>
-                                <td>{{$appointment->date_time}}</td>
+                                <td>{{$appointment->date}}</td>
                             </tr>
                             <tr>
                                 <td>Status:</td>

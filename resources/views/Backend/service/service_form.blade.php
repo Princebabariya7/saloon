@@ -54,7 +54,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Category</label>
-                                {!! Form::select('category', ['' => 'Select one', 'Hair' => 'Hair', 'Face' => 'Face', 'Beard' => 'Beard', 'Nail' => 'Nail'], null, ['class' => 'form-control custom-select-sm', 'id' => 'inputStatus']) !!}
+                                {!! Form::select('category_id', ['' => 'Select One'] + $category,null , ['class' => 'form-control custom-select-sm', 'id' => 'inputStatus']) !!}
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -65,19 +66,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputDescription">Detail</label>
+                                {!! Form::textarea('detail', null, ['class' => 'form-control form-control-sm', 'rows' => 1, 'id' => 'inputDescription' , 'autocomplete' => 'off']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Price</label>
                                 {!! Form::text('price', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
                             </div>
                         </div>
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Duration</label>
                                 {!! Form::text('duration', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Status</label>
                                 {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}

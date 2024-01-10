@@ -14,7 +14,8 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item text-secondary"><a href="{{route('admin.appointment.index')}}">
                                     Home</a></li>
-                            <li class="breadcrumb-item active"><a href="{{route('admin.appointment.index')}}"> Appointment</a>
+                            <li class="breadcrumb-item active"><a href="{{route('admin.appointment.index')}}">
+                                    Appointment</a>
                             </li>
                             <li class="breadcrumb-item text-secondary">Edit</li>
                         </ol>
@@ -54,41 +55,29 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Customer Name</label>
-                                {!! Form::text('customer_name', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Mobile Number</label>
-                                {!! Form::text('mobile', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inputStatus">Stylist</label>
-                                {!! Form::select('stylist', ['' => 'Select one', 'John Wick' => 'John Wick', 'Stive Smith' => 'Stive Smith', 'John Barger' => 'John Barger'], null, ['class' => 'form-control custom-select-sm']) !!}
-
+                                <label>Category</label>
+                                {!! Form::text('categories', null,['class'=>' form-control form-control-sm','id'=>'cat_type' , 'autocomplete' => 'off']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Service</label>
                                 {!! Form::select('service', ['' => 'Select one', 'Haircut & Styling' => 'Haircut & Styling', 'Color & Highlights' => 'Color & Highlights', 'Facials & Skin Treatments' => 'Facials & Skin Treatments', 'Nail Art' => 'Nail Art', 'Beard Wash & Care' => 'Beard Wash & Care'], null, ['class' => 'form-control custom-select-sm']) !!}
-
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputStatus">Type</label>
+                                {!! Form::select('type', ['' => 'Select one', 'appointment' => 'appointment', 'order' => 'order'], ($editMode) ? $type : null, ['class' => 'form-control custom-select-sm']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Date and Time</label>
                                 <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                    {!! Form::text('date_time', ($editMode)?$date_time:null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdatetime' , 'autocomplete' => 'off']) !!}
+                                    {!! Form::text('date', ($editMode)?$date:null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdatetime' , 'autocomplete' => 'off']) !!}
                                     <div class="input-group-append" data-target="#reservationdatetime"
                                          data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -97,7 +86,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="inputStatus">Status</label>
                                 {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}

@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\Backend\ForgotPasswordRequest;
 use App\Http\Requests\Backend\SignInRequest;
 use App\Http\Requests\Backend\SignUpRequest;
-use App\Models\AdminRegistration;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,8 +15,10 @@ class AdminRegistrationController extends Controller
 {
     public function store(SignUpRequest $request)
     {
-        AdminRegistration::create([
-            'name'       => $request->name,
+
+        User::create([
+            'firstname'  => $request->firstname,
+            'lastname'   => $request->lastname,
             'email'      => $request->email,
             'password'   => Hash::make($request->password),
             'updated_at' => now(),

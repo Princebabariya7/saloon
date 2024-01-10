@@ -13,7 +13,7 @@
                 <img src="{{asset('backend/assets/img/testimonial-3.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{route('user.profile')}}" class="d-block">{{ auth()->user()->name }}</a>
+                <a href="{{route('user.profile')}}" class="d-block">{{ auth()->user()->firstname }}</a>
             </div>
         </div>
 
