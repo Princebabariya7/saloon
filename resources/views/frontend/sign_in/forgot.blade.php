@@ -22,7 +22,7 @@
                 {!! Form::password('password',['class' => 'form-control item','placeholder' => 'Enter Password']) !!}
             </div>
             <div class="form-group">
-                {!! Form::password('repassword',['class'=>'form-control item','placeholder' =>'Reenter Password']) !!}
+                 {!! Form::password('repassword',['class'=>'form-control item','placeholder' =>'Reenter Password']) !!}
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-sm btn-secondary create-account">
