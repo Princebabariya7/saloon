@@ -169,5 +169,16 @@ Route::group(['prefix' => 'backend'], function ()
             Route::post('store', [\App\Http\Controllers\Backend\OrderController::class, 'store'])->name('admin.order.store');
         });
 
+        Route::group(['prefix' => 'price'], function ()
+        {
+            Route::get('/', [\App\Http\Controllers\Backend\PriceController::class, 'index'])->name('admin.price.index');
+            Route::get('create', [\App\Http\Controllers\Backend\PriceController::class, 'create'])->name('admin.price.create');
+            Route::post('store', [\App\Http\Controllers\Backend\PriceController::class, 'store'])->name('admin.price.store');
+            Route::get('{id}/edit', [\App\Http\Controllers\Backend\PriceController::class, 'edit'])->name('admin.price.edit');
+            Route::put('{id}/update', [\App\Http\Controllers\Backend\PriceController::class, 'update'])->name('admin.price.update');
+            Route::get('{id}/delete', [\App\Http\Controllers\Backend\PriceController::class, 'destroy'])->name('admin.price.delete');
+            Route::get('{id}/show', [\App\Http\Controllers\Backend\PriceController::class, 'show'])->name('admin.price.show');
+        });
+
     });
 });
