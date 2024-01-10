@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
-class DashboardController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {

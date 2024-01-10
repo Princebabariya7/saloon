@@ -9,6 +9,7 @@ class LogoutMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
+
         if (auth()->user() == null)
         {
             return redirect(route('admin.sign_in'));
