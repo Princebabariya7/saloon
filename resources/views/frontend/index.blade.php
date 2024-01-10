@@ -4,7 +4,7 @@
     Hairck Saloon
     @endsection
     @section('mainContent')
-        <!-- Hero Start -->
+            <!-- Hero Start -->
     <div class="hero">
         <div class="container-fluid">
             <div class="row">
