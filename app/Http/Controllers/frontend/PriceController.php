@@ -34,7 +34,7 @@ class PriceController extends Controller
         $price          = new Price;
         $price->service = $request->input('service');
         $price->price   = $request->input('price');
-        if  ($request->hasFile('image'))
+        if ($request->hasFile('image'))
         {
             $file     = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
