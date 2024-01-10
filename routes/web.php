@@ -9,8 +9,6 @@ use App\Http\Controllers\frontend\RegisterDate;
 use Illuminate\Support\Facades\Route;
 
 
-
-
 Route::get('', [DashboardController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'home'], function ()

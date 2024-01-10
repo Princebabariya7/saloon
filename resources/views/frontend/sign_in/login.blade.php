@@ -48,10 +48,7 @@
         @endforeach
         @endif
         @if (\Session::has('msg'))
-        Swal.fire({
-            text: "Your password was changed!",
-            icon: "success"
-        });
+        toastr.success('Your password was changed!');
         {{\Session::forget('msg')}}
         @endif
     </script>

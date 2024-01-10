@@ -75,7 +75,7 @@ class RegisterDate extends Controller
             $user->password = Hash::make($request->input('password'));
             $user->update();
             session()->put('msg','your password has been changed');
-            return view('sign_in.login');
+            return view('frontend.sign_in.login');
         }
         catch (\Exception $e)
         {
