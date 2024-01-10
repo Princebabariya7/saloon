@@ -58,7 +58,7 @@
                         {!! Form::text('date', ($editMode) ? $date : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime','autocomplete'=>'off']) !!}
                         <div class="input-group-append" data-target="#reservationdatetime"
                              data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            <div class="input-group-text"><i class="fa fa-calendar text-black"></i></div>
                         </div>
                     </div>
                 </div>
