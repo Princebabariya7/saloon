@@ -16,10 +16,10 @@ use App\Http\Controllers\frontend\PriceController;
 use App\Http\Controllers\frontend\RegisterDate;
 use Illuminate\Support\Facades\Route;
 
+Route::get('', [DashboardController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'fo'], function ()
+Route::group(['prefix' => 'frontend'], function ()
 {
-    Route::get('', [DashboardController::class, 'index'])->name('home');
 
     Route::group(['prefix' => 'home'], function ()
     {
