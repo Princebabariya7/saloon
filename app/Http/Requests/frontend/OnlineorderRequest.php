@@ -16,10 +16,10 @@ class OnlineorderRequest extends FormRequest
     public function rules()
     {
         return [
-            'categories'       => 'required',
-            'service'          => 'required',
-            'type'             => 'required',
-            'date' => 'required',
+            'categories' => 'required',
+            'service'    => 'required',
+            'type'       => 'required',
+            'date'       => 'required',
         ];
     }
 }

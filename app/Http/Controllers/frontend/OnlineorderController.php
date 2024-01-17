@@ -4,7 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\OnlineorderEditRequest;
 use App\Http\Requests\frontend\OnlineorderRequest;
-use App\Models\Onlineorder;
+use App\Models\Onlineorders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -18,7 +18,7 @@ class OnlineorderController extends Controller
 
 
 
-        $orders = Onlineorder::when($search, function ($query) use ($search)
+        $orders = Onlineorders::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -42,9 +42,7 @@ class OnlineorderController extends Controller
     {
         try
         {
-
-
-             Onlineorder::create([
+             Onlineorders::create([
                 'categories' => $this->customImplode($request->categories),
                 'service'    => $this->customImplode($request->service),
                 'type'       => $request->type == 'appointment' ? 'appointment' : 'order',
@@ -54,6 +52,7 @@ class OnlineorderController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
+
             session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));
         }
@@ -70,7 +69,7 @@ class OnlineorderController extends Controller
 
     public function edit($id)
     {
-        $online  = Onlineorder::find($id);
+        $online  = Onlineorders::find($id);
 
         return view('frontend.book.order')
             ->with('online', $online)
@@ -82,7 +81,7 @@ class OnlineorderController extends Controller
 
     public function update(OnlineorderEditRequest $request, $id)
     {
-        $online             = Onlineorder::find($id);
+        $online             = Onlineorders::find($id);
         $online->categories = $this->customImplode($request->categories);
         $online->service    = $this->customImplode($request->service);
         $online->type       = $request->input('type');
@@ -96,7 +95,7 @@ class OnlineorderController extends Controller
     {
         try
         {
-            $online = Onlineorder::find($id);
+            $online = Onlineorders::find($id);
             if ($online)
             {
                 $online->delete();
