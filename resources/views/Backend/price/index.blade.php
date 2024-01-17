@@ -74,7 +74,7 @@
                                     Service
                                 </th>
                                 <th>
-                                    Price
+                                    @sortablelink('Price')
                                 </th>
 
                                 <th class="text-center">

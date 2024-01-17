@@ -16,7 +16,6 @@ class PriceUpdateRequest extends FormRequest
         return [
             'service' => 'required',
             'price'   => 'required',
-            'image'   => 'required'
         ];
     }
 }
