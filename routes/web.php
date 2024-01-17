@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\frontend\AppointmentController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\OnlineorderController;
 use App\Http\Controllers\frontend\PaymentController;
