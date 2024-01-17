@@ -21,7 +21,7 @@ class OnlineorderController extends Controller
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orWhere('service', 'LIKE', '%' . $search . '%');
+                $query->orWhere('service', 'LIKE', '%' . $search . '%')->orWhere('categories', 'LIKE', '%' . $search . '%');
             });
         })->when($service, function ($query) use ($service)
         {
