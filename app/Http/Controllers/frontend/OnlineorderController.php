@@ -17,7 +17,6 @@ class OnlineorderController extends Controller
         $service = $request->input('service', '');
 
 
-
         $orders = Onlineorders::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
@@ -30,7 +29,7 @@ class OnlineorderController extends Controller
                 $query->where('service', $service);
         })->paginate(5);
 
-        return view('frontend.book.onlineorderview')->with('orders', $orders );
+        return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
     public function create()
@@ -42,7 +41,7 @@ class OnlineorderController extends Controller
     {
         try
         {
-             Onlineorders::create([
+            Onlineorders::create([
                 'categories' => $this->customImplode($request->categories),
                 'service'    => $this->customImplode($request->service),
                 'type'       => $request->type == 'appointment' ? 'appointment' : 'order',
@@ -52,7 +51,6 @@ class OnlineorderController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
-
             session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));
         }
@@ -69,7 +67,7 @@ class OnlineorderController extends Controller
 
     public function edit($id)
     {
-        $online  = Onlineorders::find($id);
+        $online = Onlineorders::find($id);
 
         return view('frontend.book.order')
             ->with('online', $online)

@@ -34,12 +34,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="dropdown-divider"></div>
 
+                <div class="dropdown-divider"></div>
 
                 <div class="form-group clearfix">
                     <label>Preferred booking type</label>
-                    <div class="col-md-12  text-center" style="margin:auto">
+                    <div class="col-md-12  text-center mx-auto">
                         <div class="form-check form-check-inline">
                             {{Form::radio('type','appointment',0,['class'=>'form-check-input'])}}
                             <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>

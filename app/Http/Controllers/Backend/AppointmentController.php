@@ -18,8 +18,8 @@ class AppointmentController extends Controller
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orWhere('mobile', 'LIKE', '%' . $search . '%')
-                    ->orWhere('customer_name', 'LIKE', '%' . $search . '%');
+                $query->orWhere('categories', 'LIKE', '%' . $search . '%')
+                    ->orWhere('service', 'LIKE', '%' . $search . '%');
             });
         })->when($status, function ($query) use ($status)
         {
