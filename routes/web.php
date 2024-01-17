@@ -62,7 +62,6 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::get('{id}/edit', [PriceController::class, 'edit'])->name('price.edit');
             Route::get('{id}/delete', [PriceController::class, 'destroy'])->name('price.delete');
         });
-
     });
 
 });
@@ -167,6 +166,5 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/delete', [\App\Http\Controllers\Backend\PriceController::class, 'destroy'])->name('admin.price.delete');
             Route::get('{id}/show', [\App\Http\Controllers\Backend\PriceController::class, 'show'])->name('admin.price.show');
         });
-
     });
 });

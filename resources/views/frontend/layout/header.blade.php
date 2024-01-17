@@ -62,43 +62,6 @@
                     <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class="fa fa-user text-light" aria-hidden="true"></i>
                     </a>
                     <a href="{{route('online.index')}}" class="nav-item nav-link"><i class="fa fa-shopping-cart  text-light" aria-hidden="true"></i></a>
-
-                    {{--                    <div class="nav-item dropdown">--}}
-                    {{--                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton"--}}
-                    {{--                                data-toggle="dropdown">--}}
-                    {{--                            <i class="fa fa-user text-light" aria-hidden="true"></i>--}}
-                    {{--                        </button>--}}
-                    {{--                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-                    {{--                            <a href="{{route('appointment.create')}}" class="dropdown-item"><i--}}
-                    {{--                                    class="fa fa-calendar" aria-hidden="true"></i> Book Appointment</a>--}}
-                    {{--                            <a href="{{route('online.create')}}" class="dropdown-item"><i class="fa fa-cart-arrow-down"></i> Book Order</a>--}}
-                    {{--                            <a href="{{route('price.create')}}" class="dropdown-item"><i class="fa fa-money" aria-hidden="true"></i>--}}
-                    {{--                                 price</a>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div class="nav-item dropdown">--}}
-                    {{--                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton"--}}
-                    {{--                                data-toggle="dropdown">--}}
-                    {{--                            <i class="fa fa-shopping-cart  text-light" aria-hidden="true"></i>--}}
-                    {{--                        </button>--}}
-                    {{--                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-                    {{--                            <a href="{{route('appointment.index')}}" class="dropdown-item"><i--}}
-                    {{--                                    class="fa fa-calendar" aria-hidden="true"></i> Appointments list</a>--}}
-                    {{--                            <a href="{{route('online.index')}}" class="dropdown-item"><i class="fa fa-cart-arrow-down"></i> online orders list</a>--}}
-                    {{--                            <a href="{{route('price.index')}}" class="dropdown-item"><i class="fa fa-money" aria-hidden="true"></i>--}}
-                    {{--                                price  list</a>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div class="nav-item dropdown">--}}
-                    {{--                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton"--}}
-                    {{--                                data-toggle="dropdown">--}}
-                    {{--                            <i class="fa fa-credit-card text-light" aria-hidden="true"></i>--}}
-                    {{--                        </button>--}}
-                    {{--                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-                    {{--                            <a href="{{route('payment.page')}}" class="dropdown-item"><i class='fab fa-amazon-pay'></i>--}}
-                    {{--                                Make payment</a>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
                 @endif
             </div>
         </div>
