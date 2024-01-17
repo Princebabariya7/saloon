@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Backend\AppointmentController;
+use App\Http\Controllers\frontend\AppointmentController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\OnlineorderController;
 use App\Http\Controllers\frontend\PaymentController;
@@ -33,6 +33,16 @@ Route::group(['prefix' => 'frontend'], function ()
 
     Route::group(['middleware' => 'PreventBackButtonMiddleware'], function ()
     {
+        Route::group(['prefix' => 'appointment'], function ()
+        {
+            Route::post('store', [AppointmentController::class, 'store'])->name('appointment.info.store');
+            Route::get('index', [AppointmentController::class, 'index'])->name('appointment.index');
+            Route::get('{id}/edit', [AppointmentController::class, 'edit'])->name('appointment.edit');
+            Route::put('{id}/update', [AppointmentController::class, 'update'])->name('appointment.update');
+            Route::get('{id}/delete', [AppointmentController::class, 'destroy'])->name('appointment.delete');
+            Route::get('create', [AppointmentController::class, 'create'])->name('appointment.create');
+
+        });
 
         Route::group(['prefix' => 'onlineorder'], function ()
         {
