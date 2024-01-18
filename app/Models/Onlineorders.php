@@ -19,5 +19,5 @@ class Onlineorders extends Model
         'status'     => 'Unknown',
     ];
 
-    protected $table = 'onlineorders';
+    protected $table  = 'onlineorders';
 }
