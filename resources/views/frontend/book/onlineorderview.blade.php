@@ -42,7 +42,7 @@
                                 <th scope="col">City</th>
                                 <th scope="col">State</th>
                                 <th scope="col">Zipcode</th>
-                                <th scope="col">type</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Date</th>
                                 <th class="text-right" scope="col">Action</th>
                             </tr>
