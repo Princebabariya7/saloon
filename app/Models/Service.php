@@ -26,8 +26,8 @@ class Service extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function onlineorders()
-    {
-        return $this->belongsTo(Onlineorders::class, 'service_id', 'id');
-    }
+//    public function onlineorders()
+//    {
+//        return $this->belongsTo(Onlineorders::class, 'service_id', 'id');
+//    }
 }

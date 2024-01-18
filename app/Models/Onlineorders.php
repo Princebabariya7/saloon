@@ -18,13 +18,18 @@ class Onlineorders extends Model
         'type'       => 'not selected',
         'date'       => 'not selected',
         'status'     => 'Unknown',
-        'service_id' => '1',
     ];
 
     protected $table = 'onlineorders';
 
     public function services()
     {
-        return $this->hasMany(Service::class,'id','service_id');
+        return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'categories', 'id');
+    }
+
 }

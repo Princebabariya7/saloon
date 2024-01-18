@@ -14,9 +14,10 @@ class AppointmentStoreRequest extends FormRequest
 
     public function rules()
     {
+
         return [
-            'categories' => 'required|regex:/^[\pL\s]+$/u',
-            'service'    => 'required',
+            'categories' => 'required',
+            'service_id'    => 'required',
             'date'       => 'required',
             'type'       => 'required',
             'status'        => 'required'

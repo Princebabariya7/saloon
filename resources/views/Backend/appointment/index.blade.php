@@ -93,11 +93,11 @@
                                     <tr>
                                         <td>
                                             <a href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                {{$appointment->categories}}
+                                                {{$appointment->category->type}}
                                             </a>
                                         </td>
                                         <td>
-                                            {{$appointment->service}}
+                                            {{$appointment->services->service}}
                                         </td>
                                         <td>
                                             {{$appointment->date}}

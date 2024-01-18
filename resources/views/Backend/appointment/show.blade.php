@@ -29,11 +29,11 @@
                             <tbody>
                             <tr>
                                 <td>Category:</td>
-                                <td>{{ $appointment->categories }}</td>
+                                <td>{{ $appointment->category->type }}</td>
                             </tr>
                             <tr>
                                 <td>Service:</td>
-                                <td>{{$appointment->service}}</td>
+                                <td>{{$appointment->services->service}}</td>
                             </tr>
                             <tr>
                                 <td>Type:</td>

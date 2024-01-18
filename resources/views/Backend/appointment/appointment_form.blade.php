@@ -55,14 +55,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Category</label>
-                                {!! Form::text('categories', null,['class'=>' form-control form-control-sm','id'=>'cat_type' , 'autocomplete' => 'off']) !!}
+                                <label for="inputStatus">Category</label>
+                                {!! Form::select('categories', ['' => 'Select One'] + $category,null , ['class' => 'form-control custom-select-sm', 'id' => 'inputStatus']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Service</label>
-                                {!! Form::select('service', ['' => 'Select one', 'Haircut & Styling' => 'Haircut & Styling', 'Color & Highlights' => 'Color & Highlights', 'Facials & Skin Treatments' => 'Facials & Skin Treatments', 'Nail Art' => 'Nail Art', 'Beard Wash & Care' => 'Beard Wash & Care'], null, ['class' => 'form-control custom-select-sm']) !!}
+                                {!! Form::select('service_id', ['' => 'Select One'] + $service,null , ['class' => 'form-control custom-select-sm', 'id' => 'service']) !!}
+
                             </div>
                         </div>
                     </div>
