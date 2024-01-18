@@ -13,8 +13,8 @@ class OnlineorderController extends Controller
     public function index(Request $request)
     {
 
-        $search  = $request->input('search', '');
-        $service = $request->input('service', '');
+        $search = $request->input('search', '');
+        $type   = $request->input('type', '');
 
 
         $orders = Onlineorders::with('services')->when($search, function ($query) use ($search)
@@ -23,10 +23,10 @@ class OnlineorderController extends Controller
             {
                 $query->orWhere('service', 'LIKE', '%' . $search . '%')->orWhere('categories', 'LIKE', '%' . $search . '%');
             });
-        })->when($service, function ($query) use ($service)
+        })->when($type, function ($query) use ($type)
         {
             return
-                $query->where('service', $service);
+                $query->where('type', $type);
         })->paginate(5);
         return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
