@@ -12,8 +12,8 @@ class Category extends Model
     protected $fillable = ['type','status'];
 
     protected $attributes = [
-        'type' => 'Unknown',
-        'status' => 'Unknown',
+        'type' => 'Unknown', // Set Default value
+        'status' => 'Unknown', // Set Default value
     ];
 
     protected $table = 'categories';

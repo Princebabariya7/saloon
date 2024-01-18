@@ -12,13 +12,13 @@ class Order extends Model
     protected $fillable = ['date_time', 'customer_name', 'address', 'service', 'mode', 'amount', 'status'];
 
     protected $attributes = [
-        'date_time'     => 'Unknown',
-        'customer_name' => 'Unknown',
-        'address'       => 'Unknown',
-        'service'       => 'Unknown',
-        'mode'          => 'Unknown',
-        'amount'        => 'Unknown',
-        'status'        => 'Unknown',
+        'date_time'     => 'Unknown', // Set Default value
+        'customer_name' => 'Unknown', // Set Default value
+        'address'       => 'Unknown', // Set Default value
+        'service'       => 'Unknown', // Set Default value
+        'mode'          => 'Unknown', // Set Default value
+        'amount'        => 'Unknown', // Set Default value
+        'status'        => 'Unknown', // Set Default value
     ];
 
     protected $table = 'orders';

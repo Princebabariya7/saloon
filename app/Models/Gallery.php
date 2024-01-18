@@ -12,9 +12,9 @@ class Gallery extends Model
     protected $fillable = ['name', 'image','status'];
 
     protected $attributes = [
-        'name' => 'Unknown',
-        'image'       => 'Unknown',
-        'status'        => 'Unknown',
+        'name' => 'Unknown', // Set Default value
+        'image'       => 'Unknown', // Set Default value
+        'status'        => 'Unknown', // Set Default value
     ];
 
     protected $table = 'galleries';
