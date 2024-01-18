@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-2">
-                                {!! Form::select('city',[''=>'Please Select' ,'ahmedabad' => 'ahmedabad','rajkot' => 'rajkot'], request('city'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
+                                {!! Form::select('type',[''=>'Please Select' ,'appointment' => 'appointment','order' => 'order'], request('type'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </div>
                         </div>
                         {!! Form::close() !!}
@@ -42,6 +42,7 @@
                                 <th scope="col">City</th>
                                 <th scope="col">State</th>
                                 <th scope="col">Zipcode</th>
+                                <th scope="col">type</th>
                                 <th scope="col">Date</th>
                                 <th class="text-right" scope="col">Action</th>
                             </tr>
@@ -52,10 +53,11 @@
                                     <tr>
                                         <td>{{$order->categories}}</td>
                                         <td>{{$order->service}}</td>
-                                        <td>{{$order->address}}</td>
-                                        <td>{{$order->city}}</td>
-                                        <td>{{$order->state}}</td>
-                                        <td>{{$order->zipcode}}</td>
+                                        <td>{{auth()->user()->address}}</td>
+                                        <td>{{auth()->user()->city}}</td>
+                                        <td>{{auth()->user()->state}}</td>
+                                        <td>{{auth()->user()->zipcode}}</td>
+                                        <td>{{$order->type}}</td>
                                         <td>{{$order->date}}</td>
                                         <td class="project-actions text-right">
                                             <button type="button"

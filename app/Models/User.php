@@ -16,12 +16,6 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $attributes = [
-        'firstname'   => 'Unknown',
-        'dob'         => '',
-        'mobile'      => 'no number',
-        'email'       => 'no number',
-        'password'    => 'no number',
-        'gender'      => 'm',
         'user_status' => 'user'
     ];
 
