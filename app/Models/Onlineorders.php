@@ -9,10 +9,6 @@ class Onlineorders extends Model
 {
     use HasFactory, Sortable;
 
-
-
-
-
     protected $fillable = ['categories', 'service', 'type', 'date', 'status', 'user_id','service_id'];
 
     protected $attributes = [
