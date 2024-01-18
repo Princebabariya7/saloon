@@ -20,7 +20,7 @@ class Onlineorders extends Model
         'service'    => 'not selected',
         'type'       => 'not selected',
         'date'       => 'not selected',
-        'status'     => 'Unknown',
+         'status'     => 'Unknown',
     ];
 
     protected $table = 'onlineorders';

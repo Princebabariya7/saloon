@@ -18,7 +18,7 @@ class OnlineordersTable extends Migration
             $table->enum('status', ['Active', 'Inactive'])->nullable();
             $table->integer('user_id');
             $table->integer('service_id');
-            $table->timestamps();
+             $table->timestamps();
         });
     }
 
