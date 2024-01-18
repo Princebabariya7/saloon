@@ -27,5 +27,4 @@ class Onlineorders extends Model
     {
         return $this->hasMany(Service::class,'id','service_id');
     }
-
 }
