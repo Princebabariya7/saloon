@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class OnlineordersTable extends Migration
 {
-    public function up()
+     public function up()
     {
         Schema::create('onlineorders', function (Blueprint $table)
         {
