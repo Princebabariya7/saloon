@@ -55,7 +55,6 @@
                             <div class="form-group">
                                 <label for="inputStatus">Category</label>
                                 {!! Form::select('category_id', ['' => 'Select One'] + $category,null , ['class' => 'form-control custom-select-sm', 'id' => 'inputStatus']) !!}
-
                             </div>
                         </div>
                         <div class="col-md-6">

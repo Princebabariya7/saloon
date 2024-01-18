@@ -37,6 +37,7 @@ class ServiceController extends Controller
 
     public function store(ServiceStoreRequest $request)
     {
+        dd($request->all());
         Service::create([
             'category_id' => $request->category_id,
             'service'     => $request->service,
