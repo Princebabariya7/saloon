@@ -9,10 +9,10 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category', 'service', 'detail', 'price', 'duration', 'status', 'category_id'];
+    protected $fillable = ['service', 'detail', 'price', 'duration', 'status', 'category_id'];
 
     protected $attributes = [
-        'category' => 'Unknown', // Set Default value
+
         'service'  => 'Unknown', // Set Default value
         'detail'   => 'Unknown', // Set Default value
         'price'    => 'Unknown', // Set Default value

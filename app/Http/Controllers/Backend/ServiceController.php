@@ -19,7 +19,8 @@ class ServiceController extends Controller
             return $query->where(function ($query) use ($search)
             {
                 $query->orWhere('service', 'LIKE', '%' . $search . '%')
-                    ->orWhere('category', 'LIKE', '%' . $search . '%');
+//                    ->orWhere('category', 'LIKE', '%' . $search . '%')
+                ;
             });
         })->when($status, function ($query) use ($status)
         {
@@ -37,7 +38,6 @@ class ServiceController extends Controller
 
     public function store(ServiceStoreRequest $request)
     {
-        dd($request->all());
         Service::create([
             'category_id' => $request->category_id,
             'service'     => $request->service,
