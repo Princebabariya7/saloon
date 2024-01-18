@@ -9,25 +9,21 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service', 'detail', 'price', 'duration', 'status', 'category_id'];
+    protected $fillable = ['category', 'service', 'detail', 'price', 'duration', 'status','category_id'];
 
     protected $attributes = [
-
-        'service'  => 'Unknown',
-        'detail'   => 'Unknown',
-        'price'    => 'Unknown',
-        'duration' => 'Unknown',
-        'status'   => 'Unknown',
+        'category' => 'Unknown', // Set Default value
+        'service'  => 'Unknown', // Set Default value
+        'detail'   => 'Unknown', // Set Default value
+        'price'    => 'Unknown', // Set Default value
+        'duration' => 'Unknown', // Set Default value
+        'status'   => 'Unknown', // Set Default value
     ];
-    protected $table      = 'services';
+    protected $table = 'services';
 
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function onlineorders()
-    {
-        return $this->belongsTo(Onlineorders::class, 'service_id', 'id');
-    }
 }
