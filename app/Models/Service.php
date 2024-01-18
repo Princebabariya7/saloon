@@ -13,11 +13,11 @@ class Service extends Model
 
     protected $attributes = [
 
-        'service'  => 'Unknown', // Set Default value
-        'detail'   => 'Unknown', // Set Default value
-        'price'    => 'Unknown', // Set Default value
-        'duration' => 'Unknown', // Set Default value
-        'status'   => 'Unknown', // Set Default value
+        'service'  => 'Unknown',
+        'detail'   => 'Unknown',
+        'price'    => 'Unknown',
+        'duration' => 'Unknown',
+        'status'   => 'Unknown',
     ];
     protected $table      = 'services';
 

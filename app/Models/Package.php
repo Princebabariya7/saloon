@@ -12,11 +12,11 @@ class Package extends Model
     protected $fillable = ['name', 'price', 'detail', 'duration', 'status'];
 
     protected $attributes = [
-        'name' => 'Unknown', // Set Default value
-        'price'       => 'Unknown', // Set Default value
-        'detail'       => 'Unknown', // Set Default value
-        'duration'     => 'Unknown', // Set Default value
-        'status'        => 'Unknown', // Set Default value
+        'name' => 'Unknown',
+        'price'       => 'Unknown',
+        'detail'       => 'Unknown',
+        'duration'     => 'Unknown',
+        'status'        => 'Unknown',
     ];
 
     protected $table = 'packages';

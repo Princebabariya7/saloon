@@ -18,9 +18,7 @@ class ServiceController extends Controller
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orWhere('service', 'LIKE', '%' . $search . '%')
-//                    ->orWhere('category', 'LIKE', '%' . $search . '%')
-                ;
+                $query->orWhere('service', 'LIKE', '%' . $search . '%');
             });
         })->when($status, function ($query) use ($status)
         {
