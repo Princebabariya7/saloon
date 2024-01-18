@@ -17,7 +17,7 @@ class OnlineorderController extends Controller
         $service = $request->input('service', '');
 
 
-        $orders = Onlineorders::when($search, function ($query) use ($search)
+        $orders = Onlineorders::with('services')->when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -28,7 +28,6 @@ class OnlineorderController extends Controller
             return
                 $query->where('service', $service);
         })->paginate(5);
-
         return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
