@@ -2,9 +2,9 @@
 
 @section('title')
     Hairck Saloon
-    @endsection
-    @section('mainContent')
-         <!-- Hero Start -->
+@endsection
+@section('mainContent')
+    <!-- Hero Start -->
     <div class="hero">
         <div class="container-fluid">
             <div class="row">
@@ -162,44 +162,36 @@
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
 
-                    <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
-                        ensure that every treatment not only leaves you looking stunning but also promotes the
-                        long-term
-                        health and radiance of your hair and skin. Our commitment to natural ingredients reflects
-                        our
-                        dedication to your overall well-being. </p>
+                    <p> "Hairck Saloon All Boys is my go-to spot for a fresh haircut every time. The skilled stylists
+                        here truly understand the latest trends and always deliver a cut that suits my style. The
+                        atmosphere is lively, and the staff is friendly, making it a great experience overall. I
+                        wouldn't trust anyone else with my hair!" </p>
 
                     <h2>nord charls</h2>
 
-                    <p>Beard Expert</p>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
 
-                    <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
-                        ensure that every treatment not only leaves you looking stunning but also promotes the
-                        long-term
-                        health and radiance of your hair and skin. Our commitment to natural ingredients reflects
-                        our
-                        dedication to your overall well-being. </p>
+                    <p>"I've been a loyal customer of Hairck Saloon All Boys for years, and I can confidently say it's
+                        the best men's salon in town. The attention to detail and precision in their haircuts is
+                        unmatched. The staff is professional, and the ambiance is comfortable. I always leave feeling
+                        rejuvenated and looking sharp. Highly recommend!" </p>
 
                     <h2>adam vice</h2>
 
-                    <p>Master Barber</p>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
 
-                    <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
-                        ensure that every treatment not only leaves you looking stunning but also promotes the
-                        long-term
-                        health and radiance of your hair and skin. Our commitment to natural ingredients reflects
-                        our
-                        dedication to your overall well-being. </p>
+                    <p>"Hairck Saloon All Boys has consistently exceeded my expectations. The stylists are not only
+                        skilled but also attentive to my preferences. Whether I want a classic look or something more
+                        contemporary, they always deliver. The salon has a cool vibe, and the personalized service makes
+                        me feel like a valued client. I wouldn't consider going anywhere else for my grooming
+                        needs." </p>
 
                     <h2>john doe</h2>
 
-                    <p>Hair Expert</p>
                 </div>
             </div>
         </div>
@@ -273,10 +265,10 @@
     <script>
         @if (!empty($success))
         Swal.fire({
-                    title: "Good job!",
-                    text: "You clicked the button!",
-                    icon: "success"
-                });
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+        });
         @endif
 
         @if (\Session::has('msg'))
