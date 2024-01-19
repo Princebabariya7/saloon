@@ -146,18 +146,7 @@
                         id: id,
                     },
                     success: function (data) {
-
                         $('.service-select').empty().html(data.view);
-                        // if (data.error) {
-                        //     toastr.error(data.error);
-                        //     d.html(data.qty)
-                        // }
-                        // if (data.success) {
-                        //     span_html.html(data.qty)
-                        //     // stock.val(data.product_qty)
-                        //     toastr.success(data.success);
-                        // }
-                        // Hide textbox and show label with updated value.
                     },
                 });
             });
