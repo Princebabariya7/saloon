@@ -59,7 +59,6 @@
                             </li>
 
                         </ul>
-
                         {!! Form::close() !!}
                     </div>
 
