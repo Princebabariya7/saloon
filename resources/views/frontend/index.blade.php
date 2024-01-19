@@ -2,9 +2,9 @@
 
 @section('title')
     Hairck Saloon
-    @endsection
-    @section('mainContent')
-         <!-- Hero Start -->
+@endsection
+@section('mainContent')
+    <!-- Hero Start -->
     <div class="hero">
         <div class="container-fluid">
             <div class="row">
@@ -273,10 +273,10 @@
     <script>
         @if (!empty($success))
         Swal.fire({
-                    title: "Good job!",
-                    text: "You clicked the button!",
-                    icon: "success"
-                });
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+        });
         @endif
 
         @if (\Session::has('msg'))
