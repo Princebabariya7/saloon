@@ -5,8 +5,15 @@
             <div class="col-md-4">
                 <div class="footer-contact">
                     <h2>Salon Address</h2>
-                    <p><i class="fas fa-building"></i>Shop No.5, Hill Town complex, opp. Eagle Academy,New India Colony,
+                    <div class="row align-items-baseline">
+                        <span class="col-md-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                        <span class="col-md-11 p-1">
+                             <p>Shop No.5, Hill Town complex, opp. Eagle Academy,New India Colony,
                         Ahmedabad</p>
+                        </span>
+                    </div>
                     <p><i class="fa fa-envelope"></i>haricksaloon@gmail.com</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-twitter"></i></a>
