@@ -4,7 +4,9 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\OnlineorderEditRequest;
 use App\Http\Requests\frontend\OnlineorderRequest;
+use App\Models\Category;
 use App\Models\Onlineorders;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -33,7 +35,11 @@ class OnlineorderController extends Controller
 
     public function create()
     {
-        return view('frontend.book.order')->with('editMode', false);
+        $category=Category::pluck('type','id')->toArray();
+        $service=Service::pluck('service','id')->toArray();
+        return view('frontend.book.order')->with('editMode', false)
+            ->with('category' , $category)
+            ->with('service' , $service);
     }
 
     public function store(OnlineorderRequest $request)
@@ -42,7 +48,7 @@ class OnlineorderController extends Controller
         {
             Onlineorders::create([
                 'categories' => $this->customImplode($request->categories),
-                'service'    => $this->customImplode($request->service),
+                'service_id'    => $this->customImplode($request->service_id),
                 'type'       => $request->type == 'appointment' ? 'appointment' : 'order',
                 'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
                 'user_id'    => auth()->user()->id,
@@ -66,6 +72,8 @@ class OnlineorderController extends Controller
 
     public function edit($id)
     {
+        $category=Category::pluck('type','id')->toArray();
+        $service=Service::pluck('service','id')->toArray();
         $online = Onlineorders::find($id);
 
         return view('frontend.book.order')
@@ -73,7 +81,9 @@ class OnlineorderController extends Controller
             ->with('categories', explode(',', $online->categories))
             ->with('service', explode(',', $online->service))
             ->with('date', (Carbon::create($online->appointment_time)->format('m-d-y H:i:s')))
-            ->with('editMode', true);
+            ->with('editMode', true)
+            ->with('category' , $category)
+            ->with('service' , $service);
     }
 
     public function update(OnlineorderEditRequest $request, $id)

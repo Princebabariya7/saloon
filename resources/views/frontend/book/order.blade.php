@@ -22,7 +22,7 @@
                     <div class="cate col-md-12">
                         <div class="form-group">
                             <label>Select categories</label>
-                            {!! Form::select('categories[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $categories : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                         {!! Form::select('categories[]' ,  $category , null ,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Select service</label>
-                            {!! Form::select('service[]',['hair'=>'Hair','beard'=>'Beard','nail'=>'Nail','pedicure'=>'Pedicure'],($editMode) ? $service : null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                            {!! Form::select('service_id[]',$service, null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                         </div>
                     </div>
                 </div>

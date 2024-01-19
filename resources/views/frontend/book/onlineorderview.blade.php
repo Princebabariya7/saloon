@@ -51,8 +51,8 @@
                                 <tbody>
                                 @foreach($orders as $order)
                                     <tr>
-                                        <td>{{$order->categories}}</td>
-                                        <td>{{$order->service}}</td>
+                                        <td>{{$order->category->type}}</td>
+                                        <td>{{$order->services->service}}</td>
                                         <td>{{auth()->user()->address}}</td>
                                         <td>{{auth()->user()->city}}</td>
                                         <td>{{auth()->user()->state}}</td>

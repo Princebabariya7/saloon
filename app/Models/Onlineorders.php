@@ -31,5 +31,4 @@ class Onlineorders extends Model
     {
         return $this->belongsTo(Category::class, 'categories', 'id');
     }
-
 }
