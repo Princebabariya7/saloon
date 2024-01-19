@@ -11,7 +11,6 @@
                 <div class="col-sm-12 col-md-6">
                     <div class="hero-text">
                         <h1>Welcome To Hairck Saloon</h1>
-
                         <p> Welcome to Hairck Saloon, where beauty meets sophistication. Our salon is a haven of
                             elegance
                             and expertise, dedicated to delivering the ultimate in grooming and pampering
@@ -41,7 +40,6 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="section-header text-left">
                         <p>Learn About Us</p>
-
                         <h2>25 Years Experience</h2>
                     </div>
                     <div class="about-text">
@@ -71,7 +69,6 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Salon Services</p>
-
                 <h2>Best Salon and Barber Services for You</h2>
             </div>
             <div class="row">
@@ -81,7 +78,6 @@
                             <img src="{{asset('cd/img/service-1.jpg')}}" alt="Image">
                         </div>
                         <h3>Hair Cut</h3>
-
                         <p> A haircut is what a barber does when he trims your hair with scissors. You might decide it's
                             time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
                             for
@@ -94,7 +90,6 @@
                             <img src="{{asset('cd/img/service-2.jpg')}}" alt="Image">
                         </div>
                         <h3>Beard Style</h3>
-
                         <p> The ultimate goal of your beard style is to add contrast and dimension to your face.
                             Different
                             face shapes should highlight certain facial features—not every style looks great on every
@@ -108,7 +103,6 @@
                             <img src="{{asset('cd/img/service-3.jpg')}}" alt="Image">
                         </div>
                         <h3>Color & Wash</h3>
-
                         <p> Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
                             cuticle
                             layer of your hair it is also known as semi-permanent hair color.</p>
@@ -166,9 +160,7 @@
                         here truly understand the latest trends and always deliver a cut that suits my style. The
                         atmosphere is lively, and the staff is friendly, making it a great experience overall. I
                         wouldn't trust anyone else with my hair!" </p>
-
                     <h2>nord charls</h2>
-
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
@@ -177,9 +169,7 @@
                         the best men's salon in town. The attention to detail and precision in their haircuts is
                         unmatched. The staff is professional, and the ambiance is comfortable. I always leave feeling
                         rejuvenated and looking sharp. Highly recommend!" </p>
-
                     <h2>adam vice</h2>
-
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
@@ -189,9 +179,7 @@
                         contemporary, they always deliver. The salon has a cool vibe, and the personalized service makes
                         me feel like a valued client. I wouldn't consider going anywhere else for my grooming
                         needs." </p>
-
                     <h2>john doe</h2>
-
                 </div>
             </div>
         </div>
@@ -214,7 +202,6 @@
                         </div>
                         <div class="team-text">
                             <h2>Adam Phillips</h2>
-
                             <p>Master Barber</p>
                         </div>
                     </div>
@@ -226,7 +213,6 @@
                         </div>
                         <div class="team-text">
                             <h2>Dylan Adams</h2>
-
                             <p>Hair Expert</p>
                         </div>
                     </div>
@@ -238,7 +224,6 @@
                         </div>
                         <div class="team-text">
                             <h2>Gloria Edwards</h2>
-
                             <p>Beard Expert</p>
                         </div>
                     </div>
@@ -250,7 +235,6 @@
                         </div>
                         <div class="team-text">
                             <h2>Josh Dunn</h2>
-
                             <p>Color Expert</p>
                         </div>
                     </div>

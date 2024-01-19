@@ -25,8 +25,7 @@
                         <div class="portfolio-wrap">
                             <a href="{{ asset('uploads/gallery/'.$gallery->image) }}" data-lightbox="portfolio"
                                data-target="#exampleModal{{ $gallery->id }}">
-                                <img
-                                    src="{{ asset('uploads/gallery/'.$gallery->image) }}" alt="Image">
+                                <img src="{{ asset('uploads/gallery/'.$gallery->image) }}" alt="Image">
                             </a>
                         </div>
                     </div>

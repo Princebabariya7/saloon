@@ -51,7 +51,6 @@ class HomeController extends Controller
         return view('frontend.service.index');
     }
 
-
     public function logout()
     {
         Auth::logout();
