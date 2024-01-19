@@ -36,6 +36,7 @@ class OnlineorderController extends Controller
     public function create()
     {
         $category=Category::pluck('type','id')->toArray();
+//        $service= Service::whereIn('category_id',request()->get('id'))->pluck('service','id')->toArray();
         $service=Service::pluck('service','id')->toArray();
         return view('frontend.book.order')->with('editMode', false)
             ->with('category' , $category)
@@ -123,5 +124,12 @@ class OnlineorderController extends Controller
     public function orderlist()
     {
         return view('frontend.order.orderlist');
+    }
+
+    public function fetchServices()
+    {
+        $service= Service::whereIn('category_id',request()->get('id'))->pluck('service','id')->toArray();
+       $view = view('frontend.book.services_select')->with('service',$service)->render();
+        return response()->json(['status' => true, 'view' => $view], 200);
     }
 }

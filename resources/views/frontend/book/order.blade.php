@@ -22,13 +22,13 @@
                     <div class="cate col-md-12">
                         <div class="form-group">
                             <label>Select categories</label>
-                         {!! Form::select('categories[]' ,  $category , null ,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                         {!! Form::select('categories[]' ,  $category , null ,['class'=>'select2 category','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
+                    <div class="col-md-12 service-select">
+                        <div class="form-group   ">
                             <label>Select service</label>
                             {!! Form::select('service_id[]',$service, null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                         </div>
@@ -128,5 +128,39 @@
                 }
             })
         })
+
+        $(document).ready(function () {
+            $('.category').change(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var id = $(this).val();
+                var url = "{{ route('online.fetch.services') }}";
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        id: id,
+                    },
+                    success: function (data) {
+
+                        $('.service-select').empty().html(data.view);
+                        // if (data.error) {
+                        //     toastr.error(data.error);
+                        //     d.html(data.qty)
+                        // }
+                        // if (data.success) {
+                        //     span_html.html(data.qty)
+                        //     // stock.val(data.product_qty)
+                        //     toastr.success(data.success);
+                        // }
+                        // Hide textbox and show label with updated value.
+                    },
+                });
+            });
+        });
     </script>
 @endsection

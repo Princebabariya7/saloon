@@ -42,6 +42,7 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::put('{id}/update', [OnlineorderController::class, 'update'])->name('online.update');
             Route::get('{id}/delete', [OnlineorderController::class, 'destroy'])->name('online.delete');
             Route::get('create', [OnlineorderController::class, 'create'])->name('online.create');
+            Route::post('fetch/services', [OnlineorderController::class, 'fetchServices'])->name('online.fetch.services');
         });
 
         Route::group(['prefix' => 'payment'], function ()
