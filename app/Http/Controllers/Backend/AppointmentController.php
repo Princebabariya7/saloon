@@ -110,4 +110,11 @@ class AppointmentController extends Controller
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
+
+    public function fetchServices()
+    {
+        $service= Service::where('category_id',request()->get('id'))->pluck('service','id')->toArray();
+        $view = view('Backend.appointment.fetch_service')->with('service',$service)->render();
+        return response()->json(['status' => true, 'view' => $view], 200);
+    }
 }

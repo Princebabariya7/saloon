@@ -56,11 +56,11 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Category</label>
-                                {!! Form::select('categories', ['' => 'Select One'] + $category,null , ['class' => 'form-control custom-select-sm', 'id' => 'inputStatus']) !!}
+                                {!! Form::select('categories', ['' => 'Select One'] + $category,null , ['class' => 'form-control custom-select-sm category', 'id' => 'inputStatus']) !!}
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="col-md-6 serviceOfcategory">
+                            <div class="form-group ">
                                 <label for="inputStatus">Service</label>
                                 {!! Form::select('service_id', ['' => 'Select One'] + $service,null , ['class' => 'form-control custom-select-sm', 'id' => 'service']) !!}
 
@@ -147,5 +147,28 @@
         toastr.error('{{ $error }}');
         @endforeach
         @endif
+
+        $(document).ready(function () {
+            $('.category').change(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var id = $(this).val();
+                var url = "{{ route('admin.fetch.services') }}";
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        id: id,
+                    },
+                    success: function (data) {
+                        $('.serviceOfcategory').empty().html(data.view);
+                    },
+                });
+            });
+        });
     </script>
 @endsection

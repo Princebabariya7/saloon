@@ -102,6 +102,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::put('{id}/update', [\App\Http\Controllers\Backend\AppointmentController::class, 'update'])->name('admin.appointment.update');
             Route::get('{id}/delete', [\App\Http\Controllers\Backend\AppointmentController::class, 'destroy'])->name('admin.appointment.delete');
             Route::get('{id}/show', [\App\Http\Controllers\Backend\AppointmentController::class, 'show'])->name('admin.appointment.show');
+            Route::post('fetch/services', [\App\Http\Controllers\Backend\AppointmentController::class, 'fetchServices'])->name('admin.fetch.services');
         });
 
         Route::group(['prefix' => 'package'], function ()
