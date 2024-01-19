@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\Gallery;
 use App\Models\Price;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ class HomeController extends Controller
 
     public function gallery()
     {
-        return view('frontend.gallery.index');
+        return view('frontend.gallery.index')->with('galleries', Gallery::all());
 
     }
 

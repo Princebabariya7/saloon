@@ -19,6 +19,7 @@ class Service extends Model
         'duration' => 'Unknown',
         'status'   => 'Unknown',
     ];
+
     protected $table      = 'services';
 
     public function categories()
