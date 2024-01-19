@@ -91,15 +91,12 @@
                             <div class="form-group">
                                 <label for="inputStatus">Status</label>
                                 {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
         {!! Form::close() !!}
     </section>
 
