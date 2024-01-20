@@ -92,7 +92,7 @@
                                     <tr>
                                         <td>
                                             <a href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                {{$appointment->category->type}}
+                                                {{Category::find($appointment->services->category_id)->type}}
                                             </a>
                                         </td>
                                         <td>
