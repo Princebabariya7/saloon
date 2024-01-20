@@ -70,7 +70,7 @@
                                     Category
                                 </th>
                                 <th>
-                                    @sortablelink('Service')
+                                    Service
                                 </th>
                                 <th>
                                     Date
