@@ -96,7 +96,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            {{$appointment->services->service}}
+                                            {{$appointment->services->name}}
                                         </td>
                                         <td>
                                             {{$appointment->date}}
