@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\frontend\HomeController;
-use App\Http\Controllers\frontend\OnlineorderController;
+use App\Http\Controllers\frontend\AppointmentController;
 use App\Http\Controllers\frontend\PaymentController;
 use App\Http\Controllers\frontend\PriceController;
 use App\Http\Controllers\frontend\RegisterDate;
@@ -34,15 +34,15 @@ Route::group(['prefix' => 'frontend'], function ()
     {
         Route::group(['prefix' => 'onlineorder'], function ()
         {
-            Route::post('view', [OnlineorderController::class, 'view'])->name('online.booking');
-            Route::post('orderlist', [OnlineorderController::class, 'orderlist'])->name('orderlist');
-            Route::post('store', [OnlineorderController::class, 'store'])->name('online.info.store');
-            Route::get('index', [OnlineorderController::class, 'index'])->name('online.index');
-            Route::get('{id}/edit', [OnlineorderController::class, 'edit'])->name('online.edit');
-            Route::put('{id}/update', [OnlineorderController::class, 'update'])->name('online.update');
-            Route::get('{id}/delete', [OnlineorderController::class, 'destroy'])->name('online.delete');
-            Route::get('create', [OnlineorderController::class, 'create'])->name('online.create');
-            Route::post('fetch/services', [OnlineorderController::class, 'fetchServices'])->name('online.fetch.services');
+            Route::post('view', [AppointmentController::class, 'view'])->name('online.booking');
+            Route::post('orderlist', [AppointmentController::class, 'orderlist'])->name('orderlist');
+            Route::post('store', [AppointmentController::class, 'store'])->name('online.info.store');
+            Route::get('index', [AppointmentController::class, 'index'])->name('online.index');
+            Route::get('{id}/edit', [AppointmentController::class, 'edit'])->name('online.edit');
+            Route::put('{id}/update', [AppointmentController::class, 'update'])->name('online.update');
+            Route::get('{id}/delete', [AppointmentController::class, 'destroy'])->name('online.delete');
+            Route::get('create', [AppointmentController::class, 'create'])->name('online.create');
+            Route::post('fetch/services', [AppointmentController::class, 'fetchServices'])->name('online.fetch.services');
         });
 
         Route::group(['prefix' => 'payment'], function ()

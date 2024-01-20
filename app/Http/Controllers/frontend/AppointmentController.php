@@ -10,7 +10,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-class OnlineorderController extends Controller
+class AppointmentController extends Controller
 {
     public function index(Request $request)
     {
