@@ -1,3 +1,4 @@
+@php use App\Models\Category; @endphp
 @extends('frontend.layout.master')
 @section('title')
     order list
@@ -51,7 +52,7 @@
                                 <tbody>
                                 @foreach($orders as $order)
                                     <tr>
-                                        <td>{{$order->category->type}}</td>
+                                        <td>{{Category::find($order->services->category_id)->type}}</td>
                                         <td>{{$order->services->name}}</td>
                                         <td>{{auth()->user()->address}}</td>
                                         <td>{{auth()->user()->city}}</td>

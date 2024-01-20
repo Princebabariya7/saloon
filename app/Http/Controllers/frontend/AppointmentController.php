@@ -27,6 +27,7 @@ class AppointmentController extends Controller
         {
             return $query->where('type', $type);
         })->paginate(5);
+
         return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
