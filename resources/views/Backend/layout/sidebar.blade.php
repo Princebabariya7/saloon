@@ -38,14 +38,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.package.index')}}" class="nav-link">
-                        <i class="nav-icon fas fas fa-box"></i>
-                        <p>
-                            Packages
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="{{route('admin.category.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-cubes"></i>
@@ -67,14 +60,6 @@
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Gallery
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.order.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>
-                            Orders
                         </p>
                     </a>
                 </li>

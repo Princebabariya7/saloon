@@ -105,17 +105,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::post('fetch/services', [\App\Http\Controllers\Backend\AppointmentController::class, 'fetchServices'])->name('admin.fetch.services');
         });
 
-        Route::group(['prefix' => 'package'], function ()
-        {
-            Route::get('/', [\App\Http\Controllers\Backend\PackageController::class, 'index'])->name('admin.package.index');
-            Route::get('create', [\App\Http\Controllers\Backend\PackageController::class, 'create'])->name('admin.package.create');
-            Route::post('store', [\App\Http\Controllers\Backend\PackageController::class, 'store'])->name('admin.package.store');
-            Route::get('{id}/edit', [\App\Http\Controllers\Backend\PackageController::class, 'edit'])->name('admin.package.edit');
-            Route::put('{id}/update', [\App\Http\Controllers\Backend\PackageController::class, 'update'])->name('admin.package.update');
-            Route::get('{id}/delete', [\App\Http\Controllers\Backend\PackageController::class, 'destroy'])->name('admin.package.delete');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\PackageController::class, 'show'])->name('admin.package.show');
 
-        });
 
         Route::group(['prefix' => 'category'], function ()
         {
@@ -151,12 +141,6 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [\App\Http\Controllers\Backend\GalleryController::class, 'show'])->name('admin.gallery.show');
         });
 
-        Route::group(['prefix' => 'order'], function ()
-        {
-            Route::get('/', [\App\Http\Controllers\Backend\OrderController::class, 'index'])->name('admin.order.index');
-            Route::get('create', [\App\Http\Controllers\Backend\OrderController::class, 'create'])->name('admin.order.create');
-            Route::post('store', [\App\Http\Controllers\Backend\OrderController::class, 'store'])->name('admin.order.store');
-        });
 
         Route::group(['prefix' => 'price'], function ()
         {
