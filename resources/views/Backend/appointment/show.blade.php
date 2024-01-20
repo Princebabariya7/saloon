@@ -33,7 +33,7 @@
                             </tr>
                             <tr>
                                 <td>Service:</td>
-                                <td>{{$appointment->services->service}}</td>
+                                <td>{{$appointment->services->name}}</td>
                             </tr>
                             <tr>
                                 <td>Type:</td>

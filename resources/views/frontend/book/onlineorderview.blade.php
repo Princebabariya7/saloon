@@ -52,7 +52,7 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td>{{$order->category->type}}</td>
-                                        <td>{{$order->services->service}}</td>
+                                        <td>{{$order->services->name}}</td>
                                         <td>{{auth()->user()->address}}</td>
                                         <td>{{auth()->user()->city}}</td>
                                         <td>{{auth()->user()->state}}</td>
