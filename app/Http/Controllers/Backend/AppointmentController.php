@@ -32,7 +32,7 @@ class AppointmentController extends Controller
     public function create()
     {
         $category = Category::pluck('type', 'id')->toArray();
-        $service = Service::pluck('service', 'id')->toArray();
+        $service = Service::pluck('name', 'id')->toArray();
         return view('Backend.appointment.appointment_form')->with('editMode', false)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('category', $category)
@@ -65,7 +65,7 @@ class AppointmentController extends Controller
     public function edit($id)
     {
         $category = Category::pluck('type', 'id')->toArray();
-        $service = Service::pluck('service', 'id')->toArray();
+        $service = Service::pluck('name', 'id')->toArray();
         $appointment = Onlineorders::find($id);
 
         return view('Backend.appointment.appointment_form')
