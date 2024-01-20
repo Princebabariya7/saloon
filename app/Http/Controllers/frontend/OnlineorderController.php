@@ -14,10 +14,8 @@ class OnlineorderController extends Controller
 {
     public function index(Request $request)
     {
-
         $search = $request->input('search', '');
         $type   = $request->input('type', '');
-
 
         $orders = Onlineorders::with('services')->when($search, function ($query) use ($search)
         {
@@ -27,8 +25,7 @@ class OnlineorderController extends Controller
             });
         })->when($type, function ($query) use ($type)
         {
-            return
-                $query->where('type', $type);
+            return $query->where('type', $type);
         })->paginate(5);
         return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
@@ -36,7 +33,6 @@ class OnlineorderController extends Controller
     public function create()
     {
         $category=Category::pluck('type','id')->toArray();
-//        $service= Service::whereIn('category_id',request()->get('id'))->pluck('service','id')->toArray();
         $service=Service::pluck('service','id')->toArray();
         return view('frontend.book.order')->with('editMode', false)
             ->with('category' , $category)
