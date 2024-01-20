@@ -24,11 +24,9 @@ Route::group(['prefix' => 'frontend'], function ()
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
     });
 
-
     Route::post('store', [RegisterDate::class, 'store'])->name('user.info.store');
     Route::post('logins', [RegisterDate::class, 'login'])->name('user.info.login');
     Route::post('forgot', [RegisterDate::class, 'forgot'])->name('user.info.forgot');
-
 
     Route::group(['middleware' => 'PreventBackButtonMiddleware'], function ()
     {

@@ -21,7 +21,7 @@ class AppointmentController extends Controller
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orWhere('service', 'LIKE', '%' . $search . '%')->orWhere('categories', 'LIKE', '%' . $search . '%');
+                $query->orWhere('name', 'LIKE', '%' . $search . '%')->orWhere('categories', 'LIKE', '%' . $search . '%');
             });
         })->when($type, function ($query) use ($type)
         {
@@ -32,32 +32,37 @@ class AppointmentController extends Controller
 
     public function create()
     {
-        $category=Category::pluck('type','id')->toArray();
-        $service=Service::pluck('name','id')->toArray();
+        $category = Category::pluck('type', 'id')->toArray();
+        $service  = Service::pluck('name', 'id')->toArray();
         return view('frontend.book.order')->with('editMode', false)
-            ->with('category' , $category)
-            ->with('service' , $service);
+            ->with('category', $category)
+            ->with('service', $service);
     }
 
     public function store(OnlineorderRequest $request)
     {
         try
         {
-            Onlineorders::create([
-                'categories' => $this->customImplode($request->categories),
-                'service_id'    => $this->customImplode($request->service_id),
-                'type'       => $request->type == 'appointment' ? 'appointment' : 'order',
-                'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
-                'user_id'    => auth()->user()->id,
-                'status'     => 'Active',
-                'updated_at' => now(),
-                'created_at' => Carbon::now(),
-            ]);
+            foreach (request('service_id') as $serviceId)
+            {
+                Onlineorders::create([
+                    'service_id' => $serviceId,
+                    'type'       => $request->type,
+                    'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
+                    'user_id'    => auth()->user()->id,
+                    'status'     => 'Active',
+                    'updated_at' => now(),
+                    'created_at' => Carbon::now(),
+                ]);
+            }
+
+
             session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));
         }
         catch (\Exception $e)
         {
+            dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
@@ -69,25 +74,25 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category=Category::pluck('type','id')->toArray();
-        $service=Service::pluck('service','id')->toArray();
-        $online = Onlineorders::find($id);
+        $category = Category::pluck('type', 'id')->toArray();
+        $service  = Service::pluck('name', 'id')->toArray();
+        $online   = Onlineorders::find($id);
 
         return view('frontend.book.order')
             ->with('online', $online)
             ->with('categories', explode(',', $online->categories))
-            ->with('service', explode(',', $online->service))
+            ->with('service', explode(',', $online->name))
             ->with('date', (Carbon::create($online->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true)
-            ->with('category' , $category)
-            ->with('service' , $service);
+            ->with('category', $category)
+            ->with('service', $service);
     }
 
     public function update(OnlineorderEditRequest $request, $id)
     {
         $online             = Onlineorders::find($id);
         $online->categories = $this->customImplode($request->categories);
-        $online->service_id    = $this->customImplode($request->service_id);
+        $online->service_id = $this->customImplode($request->service_id);
         $online->type       = $request->input('type');
         $online->date       = Carbon::create($request->date)->format('Y-m-d H:i:s');
         $online->update();
@@ -124,8 +129,8 @@ class AppointmentController extends Controller
 
     public function fetchServices()
     {
-        $service= Service::whereIn('category_id',request()->get('id'))->pluck('service','id')->toArray();
-       $view = view('frontend.book.services_select')->with('service',$service)->render();
+        $service = Service::whereIn('category_id', request()->get('id'))->pluck('name', 'id')->toArray();
+        $view    = view('frontend.book.services_select')->with('service', $service)->render();
         return response()->json(['status' => true, 'view' => $view], 200);
     }
 }

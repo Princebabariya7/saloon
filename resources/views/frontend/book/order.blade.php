@@ -30,7 +30,7 @@
                     <div class="col-md-12 service-select">
                         <div class="form-group   ">
                             <label>Select service</label>
-                            {!! Form::select('service_id[]',$service, null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                            {!! Form::select('service_id[]',[], null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;' , 'disabled'=>true]) !!}
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,8 @@
                         id: id,
                     },
                     success: function (data) {
-                        $('.service-select').empty().html(data.view);
+                        console.log( $('.service-select'));
+                        $('.service-select').attr('disabled',false).empty().html(data.view);
                     },
                 });
             });
