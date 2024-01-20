@@ -1,3 +1,4 @@
+@php use App\Models\Category; @endphp
 @extends ('Backend.layout.index')
 @section("title")
     Appointment
