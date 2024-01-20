@@ -100,7 +100,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            {{$service->service}}
+                                            {{$service->name}}
                                         </td>
                                         <td>
                                             {{$service->detail}}

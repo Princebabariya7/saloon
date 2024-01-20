@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Service</label>
-                                {!! Form::text('service', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::text('name', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
                             </div>
                         </div>
                     </div>

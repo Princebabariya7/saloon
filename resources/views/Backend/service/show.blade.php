@@ -34,7 +34,7 @@
                             </tr>
                             <tr>
                                 <td>Service:</td>
-                                <td>{{$service->service}}</td>
+                                <td>{{$service->name}}</td>
                             </tr>
                             <tr>
                                 <td>Detail:</td>

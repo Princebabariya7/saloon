@@ -15,7 +15,7 @@ class ServiceUpdateRequest extends FormRequest
     {
         return [
             'category_id' => 'required',
-            'service'  => 'required|regex:/^[\pL\s]+$/u',
+            'name'  => 'required|regex:/^[\pL\s]+$/u',
             'detail'   => 'required',
             'price'    => 'required|numeric',
             'duration' => 'required',
