@@ -87,7 +87,7 @@ class OnlineorderController extends Controller
     {
         $online             = Onlineorders::find($id);
         $online->categories = $this->customImplode($request->categories);
-        $online->service    = $this->customImplode($request->service);
+        $online->service_id    = $this->customImplode($request->service_id);
         $online->type       = $request->input('type');
         $online->date       = Carbon::create($request->date)->format('Y-m-d H:i:s');
         $online->update();

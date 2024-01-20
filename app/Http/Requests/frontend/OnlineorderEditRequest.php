@@ -15,7 +15,7 @@ class OnlineorderEditRequest extends FormRequest
     {
         return [
             'categories'       => 'required',
-            'service'          => 'required',
+            'service_id'          => 'required',
             'type'             => 'required',
             'date' => 'required',
         ];
