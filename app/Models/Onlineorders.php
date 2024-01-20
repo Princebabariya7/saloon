@@ -20,7 +20,7 @@ class Onlineorders extends Model
         'status'     => 'Unknown',
     ];
 
-    protected $table = 'onlineorders';
+    protected $table = 'appointments';
 
     public function services()
     {

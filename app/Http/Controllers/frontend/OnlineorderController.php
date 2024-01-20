@@ -33,7 +33,7 @@ class OnlineorderController extends Controller
     public function create()
     {
         $category=Category::pluck('type','id')->toArray();
-        $service=Service::pluck('service','id')->toArray();
+        $service=Service::pluck('name','id')->toArray();
         return view('frontend.book.order')->with('editMode', false)
             ->with('category' , $category)
             ->with('service' , $service);

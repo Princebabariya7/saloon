@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class OnlineordersTable extends Migration
+class AppointmentsTable extends Migration
 {
      public function up()
     {
-        Schema::create('onlineorders', function (Blueprint $table)
+        Schema::create('appointments', function (Blueprint $table)
         {
             $table->id();
             $table->string('categories', 50);
@@ -24,6 +24,6 @@ class OnlineordersTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('onlineorders');
+        Schema::dropIfExists('appointments');
     }
 }
