@@ -32,7 +32,7 @@ class AppointmentController extends Controller
     public function create()
     {
         $category = Category::pluck('type', 'id')->toArray();
-        $service = Service::pluck('name', 'id')->toArray();
+        $service  = Service::pluck('name', 'id')->toArray();
         return view('Backend.appointment.appointment_form')->with('editMode', false)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('category', $category)
@@ -42,14 +42,20 @@ class AppointmentController extends Controller
     public function store(AppointmentStoreRequest $request)
     {
 
-        Onlineorders::create([
-            'categories' => $request->categories,
-            'service_id' => $request->service_id,
-            'type'       => $request->type,
-            'date'       => Carbon::create($request->date)->format('Y-m-d H:i:s'),
-            'user_id'    => auth()->user()->id,
-            'status'     => $request->status
-        ]);
+
+
+        foreach (request('service_id') as $serviceId)
+        {
+            Onlineorders::create([
+                'service_id' => $serviceId,
+                'type'       => $request->type,
+                'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
+                'user_id'    => auth()->user()->id,
+                'status'     => 'Active',
+                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+            ]);
+        }
 
         session()->put('add', 'data add');
         return redirect(route('admin.appointment.index'));
@@ -112,7 +118,7 @@ class AppointmentController extends Controller
 
     public function fetchServices()
     {
-        $service= Service::where('category_id',request()->get('id'))->pluck('service','id')->toArray();
+        $service= Service::whereIn('category_id',request()->get('id'))->pluck('name','id')->toArray();
         $view = view('Backend.appointment.fetch_service')->with('service',$service)->render();
         return response()->json(['status' => true, 'view' => $view], 200);
     }

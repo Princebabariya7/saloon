@@ -20,6 +20,8 @@
 <script src="{{ asset('backend/assets/dist/js/adminlte.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="{{ asset('backend/assets/inputmask/jquery.inputmask.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('backend/assets/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script src="{{ asset('backend/assets/dist/js/pages/dashboard.js') }}"></script>
 @yield('custom_js')
