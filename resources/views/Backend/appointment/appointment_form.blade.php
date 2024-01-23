@@ -74,7 +74,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="inputStatus">Type</label>
-                                {!! Form::select('type', ['' => 'Select one', 'appointment' => 'appointment', 'order' => 'order'], ($editMode) ? $type : null, ['class' => 'form-control custom-select-sm']) !!}
+                                {!! Form::select('type', ['' => 'Select one', 'Appointment' => 'Appointment', 'Order' => 'Order'], ($editMode) ? $type : null, ['class' => 'form-control custom-select-sm']) !!}
                             </div>
                         </div>
                         <div class="col-md-4">
