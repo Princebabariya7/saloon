@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
             'address'          => 'required',
             'city'             => 'required',
             'state'            => 'required',
-            'zipcode'          => 'required|numeric',
+            'zipcode'          => 'required|numeric|digits:6',
         ];
     }
     public function messages()
