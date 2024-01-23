@@ -45,11 +45,11 @@
                     <label>Preferred booking type</label>
                     <div class="col-md-12  text-center mx-auto">
                         <div class="form-check form-check-inline">
-                            {{Form::radio('type','appointment',0,['class'=>'form-check-input'])}}
+                            {{Form::radio('type','Appointment',0,['class'=>'form-check-input'])}}
                             <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            {{Form::radio('type','order',0,['class'=>'form-check-input'])}}
+                            {{Form::radio('type','Order',0,['class'=>'form-check-input'])}}
                             <label class="form-check-label ml-2" for="inlineRadio2">Order</label>
                         </div>
                     </div>
@@ -150,7 +150,6 @@
                         id: id,
                     },
                     success: function (data) {
-                        console.log($('.service-select'));
                         $('.service-select').attr('disabled', false).empty().html(data.view);
                     },
                 });

@@ -42,7 +42,6 @@
 <!-- Top Bar End -->
 
 <!-- Nav Bar Start -->
-
 <div class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container-fluid">
         <a href="{{route('home')}}" class="navbar-brand hair">Hairck <span>Saloon</span></a>
@@ -59,7 +58,7 @@
                 @if(auth()->user() == null)
 
                 @else
-                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class="fa fa-user text-light" aria-hidden="true"></i>
+                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class='fas fa-calendar-check'></i>
                     </a>
                     <a href="{{route('online.index')}}" class="nav-item nav-link"><i class="fa fa-shopping-cart  text-light" aria-hidden="true"></i></a>
                 @endif
