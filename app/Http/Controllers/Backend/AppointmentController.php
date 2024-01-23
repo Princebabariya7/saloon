@@ -32,18 +32,13 @@ class AppointmentController extends Controller
     public function create()
     {
         $category = Category::pluck('type', 'id')->toArray();
-        $service  = Service::pluck('name', 'id')->toArray();
         return view('Backend.appointment.appointment_form')->with('editMode', false)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
-            ->with('category', $category)
-            ->with('service', $service);
+            ->with('category', $category);
     }
 
     public function store(AppointmentStoreRequest $request)
     {
-
-
-
         foreach (request('service_id') as $serviceId)
         {
             Appointment::create([
@@ -70,8 +65,8 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category = Category::pluck('type', 'id')->toArray();
-        $service = Service::pluck('name', 'id')->toArray();
+        $category    = Category::pluck('type', 'id')->toArray();
+        $service     = Service::pluck('name', 'id')->toArray();
         $appointment = Appointment::find($id);
 
         return view('Backend.appointment.appointment_form')
@@ -118,8 +113,17 @@ class AppointmentController extends Controller
 
     public function fetchServices()
     {
-        $service= Service::whereIn('category_id',request()->get('id'))->pluck('name','id')->toArray();
-        $view = view('Backend.appointment.fetch_service')->with('service',$service)->render();
-        return response()->json(['status' => true, 'view' => $view], 200);
+        $service = [];
+
+        if (request('id'))
+        {
+            $service = Service::whereIn('category_id', request('id'))->pluck('name', 'id')->toArray();
+        }
+
+        return response()->json(
+            [
+                'status'   => true,
+                'services' => $service
+            ], 200);
     }
 }

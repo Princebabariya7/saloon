@@ -57,15 +57,16 @@
                             <div class="form-group">
                                 <label for="inputStatus">Category</label>
                                 <div class="select2-primary">
-                                    {!! Form::select('categories[]', $category,null , ['class' => 'form-control form-control-sm custom-select-sm select2 category', 'id' => 'inputStatus', 'multiple'=>'multiple', 'data-placeholder'=>"Select a Category", 'data-dropdown-css-class'=>"select2-primary", 'style'=>'"width: 100%;"']) !!}
+                                    {!! Form::select('categories[]', $category,null , ['id'=>'categories', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple']) !!}
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 serviceOfcategory">
-                            <div class="form-group ">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="inputStatus">Service</label>
                                 <div class="select2-primary">
-                                    {!! Form::select('service_id[]', $service,null , ['class' => 'form-control form-control-sm custom-select-sm select2', 'id' => 'service', 'multiple'=>'multiple', 'data-placeholder'=>"Select a Category", 'data-dropdown-css-class'=>"select2-primary", 'style'=>'"width: 100%;"']) !!}
+                                    {!! Form::select('service_id[]', [],null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
                                 </div>
                             </div>
                         </div>
@@ -155,7 +156,9 @@
         @endif
 
         $(document).ready(function () {
-            $('.category').change(function () {
+            $('#categories').change(function () {
+
+                $('#services').attr('disabled', false);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -171,7 +174,14 @@
                         id: id,
                     },
                     success: function (data) {
-                        $('.serviceOfcategory').empty().html(data.view);
+                        var services = data.services;
+                        let service_dom = $('#services');
+                        service_dom.children().remove()
+                        $.each(services, function (key, value) {
+                            service_dom.append($("<option></option>")
+                                .attr("value", key)
+                                .text(value));
+                        });
                     },
                 });
             });

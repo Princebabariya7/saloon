@@ -23,5 +23,5 @@
 <!-- Select2 -->
 <script src="{{ asset('backend/assets/plugins/select2/js/select2.full.min.js')}}"></script>
 
-<script src="{{ asset('backend/assets/dist/js/pages/dashboard.js') }}"></script>
+{{--<script src="{{ asset('backend/assets/dist/js/pages/dashboard.js') }}"></script>--}}
 @yield('custom_js')
