@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
-class Onlineorders extends Model
+class Appointment extends Model
 {
     use HasFactory, Sortable;
 

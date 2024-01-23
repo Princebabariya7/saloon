@@ -5,7 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Requests\frontend\OnlineorderEditRequest;
 use App\Http\Requests\frontend\OnlineorderRequest;
 use App\Models\Category;
-use App\Models\Onlineorders;
+use App\Models\Appointment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -17,7 +17,7 @@ class AppointmentController extends Controller
         $search = $request->input('search', '');
         $type   = $request->input('type', '');
 
-        $orders = Onlineorders::with('services')->when($search, function ($query) use ($search)
+        $orders = Appointment::with('services')->when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -46,7 +46,7 @@ class AppointmentController extends Controller
         {
             foreach (request('service_id') as $serviceId)
             {
-                Onlineorders::create([
+                Appointment::create([
                     'service_id' => $serviceId,
                     'type'       => $request->type,
                     'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
@@ -72,7 +72,7 @@ class AppointmentController extends Controller
     {
         $category = Category::pluck('type', 'id')->toArray();
         $service  = Service::pluck('name', 'id')->toArray();
-        $orders   = Onlineorders::find($id);
+        $orders   = Appointment::find($id);
         return view('frontend.book.order')
             ->with('orders', $orders)
             ->with('service_id',$orders->service_id)
@@ -85,7 +85,7 @@ class AppointmentController extends Controller
 
     public function update(OnlineorderEditRequest $request, $id)
     {
-        $orders = Onlineorders::find($id);
+        $orders = Appointment::find($id);
 
         foreach (request('service_id') as $serviceId)
         {
@@ -103,7 +103,7 @@ class AppointmentController extends Controller
     {
         try
         {
-            $orders = Onlineorders::find($id);
+            $orders = Appointment::find($id);
             if ($orders)
             {
                 $orders->delete();

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\Backend\AppointmentStoreRequest;
 use App\Http\Requests\Backend\AppointmentUpdateRequest;
 use App\Models\Category;
-use App\Models\Onlineorders;
+use App\Models\Appointment;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AppointmentController extends Controller
     {
         $search       = $request->input('search', '');
         $status       = $request->input('status', '');
-        $appointments = Onlineorders::when($search, function ($query) use ($search)
+        $appointments = Appointment::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -46,7 +46,7 @@ class AppointmentController extends Controller
 
         foreach (request('service_id') as $serviceId)
         {
-            Onlineorders::create([
+            Appointment::create([
                 'service_id' => $serviceId,
                 'type'       => $request->type,
                 'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
@@ -64,7 +64,7 @@ class AppointmentController extends Controller
 
     public function show($id)
     {
-        $appointment = Onlineorders::find($id);
+        $appointment = Appointment::find($id);
         return view('Backend.appointment.show', ['appointment' => $appointment]);
     }
 
@@ -72,7 +72,7 @@ class AppointmentController extends Controller
     {
         $category = Category::pluck('type', 'id')->toArray();
         $service = Service::pluck('name', 'id')->toArray();
-        $appointment = Onlineorders::find($id);
+        $appointment = Appointment::find($id);
 
         return view('Backend.appointment.appointment_form')
             ->with('appointment', $appointment)
@@ -87,7 +87,7 @@ class AppointmentController extends Controller
     public function update(AppointmentUpdateRequest $request, $id)
     {
         $dateTime                = Carbon::create($request->date)->format('Y-m-d H:i:s');
-        $appointment             = Onlineorders::find($id);
+        $appointment             = Appointment::find($id);
         $appointment->categories = $request->input('categories');
         $appointment->service_id = $request->input('service_id');
         $appointment->type       = $request->input('type');
@@ -103,7 +103,7 @@ class AppointmentController extends Controller
     {
         try
         {
-            $appointment = Onlineorders::find($id);
+            $appointment = Appointment::find($id);
             if ($appointment)
             {
                 $appointment->delete();
