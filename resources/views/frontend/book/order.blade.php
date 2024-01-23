@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label>Select categories</label>
                             <div class="select2-secondary">
-                                {!! Form::select('categories[]' ,  $category , ($editMode) ? $service_id : null ,['class'=>'select2 category','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                                {!! Form::select('categories[]' ,  $category , ($editMode) ? $category_id : null ,['class'=>'select2 category','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
                             </div>
                         </div>
                     </div>
@@ -154,6 +154,9 @@
                     },
                 });
             });
+            @if($editMode)
+            $('.category').trigger('change')
+            @endif
         });
     </script>
 @endsection
