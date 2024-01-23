@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Mobile' , 'id' => 'name' ,'autocomplete' =>'off']) !!}
+                        {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Mobile' , 'id' => 'name' ,'autocomplete' =>'off' , 'maxlength'=>'10']) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -81,13 +81,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>City</label>
-                        {!! Form::select('city', ['' => 'Select one', 'ahmedabad' => 'ahmedabad','rajkot' => 'rajkot'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
+                        {!! Form::select('city', ['' => 'Select one', 'Ahmedabad' => 'Ahmedabad','Rajkot' => 'Rajkot'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>State</label>
-                        {!! Form::select('state', ['' => 'Select one', 'gujrat' => 'gujrat','pune' => 'pune'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
+                        {!! Form::select('state', ['' => 'Select one', 'Gujrat' => 'Gujrat','Pune' => 'Pune'], null, ['class' => 'form-control select2bs4','style'=>'width: 100%;']) !!}
                     </div>
                 </div>
             </div>
