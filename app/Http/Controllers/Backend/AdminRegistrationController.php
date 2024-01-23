@@ -7,12 +7,31 @@ use App\Http\Requests\Backend\ForgotPasswordRequest;
 use App\Http\Requests\Backend\SignInRequest;
 use App\Http\Requests\Backend\SignUpRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
 class AdminRegistrationController extends Controller
 {
+    public function index(Request $request)
+    {
+        $search     = $request->input('search', '');
+        $status     = $request->input('status', '');
+        $users = User::when($search, function ($query) use ($search)
+        {
+            return $query->where(function ($query) use ($search)
+            {
+                $query->orWhere('firstname', 'LIKE', '%' . $search . '%');
+            });
+
+        })->when($status, function ($query) use ($status)
+        {
+            return $query->where('status', $status);
+        })->paginate(5);
+        return view('Backend.user.index')->with('users', $users);
+    }
+
     public function store(SignUpRequest $request)
     {
 
@@ -59,6 +78,13 @@ class AdminRegistrationController extends Controller
         session()->put('Password', 'Your Password has Changed');
         return redirect(route('admin.sign_in'));
 
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        return view('Backend.user.show', ['user' => $user]);
     }
 
 }

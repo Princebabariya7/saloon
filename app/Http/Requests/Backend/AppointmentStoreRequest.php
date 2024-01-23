@@ -17,10 +17,10 @@ class AppointmentStoreRequest extends FormRequest
 
         return [
             'categories' => 'required',
-            'service_id'    => 'required',
+            'service_id' => 'required',
             'date'       => 'required',
             'type'       => 'required',
-            'status'        => 'required'
+            'status'     => 'required'
         ];
     }
 }
