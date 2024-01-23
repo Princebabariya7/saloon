@@ -68,22 +68,16 @@ class AppointmentController extends Controller
         }
     }
 
-    public function customImplode($value)
-    {
-        return (!empty($value)) ? implode(',', $value) : '';
-    }
-
     public function edit($id)
     {
         $category = Category::pluck('type', 'id')->toArray();
         $service  = Service::pluck('name', 'id')->toArray();
-        $online   = Onlineorders::find($id);
-
+        $orders   = Onlineorders::find($id);
         return view('frontend.book.order')
-            ->with('online', $online)
-            ->with('categories', explode(',', $online->categories))
-            ->with('service', explode(',', $online->name))
-            ->with('date', (Carbon::create($online->appointment_time)->format('m-d-y H:i:s')))
+            ->with('orders', $orders)
+            ->with('service_id',$orders->service_id)
+            ->with('category_id',(Service::find($orders->service_id)->category_id))
+            ->with('date', (Carbon::create($orders->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service);
@@ -91,12 +85,16 @@ class AppointmentController extends Controller
 
     public function update(OnlineorderEditRequest $request, $id)
     {
-        $online             = Onlineorders::find($id);
-        $online->categories = $this->customImplode($request->categories);
-        $online->service_id = $this->customImplode($request->service_id);
-        $online->type       = $request->input('type');
-        $online->date       = Carbon::create($request->date)->format('Y-m-d H:i:s');
-        $online->update();
+        $orders = Onlineorders::find($id);
+
+        foreach (request('service_id') as $serviceId)
+        {
+            $orders->service_id = $serviceId;
+            $orders->type       = $request->input('type');
+            $orders->date       = Carbon::create($request->date)->format('Y-m-d H:i:s');
+        }
+
+        $orders->update();
         session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));
     }
@@ -105,10 +103,10 @@ class AppointmentController extends Controller
     {
         try
         {
-            $online = Onlineorders::find($id);
-            if ($online)
+            $orders = Onlineorders::find($id);
+            if ($orders)
             {
-                $online->delete();
+                $orders->delete();
             }
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
