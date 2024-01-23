@@ -22,15 +22,19 @@
                     <div class="cate col-md-12">
                         <div class="form-group">
                             <label>Select categories</label>
-                         {!! Form::select('categories[]' ,  $category , null ,['class'=>'select2 category','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                            <div class="select2-secondary">
+                                {!! Form::select('categories[]' ,  $category , ($editMode) ? $service_id : null ,['class'=>'select2 category','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 service-select">
-                        <div class="form-group   ">
+                        <div class="form-group">
                             <label>Select service</label>
-                            {!! Form::select('service_id[]',[], null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;' , 'disabled'=>true]) !!}
+                            <div class="select2-secondary">
+                                {!! Form::select('service_id[]',[], ($editMode) ? $service_id : null ,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;' , 'disabled'=>true]) !!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,8 +150,8 @@
                         id: id,
                     },
                     success: function (data) {
-                        console.log( $('.service-select'));
-                        $('.service-select').attr('disabled',false).empty().html(data.view);
+                        console.log($('.service-select'));
+                        $('.service-select').attr('disabled', false).empty().html(data.view);
                     },
                 });
             });
