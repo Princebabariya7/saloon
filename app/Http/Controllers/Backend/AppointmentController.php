@@ -51,7 +51,7 @@ class AppointmentController extends Controller
                 'type'       => $request->type,
                 'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
                 'user_id'    => auth()->user()->id,
-                'status'     => 'Active',
+                'status'     => $request->status,
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);

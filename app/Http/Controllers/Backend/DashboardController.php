@@ -19,6 +19,18 @@ class DashboardController extends Controller
             'userCount' => $userCount,
         ]);
     }
+
+    public function appointmentDetails()
+    {
+        $appointments = Onlineorders::where('type', 'Appointment')->paginate(10);
+        return view('Backend.appointment.index')->with('appointments', $appointments);
+    }
+
+    public function orderDetails()
+    {
+        $orders = Onlineorders::where('type', 'Order')->paginate(10);
+        return view('Backend.appointment.index')->with('appointments', $orders);
+    }
 }
 
 
