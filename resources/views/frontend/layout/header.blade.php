@@ -20,7 +20,7 @@
                     <div class="top-bar-left">
                         <div class="text">
                             <a href="{{route('logout')}}">
-                                <h2>Logout</h2>
+                                    <h2><i class="fa fa-sign-out fa-2x"></i></h2>
                             </a>
                         </div>
                     </div>

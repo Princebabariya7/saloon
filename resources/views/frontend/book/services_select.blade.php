@@ -6,7 +6,9 @@
         theme: 'bootstrap4'
     })
 </script>
-<div class="form-group  ">
+<div class="form-group">
     <label>Select service</label>
-    {!! Form::select('service_id[]',$service, null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+    <div class="select2-secondary">
+        {!! Form::select('service_id[]',$service, null,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+    </div>
 </div>
