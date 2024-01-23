@@ -247,13 +247,6 @@
 
 @section('custom_js')
     <script>
-        @if (!empty($success))
-        Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-        });
-        @endif
 
         @if (\Session::has('msg'))
         toastr.success('You are successfully logged in');

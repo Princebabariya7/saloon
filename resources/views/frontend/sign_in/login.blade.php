@@ -51,5 +51,9 @@
         toastr.success('Your password was changed!');
         {{\Session::forget('msg')}}
         @endif
+        @if (\Session::has('registerMsg'))
+        toastr.success('you are successfully registered');
+        {{\Session::forget('registerMsg')}}
+        @endif
     </script>
 @endsection

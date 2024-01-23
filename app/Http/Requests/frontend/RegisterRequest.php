@@ -18,7 +18,7 @@ class RegisterRequest extends FormRequest
             'firstname'  => 'required|alpha',
             'lastname'   => 'required|alpha',
             'gender'     => 'required',
-            'date'       => 'required',
+            'date'       => 'before:2005-01-20',
             'number'     => 'required|numeric|digits:10',
             'email'      => 'required|email',
             'password'   => 'required',

@@ -30,7 +30,7 @@ Route::group(['prefix' => 'frontend'], function ()
 
     Route::group(['middleware' => 'PreventBackButtonMiddleware'], function ()
     {
-        Route::group(['prefix' => 'onlineorder'], function ()
+        Route::group(['prefix' => 'appointment'], function ()
         {
             Route::post('view', [AppointmentController::class, 'view'])->name('online.booking');
             Route::post('orderlist', [AppointmentController::class, 'orderlist'])->name('orderlist');

@@ -38,8 +38,8 @@ class RegisterDate extends Controller
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);
-
-            return view('frontend.sign_in.login')->withSuccess('IT WORKS!');
+            session()->put('registerMsg','you are successfully registered');
+            return view('frontend.sign_in.login');
         }
         catch (\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
