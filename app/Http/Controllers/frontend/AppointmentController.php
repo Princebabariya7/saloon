@@ -37,11 +37,9 @@ class AppointmentController extends Controller
 
     public function create()
     {
-        $category = Category::pluck('type', 'id')->toArray();
-        $service  = Service::pluck('name', 'id')->toArray();
+        $category = Category::getList();
         return view('frontend.book.order')->with('editMode', false)
-            ->with('category', $category)
-            ->with('service', $service);
+            ->with('category', $category);
     }
 
     public function store(OnlineorderRequest $request)
@@ -132,8 +130,31 @@ class AppointmentController extends Controller
 
     public function fetchServices()
     {
-        $service = Service::whereIn('category_id', request()->get('id'))->pluck('name', 'id')->toArray();
-        $view    = view('frontend.book.services_select')->with('service', $service)->render();
-        return response()->json(['status' => true, 'view' => $view], 200);
+        try
+        {
+
+            $service = [];
+
+            if (request('id'))
+            {
+                $service = Service::where('category_id', request('id'))->pluck('name', 'id')->toArray();
+            }
+            return response()->json(
+                [
+                    'status'   => true,
+                    'services' => $service,
+                    'message'  => ''
+                ], 200);
+
+
+        }
+        catch (\Exception $e)
+        {
+            return response()->json(
+                [
+                    'status'  => false,
+                    'message' => $e->getMessage()
+                ], 400);
+        }
     }
 }

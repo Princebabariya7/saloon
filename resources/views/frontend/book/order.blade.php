@@ -23,7 +23,8 @@
                         <div class="form-group">
                             <label>Select categories</label>
                             <div class="select2-secondary">
-                                {!! Form::select('categories[]' ,  $category , ($editMode) ? $category_id : null ,['class'=>'select2 category','multiple'=>'multiple', 'style'=>'width: 100%;']) !!}
+                                {!! Form::select('categories[]', $category, ($editMode) ? $category_id : null , ['id'=>'categories', 'class' => 'form-control']) !!}
+
                             </div>
                         </div>
                     </div>
@@ -33,7 +34,8 @@
                         <div class="form-group">
                             <label>Select service</label>
                             <div class="select2-secondary">
-                                {!! Form::select('service_id[]',[], ($editMode) ? $service_id : null ,['class'=>'select2','multiple'=>'multiple', 'style'=>'width: 100%;' , 'disabled'=>true]) !!}
+                                {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control  custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
+
                             </div>
                         </div>
                     </div>
@@ -134,29 +136,33 @@
         })
 
         $(document).ready(function () {
-            $('.category').change(function () {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                var id = $(this).val();
-                var url = "{{ route('online.fetch.services') }}";
-
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        id: id,
-                    },
-                    success: function (data) {
-                        $('.service-select').attr('disabled', false).empty().html(data.view);
-                    },
-                });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
-            @if($editMode)
-            $('.category').trigger('change')
-            @endif
+
+            $('#categories').change(function () {
+
+                $('#services').attr('disabled', false);
+
+                var id = $(this).val();
+                var url = "{{ route('admin.fetch.services') }}";
+
+                $.post(url, {id: id})
+                    .done(function (data) {
+                        var services = data.services;
+                        let service_dom = $('#services');
+                        service_dom.children().remove()
+                        $.each(services, function (key, value) {
+                            service_dom.append($("<option></option>")
+                                .attr("value", key)
+                                .text(value));
+                        });
+                    }).fail(function () {
+                    alert("error");
+                })
+            });
         });
     </script>
 @endsection
