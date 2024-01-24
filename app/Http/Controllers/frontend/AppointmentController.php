@@ -26,8 +26,7 @@ class AppointmentController extends Controller
         })->when($type, function ($query) use ($type)
         {
             return $query->where('type', $type);
-        })->paginate(5);
-
+        })->where('user_id', '=', auth()->user()->id)->paginate(5);
         return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
@@ -75,8 +74,8 @@ class AppointmentController extends Controller
         $orders   = Appointment::find($id);
         return view('frontend.book.order')
             ->with('orders', $orders)
-            ->with('service_id',$orders->service_id)
-            ->with('category_id',(Service::find($orders->service_id)->category_id))
+            ->with('service_id', $orders->service_id)
+            ->with('category_id', (Service::find($orders->service_id)->category_id))
             ->with('date', (Carbon::create($orders->appointment_time)->format('m-d-y H:i:s')))
             ->with('editMode', true)
             ->with('category', $category)
