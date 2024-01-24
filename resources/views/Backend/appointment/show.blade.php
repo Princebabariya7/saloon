@@ -29,7 +29,7 @@
                             <tbody>
                             <tr>
                                 <td>Category:</td>
-                                <td>{{Category::find(Service::find($appointment->service_id)->category_id)->type}}</td>
+                                <td>{{ $appointment->services->categories->type }}</td>
                             </tr>
                             <tr>
                                 <td>Service:</td>
