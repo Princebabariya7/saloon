@@ -43,13 +43,13 @@
 
                 <div class="form-group clearfix">
                     <label>Preferred booking type</label>
-                    <div class="col-md-12  text-center mx-auto">
+                    <div class="col-md-12 text-center mx-auto">
                         <div class="form-check form-check-inline">
-                            {{Form::radio('type','Appointment',0,['class'=>'form-check-input'])}}
+                            {{ Form::radio('type', 'Appointment', false, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
                             <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            {{Form::radio('type','Order',0,['class'=>'form-check-input'])}}
+                            {{ Form::radio('type', 'Order', false, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
                             <label class="form-check-label ml-2" for="inlineRadio2">Order</label>
                         </div>
                     </div>

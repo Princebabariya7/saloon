@@ -35,13 +35,13 @@
 
 
             <div class="form-group clearfix">
-                <div class="col-md-12" style="margin:auto">
+                <div class="col-md-12 mx-auto text-center">
                     <div class="form-check form-check-inline">
-                        {{Form::radio('gender','male',1,['class'=>'form-check-input'])}}
+                        {{Form::radio('gender','male',1,['class'=>'form-check-input' , 'id'=>'inlineRadio1'])}}
                         <label class="form-check-label ml-2" for="inlineRadio1">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        {{Form::radio('gender','female',0,['class'=>'form-check-input'])}}
+                        {{Form::radio('gender','female',0,['class'=>'form-check-input' , 'id'=>'inlineRadio2'])}}
                         <label class="form-check-label ml-2" for="inlineRadio2">Female</label>
                     </div>
                 </div>
@@ -69,11 +69,22 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Password']) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::password('repassword',['class' =>'form-control item' , 'placeholder'=>'Retype Password']) !!}
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="inputDescription">Address</label>
-                    {!! Form::textarea('address',null,['class'=>'form-control','rows'=>'3', 'style'=>'width: 100%;']) !!}
+                    {!! Form::textarea('address',null,['class'=>'form-control','rows'=>'1', 'style'=>'width: 100%;']) !!}
                 </div>
             </div>
 
@@ -100,18 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Password']) !!}
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        {!! Form::password('repassword',['class' =>'form-control item' , 'placeholder'=>'Retype Password']) !!}
-                    </div>
-                </div>
-            </div>
+
             <div class="form-group">
                 {!! Form::button('Create Account',['type' => 'submit', 'class' => 'btn btn-sm btn-block create-account']) !!}
             </div>
