@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label for="inputStatus">Category</label>
                                 <div class="select2-primary">
-                                    {!! Form::select('categories[]', $category,null , ['id'=>'categories', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple']) !!}
+                                    {!! Form::select('categories[]', $category,null , ['id'=>'categories', 'class' => 'form-control form-control-sm']) !!}
                                 </div>
                             </div>
                         </div>
@@ -156,24 +156,21 @@
         @endif
 
         $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $('#categories').change(function () {
 
                 $('#services').attr('disabled', false);
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+
                 var id = $(this).val();
                 var url = "{{ route('admin.fetch.services') }}";
 
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        id: id,
-                    },
-                    success: function (data) {
+                $.post(url, {id: id})
+                    .done(function (data) {
                         var services = data.services;
                         let service_dom = $('#services');
                         service_dom.children().remove()
@@ -182,8 +179,9 @@
                                 .attr("value", key)
                                 .text(value));
                         });
-                    },
-                });
+                    }).fail(function () {
+                    alert("error");
+                })
             });
         });
     </script>

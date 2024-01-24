@@ -9,13 +9,17 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type','status'];
+    protected $fillable = ['type', 'status'];
 
     protected $attributes = [
-        'type' => 'Unknown',
+        'type'   => 'Unknown',
         'status' => 'Unknown',
     ];
 
     protected $table = 'categories';
 
+    public static function getList()
+    {
+        return ['' => 'Select Category'] + self::pluck('type', 'id')->toArray();
+    }
 }

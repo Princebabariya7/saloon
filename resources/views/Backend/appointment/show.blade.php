@@ -1,3 +1,4 @@
+@php use App\Models\Category; @endphp
 @extends('Backend.layout.index')
 @section("title")
     Appointment View
@@ -24,12 +25,11 @@
                         <h3 class="card-title text-bold">Appointment</h3>
                     </div>
                     <div class="container">
-
                         <table class="table">
                             <tbody>
                             <tr>
                                 <td>Category:</td>
-                                <td>{{ $appointment->category->type }}</td>
+                                <td>{{Category::find($appointment->service_id)->type }}</td>
                             </tr>
                             <tr>
                                 <td>Service:</td>

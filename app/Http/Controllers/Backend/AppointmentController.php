@@ -31,7 +31,7 @@ class AppointmentController extends Controller
 
     public function create()
     {
-        $category = Category::pluck('type', 'id')->toArray();
+        $category = Category::getList();
         return view('Backend.appointment.appointment_form')->with('editMode', false)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('category', $category);
@@ -113,17 +113,31 @@ class AppointmentController extends Controller
 
     public function fetchServices()
     {
-        $service = [];
-
-        if (request('id'))
+        try
         {
-            $service = Service::whereIn('category_id', request('id'))->pluck('name', 'id')->toArray();
-        }
 
-        return response()->json(
-            [
-                'status'   => true,
-                'services' => $service
-            ], 200);
+            $service = [];
+
+            if (request('id'))
+            {
+                $service = Service::where('category_id', request('id'))->pluck('name', 'id')->toArray();
+            }
+            return response()->json(
+                [
+                    'status'   => true,
+                    'services' => $service,
+                    'message'  => ''
+                ], 200);
+
+
+        }
+        catch (\Exception $e)
+        {
+            return response()->json(
+                [
+                    'status'  => false,
+                    'message' => $e->getMessage()
+                ], 400);
+        }
     }
 }
