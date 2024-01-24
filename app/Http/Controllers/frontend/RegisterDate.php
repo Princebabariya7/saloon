@@ -25,19 +25,20 @@ class RegisterDate extends Controller
         try
         {
             User::create([
-                'firstname'  => $request->firstname,
-                'lastname'   => $request->lastname,
-                'email'      => $request->email,
-                'mobile'     => $request->number,
-                'password'   => Hash::make($request->password),
-                'gender'     => $request->gender == 'male' ? 'm' : 'f',
-                'dob'        => Carbon::create($request->date)->format('Y-m-d'),
-                'address'    => $request->address,
-                'city'       => $request->city,
-                'zipcode'    => $request->zipcode,
-                'state'      => $request->state,
-                'updated_at' => now(),
-                'created_at' => now(),
+                'firstname'   => $request->firstname,
+                'lastname'    => $request->lastname,
+                'email'       => $request->email,
+                'mobile'      => $request->number,
+                'password'    => Hash::make($request->password),
+                'gender'      => $request->gender == 'male' ? 'm' : 'f',
+                'dob'         => Carbon::create($request->date)->format('Y-m-d'),
+                'address'     => $request->address,
+                'city'        => $request->city,
+                'zipcode'     => $request->zipcode,
+                'state'       => $request->state,
+                'user_status' => 'user',
+                'updated_at'  => now(),
+                'created_at'  => now(),
             ]);
             session()->put('registerMsg', 'you are successfully registered');
             return view('frontend.sign_in.login');

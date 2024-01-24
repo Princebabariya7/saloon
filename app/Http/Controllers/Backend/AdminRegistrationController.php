@@ -40,6 +40,7 @@ class AdminRegistrationController extends Controller
             'lastname'   => $request->lastname,
             'email'      => $request->email,
             'password'   => Hash::make($request->password),
+            'user_status'   => 'admin',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
