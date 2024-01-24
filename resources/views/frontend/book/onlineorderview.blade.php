@@ -20,7 +20,7 @@
                         <div class="row  justify-content-between px-3 pt-3">
                             <div class=" col-md-2">
                                 <div class="input-group pb-2">
-                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','placeholder' => 'Search','autocomplete' =>'off']) !!}
+                                    {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','placeholder' => 'Search','autocomplete' =>'off']) !!}
                                     <div class="input-group-append">
                                         <button class="btn btn-sm btn-secondary search-btn" type="submit">
                                             <i class="fas fa-search"></i></button>
@@ -153,7 +153,7 @@
             @if (\Session::has('update'))
             toastr.success('your order has been updated');
             {{\Session::forget('update')}}
-            @endif
+                @endif
         });
     </script>
 @endsection
