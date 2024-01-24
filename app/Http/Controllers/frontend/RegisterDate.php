@@ -19,6 +19,7 @@ class RegisterDate extends Controller
         $register = Register::all();
         return view('frontend.sign_in.index', compact('register'));
     }
+
     public function store(RegisterRequest $request)
     {
         try
@@ -31,17 +32,18 @@ class RegisterDate extends Controller
                 'password'   => Hash::make($request->password),
                 'gender'     => $request->gender == 'male' ? 'm' : 'f',
                 'dob'        => Carbon::create($request->date)->format('Y-m-d'),
-                'address'     => $request->address,
-                'city'     => $request->city,
-                'zipcode'     => $request->zipcode,
-                'state'     => $request->state,
+                'address'    => $request->address,
+                'city'       => $request->city,
+                'zipcode'    => $request->zipcode,
+                'state'      => $request->state,
                 'updated_at' => now(),
                 'created_at' => now(),
             ]);
-            session()->put('registerMsg','you are successfully registered');
+            session()->put('registerMsg', 'you are successfully registered');
             return view('frontend.sign_in.login');
         }
-        catch (\Exception $e){
+        catch (\Exception $e)
+        {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
@@ -53,8 +55,16 @@ class RegisterDate extends Controller
             $credit = $request->only('email', 'password');
             if (Auth::attempt($credit))
             {
-                session()->put('msg','your are login');
-                return redirect()->route('home');
+                if (auth()->user()->user_status == "user")
+                {
+                    session()->put('msg', 'your are login');
+                    return redirect()->route('home');
+                }
+                else
+                {
+                    session()->put('msg', 'You Are Logged in');
+                    return redirect()->route('dashboard.index');
+                }
             }
             else
             {
@@ -74,7 +84,7 @@ class RegisterDate extends Controller
             $user           = User::whereEmail($request->email)->first();
             $user->password = Hash::make($request->input('password'));
             $user->update();
-            session()->put('msg','your password has been changed');
+            session()->put('msg', 'your password has been changed');
             return view('frontend.sign_in.login');
         }
         catch (\Exception $e)
