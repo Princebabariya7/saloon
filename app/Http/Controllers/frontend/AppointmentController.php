@@ -21,7 +21,7 @@ class AppointmentController extends Controller
         {
             return $query->where(function ($query) use ($search)
             {
-                $query->orWhere('name', 'LIKE', '%' . $search . '%')->orWhere('categories', 'LIKE', '%' . $search . '%');
+                $query->orWhere('service_id', 'LIKE', '%' . $search . '%');
             });
         })->when($type, function ($query) use ($type)
         {
