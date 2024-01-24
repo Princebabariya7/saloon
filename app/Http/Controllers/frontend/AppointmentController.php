@@ -12,21 +12,42 @@ use Illuminate\Support\Carbon;
 
 class AppointmentController extends Controller
 {
+//    public function index(Request $request)
+//    {
+//        $search = $request->input('search', '');
+//        $type   = $request->input('type', '');
+//
+//        $orders = Appointment::with('services')->when($search, function ($query) use ($search)
+//        {
+//            return $query->where(function ($query) use ($search)
+//            {
+//                $query->orWhere('service_id', 'LIKE', '%' . $search . '%');
+//            });
+//        })->when($type, function ($query) use ($type)
+//        {
+//            return $query->where('type', $type);
+//        })->where('user_id', '=', auth()->user()->id)->paginate(5);
+//        return view('frontend.book.onlineorderview')->with('orders', $orders);
+//    }
     public function index(Request $request)
     {
         $search = $request->input('search', '');
-        $type   = $request->input('type', '');
+        $type = $request->input('type', '');
 
-        $orders = Appointment::with('services')->when($search, function ($query) use ($search)
-        {
-            return $query->where(function ($query) use ($search)
-            {
-                $query->orWhere('service_id', 'LIKE', '%' . $search . '%');
-            });
-        })->when($type, function ($query) use ($type)
-        {
-            return $query->where('type', $type);
-        })->where('user_id', '=', auth()->user()->id)->paginate(5);
+        $orders = Appointment::with('services')
+            ->when($search, function ($query) use ($search) {
+                return $query->where(function ($query) use ($search) {
+                    $query->orWhereHas('services', function ($query) use ($search) {
+                        $query->where('name', 'LIKE', '%' . $search . '%');
+                    });
+                });
+            })
+            ->when($type, function ($query) use ($type) {
+                return $query->where('type', $type);
+            })
+            ->where('user_id', '=', auth()->user()->id)
+            ->paginate(5);
+
         return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
