@@ -142,6 +142,7 @@
                 }
             });
 
+
             $('#categories').change(function () {
 
                 $('#services').attr('disabled', false);
@@ -163,6 +164,11 @@
                     alert("error");
                 })
             });
+                @if($editMode)
+            {
+                $('#categories').trigger('change')
+            }
+            @endif
         });
     </script>
 @endsection
