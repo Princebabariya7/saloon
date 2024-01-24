@@ -68,6 +68,12 @@
                             <thead>
                             <tr>
                                 <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
                                     Category
                                 </th>
                                 <th>
@@ -91,6 +97,12 @@
                                 <tbody>
                                 @foreach($appointments as $appointment)
                                     <tr>
+                                        <td>
+                                            {{\App\Models\User::find($appointment->user_id)->firstname}}
+                                        </td>
+                                        <td>
+                                            {{\App\Models\User::find($appointment->user_id)->lastname}}
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.appointment.edit',$appointment->id)}}">
                                                 {{Category::find($appointment->services->category_id)->type}}
