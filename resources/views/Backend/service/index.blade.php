@@ -110,6 +110,7 @@
                                         </td>
                                         <td>
                                             {{$service->duration}}
+                                            <span>Hr</span>
                                         </td>
                                         <td class="project-state">
 
