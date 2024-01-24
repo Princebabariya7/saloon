@@ -1,4 +1,4 @@
-@php use App\Models\Category; @endphp
+@php use App\Models\Category;use App\Models\Service; @endphp
 @extends('Backend.layout.index')
 @section("title")
     Appointment View
@@ -29,7 +29,7 @@
                             <tbody>
                             <tr>
                                 <td>Category:</td>
-                                <td>{{Category::find($appointment->service_id)->type }}</td>
+                                <td>{{Category::find(Service::find($appointment->service_id)->category_id)->type}}</td>
                             </tr>
                             <tr>
                                 <td>Service:</td>
