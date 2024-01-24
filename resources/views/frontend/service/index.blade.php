@@ -16,8 +16,8 @@
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Salon Services</p>
-                <h2>Best Salon and Barber Services for You</h2>
+                <p>Our Saloon Services</p>
+                <h2>Best Saloon and Barber Services for You</h2>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -28,7 +28,7 @@
                         <h3>Hair Cut</h3>
                         <p>
                             A haircut is what a barber does when he trims your hair with scissors. You might decide it's
-                            time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
+                            time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Saloons
                             for a haircut. </p>
                     </div>
                 </div>

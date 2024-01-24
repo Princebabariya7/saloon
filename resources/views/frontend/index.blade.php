@@ -11,7 +11,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div class="hero-text">
                         <h1>Welcome To Hairck Saloon</h1>
-                        <p> Welcome to Hairck Saloon, where beauty meets sophistication. Our salon is a haven of
+                        <p> Welcome to Hairck Saloon, where beauty meets sophistication. Our Saloon is a haven of
                             elegance
                             and expertise, dedicated to delivering the ultimate in grooming and pampering
                             experiences. </p>
@@ -43,14 +43,14 @@
                         <h2>25 Years Experience</h2>
                     </div>
                     <div class="about-text">
-                        <p> Harick Salon is an embodiment of sophistication and skill, offering a refined environment
+                        <p> Harick Saloon is an embodiment of sophistication and skill, offering a refined environment
                             where
                             clients can access top-notch hairstyling, skincare, and wellness services. Our team of
                             highly
                             trained professionals is dedicated to enhancing your natural beauty while prioritizing the
                             well-being of your hair and skin. </p>
 
-                        <p> At Harick Salon, we believe in the power of nature. We exclusively use natural products to
+                        <p> At Harick Saloon, we believe in the power of nature. We exclusively use natural products to
                             ensure that every treatment not only leaves you looking stunning but also promotes the
                             long-term
                             health and radiance of your hair and skin. Our commitment to natural ingredients reflects
@@ -68,8 +68,8 @@
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Salon Services</p>
-                <h2>Best Salon and Barber Services for You</h2>
+                <p>Our Saloon Services</p>
+                <h2>Best Saloon and Barber Services for You</h2>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -79,7 +79,7 @@
                         </div>
                         <h3>Hair Cut</h3>
                         <p> A haircut is what a barber does when he trims your hair with scissors. You might decide it's
-                            time for a haircut when your bangs are hanging in your eyes. Some people go to fancy salons
+                            time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Saloons
                             for
                             a haircut.</p>
                     </div>
@@ -166,7 +166,7 @@
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
 
                     <p>"I've been a loyal customer of Hairck Saloon All Boys for years, and I can confidently say it's
-                        the best men's salon in town. The attention to detail and precision in their haircuts is
+                        the best men's Saloon in town. The attention to detail and precision in their haircuts is
                         unmatched. The staff is professional, and the ambiance is comfortable. I always leave feeling
                         rejuvenated and looking sharp. Highly recommend!" </p>
                     <h2>adam vice</h2>
@@ -176,7 +176,7 @@
 
                     <p>"Hairck Saloon All Boys has consistently exceeded my expectations. The stylists are not only
                         skilled but also attentive to my preferences. Whether I want a classic look or something more
-                        contemporary, they always deliver. The salon has a cool vibe, and the personalized service makes
+                        contemporary, they always deliver. The Saloon has a cool vibe, and the personalized service makes
                         me feel like a valued client. I wouldn't consider going anywhere else for my grooming
                         needs." </p>
                     <h2>john doe</h2>

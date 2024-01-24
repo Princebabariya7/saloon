@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="footer-contact">
-                    <h2>Salon Address</h2>
+                    <h2>Saloon Address</h2>
                     <address>
                         <i class="fas fa-map-marker-alt pr-1"></i>
                              Shop No.5, Hill Town complex,<br>
