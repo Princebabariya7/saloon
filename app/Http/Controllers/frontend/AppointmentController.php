@@ -79,7 +79,7 @@ class AppointmentController extends Controller
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
             ->with('category_id', (Service::find($orders->service_id)->category_id))
-            ->with('date', (Carbon::create($orders->appointment_time)->format('m-d-y H:i:s')))
+            ->with('date', Carbon::create($orders->date)->format('m-d-y H:i:s'))
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service);
