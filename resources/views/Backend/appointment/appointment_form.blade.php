@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label for="inputStatus">Category</label>
                                 <div class="select2-primary">
-                                    {!! Form::select('categories[]', $category,null , ['id'=>'categories', 'class' => 'form-control form-control-sm']) !!}
+                                    {!! Form::select('categories[]', $category, ($editMode) ? $category_id : null , ['id'=>'categories', 'class' => 'form-control form-control-sm']) !!}
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label for="inputStatus">Service</label>
                                 <div class="select2-primary">
-                                    {!! Form::select('service_id[]', [],null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
+                                    {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
                                 </div>
                             </div>
                         </div>
@@ -183,6 +183,10 @@
                     alert("error");
                 })
             });
+
+            @if($editMode)
+            $('#categories').trigger('change')
+            @endif
         });
     </script>
 @endsection

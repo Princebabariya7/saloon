@@ -71,6 +71,8 @@ class AppointmentController extends Controller
 
         return view('Backend.appointment.appointment_form')
             ->with('appointment', $appointment)
+            ->with('service_id', $appointment->service_id)
+            ->with('category_id', (Service::find($appointment->service_id)->category_id))
             ->with('type', $appointment->type)
             ->with('date', Carbon::create($appointment->date)->format('m-d-y H:i:s'))
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
@@ -81,15 +83,17 @@ class AppointmentController extends Controller
 
     public function update(AppointmentUpdateRequest $request, $id)
     {
-        $dateTime                = Carbon::create($request->date)->format('Y-m-d H:i:s');
-        $appointment             = Appointment::find($id);
-        $appointment->categories = $request->input('categories');
-        $appointment->service_id = $request->input('service_id');
-        $appointment->type       = $request->input('type');
-        $appointment->date       = $dateTime;
-        $appointment->status     = $request->input('status');
-        $appointment->update();
+        $appointment = Appointment::find($id);
 
+        foreach (request('service_id') as $serviceId)
+        {
+            $dateTime                = Carbon::create($request->date)->format('Y-m-d H:i:s');
+            $appointment->service_id = $serviceId;
+            $appointment->type       = $request->input('type');
+            $appointment->date       = $dateTime;
+            $appointment->status     = $request->input('status');
+        }
+        $appointment->update();
         session()->put('update', 'data update');
         return redirect(route('admin.appointment.index'));
     }
