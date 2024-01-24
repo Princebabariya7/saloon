@@ -37,6 +37,7 @@
                         <table class="table table-striped table-sm ordertable">
                             <thead>
                             <tr>
+                                <th scope="col">Name</th>
                                 <th scope="col">Categories</th>
                                 <th scope="col">Service</th>
                                 <th scope="col">Address</th>
@@ -52,6 +53,7 @@
                                 <tbody>
                                 @foreach($orders as $order)
                                     <tr>
+                                        <td>{{\App\Models\User::find($order->user_id)->firstname}}</td>
                                         <td>{{Category::find($order->services->category_id)->type}}</td>
                                         <td>{{$order->services->name}}</td>
                                         <td>{{auth()->user()->address}}</td>
