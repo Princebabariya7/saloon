@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-2">
-                                {!! Form::select('type',[''=>'Please Select' ,'Appointment' => 'Appointment','Order' => 'Order'], request('type'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
+                                {!! Form::select('type',[''=>'Please Select' ,'Appointment' => 'Appointment','HomeService' => 'HomeService'], request('type'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </div>
                         </div>
                         {!! Form::close() !!}

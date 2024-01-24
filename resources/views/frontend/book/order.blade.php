@@ -51,8 +51,8 @@
                             <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            {{ Form::radio('type', 'Order', false, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
-                            <label class="form-check-label ml-2" for="inlineRadio2">Order</label>
+                            {{ Form::radio('type', 'HomeService', false, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
+                            <label class="form-check-label ml-2" for="inlineRadio2">HomeService</label>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ class DashboardController extends Controller
     public function index()
     {
         $appointmentCount = Appointment::where('type', 'Appointment')->count();
-        $orderCount = Appointment::where('type', 'Order')->count();
+        $orderCount = Appointment::where('type', 'HomeService')->count();
         $userCount = User::count();
 
         return view('Backend.index', [
@@ -28,7 +28,7 @@ class DashboardController extends Controller
 
     public function orderDetails()
     {
-        $orders = Appointment::where('type', 'Order')->paginate(10);
+        $orders = Appointment::where('type', 'HomeService')->paginate(10);
         return view('Backend.appointment.index')->with('appointments', $orders);
     }
 }

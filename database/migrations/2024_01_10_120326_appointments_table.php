@@ -11,7 +11,7 @@ class AppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table)
         {
             $table->id();
-            $table->enum('type', ['Appointment', 'Order'])->nullable();
+            $table->enum('type', ['Appointment', 'HomeService'])->nullable();
             $table->dateTime('date');
             $table->enum('status', ['Active', 'Inactive'])->nullable();
             $table->integer('user_id');
