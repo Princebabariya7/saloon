@@ -66,8 +66,7 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category    = Category::pluck('type', 'id')->toArray();
-        $service     = Service::pluck('name', 'id')->toArray();
+        $category = Category::getList();
         $appointment = Appointment::find($id);
 
         return view('Backend.appointment.appointment_form')
@@ -79,8 +78,7 @@ class AppointmentController extends Controller
             ->with('timeSlot', $appointment->time)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true)
-            ->with('category', $category)
-            ->with('service', $service);
+            ->with('category', $category);
     }
 
     public function update(AppointmentUpdateRequest $request, $id)

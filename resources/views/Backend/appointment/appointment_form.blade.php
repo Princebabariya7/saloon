@@ -66,7 +66,11 @@
                             <div class="form-group">
                                 <label for="inputStatus">Service</label>
                                 <div class="select2-primary">
-                                    {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
+                                    @if($editMode)
+                                        {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm',  'disabled'=>true]) !!}
+                                    @else
+                                        {!! Form::select('service_id[]', [],  null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
+                                    @endif
                                 </div>
                             </div>
                         </div>
