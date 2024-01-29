@@ -71,14 +71,9 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="inputStatus">Type</label>
-                                {!! Form::select('type', ['' => 'Select one', 'Appointment' => 'Appointment', 'HomeService' => 'HomeService'], ($editMode) ? $type : null, ['class' => 'form-control custom-select-sm']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Date</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
@@ -90,22 +85,14 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="inputStatus">Status</label>
-                                {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Time Slot</label>
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
                                     {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><i class="fa fa-clock"></i></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -135,8 +122,20 @@
                             </div>
                         </div>
                     </div>
-
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputStatus">Type</label>
+                                {!! Form::select('type', ['' => 'Select one', 'Appointment' => 'Appointment', 'HomeService' => 'HomeService'], ($editMode) ? $type : null, ['class' => 'form-control custom-select-sm']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputStatus">Status</label>
+                                {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

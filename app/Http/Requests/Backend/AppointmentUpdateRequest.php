@@ -19,6 +19,7 @@ class AppointmentUpdateRequest extends FormRequest
             'categories' => 'required',
             'service_id'    => 'required',
             'date'       => 'required',
+            'time'       => 'required',
             'type'       => 'required',
             'status'        => 'required'
 

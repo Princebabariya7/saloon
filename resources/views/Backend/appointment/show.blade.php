@@ -40,8 +40,12 @@
                                 <td>{{$appointment->type}}</td>
                             </tr>
                             <tr>
-                                <td>Date Time:</td>
+                                <td>Date:</td>
                                 <td>{{$appointment->date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Time:</td>
+                                <td>{{$appointment->time}}</td>
                             </tr>
                             <tr>
                                 <td>Status:</td>
