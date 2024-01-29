@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Http\Requests\frontend\AppointmentAddRequest;
+use App\Http\Requests\frontend\AppointmentEditRequest;
 use App\Http\Requests\frontend\OnlineorderEditRequest;
 use App\Http\Requests\frontend\OnlineorderRequest;
 use App\Models\Category;
@@ -42,7 +44,7 @@ class AppointmentController extends Controller
             ->with('category', $category);
     }
 
-    public function store(OnlineorderRequest $request)
+    public function store(AppointmentAddRequest $request)
     {
         try
         {
@@ -87,7 +89,7 @@ class AppointmentController extends Controller
             ->with('service', $service);
     }
 
-    public function update(OnlineorderEditRequest $request, $id)
+    public function update(AppointmentEditRequest $request, $id)
     {
         $orders = Appointment::find($id);
 

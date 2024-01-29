@@ -15,10 +15,11 @@ class AppointmentAddRequest extends FormRequest
     public function rules()
     {
         return [
-            'service' => 'required',
-            'stylist' => 'required',
-            'time'    => 'required',
-            'date'    => 'required'
+            'categories' => 'required',
+            'service_id' => 'required',
+            'type'       => 'required',
+            'time'       => 'required',
+            'date'       => 'required'
         ];
     }
 }
