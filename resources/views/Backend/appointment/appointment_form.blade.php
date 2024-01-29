@@ -148,11 +148,6 @@
     <script>
         $('.select2').select2()
 
-        // //Date and time picker
-        // $('#reservationdatetime').datetimepicker({
-        //     icons: {time: 'far fa-clock'},
-        //     minDate: moment(),
-        // });
         //Date picker
         $('#reservationdate').datetimepicker({
             format: 'L',
