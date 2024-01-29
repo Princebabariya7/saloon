@@ -37,50 +37,26 @@ class AppointmentController extends Controller
             ->with('category', $category);
     }
 
-//    public function store(AppointmentStoreRequest $request)
-//    {
-//        foreach (request('service_id') as $serviceId)
-//        {
-//            Appointment::create([
-//                'service_id' => $serviceId,
-//                'type'       => $request->type,
-//                'date'       => Carbon::create($request->date)->format('Y-m-d'),
-//                'time'       => $request->time,
-//                'user_id'    => auth()->user()->id,
-//                'status'     => $request->status,
-//                'updated_at' => now(),
-//                'created_at' => Carbon::now(),
-//            ]);
-//        }
-//
-//        session()->put('add', 'data add');
-//        return redirect(route('admin.appointment.index'));
-//
-//    }
     public function store(AppointmentStoreRequest $request)
     {
         foreach (request('service_id') as $serviceId)
         {
-            // Extract start time from the time range string
-            $timeRange = explode(' - ', $request->time);
-            $startTime = Carbon::createFromFormat('h:i A', $timeRange[0])->format('H:i:s');
-
             Appointment::create([
                 'service_id' => $serviceId,
                 'type'       => $request->type,
-                'date'       => Carbon::createFromFormat('m/d/Y', $request->date)->format('Y-m-d'),
-                'time'       => $startTime,
+                'date'       => Carbon::create($request->date)->format('Y-m-d'),
+                'time'       => $request->time,
                 'user_id'    => auth()->user()->id,
                 'status'     => $request->status,
                 'updated_at' => now(),
-                'created_at' => now(),
+                'created_at' => Carbon::now(),
             ]);
         }
 
         session()->put('add', 'data add');
         return redirect(route('admin.appointment.index'));
-    }
 
+    }
 
     public function show($id)
     {
@@ -99,8 +75,7 @@ class AppointmentController extends Controller
             ->with('service_id', $appointment->service_id)
             ->with('category_id', (Service::find($appointment->service_id)->category_id))
             ->with('type', $appointment->type)
-            ->with('date', Carbon::create($appointment->date)->format('Y-m-d'))
-            ->with('time', $appointment->time)
+            ->with('date', Carbon::create($appointment->date)->format('m-d-y H:i:s'))
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true)
             ->with('category', $category)
@@ -113,7 +88,7 @@ class AppointmentController extends Controller
 
         foreach (request('service_id') as $serviceId)
         {
-            $dateTime                = Carbon::create($request->date)->format('Y-m-d');
+            $dateTime                = Carbon::create($request->date)->format('Y-m-d H:i:s');
             $appointment->service_id = $serviceId;
             $appointment->type       = $request->input('type');
             $appointment->date       = $dateTime;
