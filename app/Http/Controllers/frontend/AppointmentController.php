@@ -4,8 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
-use App\Http\Requests\frontend\OnlineorderEditRequest;
-use App\Http\Requests\frontend\OnlineorderRequest;
 use App\Models\Category;
 use App\Models\Appointment;
 use App\Models\Service;
@@ -18,17 +16,21 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search', '');
-        $type = $request->input('type', '');
+        $type   = $request->input('type', '');
 
         $orders = Appointment::with('services')
-            ->when($search, function ($query) use ($search) {
-                return $query->where(function ($query) use ($search) {
-                    $query->orWhereHas('services', function ($query) use ($search) {
+            ->when($search, function ($query) use ($search)
+            {
+                return $query->where(function ($query) use ($search)
+                {
+                    $query->orWhereHas('services', function ($query) use ($search)
+                    {
                         $query->where('name', 'LIKE', '%' . $search . '%');
                     });
                 });
             })
-            ->when($type, function ($query) use ($type) {
+            ->when($type, function ($query) use ($type)
+            {
                 return $query->where('type', $type);
             })
             ->where('user_id', '=', auth()->user()->id)

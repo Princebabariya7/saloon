@@ -23,12 +23,13 @@ class RegisterRequest extends FormRequest
             'email'      => 'required|email',
             'password'   => 'required',
             'repassword' => 'required|same:password',
-            'address'          => 'required',
-            'city'             => 'required',
-            'state'            => 'required',
-            'zipcode'          => 'required|numeric|digits:6',
+            'address'    => 'required',
+            'city'       => 'required',
+            'state'      => 'required',
+            'zipcode'    => 'required|numeric|digits:6',
         ];
     }
+
     public function messages()
     {
         return [

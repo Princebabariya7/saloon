@@ -166,13 +166,13 @@
                         $.each(services, function (key, value) {
                             service_dom.append($("<option></option>")
                                 .attr("value", key)
-                                .addClass('options-'+key)
+                                .addClass('options-' + key)
                                 .text(value));
 
                             @if($editMode)
                             if (key == {{$service_id}})
                             {
-                                service_dom.find('.options-'+key).attr('selected', 'selected')
+                                service_dom.find('.options-' + key).attr('selected', 'selected')
                             }
                             @endif
                         });
