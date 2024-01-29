@@ -49,10 +49,10 @@
 
             <div class="form-group">
                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    {!! Form::text('date',null, ['class' => 'form-control datetimepicker-input item', 'data-target' => '#reservationdate' ,'placeholder'=> 'DOB' , 'autocomplete' =>'off']) !!}
+                    {!! Form::text('date',null, ['class' => 'form-control','id'=>'datepicker','placeholder'=> 'DOB' , 'autocomplete' =>'off']) !!}
                     <div class="input-group-append" data-target="#reservationdate"
                          data-toggle="datetimepicker">
-                        <div class="input-group-text item"><i class="fa fa-calendar"></i></div>
+                        <div class="input-group-text item" id="calendar-icon"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>
             </div>
@@ -126,20 +126,14 @@
 @section('custom_js')
     <script>
         $(function () {
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('yyyy/mm/dd', {
-                'placeholder': 'yyyy/mm/dd'
-            })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('yyyy/mm/dd', {
-                'placeholder': 'yyyy/mm/dd'
-            })
-            //Money Euro
-            $('[data-mask]').inputmask()
-
             //Date picker
-            $('#reservationdate').datetimepicker({
-                format: 'L'
+            $('#datepicker').datepicker({
+                startDate: '01-01-1900',
+                endDate: "-10y",
+                todayHighlight: true
+            });
+            $('#calendar-icon').click(function () {
+                $('#datepicker').datepicker('show');
             });
         });
     </script>

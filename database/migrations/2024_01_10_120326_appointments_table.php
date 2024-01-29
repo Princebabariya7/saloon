@@ -13,6 +13,7 @@ class AppointmentsTable extends Migration
             $table->id();
             $table->enum('type', ['Appointment', 'HomeService'])->nullable();
             $table->dateTime('date');
+            $table->dateTime('time');
             $table->enum('status', ['Active', 'Inactive'])->nullable();
             $table->integer('user_id');
             $table->integer('service_id');

@@ -33,10 +33,15 @@
                     <div class="col-md-12 service-select">
                         <div class="form-group">
                             <label>Select service</label>
-                            <div class="select2-secondary">
-                                {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control  custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
-
-                            </div>
+                            @if($editMode)
+                                <div class="select2-secondary">
+                                    {!! Form::select('service_id[]', [],   $service_id, ['id'=>'services', 'class' => 'form-control', 'disabled'=>true]) !!}
+                                </div>
+                            @else
+                                <div class="select2-secondary">
+                                    {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control  custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

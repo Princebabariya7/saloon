@@ -10,11 +10,12 @@ class Appointment extends Model
 {
     use HasFactory, Sortable;
 
-    protected $fillable = ['type', 'date', 'status', 'user_id', 'service_id'];
+    protected $fillable = ['type', 'date', 'time', 'status', 'user_id', 'service_id'];
 
     protected $attributes = [
         'type'       => 'not selected',
         'date'       => 'not selected',
+        'time'       => 'not selected',
         'status'     => 'Unknown',
     ];
 
