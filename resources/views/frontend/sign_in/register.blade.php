@@ -107,7 +107,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="zipcode">Zipcode</label>
-                        {!! Form::text('zipcode',  null, ['class' => 'form-control','style'=>'width: 100%;','autocomplete'=>'off']) !!}
+                        {!! Form::text('zipcode',  null, ['class' => 'form-control','style'=>'width: 100%;','autocomplete'=>'off', 'maxlength'=>'6    ']) !!}
                     </div>
                 </div>
             </div>
