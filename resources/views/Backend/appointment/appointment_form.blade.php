@@ -93,7 +93,7 @@
                             <div class="form-group">
                                 <label for="inputStatus">Time Slot</label>
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
-                                    {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
+                                    {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
                                     <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-clock"></i></div>
                                     </div>
