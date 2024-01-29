@@ -133,14 +133,11 @@
             //Initialize Select2 Elements
             $('.select2').select2()
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            })
             //Date picker
             $('#reservationdate').datetimepicker({
                 format: 'L',
                 minDate: moment(),
+
             });
         })
 
@@ -150,7 +147,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
 
             $('#categories').change(function () {
 
@@ -167,18 +163,31 @@
                         $.each(services, function (key, value) {
                             service_dom.append($("<option></option>")
                                 .attr("value", key)
+                                .addClass('options-'+key)
                                 .text(value));
+
+                            @if($editMode)
+                            if (key == {{$service_id}})
+                            {
+                                service_dom.find('.options-'+key).attr('selected', 'selected')
+                            }
+                            @endif
                         });
                     }).fail(function () {
                     alert("error");
                 })
             });
-                @if($editMode)
-            {
-                $('#categories').trigger('change')
-            }
+
+            @if($editMode)
+            $('#categories').trigger('change')
             @endif
+
+            $('#appointmentTime').on('click', function () {
+                // Open the time slot modal
+                $('#timeSlotModal').modal('show');
+            });
         });
+
         function selectTimeSlot(timeSlot)
         {
             // Set the selected time slot to the input field

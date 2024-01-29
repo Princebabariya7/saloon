@@ -90,6 +90,7 @@ class AppointmentController extends Controller
             $dateTime                = Carbon::create($request->date)->format('Y-m-d');
             $appointment->service_id = $serviceId;
             $appointment->type       = $request->input('type');
+            $appointment->time       = $request->input('time');
             $appointment->date       = $dateTime;
             $appointment->status     = $request->input('status');
         }

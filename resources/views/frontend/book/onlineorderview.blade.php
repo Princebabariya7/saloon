@@ -40,10 +40,6 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Categories</th>
                                 <th scope="col">Service</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">City</th>
-                                <th scope="col">State</th>
-                                <th scope="col">Zipcode</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Time</th>
@@ -57,10 +53,6 @@
                                         <td>{{\App\Models\User::find($order->user_id)->firstname}}</td>
                                         <td>{{Category::find($order->services->category_id)->type}}</td>
                                         <td>{{$order->services->name}}</td>
-                                        <td>{{auth()->user()->address}}</td>
-                                        <td>{{auth()->user()->city}}</td>
-                                        <td>{{auth()->user()->state}}</td>
-                                        <td>{{auth()->user()->zipcode}}</td>
                                         <td>{{$order->type}}</td>
                                         <td>{{$order->date}}</td>
                                         <td>{{$order->time}}</td>
