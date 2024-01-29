@@ -80,17 +80,17 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Date and Time</label>
-                                <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                    {!! Form::text('date',($editMode)?$date:null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdatetime' , 'autocomplete' => 'off']) !!}
-                                    <div class="input-group-append" data-target="#reservationdatetime"
-                                         data-toggle="datetimepicker">
+                                <label>Date</label>
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    {!! Form::text('date',($editMode)?$date:null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
+
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="inputStatus">Status</label>
@@ -166,10 +166,16 @@
     <script>
         $('.select2').select2()
 
-        //Date and time picker
-        $('#reservationdatetime').datetimepicker({
-            icons: {time: 'far fa-clock'},
+        // //Date and time picker
+        // $('#reservationdatetime').datetimepicker({
+        //     icons: {time: 'far fa-clock'},
+        //     minDate: moment(),
+        // });
+        //Date picker
+        $('#reservationdate').datetimepicker({
+            format: 'L',
             minDate: moment(),
+
         });
 
 
