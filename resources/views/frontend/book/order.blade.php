@@ -17,7 +17,7 @@
             @else
                 {{ Form::open(['route' => ['online.info.store'], 'method'=>'post']) }}
             @endif
-            <div class="ap_form>">
+            <div class="ap_form">
                 <div class="row">
                     <div class="cate col-md-12">
                         <div class="form-group">
@@ -63,13 +63,46 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Preferred booking date and time</label>
+                    <label>Preferred booking date</label>
 
-                    <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                        {!! Form::text('date', ($editMode) ? $date : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdatetime','autocomplete'=>'off']) !!}
-                        <div class="input-group-append" data-target="#reservationdatetime"
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                        {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
+                        <div class="input-group-append" data-target="#reservationdate"
                              data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputStatus">Time Slot</label>
+                    <div class="input-group date" id="appointmentTime" data-target-input="nearest">
+                        {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control datetimepicker-input', 'data-target' => '#customTimeSlotModal','data-toggle'=>'modal', 'autocomplete' => 'off']) !!}
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-clock"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="customTimeSlotModal" tabindex="-1" role="dialog" aria-labelledby="timeSlotModalLabel" aria-hidden="true">
+
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
+                            </div>
+                            <div class="modal-body">
+                                @php
+                                    $timeSlots = ['9:00 AM - 10:00 AM','10:00 AM - 11:00 AM','11:00 AM - 12:00 PM','12:00 PM - 1:00 PM','1:00 PM - 2:00 PM','2:00 PM - 3:00 PM','3:00 PM - 4:00 PM','4:00 PM - 5:00 PM','5:00 PM - 6:00 PM','6:00 PM - 7:00 PM','7:00 PM - 8:00 PM','8:00 PM - 9:00 PM', ];
+                                @endphp
+                                <ul class="list-group">
+                                    @foreach($timeSlots as $timeSlot)
+                                        <li class="list-group-item" onclick="selectTimeSlot('{{ $timeSlot }}')">
+                                            {{ $timeSlot }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,40 +137,11 @@
             $('.select2bs4').select2({
                 theme: 'bootstrap4'
             })
-
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('Y-m-d', {
-                'placeholder': 'Y-m-d'
-            })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('Y-m-d', {
-                'placeholder': 'Y-m-d'
-            })
-            //Money Euro
-            $('[data-mask]').inputmask()
-
             //Date picker
             $('#reservationdate').datetimepicker({
-                format: 'L'
+                format: 'L',
+                minDate: moment(),
             });
-
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({
-                icons: {
-                    time: 'far fa-clock'
-                }
-            });
-
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'Y-m-d H:i:s'
-                }
-            })
         })
 
         $(document).ready(function () {
@@ -175,5 +179,16 @@
             }
             @endif
         });
+        function selectTimeSlot(timeSlot)
+        {
+            // Set the selected time slot to the input field
+            $('#selectedTimeSlot').val(timeSlot);
+
+            // Set the selected time slot to the hidden field (you can use this hidden field to submit the value to the server)
+            $('#selectedTimeSlotHidden').val(timeSlot);
+
+            // Close the modal
+            $('#timeSlotModal').modal('hide');
+        }
     </script>
 @endsection
