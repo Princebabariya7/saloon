@@ -83,6 +83,9 @@
                                     Date
                                 </th>
                                 <th>
+                                    Time
+                                </th>
+                                <th>
                                     Type
                                 </th>
                                 <th class="text-center">
@@ -113,6 +116,10 @@
                                         </td>
                                         <td>
                                             {{$appointment->date}}
+                                        </td>
+
+                                        <td>
+                                            {{$appointment->time}}
                                         </td>
 
                                         <td>
