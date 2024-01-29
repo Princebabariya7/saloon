@@ -83,7 +83,8 @@
                                 <label>Date</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                     {!! Form::text('date',($editMode)?$date:null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                    <div class="input-group-append" data-target="#reservationdate"
+                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -105,8 +106,6 @@
                                 <label for="inputStatus">Time Slot</label>
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
                                     {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
-                                    <!-- Add a hidden field to store the selected time slot -->
-{{--                                    {!! Form::hidden('selected_time_slot', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlotHidden']) !!}--}}
                                 </div>
                             </div>
                         </div>
@@ -121,25 +120,9 @@
                                         <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <!-- Display static time slots using a loop -->
                                         @php
-                                            // Static array of time slots
-                                            $timeSlots = [
-                                                '9:00 AM - 10:00 AM',
-                                                '10:00 AM - 11:00 AM',
-                                                '11:00 AM - 12:00 PM',
-                                                '12:00 PM - 1:00 PM',
-                                                '1:00 PM - 2:00 PM',
-                                                '2:00 PM - 3:00 PM',
-                                                '3:00 PM - 4:00 PM',
-                                                '4:00 PM - 5:00 PM',
-                                                '5:00 PM - 6:00 PM',
-                                                '6:00 PM - 7:00 PM',
-                                                '7:00 PM - 8:00 PM',
-                                                '8:00 PM - 9:00 PM',
-                                            ];
+                                            $timeSlots = ['9:00 AM - 10:00 AM','10:00 AM - 11:00 AM','11:00 AM - 12:00 PM','12:00 PM - 1:00 PM','1:00 PM - 2:00 PM','2:00 PM - 3:00 PM','3:00 PM - 4:00 PM','4:00 PM - 5:00 PM','5:00 PM - 6:00 PM','6:00 PM - 7:00 PM','7:00 PM - 8:00 PM','8:00 PM - 9:00 PM', ];
                                         @endphp
-
                                         <ul class="list-group">
                                             @foreach($timeSlots as $timeSlot)
                                                 <li class="list-group-item" onclick="selectTimeSlot('{{ $timeSlot }}')">
@@ -224,7 +207,8 @@
             });
         });
 
-        function selectTimeSlot(timeSlot) {
+        function selectTimeSlot(timeSlot)
+        {
             // Set the selected time slot to the input field
             $('#selectedTimeSlot').val(timeSlot);
 
