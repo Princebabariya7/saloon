@@ -46,6 +46,7 @@
                                 <th scope="col">Zipcode</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Date</th>
+                                <th scope="col">Time</th>
                                 <th class="text-right" scope="col">Action</th>
                             </tr>
                             </thead>
@@ -62,6 +63,7 @@
                                         <td>{{auth()->user()->zipcode}}</td>
                                         <td>{{$order->type}}</td>
                                         <td>{{$order->date}}</td>
+                                        <td>{{$order->time}}</td>
                                         <td class="project-actions text-right">
                                             <button type="button"
                                                     class="btn  btn-light border btn-sm dropdown-toggle"

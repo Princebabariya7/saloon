@@ -51,7 +51,8 @@ class AppointmentController extends Controller
                 Appointment::create([
                     'service_id' => $serviceId,
                     'type'       => $request->type,
-                    'date'       => Carbon::createFromFormat('m/d/Y g:i A', $request->date)->format('Y-m-d H:i:s'),
+                    'date'       => Carbon::create($request->date)->format('Y-m-d'),
+                    'time'       => $request->time,
                     'user_id'    => auth()->user()->id,
                     'status'     => 'Active',
                     'updated_at' => now(),
@@ -79,7 +80,8 @@ class AppointmentController extends Controller
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
             ->with('category_id', (Service::find($orders->service_id)->category_id))
-            ->with('date', Carbon::create($orders->date)->format('m-d-y H:i:s'))
+            ->with('date', Carbon::create($orders->date)->format('m-d-Y'))
+            ->with('timeSlot', $orders->time)
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service);
@@ -93,7 +95,8 @@ class AppointmentController extends Controller
         {
             $orders->service_id = $serviceId;
             $orders->type       = $request->input('type');
-            $orders->date       = Carbon::create($request->date)->format('Y-m-d H:i:s');
+            $orders->time       = $request->input('time');
+            $orders->date       = Carbon::create($request->date)->format('Y-m-d');
         }
 
         $orders->update();
