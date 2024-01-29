@@ -75,7 +75,7 @@ class AppointmentController extends Controller
             ->with('service_id', $appointment->service_id)
             ->with('category_id', (Service::find($appointment->service_id)->category_id))
             ->with('type', $appointment->type)
-            ->with('date', Carbon::create($appointment->date)->format('Y-m-d'))
+            ->with('date', Carbon::create($appointment->date)->format('d-m-Y'))
             ->with('timeSlot', $appointment->time)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true)

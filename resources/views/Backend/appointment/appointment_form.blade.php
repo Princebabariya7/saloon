@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <label>Date</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    {!! Form::text('date',($editMode)?$date:null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
+                                    {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
                                     <div class="input-group-append" data-target="#reservationdate"
                                          data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
