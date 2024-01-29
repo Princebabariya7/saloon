@@ -84,7 +84,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="customTimeSlotModal" tabindex="-1" role="dialog" aria-labelledby="timeSlotModalLabel" aria-hidden="true">
+                <div class="modal fade" id="timeSlotModal" tabindex="-1" role="dialog"
+                     aria-labelledby="timeSlotModalLabel"
+                     aria-hidden="true">
 
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
