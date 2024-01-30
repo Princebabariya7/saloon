@@ -95,19 +95,17 @@
                                 <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                             </div>
                             <div class="modal-body">
-                                <form id="timeSlotForm">
-                                    <ul class="list-group">
-                                        @foreach($timeSlots as $key => $timeSlot)
-                                            <li class="list-group-item">
-                                                <label>
-                                                    <input type="radio" name="time-slot" value="{{ $key }}"
-                                                           onclick="selectTimeSlot('{{ $timeSlot }}')">
-                                                    {{ $timeSlot }}
-                                                </label>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </form>
+                                <ul class="list-group">
+                                    @foreach($timeSlots as $key => $timeSlot)
+                                        <li class="list-group-item">
+                                            <label>
+                                                <input type="radio" name="time-slot" value="{{ $key }}"
+                                                       onclick="selectTimeSlot('{{ $timeSlot }}')">
+                                                {{ $timeSlot }}
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
