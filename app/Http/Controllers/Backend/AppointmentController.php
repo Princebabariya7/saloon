@@ -10,6 +10,7 @@ use App\Models\Appointment;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AppointmentController extends Controller
 {
@@ -33,21 +34,7 @@ class AppointmentController extends Controller
     public function create()
     {
         $category  = Category::getList();
-        $timeSlots = [
-            '9_to_10'  => '9:00 AM - 10:00 AM',
-            '10_to_11' => '10:00 AM - 11:00 AM',
-            '11_to_12' => '11:00 AM - 12:00 PM',
-            '12_to_1'  => '12:00 PM - 1:00 PM',
-            '1_to_2'   => '1:00 PM - 2:00 PM',
-            '2_to_3'   => '2:00 PM - 3:00 PM',
-            '3_to_4'   => '3:00 PM - 4:00 PM',
-            '4_to_5'   => '4:00 PM - 5:00 PM',
-            '5_to_6'   => '5:00 PM - 6:00 PM',
-            '6_to_7'   => '6:00 PM - 7:00 PM',
-            '7_to_8'   => '7:00 PM - 8:00 PM',
-            '8_to_9'   => '8:00 PM - 9:00 PM',
-
-        ];
+        $timeSlots = [];
         return view('Backend.appointment.appointment_form')->with('editMode', false)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('category', $category)
@@ -171,5 +158,42 @@ class AppointmentController extends Controller
                     'message' => $e->getMessage()
                 ], 400);
         }
+    }
+
+    public function timeSlot()
+    {
+        $date     = \Illuminate\Support\Carbon::create(\request()->date)->format('Y-m-d');
+        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
+        $slotList = $this->slotList();
+        foreach ($slots as $slot)
+        {
+            if (isset($slotList[$slot]))
+            {
+                unset($slotList[$slot]);
+            }
+        }
+        return response()->json(
+            [
+                'slotHtml' =>  view('Backend.appointment.fetch_timeslot')->with('timeSlots', $slotList)->render(),
+            ], 200);
+
+    }
+
+    public function slotList()
+    {
+        return [
+            '9_to_10'  => '9:00 AM - 10:00 AM',
+            '10_to_11' => '10:00 AM - 11:00 AM',
+            '11_to_12' => '11:00 AM - 12:00 PM',
+            '12_to_1'  => '12:00 PM - 1:00 PM',
+            '1_to_2'   => '1:00 PM - 2:00 PM',
+            '2_to_3'   => '2:00 PM - 3:00 PM',
+            '3_to_4'   => '3:00 PM - 4:00 PM',
+            '4_to_5'   => '4:00 PM - 5:00 PM',
+            '5_to_6'   => '5:00 PM - 6:00 PM',
+            '6_to_7'   => '6:00 PM - 7:00 PM',
+            '7_to_8'   => '7:00 PM - 8:00 PM',
+            '8_to_9'   => '8:00 PM - 9:00 PM',
+        ];
     }
 }

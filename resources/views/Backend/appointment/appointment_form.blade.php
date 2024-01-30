@@ -81,7 +81,7 @@
                             <div class="form-group">
                                 <label>Date</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
+                                    {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control form-control-sm appointment-date datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
                                     <div class="input-group-append" data-target="#reservationdate"
                                          data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -93,7 +93,7 @@
                             <div class="form-group">
                                 <label for="inputStatus">Time Slot</label>
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
-                                    {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
+                                    {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'disabled'=>true]) !!}
                                     <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-clock"></i></div>
                                     </div>
@@ -108,7 +108,7 @@
                                         <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                                     </div>
                                     <div class="modal-body" id="timeSlotModalBody">
-                                        <ul class="list-group">
+                                        <ul class="list-group" id="date-slot">
                                             @foreach($timeSlots as $key => $timeSlot)
                                                 <li class="list-group-item">
                                                     <label>
@@ -209,19 +209,43 @@
                 // Open the time slot modal
                 $('#timeSlotModal').modal('show');
                 // Get the current time
-                var currentTime = moment();
+                // var currentTime = moment();
 
                 // Remove time slots that have already passed
-                $('#timeSlotModalBody li').each(function () {
-                    var timeSlot = $(this).text();
-                    var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
+                // $('#timeSlotModalBody li').each(function () {
+                //     var timeSlot = $(this).text();
+                //     var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
+                //
+                //     if (currentTime.isAfter(slotTime))
+                //     {
+                //         $(this).remove();
+                //     }
+                // });
+            });
+        });
 
-                    if (currentTime.isAfter(slotTime))
-                    {
-                        $(this).remove();
+        $(document).ready(function () {
+            $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
+                $('.appointment_time').attr('disabled', false);
+
+                console.log();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            });
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('admin.fetch.timeslot') }}",
+                    data: {
+                        date: $('.appointment-date').val()
+                    },
+                    success: function (data) {
+                        $('#date-slot').empty().html(data.slotHtml)
+                    },
+                });
+            })
         });
 
         function selectTimeSlot(timeSlot)
