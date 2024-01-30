@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="cate col-md-12">
                         <div class="form-group">
-                            <label>Select categories</label>
+                            <label>Select Categories</label>
                             <div class="select2-secondary">
                                 {!! Form::select('categories[]', $category, ($editMode) ? $category_id : null , ['id'=>'categories', 'class' => 'form-control']) !!}
 
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-12 service-select">
                         <div class="form-group">
-                            <label>Select service</label>
+                            <label>Select Service</label>
                             @if($editMode)
                                 <div class="select2-secondary">
                                     {!! Form::select('service_id[]', [],   $service_id, ['id'=>'services', 'class' => 'form-control', 'disabled'=>true]) !!}
@@ -49,7 +49,7 @@
                 <div class="dropdown-divider"></div>
 
                 <div class="form-group clearfix">
-                    <label>Preferred booking type</label>
+                    <label>Preferred Booking Type</label>
                     <div class="col-md-12 text-center mx-auto">
                         <div class="form-check form-check-inline">
                             {{ Form::radio('type', 'Appointment', false, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Preferred booking date</label>
+                    <label>Preferred Booking Date</label>
 
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
                         {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control appointment-date datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputStatus">Time Slot</label>
+                    <label for="inputStatus">Preferred Booking Slot</label>
                     <div class="input-group date" id="appointmentTime" data-target-input="nearest">
                         {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot ', 'class' => 'form-control appointment_time', 'data-target' => '#customTimeSlotModal','data-toggle'=>'modal', 'autocomplete' => 'off', 'disabled'=>true]) !!}
                         <div class="input-group-append" data-target="#customTimeSlotModal"
@@ -95,7 +95,7 @@
                                 <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                             </div>
                             <div class="modal-body">
-                                <ul class="list-group">
+                                <ul class="list-group ">
                                     @foreach($timeSlots as $key => $timeSlot)
                                         <li class="list-group-item">
                                             <label>
@@ -116,8 +116,8 @@
                 {!! Form::close() !!}
             </div>
             <div class="social-media">
-                <label>after sometime
-                    <br>we send conformation mail</label>
+                <label>After Sometime
+                    <br>We Send Conformation Mail</label>
             </div>
         </div>
     </div>

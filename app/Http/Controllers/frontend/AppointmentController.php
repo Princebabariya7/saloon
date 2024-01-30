@@ -10,6 +10,7 @@ use App\Models\Appointment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\View\View;
 
 class AppointmentController extends Controller
 {
@@ -65,12 +66,11 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
-
         try
         {
             foreach (request('service_id') as $serviceId)
             {
-               $appointment= Appointment::create([
+                $appointment = Appointment::create([
                     'service_id' => $serviceId,
                     'type'       => $request->type,
                     'date'       => Carbon::create($request->date)->format('Y-m-d'),
@@ -81,13 +81,13 @@ class AppointmentController extends Controller
                     'created_at' => Carbon::now(),
                 ]);
 
-            $input =[
-                'date'=> $appointment->date,
-                'slot'=> $request->time_slot,
-                'appointment_id'=>$appointment->id
-            ];
+                $input = [
+                    'date'           => $appointment->date,
+                    'slot'           => $request->time_slot,
+                    'appointment_id' => $appointment->id
+                ];
 
-            AppointmentSlot::create($input);
+                AppointmentSlot::create($input);
             }
 
             session()->put('msg', 'your order has been booked');
@@ -189,10 +189,39 @@ class AppointmentController extends Controller
                 ], 400);
         }
     }
+
     public function timeSlot()
     {
-       $date=  Carbon::create(\request()->date)->format('Y-m-d');
-        $slot = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
-        dd($slot);
+        $date     = Carbon::create(\request()->date)->format('Y-m-d');
+        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
+        $slotList = $this->slotList();
+        foreach ($slots as $slot)
+        {
+            if (isset($slotList[$slot]))
+            {
+                unset($slotList[$slot]);
+            }
+        }
+        dd($slotList);
+//        view('frontend.book.onlineordrfetchtime')->with('timeSlots', $slotList)->render();
+
+    }
+
+    public function slotList()
+    {
+        return [
+            '9_to_10'  => '9:00 AM - 10:00 AM',
+            '10_to_11' => '10:00 AM - 11:00 AM',
+            '11_to_12' => '11:00 AM - 12:00 PM',
+            '12_to_1'  => '12:00 PM - 1:00 PM',
+            '1_to_2'   => '1:00 PM - 2:00 PM',
+            '2_to_3'   => '2:00 PM - 3:00 PM',
+            '3_to_4'   => '3:00 PM - 4:00 PM',
+            '4_to_5'   => '4:00 PM - 5:00 PM',
+            '5_to_6'   => '5:00 PM - 6:00 PM',
+            '6_to_7'   => '6:00 PM - 7:00 PM',
+            '7_to_8'   => '7:00 PM - 8:00 PM',
+            '8_to_9'   => '8:00 PM - 9:00 PM',
+        ];
     }
 }
