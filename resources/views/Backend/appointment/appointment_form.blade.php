@@ -109,6 +109,9 @@
                                     </div>
                                     <div class="modal-body" id="timeSlotModalBody">
                                         <ul class="list-group" id="date-slot">
+                                            @if($timeSlots == null)
+                                                <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please Select Date</h6>
+                                            @endif
                                             @foreach($timeSlots as $key => $timeSlot)
                                                 <li class="list-group-item">
                                                     <label>
