@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\AppointmentStoreRequest;
 use App\Http\Requests\Backend\AppointmentUpdateRequest;
+use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
 use App\Models\Service;
@@ -31,17 +32,33 @@ class AppointmentController extends Controller
 
     public function create()
     {
-        $category = Category::getList();
+        $category  = Category::getList();
+        $timeSlots = [
+            '9_to_10'  => '9:00 AM - 10:00 AM',
+            '10_to_11' => '10:00 AM - 11:00 AM',
+            '11_to_12' => '11:00 AM - 12:00 PM',
+            '12_to_1'  => '12:00 PM - 1:00 PM',
+            '1_to_2'   => '1:00 PM - 2:00 PM',
+            '2_to_3'   => '2:00 PM - 3:00 PM',
+            '3_to_4'   => '3:00 PM - 4:00 PM',
+            '4_to_5'   => '4:00 PM - 5:00 PM',
+            '5_to_6'   => '5:00 PM - 6:00 PM',
+            '6_to_7'   => '6:00 PM - 7:00 PM',
+            '7_to_8'   => '7:00 PM - 8:00 PM',
+            '8_to_9'   => '8:00 PM - 9:00 PM',
+
+        ];
         return view('Backend.appointment.appointment_form')->with('editMode', false)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
-            ->with('category', $category);
+            ->with('category', $category)
+            ->with('timeSlots', $timeSlots);
     }
 
     public function store(AppointmentStoreRequest $request)
     {
         foreach (request('service_id') as $serviceId)
         {
-            Appointment::create([
+            $appointment= Appointment::create([
                 'service_id' => $serviceId,
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
@@ -52,6 +69,14 @@ class AppointmentController extends Controller
                 'created_at' => Carbon::now(),
             ]);
         }
+        $input =[
+            'date'=> $appointment->date,
+            'slot'=> $request->time_slot,
+            'appointment_id'=>$appointment->id
+        ];
+
+        AppointmentSlot::create($input);
+
 
         session()->put('add', 'data add');
         return redirect(route('admin.appointment.index'));
@@ -66,7 +91,7 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category = Category::getList();
+        $category    = Category::getList();
         $appointment = Appointment::find($id);
 
         return view('Backend.appointment.appointment_form')

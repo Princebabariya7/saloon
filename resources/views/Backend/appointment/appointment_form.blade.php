@@ -101,23 +101,21 @@
                             </div>
                         </div>
                         <div class="modal fade" id="timeSlotModal" tabindex="-1" role="dialog"
-                             aria-labelledby="timeSlotModalLabel"
-                             aria-hidden="true">
-
+                             aria-labelledby="timeSlotModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-
                                         <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                                     </div>
-                                    <div class="modal-body">
-                                        @php
-                                            $timeSlots = ['9:00 AM - 10:00 AM','10:00 AM - 11:00 AM','11:00 AM - 12:00 PM','12:00 PM - 1:00 PM','1:00 PM - 2:00 PM','2:00 PM - 3:00 PM','3:00 PM - 4:00 PM','4:00 PM - 5:00 PM','5:00 PM - 6:00 PM','6:00 PM - 7:00 PM','7:00 PM - 8:00 PM','8:00 PM - 9:00 PM', ];
-                                        @endphp
+                                    <div class="modal-body" id="timeSlotModalBody">
                                         <ul class="list-group">
-                                            @foreach($timeSlots as $timeSlot)
-                                                <li class="list-group-item" onclick="selectTimeSlot('{{ $timeSlot }}')">
-                                                    {{ $timeSlot }}
+                                            @foreach($timeSlots as $key => $timeSlot)
+                                                <li class="list-group-item">
+                                                    <label>
+                                                        <input type="radio" name="time_slot" value="{{ $key }}"
+                                                               onclick="selectTimeSlot('{{ $timeSlot }}')">
+                                                        {{ $timeSlot }}
+                                                    </label>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -188,13 +186,13 @@
                         $.each(services, function (key, value) {
                             service_dom.append($("<option></option>")
                                 .attr("value", key)
-                                .addClass('options-'+key)
+                                .addClass('options-' + key)
                                 .text(value));
 
                             @if($editMode)
                             if (key == {{$service_id}})
                             {
-                                service_dom.find('.options-'+key).attr('selected', 'selected')
+                                service_dom.find('.options-' + key).attr('selected', 'selected')
                             }
                             @endif
                         });
@@ -210,6 +208,19 @@
             $('#appointmentTime').on('click', function () {
                 // Open the time slot modal
                 $('#timeSlotModal').modal('show');
+                // Get the current time
+                var currentTime = moment();
+
+                // Remove time slots that have already passed
+                $('#timeSlotModalBody li').each(function () {
+                    var timeSlot = $(this).text();
+                    var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
+
+                    if (currentTime.isAfter(slotTime))
+                    {
+                        $(this).remove();
+                    }
+                });
             });
         });
 
