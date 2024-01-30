@@ -80,7 +80,7 @@
                         {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot ', 'class' => 'form-control appointment_time', 'data-target' => '#customTimeSlotModal','data-toggle'=>'modal', 'autocomplete' => 'off', 'disabled'=>true]) !!}
                         <div class="input-group-append" data-target="#customTimeSlotModal"
                              data-toggle="modal">
-                            <div class="input-group-text item"><i class="fa fa-clock"></i></div>
+                            <div class="input-group-text item" style="cursor: pointer;"><i class="fa fa-clock"></i></div>
                         </div>
                     </div>
                 </div>

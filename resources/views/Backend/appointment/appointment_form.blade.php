@@ -95,7 +95,7 @@
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
                                     {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'disabled'=>true]) !!}
                                     <div class="input-group-append">
-                                        <div class="input-group-text"><i class="fa fa-clock"></i></div>
+                                        <div class="input-group-text" style="cursor: pointer;"><i class="fa fa-clock"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                     <div class="modal-body" id="timeSlotModalBody">
                                         <ul class="list-group" id="date-slot">
                                             @if($timeSlots == null)
-                                                <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please Select Date</h6>
+                                                <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please  Select Date</h6>
                                             @endif
                                             @foreach($timeSlots as $key => $timeSlot)
                                                 <li class="list-group-item">
