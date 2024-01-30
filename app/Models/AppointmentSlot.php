@@ -11,7 +11,18 @@ class AppointmentSlot extends Model
 
     protected $fillable = ['date', 'slot', 'appointment_id'];
 
+    protected $attributes = [
+        'date'       => 'not selected',
+        'slot'       => 'not selected',
+    ];
+
     protected $table = 'appointment_time_slot';
+
+
+    public function slot()
+    {
+        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+    }
 
 }
 
