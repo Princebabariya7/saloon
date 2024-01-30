@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
+use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
 use App\Models\Service;
@@ -36,11 +37,12 @@ class AppointmentController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->paginate(5);
 
-        return view('frontend.book.onlineorderview')->with('orders', $orders);
+        return view('frontend.book.onlineorderview')->with('ord ers', $orders);
     }
 
     public function create()
     {
+
         $category  = Category::getList();
         $timeSlots = [
             '9_to_10'  => '9:00 AM - 10:00 AM',
@@ -64,12 +66,12 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
-        dd($request->all());
+
         try
         {
             foreach (request('service_id') as $serviceId)
             {
-                Appointment::create([
+               $appointment= Appointment::create([
                     'service_id' => $serviceId,
                     'type'       => $request->type,
                     'date'       => Carbon::create($request->date)->format('Y-m-d'),
@@ -81,6 +83,13 @@ class AppointmentController extends Controller
                 ]);
             }
 
+            $input =[
+                'date'=> $appointment->date,
+                'slot'=> $request->time_slot,
+                'appointment_id'=>$appointment->id
+            ];
+
+            AppointmentSlot::create($input);
 
             session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));

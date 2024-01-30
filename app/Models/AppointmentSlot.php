@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AppointmentSlot extends Model
 {
     use HasFactory;
-
+    protected $table = 'appointment_time_slot';
     protected $fillable = ['date', 'slot', 'appointment_id'];
 
     protected $attributes = [
@@ -16,13 +16,10 @@ class AppointmentSlot extends Model
         'slot'       => 'not selected',
     ];
 
-    protected $table = 'appointment_time_slot';
 
 
-    public function slot()
-    {
-        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
-    }
-
+//    public function slot()
+//    {
+//        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+//    }
 }
-
