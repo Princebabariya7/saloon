@@ -38,7 +38,7 @@ class AppointmentController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->paginate(5);
 
-        return view('frontend.book.onlineorderview')->with('ord ers', $orders);
+        return view('frontend.book.onlineorderview')->with('orders', $orders);
     }
 
     public function create()
