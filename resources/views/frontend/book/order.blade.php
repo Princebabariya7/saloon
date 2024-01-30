@@ -95,7 +95,7 @@
                                 <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                             </div>
                             <div class="modal-body">
-                                <ul class="list-group ">
+                                <ul class="list-group" id="date-slot">
                                     @foreach($timeSlots as $key => $timeSlot)
                                         <li class="list-group-item">
                                             <label>
@@ -207,16 +207,7 @@
                         date: $('.appointment-date').val()
                     },
                     success: function (data) {
-                        if (data.error)
-                        {
-                            toastr.error(data.error);
-                            d.html(data.qty)
-                        }
-                        if (data.success)
-                        {
-                            span_html.html(data.qty)
-                            toastr.success(data.success);
-                        }
+                      $('#date-slot').empty().html(data.slotHtml)
                     },
                 });
             })

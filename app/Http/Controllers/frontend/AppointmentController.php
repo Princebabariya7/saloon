@@ -44,20 +44,7 @@ class AppointmentController extends Controller
     public function create()
     {
         $category  = Category::getList();
-        $timeSlots = [
-            '9_to_10'  => '9:00 AM - 10:00 AM',
-            '10_to_11' => '10:00 AM - 11:00 AM',
-            '11_to_12' => '11:00 AM - 12:00 PM',
-            '12_to_1'  => '12:00 PM - 1:00 PM',
-            '1_to_2'   => '1:00 PM - 2:00 PM',
-            '2_to_3'   => '2:00 PM - 3:00 PM',
-            '3_to_4'   => '3:00 PM - 4:00 PM',
-            '4_to_5'   => '4:00 PM - 5:00 PM',
-            '5_to_6'   => '5:00 PM - 6:00 PM',
-            '6_to_7'   => '6:00 PM - 7:00 PM',
-            '7_to_8'   => '7:00 PM - 8:00 PM',
-            '8_to_9'   => '8:00 PM - 9:00 PM',
-        ];
+        $timeSlots = [];
 
         return view('frontend.book.order')->with('editMode', false)
             ->with('category', $category)
@@ -164,9 +151,7 @@ class AppointmentController extends Controller
     {
         try
         {
-
             $service = [];
-
             if (request('id'))
             {
                 $service = Service::where('category_id', request('id'))->pluck('name', 'id')->toArray();
@@ -177,8 +162,6 @@ class AppointmentController extends Controller
                     'services' => $service,
                     'message'  => ''
                 ], 200);
-
-
         }
         catch (\Exception $e)
         {
@@ -202,9 +185,10 @@ class AppointmentController extends Controller
                 unset($slotList[$slot]);
             }
         }
-        dd($slotList);
-//        view('frontend.book.onlineordrfetchtime')->with('timeSlots', $slotList)->render();
-
+        return response()->json(
+            [
+                'slotHtml' =>  view('frontend.book.fetchslot')->with('timeSlots', $slotList)->render(),
+            ], 200);
     }
 
     public function slotList()
