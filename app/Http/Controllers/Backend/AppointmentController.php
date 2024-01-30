@@ -58,7 +58,7 @@ class AppointmentController extends Controller
     {
         foreach (request('service_id') as $serviceId)
         {
-            $appointment= Appointment::create([
+            $appointment = Appointment::create([
                 'service_id' => $serviceId,
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
@@ -68,14 +68,16 @@ class AppointmentController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
-        }
-        $input =[
-            'date'=> $appointment->date,
-            'slot'=> $request->time_slot,
-            'appointment_id'=>$appointment->id
-        ];
 
-        AppointmentSlot::create($input);
+            $input = [
+                'date'           => $appointment->date,
+                'slot'           => $request->time_slot,
+                'appointment_id' => $appointment->id
+            ];
+
+            AppointmentSlot::create($input);
+
+        }
 
 
         session()->put('add', 'data add');
