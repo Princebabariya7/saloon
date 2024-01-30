@@ -12,7 +12,7 @@ class CreateAppointmentTimeSlotTable extends Migration
         Schema::create('appointment_time_slot', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('slot',100);
+            $table->string('slot',100)->nullable();
             $table->integer('appointment_id');
             $table->timestamps();
         });
