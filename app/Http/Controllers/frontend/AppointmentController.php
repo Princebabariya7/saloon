@@ -42,7 +42,6 @@ class AppointmentController extends Controller
 
     public function create()
     {
-
         $category  = Category::getList();
         $timeSlots = [
             '9_to_10'  => '9:00 AM - 10:00 AM',
@@ -57,7 +56,6 @@ class AppointmentController extends Controller
             '6_to_7'   => '6:00 PM - 7:00 PM',
             '7_to_8'   => '7:00 PM - 8:00 PM',
             '8_to_9'   => '8:00 PM - 9:00 PM',
-
         ];
         return view('frontend.book.order')->with('editMode', false)
             ->with('category', $category)
@@ -81,7 +79,6 @@ class AppointmentController extends Controller
                     'updated_at' => now(),
                     'created_at' => Carbon::now(),
                 ]);
-            }
 
             $input =[
                 'date'=> $appointment->date,
@@ -90,6 +87,7 @@ class AppointmentController extends Controller
             ];
 
             AppointmentSlot::create($input);
+            }
 
             session()->put('msg', 'your order has been booked');
             return redirect(route('online.create'));
