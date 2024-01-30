@@ -77,10 +77,9 @@
                 <div class="form-group">
                     <label for="inputStatus">Preferred Booking Slot</label>
                     <div class="input-group date" id="appointmentTime" data-target-input="nearest">
-                        {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot ', 'class' => 'form-control appointment_time', 'data-target' => '#customTimeSlotModal','data-toggle'=>'modal', 'autocomplete' => 'off', 'disabled'=>true]) !!}
-                        <div class="input-group-append" data-target="#customTimeSlotModal"
-                             data-toggle="modal">
-                            <div class="input-group-text item"><i class="fa fa-clock"></i></div>
+                        {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-clock"></i></div>
                         </div>
                     </div>
                 </div>
@@ -96,6 +95,10 @@
                             </div>
                             <div class="modal-body">
                                 <ul class="list-group" id="date-slot">
+                                    @if($timeSlots == [])
+                                        <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please Select
+                                            Date</h6>
+                                    @endif
                                     @foreach($timeSlots as $key => $timeSlot)
                                         <li class="list-group-item">
                                             <label>
@@ -191,9 +194,6 @@
         });
         $(document).ready(function () {
             $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
-                $('.appointment_time').attr('disabled', false);
-
-                console.log();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -207,7 +207,7 @@
                         date: $('.appointment-date').val()
                     },
                     success: function (data) {
-                      $('#date-slot').empty().html(data.slotHtml)
+                        $('#date-slot').empty().html(data.slotHtml)
                     },
                 });
             })
