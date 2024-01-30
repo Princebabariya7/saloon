@@ -41,6 +41,7 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::get('{id}/delete', [AppointmentController::class, 'destroy'])->name('online.delete');
             Route::get('create', [AppointmentController::class, 'create'])->name('online.create');
             Route::post('fetch/services', [AppointmentController::class, 'fetchServices'])->name('online.fetch.services');
+            Route::post('fetch/timeslot', [AppointmentController::class, 'timeSlot'])->name('online.fetch.timeslot');
         });
 
         Route::group(['prefix' => 'payment'], function ()

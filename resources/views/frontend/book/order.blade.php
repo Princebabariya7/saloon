@@ -66,7 +66,7 @@
                     <label>Preferred booking date</label>
 
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
+                        {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control appointment-date datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
                         <div class="input-group-append" data-target="#reservationdate"
                              data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label for="inputStatus">Time Slot</label>
                     <div class="input-group date" id="appointmentTime" data-target-input="nearest">
-                        {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control ', 'data-target' => '#customTimeSlotModal','data-toggle'=>'modal', 'autocomplete' => 'off']) !!}
+                        {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot ', 'class' => 'form-control appointment_time', 'data-target' => '#customTimeSlotModal','data-toggle'=>'modal', 'autocomplete' => 'off', 'disabled'=>true]) !!}
                         <div class="input-group-append" data-target="#customTimeSlotModal"
                              data-toggle="modal">
                             <div class="input-group-text item"><i class="fa fa-clock"></i></div>
@@ -156,7 +156,7 @@
                 $('#services').attr('disabled', false);
 
                 var id = $(this).val();
-                var url = "{{ route('admin.fetch.services') }}";
+                var url = "{{ route('online.fetch.services') }}";
 
                 $.post(url, {id: id})
                     .done(function (data) {
@@ -179,7 +179,6 @@
                     alert("error");
                 })
             });
-
             @if($editMode)
             $('#categories').trigger('change')
             @endif
@@ -188,6 +187,39 @@
                 // Open the time slot modal
                 $('#timeSlotModal').modal('show');
             });
+
+        });
+        $(document).ready(function () {
+            $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
+                $('.appointment_time').attr('disabled', false);
+
+                console.log();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('online.fetch.timeslot') }}",
+                    data: {
+                        date: $('.appointment-date').val()
+                    },
+                    success: function (data) {
+                        if (data.error)
+                        {
+                            toastr.error(data.error);
+                            d.html(data.qty)
+                        }
+                        if (data.success)
+                        {
+                            span_html.html(data.qty)
+                            toastr.success(data.success);
+                        }
+                    },
+                });
+            })
         });
 
         function selectTimeSlot(timeSlot)

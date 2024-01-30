@@ -57,6 +57,7 @@ class AppointmentController extends Controller
             '7_to_8'   => '7:00 PM - 8:00 PM',
             '8_to_9'   => '8:00 PM - 9:00 PM',
         ];
+
         return view('frontend.book.order')->with('editMode', false)
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
@@ -187,5 +188,11 @@ class AppointmentController extends Controller
                     'message' => $e->getMessage()
                 ], 400);
         }
+    }
+    public function timeSlot()
+    {
+       $date=  Carbon::create(\request()->date)->format('Y-m-d');
+        $slot = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
+        dd($slot);
     }
 }
