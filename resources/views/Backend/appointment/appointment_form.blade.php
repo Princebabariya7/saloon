@@ -93,7 +93,7 @@
                             <div class="form-group">
                                 <label for="inputStatus">Time Slot</label>
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
-                                    {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'disabled'=>true]) !!}
+                                    {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
                                     <div class="input-group-append">
                                         <div class="input-group-text" style="cursor: pointer;"><i class="fa fa-clock"></i></div>
                                     </div>
@@ -122,6 +122,9 @@
                                                 </li>
                                             @endforeach
                                         </ul>
+                                        <div class="fatch">
+                                            <input type="hidden" class="fatch_data" name="time_slot" value="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -251,11 +254,11 @@
             })
         });
 
-        function selectTimeSlot(timeSlot)
+        function selectTimeSlot(timeSlot,key)
         {
             // Set the selected time slot to the input field
             $('#selectedTimeSlot').val(timeSlot);
-
+$('.fatch_data').val(key)
             // Set the selected time slot to the hidden field (you can use this hidden field to submit the value to the server)
             $('#selectedTimeSlotHidden').val(timeSlot);
 

@@ -57,6 +57,7 @@ class AppointmentController extends Controller
             ]);
 
             $input = [
+
                 'date'           => $appointment->date,
                 'slot'           => $request->time_slot,
                 'appointment_id' => $appointment->id
