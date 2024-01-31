@@ -102,8 +102,11 @@
                                     @foreach($timeSlots as $key => $timeSlot)
                                         <li class="list-group-item">
                                             <label>
-                                                <input type="radio" name="time_slot" value="{{ $key }}"
-                                                       onclick="selectTimeSlot('{{ $timeSlot }}')">
+{{--                                                <input type="radio" name="time_slot" value="{{ $key }}"--}}
+{{--                                                       onclick="selectTimeSlot('{{ $timeSlot }}')">--}}
+
+                                                {!! Form::text('time_slot', $timeSlot, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
+
                                                 {{ $timeSlot }}
                                             </label>
                                         </li>

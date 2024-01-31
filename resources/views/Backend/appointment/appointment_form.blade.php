@@ -238,9 +238,9 @@
 
         $(document).ready(function () {
             $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
-                $('.appointment_time').attr('disabled', false);
 
-                console.log();
+                $('#selectedTimeSlot').val(null);
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
