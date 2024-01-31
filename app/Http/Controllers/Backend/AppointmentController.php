@@ -121,20 +121,25 @@ class AppointmentController extends Controller
 
     public function destroy($id)
     {
-        try
-        {
+        try {
             $appointment = Appointment::find($id);
-            if ($appointment)
-            {
+
+            if ($appointment) {
+                $appointmentSlot = AppointmentSlot::find($id);
+
+                if ($appointmentSlot) {
+                    $appointmentSlot->delete();
+                }
+
                 $appointment->delete();
             }
+
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
+
 
     public function fetchServices()
     {
