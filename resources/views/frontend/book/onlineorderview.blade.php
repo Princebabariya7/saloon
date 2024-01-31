@@ -102,7 +102,6 @@
                                                                 <h5 class="modal-title text-light text-center"
                                                                     id="exampleModalLabel">Today's Appointment Can't Be
                                                                     Changable </h5>
-                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
