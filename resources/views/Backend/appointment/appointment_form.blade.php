@@ -95,7 +95,8 @@
                                 <div class="input-group date" id="appointmentTime" data-target-input="nearest">
                                     {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control form-control-sm appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
                                     <div class="input-group-append">
-                                        <div class="input-group-text" style="cursor: pointer;"><i class="fa fa-clock"></i></div>
+                                        <div class="input-group-text" style="cursor: pointer;"><i
+                                                class="fa fa-clock"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +111,8 @@
                                     <div class="modal-body" id="timeSlotModalBody">
                                         <ul class="list-group" id="date-slot">
                                             @if($timeSlots == null)
-                                                <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please  Select Date</h6>
+                                                <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
+                                                    Select Date</h6>
                                             @endif
                                             @foreach($timeSlots as $key => $timeSlot)
                                                 <li class="list-group-item">
@@ -210,23 +212,26 @@
             @if($editMode)
             $('#categories').trigger('change')
             @endif
-
             $('#appointmentTime').on('click', function () {
+
                 // Open the time slot modal
                 $('#timeSlotModal').modal('show');
                 // Get the current time
-                // var currentTime = moment();
+                var currentTime = moment();
+                var currentTimefoemate = moment().format('MM/DD/YYYY');
+                var date = $('.appointment-date').val();
+                $('#timeSlotModalBody li').each(function () {
+                    var timeSlot = $(this).text();
 
-                // Remove time slots that have already passed
-                // $('#timeSlotModalBody li').each(function () {
-                //     var timeSlot = $(this).text();
-                //     var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
-                //
-                //     if (currentTime.isAfter(slotTime))
-                //     {
-                //         $(this).remove();
-                //     }
-                // });
+                    var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
+                    if (date == currentTimefoemate)
+                    {
+                        if (currentTime.isAfter(slotTime))
+                        {
+                            $(this).remove();
+                        }
+                    }
+                });
             });
         });
 
@@ -254,11 +259,11 @@
             })
         });
 
-        function selectTimeSlot(timeSlot,key)
+        function selectTimeSlot(timeSlot, key)
         {
             // Set the selected time slot to the input field
             $('#selectedTimeSlot').val(timeSlot);
-$('.fatch_data').val(key)
+            $('.fatch_data').val(key)
             // Set the selected time slot to the hidden field (you can use this hidden field to submit the value to the server)
             $('#selectedTimeSlotHidden').val(timeSlot);
 
