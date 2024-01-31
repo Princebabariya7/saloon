@@ -93,6 +93,7 @@ class AppointmentController extends Controller
         $category        = Category::pluck('type', 'id')->toArray();
         $service         = Service::pluck('name', 'id')->toArray();
         $orders          = Appointment::find($id);
+        $appointmentSlot = AppointmentSlot::find($id);
         $timeSlots       = [];
 
         return view('frontend.book.order')
@@ -101,6 +102,7 @@ class AppointmentController extends Controller
             ->with('category_id', (Service::find($orders->service_id)->category_id))
             ->with('date', Carbon::create($orders->date)->format('m-d-Y'))
             ->with('timeSlot', $orders->time)
+            ->with('timeSlotid', $appointmentSlot->slot)
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service)
@@ -110,6 +112,7 @@ class AppointmentController extends Controller
 
     public function update(AppointmentEditRequest $request, $id)
     {
+//        dd($request->all());
         $orders          = Appointment::find($id);
         $appointmentSlot = AppointmentSlot::find($id);
 
@@ -124,20 +127,23 @@ class AppointmentController extends Controller
         session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));
     }
-
     public function destroy($id)
     {
-        try
-        {
+        try {
             $orders = Appointment::find($id);
-            if ($orders)
-            {
+
+            if ($orders) {
+                $appointmentSlot = AppointmentSlot::find($id);
+
+                if ($appointmentSlot) {
+                    $appointmentSlot->delete();
+                }
+
                 $orders->delete();
             }
+
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
