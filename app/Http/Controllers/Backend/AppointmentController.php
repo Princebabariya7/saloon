@@ -83,6 +83,8 @@ class AppointmentController extends Controller
     {
         $category    = Category::getList();
         $appointment = Appointment::find($id);
+        $timeSlots   = [];
+
 
         return view('Backend.appointment.appointment_form')
             ->with('appointment', $appointment)
@@ -93,22 +95,25 @@ class AppointmentController extends Controller
             ->with('timeSlot', $appointment->time)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true)
-            ->with('category', $category);
+            ->with('category', $category)
+            ->with('timeSlots', $timeSlots);
+
     }
 
     public function update(AppointmentUpdateRequest $request, $id)
     {
-        $appointment = Appointment::find($id);
+        $appointment     = Appointment::find($id);
+        $appointmentSlot = AppointmentSlot::find($id);
 
-        foreach (request('service_id') as $serviceId)
-        {
-            $dateTime                = Carbon::create($request->date)->format('Y-m-d');
-            $appointment->service_id = $serviceId;
-            $appointment->type       = $request->input('type');
-            $appointment->time       = $request->input('time');
-            $appointment->date       = $dateTime;
-            $appointment->status     = $request->input('status');
-        }
+        $dateTime                = Carbon::create($request->date)->format('Y-m-d');
+        $appointment->type       = $request->input('type');
+        $appointment->time       = $request->input('time');
+        $appointment->date       = $dateTime;
+        $appointment->status     = $request->input('status');
+        $appointmentSlot->date   = $dateTime;
+        $appointmentSlot->slot   = $request->input('time_slot');
+
+        $appointmentSlot->update();
         $appointment->update();
         session()->put('update', 'data update');
         return redirect(route('admin.appointment.index'));
@@ -175,7 +180,7 @@ class AppointmentController extends Controller
         }
         return response()->json(
             [
-                'slotHtml' =>  view('Backend.appointment.fetch_timeslot')->with('timeSlots', $slotList)->render(),
+                'slotHtml' => view('Backend.appointment.fetch_timeslot')->with('timeSlots', $slotList)->render(),
             ], 200);
 
     }
