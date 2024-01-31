@@ -99,18 +99,13 @@
                                         <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                             Select Date</h6>
                                     @endif
-                                    @foreach($timeSlots as $key => $timeSlot)
-                                        <li class="list-group-item">
                                             <label>
 {{--                                                <input type="radio" name="time_slot" value="{{ $key }}"--}}
 {{--                                                       onclick="selectTimeSlot('{{ $timeSlot }}')">--}}
 
-                                                {!! Form::text('time_slot', $timeSlot, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
-
-                                                {{ $timeSlot }}
+                                                {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
                                             </label>
-                                        </li>
-                                    @endforeach
+
                                 </ul>
                             </div>
                         </div>

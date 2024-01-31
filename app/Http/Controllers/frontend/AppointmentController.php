@@ -112,7 +112,6 @@ class AppointmentController extends Controller
 
     public function update(AppointmentEditRequest $request, $id)
     {
-//        dd($request->all());
         $orders          = Appointment::find($id);
         $appointmentSlot = AppointmentSlot::find($id);
 
