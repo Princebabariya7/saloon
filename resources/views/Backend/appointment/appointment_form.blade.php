@@ -212,6 +212,7 @@
             @if($editMode)
             $('#categories').trigger('change')
             @endif
+
             $('#appointmentTime').on('click', function () {
 
                 // Open the time slot modal

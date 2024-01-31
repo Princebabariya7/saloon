@@ -93,8 +93,12 @@
 
                                 <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" id="timeSlotModalBody">
                                 <ul class="list-group" id="date-slot">
+                                    @if($timeSlots == null)
+                                        <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
+                                            Select Date</h6>
+                                    @endif
                                     @foreach($timeSlots as $key => $timeSlot)
                                         <li class="list-group-item">
                                             <label>
@@ -183,8 +187,25 @@
             @endif
 
             $('#appointmentTime').on('click', function () {
+
                 // Open the time slot modal
                 $('#timeSlotModal').modal('show');
+                // Get the current time
+                var currentTime = moment();
+                var currentTimeformate = moment().format('MM/DD/YYYY');
+                var date = $('.appointment-date').val();
+                $('#timeSlotModalBody li').each(function () {
+                    var timeSlot = $(this).text();
+
+                    var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
+                    if (date == currentTimeformate)
+                    {
+                        if (currentTime.isAfter(slotTime))
+                        {
+                            $(this).remove();
+                        }
+                    }
+                });
             });
 
         });
