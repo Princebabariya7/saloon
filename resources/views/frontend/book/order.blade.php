@@ -99,13 +99,7 @@
                                         <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                             Select Date</h6>
                                     @endif
-                                            <label>
-{{--                                                <input type="radio" name="time_slot" value="{{ $key }}"--}}
-{{--                                                       onclick="selectTimeSlot('{{ $timeSlot }}')">--}}
-
-                                                {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
-                                            </label>
-
+                                        {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
                                 </ul>
                             </div>
                         </div>
@@ -209,9 +203,7 @@
 
         $(document).ready(function () {
             $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
-
                 $('#selectedTimeSlot').val(null);
-
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

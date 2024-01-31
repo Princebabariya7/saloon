@@ -166,7 +166,6 @@ class AppointmentController extends Controller
                     'message'  => ''
                 ], 200);
 
-
         }
         catch (\Exception $e)
         {

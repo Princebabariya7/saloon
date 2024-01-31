@@ -114,18 +114,10 @@
                                                 <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                                     Select Date</h6>
                                             @endif
-                                            @foreach($timeSlots as $key => $timeSlot)
-                                                <li class="list-group-item">
-                                                    <label>
-                                                        <input type="radio" name="time_slot" value="{{ $key }}"
-                                                               onclick="selectTimeSlot('{{ $timeSlot }}')">
-                                                        {{ $timeSlot }}
-                                                    </label>
-                                                </li>
-                                            @endforeach
                                         </ul>
+
                                         <div class="fatch">
-                                            <input type="hidden" class="fatch_data" name="time_slot" value="">
+                                            {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time fatch_data', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -214,7 +206,6 @@
             @endif
 
             $('#appointmentTime').on('click', function () {
-
                 // Open the time slot modal
                 $('#timeSlotModal').modal('show');
                 // Get the current time
