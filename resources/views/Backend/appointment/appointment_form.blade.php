@@ -218,13 +218,13 @@
                 $('#timeSlotModal').modal('show');
                 // Get the current time
                 var currentTime = moment();
-                var currentTimefoemate = moment().format('MM/DD/YYYY');
+                var currentTimeformate = moment().format('MM/DD/YYYY');
                 var date = $('.appointment-date').val();
                 $('#timeSlotModalBody li').each(function () {
                     var timeSlot = $(this).text();
 
                     var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
-                    if (date == currentTimefoemate)
+                    if (date == currentTimeformate)
                     {
                         if (currentTime.isAfter(slotTime))
                         {
