@@ -56,31 +56,59 @@
                                         <td>{{$order->type}}</td>
                                         <td>{{$order->date}}</td>
                                         <td>{{$order->time}}</td>
-                                        <td class="project-actions text-right">
-                                            <button type="button"
-                                                    class="btn  btn-light border btn-sm dropdown-toggle"
-                                                    data-bs-toggle="dropdown">
-                                                Action
-                                            </button>
-                                            <div class="btn-group">
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                           href="{{route('online.edit',$order->id)}}">
-                                                            <i class="fa fa-edit"> </i> Edit
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-divider"></li>
-                                                    <li>
-                                                        <a class="dropdown-item  delete_pop text-danger"
-                                                           href="#"
-                                                           data-href="{{route('online.delete',$order->id)}}">
-                                                            <i class="fa fa-trash"></i> Delete
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                        @if($order->date > $currentDate->toDateString())
+                                            <td class="project-actions text-right">
+                                                <button type="button"
+                                                        class="btn btn-light border btn-sm dropdown-toggle"
+                                                        data-bs-toggle="dropdown"
+                                                >
+                                                    Action
+                                                </button>
+                                                <div class="btn-group">
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item"
+                                                               href="{{route('online.edit',$order->id)}}">
+                                                                <i class="fa fa-edit"> </i> Edit
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown-divider"></li>
+                                                        <li>
+                                                            <a class="dropdown-item  delete_pop text-danger"
+                                                               href="#"
+                                                               data-href="{{route('online.delete',$order->id)}}">
+                                                                <i class="fa fa-trash"></i> Delete
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        @else
+                                            <td class="project-actions text-right">
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                        class="btn btn-light border btn-sm dropdown-toggle"
+                                                        data-toggle="modal"
+                                                        data-target="#exampleModal">
+                                                    Action
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="p-3 bg-danger">
+                                                                <h5 class="modal-title text-light text-center"
+                                                                    id="exampleModalLabel">Today's Appointment Can't Be
+                                                                    Changable </h5>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

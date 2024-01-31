@@ -19,7 +19,7 @@ class AppointmentController extends Controller
     {
         $search = $request->input('search', '');
         $type   = $request->input('type', '');
-
+        $currentDate      = Carbon::now();
         $orders = Appointment::with('services')
             ->when($search, function ($query) use ($search)
             {
@@ -38,7 +38,8 @@ class AppointmentController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->paginate(5);
 
-        return view('frontend.book.onlineorderview')->with('orders', $orders);
+        return view('frontend.book.onlineorderview')->with('orders', $orders)
+            ->with('currentDate', $currentDate);
     }
 
     public function create()
@@ -89,9 +90,11 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category = Category::pluck('type', 'id')->toArray();
-        $service  = Service::pluck('name', 'id')->toArray();
-        $orders   = Appointment::find($id);
+        $category  = Category::pluck('type', 'id')->toArray();
+        $service   = Service::pluck('name', 'id')->toArray();
+        $orders    = Appointment::find($id);
+        $timeSlots = [];
+
         return view('frontend.book.order')
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
@@ -100,7 +103,9 @@ class AppointmentController extends Controller
             ->with('timeSlot', $orders->time)
             ->with('editMode', true)
             ->with('category', $category)
-            ->with('service', $service);
+            ->with('service', $service)
+            ->with('timeSlots', $timeSlots);
+
     }
 
     public function update(AppointmentEditRequest $request, $id)
@@ -187,7 +192,7 @@ class AppointmentController extends Controller
         }
         return response()->json(
             [
-                'slotHtml' =>  view('frontend.book.fetchslot')->with('timeSlots', $slotList)->render(),
+                'slotHtml' => view('frontend.book.fetchslot')->with('timeSlots', $slotList)->render(),
             ], 200);
     }
 
