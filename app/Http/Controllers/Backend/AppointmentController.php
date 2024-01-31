@@ -81,9 +81,10 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category    = Category::getList();
-        $appointment = Appointment::find($id);
-        $timeSlots   = [];
+        $category        = Category::getList();
+        $appointment     = Appointment::find($id);
+        $appointmentSlot = AppointmentSlot::find($id);
+        $timeSlots       = [];
 
 
         return view('Backend.appointment.appointment_form')
@@ -93,6 +94,7 @@ class AppointmentController extends Controller
             ->with('type', $appointment->type)
             ->with('date', Carbon::create($appointment->date)->format('m-d-Y'))
             ->with('timeSlot', $appointment->time)
+            ->with('timeSlotid', $appointmentSlot->slot)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true)
             ->with('category', $category)
@@ -105,13 +107,13 @@ class AppointmentController extends Controller
         $appointment     = Appointment::find($id);
         $appointmentSlot = AppointmentSlot::find($id);
 
-        $dateTime                = Carbon::create($request->date)->format('Y-m-d');
-        $appointment->type       = $request->input('type');
-        $appointment->time       = $request->input('time');
-        $appointment->date       = $dateTime;
-        $appointment->status     = $request->input('status');
-        $appointmentSlot->date   = $dateTime;
-        $appointmentSlot->slot   = $request->input('time_slot');
+        $dateTime              = Carbon::create($request->date)->format('Y-m-d');
+        $appointment->type     = $request->input('type');
+        $appointment->time     = $request->input('time');
+        $appointment->date     = $dateTime;
+        $appointment->status   = $request->input('status');
+        $appointmentSlot->date = $dateTime;
+        $appointmentSlot->slot = $request->input('time_slot');
 
         $appointmentSlot->update();
         $appointment->update();
@@ -121,13 +123,16 @@ class AppointmentController extends Controller
 
     public function destroy($id)
     {
-        try {
+        try
+        {
             $appointment = Appointment::find($id);
 
-            if ($appointment) {
+            if ($appointment)
+            {
                 $appointmentSlot = AppointmentSlot::find($id);
 
-                if ($appointmentSlot) {
+                if ($appointmentSlot)
+                {
                     $appointmentSlot->delete();
                 }
 
@@ -135,7 +140,9 @@ class AppointmentController extends Controller
             }
 
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
