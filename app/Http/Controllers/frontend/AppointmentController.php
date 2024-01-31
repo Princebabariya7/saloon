@@ -17,10 +17,10 @@ class AppointmentController extends Controller
 
     public function index(Request $request)
     {
-        $search = $request->input('search', '');
-        $type   = $request->input('type', '');
-        $currentDate      = Carbon::now();
-        $orders = Appointment::with('services')
+        $search      = $request->input('search', '');
+        $type        = $request->input('type', '');
+        $currentDate = Carbon::now();
+        $orders      = Appointment::with('services')
             ->when($search, function ($query) use ($search)
             {
                 return $query->where(function ($query) use ($search)
@@ -90,10 +90,10 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category  = Category::pluck('type', 'id')->toArray();
-        $service   = Service::pluck('name', 'id')->toArray();
-        $orders    = Appointment::find($id);
-        $timeSlots = [];
+        $category        = Category::pluck('type', 'id')->toArray();
+        $service         = Service::pluck('name', 'id')->toArray();
+        $orders          = Appointment::find($id);
+        $timeSlots       = [];
 
         return view('frontend.book.order')
             ->with('orders', $orders)
@@ -110,16 +110,16 @@ class AppointmentController extends Controller
 
     public function update(AppointmentEditRequest $request, $id)
     {
-        $orders = Appointment::find($id);
+        $orders          = Appointment::find($id);
+        $appointmentSlot = AppointmentSlot::find($id);
 
-        foreach (request('service_id') as $serviceId)
-        {
-            $orders->service_id = $serviceId;
-            $orders->type       = $request->input('type');
-            $orders->time       = $request->input('time');
-            $orders->date       = Carbon::create($request->date)->format('Y-m-d');
-        }
+        $orders->type = $request->input('type');
+        $orders->time = $request->input('time');
+        $orders->date = Carbon::create($request->date)->format('Y-m-d');
+        $appointmentSlot->date = Carbon::create($request->date)->format('Y-m-d');
+        $appointmentSlot->slot = $request->input('time_slot');
 
+        $appointmentSlot->update();
         $orders->update();
         session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));
