@@ -60,8 +60,7 @@
                                             <td class="project-actions text-right">
                                                 <button type="button"
                                                         class="btn btn-light border btn-sm dropdown-toggle"
-                                                        data-bs-toggle="dropdown"
-                                                >
+                                                        data-bs-toggle="dropdown">
                                                     Action
                                                 </button>
                                                 <div class="btn-group">
@@ -87,7 +86,7 @@
                                             <td class="project-actions text-right">
                                                 <!-- Button trigger modal -->
                                                 <button type="button"
-                                                        class="btn btn-light border btn-sm dropdown-toggle"
+                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn"
                                                         data-toggle="modal"
                                                         data-target="#exampleModal">
                                                     Action
@@ -100,7 +99,7 @@
                                                         <div class="modal-content">
                                                             <div class="p-3 bg-danger">
                                                                 <h5 class="modal-title text-light text-center"
-                                                                    id="exampleModalLabel">Today's Appointment Can't Be
+                                                                    id="exampleModalLabel">This Appointment Can't Be
                                                                     Changable </h5>
                                                             </div>
                                                         </div>

@@ -1529,3 +1529,10 @@ body{
         line-height: 70px;
     }
 }
+
+.modelBtn{
+    padding-inline: 9px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 3px;
+}
