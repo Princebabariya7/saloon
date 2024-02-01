@@ -58,8 +58,7 @@
                 @if(auth()->user() == null)
 
                 @else
-                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class='fas fa-calendar-check'></i>
-                    </a>
+{{--                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class='fas fa-calendar-check'></i></a>--}}
                     <a href="{{route('online.index')}}" class="nav-item nav-link"><i class="fa fa-shopping-cart  text-light" aria-hidden="true"></i></a>
                 @endif
             </div>

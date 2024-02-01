@@ -16,6 +16,11 @@
                             elegance
                             and expertise, dedicated to delivering the ultimate in grooming and pampering
                             experiences. </p>
+                        @if(auth()->user() == null)
+
+                        @else
+                            <a class="btn" href="{{route('online.create')}}">Book Appointment<i class="fa fa-arrow-right ms-5 arrowForbook"></i></a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 d-none d-md-block">

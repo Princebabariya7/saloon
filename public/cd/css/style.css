@@ -299,7 +299,7 @@ a:focus {
 
 .hero .hero-text .btn {
     padding: 15px 30px;
-    font-size: 16px;
+    font-size: 26px;
     font-weight: 600;
     letter-spacing: 1px;
     color: #1d2434;
@@ -1535,4 +1535,8 @@ body{
     padding-top: 5px;
     padding-bottom: 5px;
     margin-right: 3px;
+}
+.arrowForbook{
+    font-size: larger;
+    margin-left: 7px;
 }
