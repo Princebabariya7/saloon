@@ -136,7 +136,8 @@
 @endsection
 @section('custom_js')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function ()
+        {
             $('.delete_pop').click(function () {
                 var $_this = $(this);
                 Swal.fire({
@@ -161,6 +162,10 @@
                     }
                 });
             });
+            @if (\Session::has('update'))
+            toastr.success('your order has been updated');
+            {{\Session::forget('update')}}
+            @endif
             $('#myDropdown').change(function () {
                 $('.search-btn').trigger('click');
             });
@@ -169,10 +174,6 @@
                 $('#myDropdown').val('');
                 $('.search-btn').trigger('click');
             });
-            @if (\Session::has('update'))
-            toastr.success('your order has been updated');
-            {{\Session::forget('update')}}
-                @endif
         });
     </script>
 @endsection

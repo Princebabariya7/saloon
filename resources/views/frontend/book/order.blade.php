@@ -83,10 +83,11 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="modal fade" id="timeSlotModal" tabindex="-1" role="dialog"
                      aria-labelledby="timeSlotModalLabel"
                      aria-hidden="true">
-
+                    {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -99,7 +100,6 @@
                                         <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                             Select Date</h6>
                                     @endif
-                                    {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
                                 </ul>
                             </div>
                         </div>

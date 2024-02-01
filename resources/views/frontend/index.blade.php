@@ -67,7 +67,6 @@
     </div>
     <!-- About End -->
 
-
     <!-- Service Start -->
     <div class="service">
         <div class="container">
@@ -252,7 +251,6 @@
 
 @section('custom_js')
     <script>
-
         @if (\Session::has('msg'))
         toastr.success('You are successfully logged in');
         {{\Session::forget('msg')}}
