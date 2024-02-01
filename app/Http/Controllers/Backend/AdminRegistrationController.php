@@ -55,11 +55,20 @@ class AdminRegistrationController extends Controller
         {
             if (Auth::attempt($login))
             {
+                if (auth()->user()->user_status == "user")
+                {
                 session()->put('msg', 'You Are Logged in');
-                return redirect()->route('dashboard.index');
+                return redirect()->route('home');
+                }
+                elseif (auth()->user()->user_status == "admin")
+                {
+                    session()->put('msg', 'You Are Logged in');
+                    return redirect()->route('dashboard.index');
+                }
             }
             else
             {
+                session()->put('wrongPass', 'Please Check Your Email And Password ');
                 return redirect()->back();
             }
         }

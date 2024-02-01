@@ -69,6 +69,11 @@
 
     {{\Session::forget('logout')}}
     @endif
+
+    @if (\Session::has('wrongPass'))
+    toastr.error('Please Check Your Email And Password ');
+    {{\Session::forget('wrongPass')}}
+    @endif
 </script>
 </body>
 </html>
