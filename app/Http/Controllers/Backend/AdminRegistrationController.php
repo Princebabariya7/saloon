@@ -16,9 +16,9 @@ class AdminRegistrationController extends Controller
 {
     public function index(Request $request)
     {
-        $search     = $request->input('search', '');
-        $status     = $request->input('status', '');
-        $users = User::when($search, function ($query) use ($search)
+        $search = $request->input('search', '');
+        $status = $request->input('status', '');
+        $users  = User::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -27,7 +27,7 @@ class AdminRegistrationController extends Controller
 
         })->when($status, function ($query) use ($status)
         {
-            return $query->where('status', $status);
+            return $query->where('user_status', $status);
         })->paginate(5);
         return view('Backend.user.index')->with('users', $users);
     }
@@ -36,13 +36,13 @@ class AdminRegistrationController extends Controller
     {
 
         User::create([
-            'firstname'  => $request->firstname,
-            'lastname'   => $request->lastname,
-            'email'      => $request->email,
-            'password'   => Hash::make($request->password),
-            'user_status'   => 'admin',
-            'updated_at' => now(),
-            'created_at' => now(),
+            'firstname'   => $request->firstname,
+            'lastname'    => $request->lastname,
+            'email'       => $request->email,
+            'password'    => Hash::make($request->password),
+            'user_status' => 'admin',
+            'updated_at'  => now(),
+            'created_at'  => now(),
         ]);
         session()->put('msg', 'You are Registered');
         return redirect(route('admin.sign_in'));
@@ -57,8 +57,8 @@ class AdminRegistrationController extends Controller
             {
                 if (auth()->user()->user_status == "User")
                 {
-                session()->put('msg', 'You Are Logged in');
-                return redirect()->route('home');
+                    session()->put('msg', 'You Are Logged in');
+                    return redirect()->route('home');
                 }
                 elseif (auth()->user()->user_status == "Admin")
                 {

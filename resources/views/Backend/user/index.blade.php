@@ -47,7 +47,7 @@
 
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
-                                {!! Form::select('status',[''=>'Please select', 'Active'=>'Active', 'Inactive'=>'Inactive'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
+                                {!! Form::select('status',[''=>'Please select', 'Admin'=>'Admin', 'User'=>'User'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
                             </li>
 
                         </ul>
