@@ -15,7 +15,7 @@ class LogoutMiddleware
             return redirect(route('admin.sign_in'));
         }
 
-        if (auth()->user()->user_status != "admin")
+        if (auth()->user()->user_status != "Admin")
         {
             return redirect()->route('home');
         }

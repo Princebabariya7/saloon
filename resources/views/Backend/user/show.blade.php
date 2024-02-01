@@ -41,7 +41,10 @@
                                 <td>Mobile:</td>
                                 <td>{{ $user->mobile }}</td>
                             </tr>
-
+                            <tr>
+                                <td>User Status:</td>
+                                <td>{{$user->user_status}}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

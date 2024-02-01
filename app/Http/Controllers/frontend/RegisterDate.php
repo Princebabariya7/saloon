@@ -56,12 +56,12 @@ class RegisterDate extends Controller
             $credit = $request->only('email', 'password');
             if (Auth::attempt($credit))
             {
-                if (auth()->user()->user_status == "user")
+                if (auth()->user()->user_status == "User")
                 {
                     session()->put('msg', 'You Are Logged in');
                     return redirect()->route('home');
                 }
-                elseif (auth()->user()->user_status == "admin")
+                elseif (auth()->user()->user_status == "Admin")
                 {
                     session()->put('msg', 'You Are Logged in');
                     return redirect()->route('dashboard.index');
