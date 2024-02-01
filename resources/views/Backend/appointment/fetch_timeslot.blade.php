@@ -7,3 +7,8 @@
         </label>
     </li>
 @endforeach
+<script>
+    $(document).ready(function () {
+        $('.slotDay').text('{{$slotDay}}');
+    });
+</script>

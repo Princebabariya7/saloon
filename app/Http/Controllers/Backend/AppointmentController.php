@@ -23,9 +23,9 @@ class AppointmentController extends Controller
             return $query->where(function ($query) use ($search)
             {
                 $query->orWhereHas('services', function ($query) use ($search)
-            {
-                $query->where('name', 'LIKE', '%' . $search . '%');
-            });
+                {
+                    $query->where('name', 'LIKE', '%' . $search . '%');
+                });
                 $query->orWhere('type', 'LIKE', '%' . $search . '%');
             });
         })->when($status, function ($query) use ($status)
@@ -111,21 +111,27 @@ class AppointmentController extends Controller
         $appointment     = Appointment::find($id);
         $appointmentSlot = AppointmentSlot::find($id);
 
-        $dateTime              = Carbon::create($request->date)->format('Y-m-d');
-        $appointment->type     = $request->input('type');
-        $appointment->time     = $request->input('time');
-        $appointment->date     = $dateTime;
-        $appointment->status   = $request->input('status');
-        $appointmentSlot->date = $dateTime;
-        $appointmentSlot->slot = $request->input('time_slot');
+        foreach (request('service_id') as $serviceId)
+        {
+            $appointment->service_id = $serviceId;
+            $dateTime                = Carbon::create($request->date)->format('Y-m-d');
+            $appointment->type       = $request->input('type');
+            $appointment->time       = $request->input('time');
+            $appointment->date       = $dateTime;
+            $appointment->status     = $request->input('status');
+            $appointmentSlot->date   = $dateTime;
+            $appointmentSlot->slot   = $request->input('time_slot');
 
-        $appointmentSlot->update();
-        $appointment->update();
+            $appointmentSlot->update();
+            $appointment->update();
+        }
+
         session()->put('update', 'data update');
         return redirect(route('admin.appointment.index'));
     }
 
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         try
         {
@@ -152,7 +158,8 @@ class AppointmentController extends Controller
     }
 
 
-    public function fetchServices()
+    public
+    function fetchServices()
     {
         try
         {
@@ -181,11 +188,13 @@ class AppointmentController extends Controller
         }
     }
 
-    public function timeSlot()
+    public
+    function timeSlot()
     {
-        $date     = \Illuminate\Support\Carbon::create(\request()->date)->format('Y-m-d');
+        $date     = Carbon::create(\request()->date)->format('Y-m-d');
         $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
         $slotList = $this->slotList();
+        $slotDay  = (Carbon::create(\request()->date)->dayName);
         foreach ($slots as $slot)
         {
             if (isset($slotList[$slot]))
@@ -195,12 +204,16 @@ class AppointmentController extends Controller
         }
         return response()->json(
             [
-                'slotHtml' => view('Backend.appointment.fetch_timeslot')->with('timeSlots', $slotList)->render(),
+                'slotHtml' => view('Backend.appointment.fetch_timeslot')
+                    ->with('slotDay', $slotDay)
+                    ->with('timeSlots', $slotList)
+                    ->render(),
             ], 200);
 
     }
 
-    public function slotList()
+    public
+    function slotList()
     {
         return [
             '9_to_10'  => '9:00 AM - 10:00 AM',

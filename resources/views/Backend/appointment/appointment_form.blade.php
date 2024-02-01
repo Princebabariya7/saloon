@@ -106,7 +106,10 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
+                                        <h5 class="modal-title" id="timeSlotModalLabel">
+                                            <i class="fa fa-clock"></i> Select Time Slot
+                                            <span class="badge badge-info slotDay"></span>
+                                        </h5>
                                     </div>
                                     <div class="modal-body" id="timeSlotModalBody">
                                         <ul class="list-group" id="date-slot">
