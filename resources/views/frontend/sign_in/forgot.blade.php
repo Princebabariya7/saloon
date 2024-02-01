@@ -16,7 +16,7 @@
             <p class="login-box-msg font-weight-normal text_simple">You forgot your password? <br> Here you can
                 easily retrieve a new password.</p>
             <div class="form-group">
-                {!! Form::text('email',null, ['class' => 'form-control item','placeholder' => 'Enter Your Email']) !!}
+                {!! Form::text('email',null, ['class' => 'form-control item','placeholder' => 'Enter Your Email', 'autocomplete' => 'off']) !!}
             </div>
             <div class="form-group">
                 {!! Form::password('password',['class' => 'form-control item','placeholder' => 'Enter Password']) !!}
