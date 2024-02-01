@@ -212,7 +212,6 @@
             @endif
         });
 
-
         function AjaxTimeSlot()
         {
             $.ajaxSetup({
@@ -232,7 +231,6 @@
                 },
             });
         }
-
 
         function selectTimeSlot(timeSlot)
         {
