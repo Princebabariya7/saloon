@@ -71,6 +71,9 @@
                                 <th>
                                     Mobile
                                 </th>
+                                <th>
+                                    Status
+                                </th>
                                 <th class="text-end action">
                                     Action
                                 </th>
@@ -91,6 +94,9 @@
                                         </td>
                                         <td>
                                             {{$user->mobile}}
+                                        </td>
+                                        <td>
+                                            {{$user->user_status}}
                                         </td>
                                         <td class="project-actions text-right">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"
