@@ -54,7 +54,8 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
-        return view('frontend.index')->with('services', Price::all());
+        session()->put('logout', 'you are successfully logged out');
+        return redirect()->route('home')->with('services', Price::all());
     }
 }
 

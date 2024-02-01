@@ -3,6 +3,7 @@
 @section('title')
     Hairck Saloon
 @endsection
+
 @section('mainContent')
     <!-- Hero Start -->
     <div class="hero">
@@ -176,7 +177,8 @@
 
                     <p>"Hairck Saloon All Boys has consistently exceeded my expectations. The stylists are not only
                         skilled but also attentive to my preferences. Whether I want a classic look or something more
-                        contemporary, they always deliver. The Saloon has a cool vibe, and the personalized service makes
+                        contemporary, they always deliver. The Saloon has a cool vibe, and the personalized service
+                        makes
                         me feel like a valued client. I wouldn't consider going anywhere else for my grooming
                         needs." </p>
                     <h2>john doe</h2>
@@ -251,6 +253,10 @@
         @if (\Session::has('msg'))
         toastr.success('You are successfully logged in');
         {{\Session::forget('msg')}}
+        @endif
+        @if (\Session::has('logout'))
+        toastr.success('You are successfully logged out');
+        {{\Session::forget('logout')}}
         @endif
     </script>
 @endsection
