@@ -24,8 +24,6 @@
                     </div>
                 </div>
             </div>
-            <span></span>
-            </button>
         </div>
     </div>
 
