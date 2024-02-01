@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<title> Sign Up </title>
+
 @include('Backend.layout.head')
 
 <body class="hold-transition register-page">

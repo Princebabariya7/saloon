@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html>appointment
 <html lang="en">
+<title> Sign In </title>
 
 @include('Backend.layout.head')
 

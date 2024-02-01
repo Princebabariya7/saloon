@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<title> Forgot Password </title>
+
 @include('Backend.layout.head')
 
 <body class="hold-transition login-page">

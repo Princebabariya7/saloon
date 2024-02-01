@@ -21,7 +21,6 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-item {{ Route::is('dashboard.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('dashboard.index') }}"
                        class="nav-link {{ Route::is('dashboard.index') ? 'active' : '' }}">
@@ -33,7 +32,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.appointment.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.appointment.index') }}"
-                       class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }}">
+                       class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }} {{Request::segment(2) == 'appointment' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>
                             Appointments
@@ -42,7 +41,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.category.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.category.index') }}"
-                       class="nav-link {{ Route::is('admin.category.index') ? 'active' : '' }}">
+                       class="nav-link {{ Route::is('admin.category.index') ? 'active' : '' }} {{Request::segment(2) == 'category' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-cubes"></i>
                         <p>
                             Categories
@@ -51,7 +50,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.service.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.service.index') }}"
-                       class="nav-link {{ Route::is('admin.service.index') ? 'active' : '' }}">
+                       class="nav-link {{ Route::is('admin.service.index') ? 'active' : '' }} {{Request::segment(2) == 'service' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-cut"></i>
                         <p>
                             Services
@@ -60,7 +59,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.gallery.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.gallery.index') }}"
-                       class="nav-link {{ Route::is('admin.gallery.index') ? 'active' : '' }}">
+                       class="nav-link {{ Route::is('admin.gallery.index') ? 'active' : '' }} {{Request::segment(2) == 'gallery' ? 'active' :'' }}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Gallery
@@ -69,7 +68,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.price.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.price.index') }}"
-                       class="nav-link {{ Route::is('admin.price.index') ? 'active' : '' }}">
+                       class="nav-link {{ Route::is('admin.price.index') ? 'active' : '' }} {{Request::segment(2) == 'price' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>
                             Prices

@@ -10,7 +10,7 @@ class AdminController extends Controller
     {
         Auth:: logout();
         session()->put('logout','You Are Logout');
-        return redirect(route('logout'));
+        return redirect(route('admin.sign_in'));
     }
 
     public function signIn()
