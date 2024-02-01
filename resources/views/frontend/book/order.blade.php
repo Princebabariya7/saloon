@@ -99,7 +99,7 @@
                                         <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                             Select Date</h6>
                                     @endif
-                                        {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
+                                    {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
                                 </ul>
                             </div>
                         </div>
@@ -204,24 +204,35 @@
         $(document).ready(function () {
             $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
                 $('#selectedTimeSlot').val(null);
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('online.fetch.timeslot') }}",
-                    data: {
-                        date: $('.appointment-date').val()
-                    },
-                    success: function (data) {
-                        $('#date-slot').empty().html(data.slotHtml)
-                    },
-                });
+                AjaxTimeSlot();
             })
+
+            @if($editMode)
+            AjaxTimeSlot();
+            @endif
         });
+
+
+        function AjaxTimeSlot()
+        {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('online.fetch.timeslot') }}",
+                data: {
+                    date: $('.appointment-date').val()
+                },
+                success: function (data) {
+                    $('#date-slot').empty().html(data.slotHtml)
+                },
+            });
+        }
+
 
         function selectTimeSlot(timeSlot)
         {
