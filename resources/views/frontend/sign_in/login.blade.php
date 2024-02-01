@@ -55,5 +55,9 @@
         toastr.success('you are successfully registered');
         {{\Session::forget('registerMsg')}}
         @endif
+        @if (\Session::has('wrongPass'))
+        toastr.error('Please check your email and password ');
+        {{\Session::forget('wrongPass')}}
+        @endif
     </script>
 @endsection

@@ -58,10 +58,10 @@ class RegisterDate extends Controller
             {
                 if (auth()->user()->user_status == "user")
                 {
-                    session()->put('msg', 'your are login');
+                    session()->put('msg', 'You Are Logged in');
                     return redirect()->route('home');
                 }
-                else
+                elseif (auth()->user()->user_status == "admin")
                 {
                     session()->put('msg', 'You Are Logged in');
                     return redirect()->route('dashboard.index');
@@ -69,6 +69,7 @@ class RegisterDate extends Controller
             }
             else
             {
+                session()->put('wrongPass', 'please check your email and password ');
                 return redirect()->back();
             }
         }
