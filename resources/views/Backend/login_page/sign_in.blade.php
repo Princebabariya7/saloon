@@ -1,4 +1,4 @@
-<!DOCTYPE html>appointment
+<!DOCTYPE html>
 <html lang="en">
 <title> Sign In </title>
 
