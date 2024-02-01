@@ -32,7 +32,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.appointment.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.appointment.index') }}"
-                       class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }} {{Request::segment(2) == 'appointment' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }} {{Request::segment(2) == 'appointment' ? 'active' :'' }} {{Request::segment(2) == 'orders_details' ? 'active' :'' }} {{Request::segment(2) == 'appointment_details' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>
                             Appointments
