@@ -14,6 +14,7 @@ class CreateAppointmentTimeSlotTable extends Migration
             $table->date('date');
             $table->string('slot',100)->nullable();
             $table->integer('appointment_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

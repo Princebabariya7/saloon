@@ -72,7 +72,8 @@ class AppointmentController extends Controller
                 $input = [
                     'date'           => $appointment->date,
                     'slot'           => $request->time_slot,
-                    'appointment_id' => $appointment->id
+                    'appointment_id' => $appointment->id,
+                    'user_id' => $appointment->user_id
                     ];
                 AppointmentSlot::create($input);
             }

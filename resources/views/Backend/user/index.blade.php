@@ -110,6 +110,14 @@
                                                         <i class="fa fa-eye"> </i> View
                                                     </a>
                                                 </li>
+                                                <li class="dropdown-divider"></li>
+                                                <li>
+                                                    <a class="dropdown-item small user-delete text-danger"
+                                                       href="#"
+                                                       data-href="{{route('admin.user.delete',$user->id)}}">
+                                                        <i class="fa fa-trash"> </i> Delete
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -153,6 +161,41 @@
     <script>
         $(document).ready(function () {
 
+            $('#status').change(function () {
+                $('.search').trigger('click');
+            });
+            $('#btn-clear-filters').click(function () {
+                $('#search').val('');
+                $('#status').val('');
+                $('.search').trigger('click');
+            })
+        });
+        $(document).ready(function () {
+            $('.user-delete').click(function () {
+                var $_this = $(this);
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed)
+                    {
+                        let url = $_this.data('href');
+                        $.get(url).done(function (res) {
+                            $_this.parent().closest('tr').remove();
+                            toastr.success(res.message);
+                        }).fail(function (res) {
+                            console.log(res.responseJSON.message);
+                            toastr.error(res.responseJSON.message);
+                        });
+                    }
+                });
+            });
             $('#status').change(function () {
                 $('.search').trigger('click');
             });

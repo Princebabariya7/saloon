@@ -86,6 +86,7 @@ Route::group(['prefix' => 'backend'], function ()
         Route::get('/', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'index'])->name('admin.user.index');
         Route::post('store', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'store'])->name('admin.user.store');
         Route::get('{id}/show', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'show'])->name('admin.user.show');
+        Route::get('{id}/delete', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'destroy'])->name('admin.user.delete');
         Route::post('login', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'login'])->name('admin.user.login');
         Route::post('forgot', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'forgot'])->name('admin.user.forgot');
     });

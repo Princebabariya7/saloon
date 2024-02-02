@@ -97,4 +97,27 @@ class AdminRegistrationController extends Controller
         return view('Backend.user.show', ['user' => $user]);
     }
 
+
+    public function destroy($id)
+    {
+        try
+        {
+            $user = User::find($id);
+            if ($user)
+            {
+                $user->delete();
+                $user->appointment()->delete();
+                $user->appointments()->delete();
+
+            }
+
+            return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
+        }
+        catch (\Exception $e)
+        {
+            return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
+        }
+
+    }
+
 }
