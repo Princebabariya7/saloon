@@ -106,11 +106,35 @@
                                         <td>
                                             {{\App\Models\User::find($appointment->user_id)->lastname}}
                                         </td>
-                                        <td>
-                                            <a href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                {{Category::find($appointment->services->category_id)->type}}
-                                            </a>
-                                        </td>
+                                        @if($appointment->date > $currentDate->toDateString())
+                                            <td>
+                                                <a href="{{route('admin.appointment.edit',$appointment->id)}}">
+                                                    {{Category::find($appointment->services->category_id)->type}}
+                                                </a>
+                                            </td>
+                                        @else
+                                            <td class="project-actions">
+                                                <!-- Button trigger modal -->
+                                                <a data-toggle="modal"
+                                                   data-target="#exampleModal"
+                                                   href="{{route('admin.appointment.edit',$appointment->id)}}">
+                                                    {{Category::find($appointment->services->category_id)->type}}
+                                                </a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="p-3 bg-danger">
+                                                                <h5 class="modal-title text-light text-center"
+                                                                    id="exampleModalLabel">This Appointment Can't Be
+                                                                    Changable </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        @endif
                                         <td>
                                             {{$appointment->services->name}}
                                         </td>
@@ -126,7 +150,6 @@
                                             {{$appointment->type}}
                                         </td>
                                         <td class="project-state">
-
                                             @if($appointment->status =='Active')
 
                                                 <span class="badge badge-success">Active</span>
@@ -136,34 +159,59 @@
 
                                             @endif
                                         </td>
-                                        <td class="project-actions text-right">
-                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle"
-                                                    data-bs-toggle="dropdown">
-                                                Action
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item small"
-                                                       href="{{route('admin.appointment.show',$appointment->id)}}">
-                                                        <i class="fa fa-eye"> </i> View
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item  small "
-                                                       href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                        <i class="fa fa-pen"> </i> Edit
-                                                    </a>
-                                                </li>
-                                                <li class="dropdown-divider"></li>
-                                                <li>
-                                                    <a class="dropdown-item small appointment-delete text-danger"
-                                                       href="#"
-                                                       data-href="{{route('admin.appointment.delete',$appointment->id)}}">
-                                                        <i class="fa fa-trash"> </i> Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
+                                        @if($appointment->date > $currentDate->toDateString())
+                                            <td class="project-actions text-right">
+                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"
+                                                        data-bs-toggle="dropdown">
+                                                    Action
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item small"
+                                                           href="{{route('admin.appointment.show',$appointment->id)}}">
+                                                            <i class="fa fa-eye"> </i> View
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item  small "
+                                                           href="{{route('admin.appointment.edit',$appointment->id)}}">
+                                                            <i class="fa fa-pen"> </i> Edit
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-divider"></li>
+                                                    <li>
+                                                        <a class="dropdown-item small appointment-delete text-danger"
+                                                           href="#"
+                                                           data-href="{{route('admin.appointment.delete',$appointment->id)}}">
+                                                            <i class="fa fa-trash"> </i> Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        @else
+                                            <td class="project-actions text-right">
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn"
+                                                        data-toggle="modal"
+                                                        data-target="#exampleModal">
+                                                    Action
+                                                </button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="p-3 bg-danger">
+                                                                <h5 class="modal-title text-light text-center"
+                                                                    id="exampleModalLabel">This Appointment Can't Be
+                                                                    Changable </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

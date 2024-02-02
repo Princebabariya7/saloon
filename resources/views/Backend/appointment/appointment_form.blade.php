@@ -112,12 +112,12 @@
                                         </h5>
                                     </div>
                                     <div class="modal-body" id="timeSlotModalBody">
-                                        <ul class="list-group" id="date-slot">
+                                        <div class="list-group" id="date-slot">
                                             @if($timeSlots == null)
                                                 <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                                     Select Date</h6>
                                             @endif
-                                        </ul>
+                                        </div>
 
                                         <div class="fatch">
                                             {!! Form::hidden('time_slot',  ($editMode) ? $timeSlotid : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time fatch_data', 'data-target' => '#appointmentTime', 'autocomplete' => 'off', 'readonly' => true]) !!}
@@ -215,7 +215,7 @@
                 var currentTime = moment();
                 var currentTimeformate = moment().format('MM/DD/YYYY');
                 var date = $('.appointment-date').val();
-                $('#timeSlotModalBody li').each(function () {
+                $('#timeSlotModalBody .time_remove').each(function () {
                     var timeSlot = $(this).text();
 
                     var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');

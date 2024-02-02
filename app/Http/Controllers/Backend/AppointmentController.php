@@ -18,6 +18,7 @@ class AppointmentController extends Controller
     {
         $search       = $request->input('search', '');
         $status       = $request->input('status', '');
+        $currentDate = \Illuminate\Support\Carbon::now();
         $appointments = Appointment::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
@@ -32,7 +33,7 @@ class AppointmentController extends Controller
         {
             return $query->where('status', $status);
         })->sortable(['service' => 'asc'])->paginate(5);
-        return view('Backend.appointment.index')->with('appointments', $appointments);
+        return view('Backend.appointment.index')->with('appointments', $appointments)->with('currentDate', $currentDate);
     }
 
     public function create()
@@ -68,7 +69,6 @@ class AppointmentController extends Controller
             ];
 
             AppointmentSlot::create($input);
-
         }
 
 

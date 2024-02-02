@@ -13,7 +13,7 @@
     <div class="container login-box  d-flex justify-content-center">
         <div class="registration-form">
             @if($editMode)
-                {!!  Form::model($orders, ['route' => ['online.update', 'id' => $orders->id], 'method'=>'put']) !!}
+                {!! Form::model($orders, ['route' => ['online.update', 'id' => $orders->id], 'method'=>'put']) !!}
             @else
                 {{ Form::open(['route' => ['online.info.store'], 'method'=>'post']) }}
             @endif
@@ -91,16 +91,18 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-
-                                <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot</h5>
+                                <h5 class="modal-title" id="timeSlotModalLabel">
+                                    <i class="fa fa-clock"></i> Select Time Slot
+                                    <span class="badge badge-info slotDay"></span>
+                                </h5>
                             </div>
                             <div class="modal-body" id="timeSlotModalBody">
-                                <ul class="list-group" id="date-slot">
+                                <div class="list-group" id="date-slot">
                                     @if($timeSlots == null)
                                         <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
                                             Select Date</h6>
                                     @endif
-                                </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,12 +121,12 @@
 @endsection
 @section('custom_js')
     <script>
-        @if ($errors->any())
-        @foreach ($errors->all() as $error)
+        @if ($errors -> any())
+        @foreach($errors -> all() as $error)
         toastr.error('{{ $error }}');
         @endforeach
         @endif
-        @if (\Session::has('msg'))
+        @if (\Session:: has('msg'))
         toastr.success('your order has been booked');
         {{\Session::forget('msg')}}
         @endif
@@ -163,7 +165,7 @@
                                 .attr("value", key)
                                 .addClass('options-' + key)
                                 .text(value));
-                            @if($editMode)
+                            @if ($editMode)
                             if (key == {{$service_id}})
                             {
                                 service_dom.find('.options-' + key).attr('selected', 'selected')
@@ -174,7 +176,7 @@
                     alert("error");
                 })
             });
-            @if($editMode)
+            @if ($editMode)
             $('#categories').trigger('change')
             @endif
 
@@ -186,7 +188,7 @@
                 var currentTime = moment();
                 var currentTimeformate = moment().format('MM/DD/YYYY');
                 var date = $('.appointment-date').val();
-                $('#timeSlotModalBody li').each(function () {
+                $('#timeSlotModalBody .time_remove').each(function () {
                     var timeSlot = $(this).text();
 
                     var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
@@ -207,7 +209,7 @@
                 AjaxTimeSlot();
             })
 
-            @if($editMode)
+            @if ($editMode)
             AjaxTimeSlot();
             @endif
         });

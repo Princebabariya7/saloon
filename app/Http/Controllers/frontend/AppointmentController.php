@@ -194,6 +194,7 @@ class AppointmentController extends Controller
         $date     = Carbon::create(\request()->date)->format('Y-m-d');
         $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
         $slotList = $this->slotList();
+        $slotDay  = (\Carbon\Carbon::create(\request()->date)->dayName);
         foreach ($slots as $slot)
         {
             if (isset($slotList[$slot]))
@@ -203,7 +204,9 @@ class AppointmentController extends Controller
         }
         return response()->json(
             [
-                'slotHtml' => view('frontend.book.fetchslot')->with('timeSlots', $slotList)->render(),
+                'slotHtml' => view('frontend.book.fetchslot')
+                    ->with('slotDay', $slotDay)
+                    ->with('timeSlots', $slotList)->render(),
             ], 200);
     }
 
