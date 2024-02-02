@@ -20,6 +20,7 @@ class ServiceUpdateRequest extends FormRequest
             'price'    => 'required|numeric',
             'duration' => 'required',
             'status'   => 'required'
+
         ];
     }
 }

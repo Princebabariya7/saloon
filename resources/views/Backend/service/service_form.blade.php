@@ -23,9 +23,9 @@
                 </div>
             </div>
             @if($editMode)
-                {!!  Form::model($service, ['route' => ['admin.service.update', 'id' => $service->id], 'method'=>'put']) !!}
+                {!!  Form::model($service, ['route' => ['admin.service.update', 'id' => $service->id], 'method'=>'put', 'enctype' => 'multipart/form-data']) !!}
             @else
-                {{ Form::open(['route' => ['admin.service.store'], 'method'=>'post']) }}
+                {{ Form::open(['route' => ['admin.service.store'], 'method'=>'post', 'enctype' => 'multipart/form-data']) }}
             @endif
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -91,6 +91,17 @@
                                 {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}
                             </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image</label>
+                        {!! Form::file('image', ['class' => 'form-control form-control-sm border-0']) !!}
+                        @if($editMode)
+                            <a href="#">
+                                <img src="{{ asset('uploads/gallery/'.$service->image) }}"
+                                     width="100px" alt="Image">
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

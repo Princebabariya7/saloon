@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
             $table->string('detail', 100);
             $table->string('price', 50);
             $table->string('duration', 50);
+            $table->string('image',100);
             $table->enum('status', ['Active', 'Inactive']);
             $table->integer('category_id');
             $table->timestamps();

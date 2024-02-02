@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'detail', 'price', 'duration', 'status', 'category_id'];
+    protected $fillable = ['name', 'detail', 'price', 'duration', 'image', 'status', 'category_id'];
 
     protected $attributes = [
 
@@ -17,6 +17,7 @@ class Service extends Model
         'detail'   => 'Unknown',
         'price'    => 'Unknown',
         'duration' => 'Unknown',
+        'image' => 'not selected',
         'status'   => 'Unknown',
     ];
 

@@ -53,6 +53,15 @@
                                 <td>{{$service->status }}</td>
                             </tr>
                             <tr>
+                                <td>Image:</td>
+                                <td>
+                                    <a href="{{ asset('uploads/gallery/'.$service->image) }}" target="_blank">
+                                        <img src="{{ asset('uploads/gallery/'.$service->image) }}" width="200px"
+                                             alt="Image">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Created at:</td>
                                 <td>{{ $service->created_at->format('F d, Y H:i:s') }}</td>
                             </tr>

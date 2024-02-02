@@ -7,6 +7,7 @@ use App\Http\Requests\Backend\ServiceUpdateRequest;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ServiceController extends Controller
 {
@@ -36,21 +37,28 @@ class ServiceController extends Controller
 
     public function store(ServiceStoreRequest $request)
     {
-        Service::create([
+        $service = Service::create([
             'category_id' => $request->category_id,
-            'name'     => $request->name,
+            'name'        => $request->name,
             'detail'      => $request->detail,
             'price'       => $request->price,
             'duration'    => $request->duration,
             'status'      => $request->status,
-            'updated_at'  => now(),
-            'created_at'  => now(),
         ]);
+
+        if ($request->hasFile('image'))
+        {
+            $file     = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/gallery', $filename);
+            $service->image = $filename;
+            $service->save();
+        }
 
         session()->put('add', 'data add');
         return redirect(route('admin.service.index'));
-
     }
+
 
     public function show($id)
     {
@@ -76,11 +84,27 @@ class ServiceController extends Controller
 
         $service              = Service::find($id);
         $service->category_id = $request->input('category_id');
-        $service->name     = $request->input('name');
+        $service->name        = $request->input('name');
         $service->detail      = $request->input('detail');
         $service->price       = $request->input('price');
         $service->duration    = $request->input('duration');
         $service->status      = $request->input('status');
+
+        if ($request->hasFile('image'))
+        {
+            $destination = 'uploads/gallery/' . $service->image;
+
+            if (File::exists($destination))
+            {
+                File::delete($destination);
+            }
+
+            $file     = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/gallery', $filename);
+
+            $service->image = $filename;
+        }
         $service->update();
 
         session()->put('update', 'data update');
@@ -91,11 +115,14 @@ class ServiceController extends Controller
     {
         try
         {
-            $service = Service::find($id);
-            if ($service)
+            $service     = Service::find($id);
+            $destination = 'uploads/gallery/' . $service->image;
+            if (File::exists($destination))
             {
-                $service->delete();
+                File::delete($destination);
             }
+            $service->delete();
+
 
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }

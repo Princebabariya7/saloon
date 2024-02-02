@@ -19,6 +19,7 @@ class ServiceStoreRequest extends FormRequest
             'detail'      => 'required',
             'price'       => 'required|numeric',
             'duration'    => 'required',
+            'image'       => 'required',
             'status'      => 'required'
         ];
     }

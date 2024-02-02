@@ -68,6 +68,9 @@
                             <thead>
                             <tr>
                                 <th>
+                                    Image
+                                </th>
+                                <th>
                                     Category
                                 </th>
                                 <th>
@@ -94,6 +97,24 @@
                                 <tbody>
                                 @foreach($services as $service)
                                     <tr>
+                                        <td>
+                                            <a href="#" data-toggle="modal"
+                                               data-target="#exampleModal{{ $service->id }}">
+                                                <img src="{{ asset('uploads/gallery/'.$service->image) }}" width="40px"
+                                                     alt="Image">
+                                            </a>
+                                            <div class="modal fade" id="exampleModal{{ $service->id }}" tabindex="-1"
+                                                 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-body d-flex justify-content-center">
+                                                        <a href="#">
+                                                            <img src="{{ asset('uploads/gallery/'.$service->image) }}"
+                                                                 width="300px" alt="Image">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.service.edit',$service->id)}}">
                                                 {{$service->categories->type}}
