@@ -73,8 +73,7 @@ class AppointmentController extends Controller
                     'date'           => $appointment->date,
                     'slot'           => $request->time_slot,
                     'appointment_id' => $appointment->id
-                ];
-
+                    ];
                 AppointmentSlot::create($input);
             }
 
@@ -197,13 +196,6 @@ class AppointmentController extends Controller
 
         $slotList = $this->slotList();
         $slotDay  = (\Carbon\Carbon::create(\request()->date)->dayName);
-//        foreach ($slots as $slot)
-//        {
-//            if (isset($slotList[$slot]))
-//            {
-////                unset($slotList[$slot]);
-//            }
-//        }
         return response()->json(
             [
                 'slotHtml' => view('frontend.book.fetchslot')

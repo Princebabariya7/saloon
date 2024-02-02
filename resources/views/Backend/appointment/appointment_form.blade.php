@@ -223,7 +223,8 @@
                     {
                         if (currentTime.isAfter(slotTime))
                         {
-                            $(this).remove();
+                            $(this).find('input').remove();
+                            $(this).find('label').html('<i class="fa fa-ban"></i>' + $(this).find('label').text());
                         }
                     }
                 });
