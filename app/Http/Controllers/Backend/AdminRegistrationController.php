@@ -34,18 +34,25 @@ class AdminRegistrationController extends Controller
 
     public function store(SignUpRequest $request)
     {
-
-        User::create([
-            'firstname'   => $request->firstname,
-            'lastname'    => $request->lastname,
-            'email'       => $request->email,
-            'password'    => Hash::make($request->password),
-            'user_status' => 'admin',
-            'updated_at'  => now(),
-            'created_at'  => now(),
-        ]);
-        session()->put('msg', 'You are Registered');
-        return redirect(route('admin.sign_in'));
+        try
+        {
+            User::create([
+                'firstname'   => $request->firstname,
+                'lastname'    => $request->lastname,
+                'email'       => $request->email,
+                'password'    => Hash::make($request->password),
+                'user_status' => 'admin',
+                'updated_at'  => now(),
+                'created_at'  => now(),
+            ]);
+            session()->put('msg', 'You are Registered');
+            return redirect(route('admin.sign_in'));
+        }
+        catch (\Exception $e)
+        {
+            session()->put('duplicateMsg', 'This Email Address Is Already Registered');
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     public function login(SignInRequest $request)

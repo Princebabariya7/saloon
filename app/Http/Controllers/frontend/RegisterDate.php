@@ -41,10 +41,12 @@ class RegisterDate extends Controller
                 'created_at'  => now(),
             ]);
             session()->put('registerMsg', 'you are successfully registered');
-            return view('frontend.sign_in.login');
+            return redirect(route('user.login'));
         }
         catch (\Exception $e)
         {
+            session()->put('duplicateMsg', 'This Email Address Is Already Registered');
+
             return redirect()->back()->with('error', $e->getMessage());
         }
     }

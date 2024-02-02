@@ -136,12 +136,15 @@
                 $('#datepicker').datepicker('show');
             });
         });
-    </script>
-    <script>
+
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
         @endforeach
+        @endif
+        @if (\Session::has('duplicateMsg'))
+        toastr.error('This Email Address Is Already Registered');
+        {{\Session::forget('duplicateMsg')}}
         @endif
     </script>
 @endsection
