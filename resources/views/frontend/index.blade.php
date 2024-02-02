@@ -136,7 +136,7 @@
                             </div>
                             <div class="price-text">
                                 <h2>
-                                    {{$service->service}}
+                                    {{$service->name}}
                                 </h2>
 
                                 <h3>

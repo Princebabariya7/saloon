@@ -30,7 +30,7 @@
                             </div>
                             <div class="price-text">
                                 <h2>
-                                    {{$service->service}}
+                                    {{$service->name}}
                                 </h2>
                                 <h3><i class="fa fa-inr" aria-hidden="true"></i>{{$service->price}}</h3>
                             </div>

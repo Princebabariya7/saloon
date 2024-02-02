@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Models\Gallery;
 use App\Models\Price;
+use App\Models\Service;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.index')->with('services', Price::all());
+        return view('frontend.index')->with('services', Service::all());
     }
 
     public function register()
@@ -43,7 +44,7 @@ class HomeController extends Controller
 
     public function price()
     {
-        return view('frontend.price.index')->with('services', Price::all());
+        return view('frontend.price.index')->with('services', Service::all());
     }
 
     public function service()
