@@ -735,11 +735,9 @@ a:focus {
     margin-bottom: 30px;
     background: rgba(29, 36, 52, .04);
     transition: .3s;
+    background: #f1f1f1;
 }
 
-.price .price-item:hover {
-    background: lightslategrey;
-}
 
 .price .price-img {
     position: relative;
