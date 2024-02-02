@@ -192,20 +192,23 @@ class AppointmentController extends Controller
     public function timeSlot()
     {
         $date     = Carbon::create(\request()->date)->format('Y-m-d');
-        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'id')->toArray();
+        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
+
+
         $slotList = $this->slotList();
         $slotDay  = (\Carbon\Carbon::create(\request()->date)->dayName);
-        foreach ($slots as $slot)
-        {
-            if (isset($slotList[$slot]))
-            {
-                unset($slotList[$slot]);
-            }
-        }
+//        foreach ($slots as $slot)
+//        {
+//            if (isset($slotList[$slot]))
+//            {
+////                unset($slotList[$slot]);
+//            }
+//        }
         return response()->json(
             [
                 'slotHtml' => view('frontend.book.fetchslot')
                     ->with('slotDay', $slotDay)
+                   ->with('slots',$slots)
                     ->with('timeSlots', $slotList)->render(),
             ], 200);
     }
