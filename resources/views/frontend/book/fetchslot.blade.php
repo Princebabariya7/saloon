@@ -3,7 +3,7 @@
         @foreach($timeSlots as $key => $timeSlot)
             <div class="col-md-6 mb-3 time_remove">
                 <div class="list-group-item p-3">
-                    <label class="m-0">
+                    <label class="m-0 slote-size">
                         <input type="radio" name="time_slot" value="{{ $key }}"
                                onclick="selectTimeSlot('{{ $timeSlot }}')">
                         {{ $timeSlot }}

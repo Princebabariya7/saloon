@@ -196,7 +196,7 @@
                     {
                         if (currentTime.isAfter(slotTime))
                         {
-                            $(this).remove();
+                            // $(this).remove();
                         }
                     }
                 });
