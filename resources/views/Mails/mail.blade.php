@@ -5,59 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon Order Confirmation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 3px;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Hairck Saloon</h1>
-    <h1>Saloon Appointment Confirmation</h1>
-    <p>Thank You For Choosing Hairck Saloon! Your order has been confirmed.</p>
-    <p>Details of your order:</p>
-    <table>
-        <tr>
-            <td>{{auth()->user()->firstname}}</td>
-            <td>{{ $appointment->services->categories->type }}</td>
+<div class="container mt-4">
+    <h1 class="mb-4">Hairck Salon</h1>
+    <h2 class="d-none d-sm-block">Salon Appointment Confirmation</h2>
+    <p>Thank you for choosing Hairck Salon! Your order has been confirmed.</p>
+    <p><strong>Details of your order:</strong></p>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Service Category</th>
+                <th scope="col">Service Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach(request()->service_id as $service)
-                <td>{{Service::find($service)->name}}</td>
+                <tr>
+                    <td>{{ auth()->user()->firstname }}</td>
+                    <td>{{ $appointment->services->categories->type }}</td>
+                    <td>{{ Service::find($service)->name }}</td>
+                    <td>{{ $appointment->date }}</td>
+                    <td>{{ $appointment->time }}</td>
+                </tr>
             @endforeach
-            <td>{{$appointment->date}}</td>
-            <td>{{$appointment->time}}</td>
-        </tr>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <p>We look forward to serving you. If you have any questions, feel free to contact us.</p>
 </div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
