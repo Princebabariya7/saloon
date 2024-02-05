@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\AppointmentStoreRequest;
 use App\Http\Requests\Backend\AppointmentUpdateRequest;
+use App\Mail\OrderMail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class AppointmentController extends Controller
@@ -70,6 +72,7 @@ class AppointmentController extends Controller
             ];
 
             AppointmentSlot::create($input);
+            $this->AppointmentConformationMail($appointment);
         }
 
 
@@ -207,8 +210,7 @@ class AppointmentController extends Controller
 
     }
 
-    public
-    function slotList()
+    public function slotList()
     {
         return [
             '9_to_10'  => '9:00 AM - 10:00 AM',
@@ -224,5 +226,10 @@ class AppointmentController extends Controller
             '7_to_8'   => '7:00 PM - 8:00 PM',
             '8_to_9'   => '8:00 PM - 9:00 PM',
         ];
+    }
+
+    public function AppointmentConformationMail($appointment)
+    {
+        Mail::to(auth()->user()->email)->send(new OrderMail($appointment));
     }
 }
