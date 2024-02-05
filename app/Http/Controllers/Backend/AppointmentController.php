@@ -20,7 +20,7 @@ class AppointmentController extends Controller
     {
         $search       = $request->input('search', '');
         $status       = $request->input('status', '');
-        $currentDate = \Illuminate\Support\Carbon::now();
+        $currentDate  = \Illuminate\Support\Carbon::now();
         $appointments = Appointment::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
@@ -68,15 +68,15 @@ class AppointmentController extends Controller
                 'date'           => $appointment->date,
                 'slot'           => $request->time_slot,
                 'appointment_id' => $appointment->id,
-                'user_id' => $appointment->user_id
+                'user_id'        => $appointment->user_id
             ];
 
             AppointmentSlot::create($input);
-            $this->AppointmentConformationMail($appointment);
         }
 
 
         session()->put('add', 'data add');
+        $this->AppointmentConformationMail($appointment);
         return redirect(route('admin.appointment.index'));
 
     }
@@ -203,7 +203,7 @@ class AppointmentController extends Controller
             [
                 'slotHtml' => view('Backend.appointment.fetch_timeslot')
                     ->with('slotDay', $slotDay)
-                    ->with('slots',$slots)
+                    ->with('slots', $slots)
                     ->with('timeSlots', $slotList)
                     ->render(),
             ], 200);
