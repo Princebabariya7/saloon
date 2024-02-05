@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use App\Models\Service; @endphp
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +12,7 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -19,12 +21,15 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             color: #333;
         }
+
         p {
             color: #666;
         }
+
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -43,10 +48,13 @@
     <p>Details of your order:</p>
     <table>
         <tr>
-        <td>{{auth()->user()->firstname}}</td>
-        <td>{{$appointment->services->name}}</td>
-        <td>{{$appointment->date}}</td>
-        <td>{{$appointment->time}}</td>
+            <td>{{auth()->user()->firstname}}</td>
+            <td>{{ $appointment->services->categories->type }}</td>
+            @foreach(request()->service_id as $service)
+                <td>{{Service::find($service)->name}}</td>
+            @endforeach
+            <td>{{$appointment->date}}</td>
+            <td>{{$appointment->time}}</td>
         </tr>
     </table>
     <p>We look forward to serving you. If you have any questions, feel free to contact us.</p>

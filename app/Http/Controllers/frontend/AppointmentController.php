@@ -79,11 +79,10 @@ class AppointmentController extends Controller
                     'user_id' => $appointment->user_id
                     ];
                 AppointmentSlot::create($input);
-                $this->AppointmentConformationMail($appointment);
-
             }
 
             session()->put('msg', 'your order has been booked');
+            $this->AppointmentConformationMail($appointment);
             return redirect(route('online.create'));
         }
         catch (\Exception $e)
