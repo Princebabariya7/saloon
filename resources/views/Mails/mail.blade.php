@@ -8,21 +8,19 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        @media only screen and (max-width: 600px) {
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-            th, td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: left;
-            }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
 
-            th {
-                background-color: #f2f2f2;
-            }
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -37,8 +35,8 @@
             <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Category Name</th>
-                <th scope="col">Service Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Service</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
             </tr>
