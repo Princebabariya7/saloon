@@ -38,15 +38,17 @@
 <body>
 <div class="container">
     <h1>Hairck Saloon</h1>
-    <h1>Saloon Order Confirmation</h1>
-    <p>Thank you for choosing our salon! Your order has been confirmed.</p>
+    <h1>Saloon Appointment Confirmation</h1>
+    <p>Thank You For Choosing Hairck Saloon! Your order has been confirmed.</p>
     <p>Details of your order:</p>
-    <ul>
-        <li>{{auth()->user()->firstname}}</li>
-        <li>{{$appointment->services->name}}</li>
-        <li>{{$appointment->date}}</li>
-        <li>{{$appointment->time}}</li>
-    </ul>
+    <table>
+        <tr>
+        <td>{{auth()->user()->firstname}}</td>
+        <td>{{$appointment->services->name}}</td>
+        <td>{{$appointment->date}}</td>
+        <td>{{$appointment->time}}</td>
+        </tr>
+    </table>
     <p>We look forward to serving you. If you have any questions, feel free to contact us.</p>
 </div>
 </body>
