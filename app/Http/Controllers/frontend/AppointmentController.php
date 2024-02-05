@@ -4,12 +4,14 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
+use App\Mail\OrderMail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class AppointmentController extends Controller
@@ -54,6 +56,7 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
+//        dd(auth()->user()->email);
         try
         {
             foreach (request('service_id') as $serviceId)
@@ -76,6 +79,8 @@ class AppointmentController extends Controller
                     'user_id' => $appointment->user_id
                     ];
                 AppointmentSlot::create($input);
+                $this->AppointmentConformationMail($appointment);
+
             }
 
             session()->put('msg', 'your order has been booked');
@@ -222,5 +227,10 @@ class AppointmentController extends Controller
             '7_to_8'   => '7:00 PM - 8:00 PM',
             '8_to_9'   => '8:00 PM - 9:00 PM',
         ];
+    }
+
+    public function AppointmentConformationMail($appointment)
+    {
+        Mail::to(auth()->user()->email)->send(new OrderMail($appointment));
     }
 }
