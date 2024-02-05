@@ -82,8 +82,9 @@ class AppointmentController extends Controller
             }
 
             session()->put('msg', 'your order has been booked');
-            $this->AppointmentConformationMail($appointment);
-            return redirect(route('online.create'));
+//            $this->AppointmentConformationMail($appointment);
+//            return redirect(route('online.create'));
+            return view('frontend.payment.index')->with('appointment',$request->all());
         }
         catch (\Exception $e)
         {

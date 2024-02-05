@@ -1,3 +1,5 @@
+@php use App\Models\Service; @endphp
+
 @extends('frontend.layout.master')
 @section('title')
     payment
@@ -75,23 +77,23 @@
                         <div class="card-header">
                             <h3 class="card-title mb-0">Selected Services</h3>
                         </div>
+                        {{--                        @dd($appointment)--}}
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th>Service</th>
-                                    <th>Price</th>
+                                    <th scope="col">Service</th>
+                                    <th scope="col">Price</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td><i class="fa fa-inr" aria-hidden="true"></i> 100</td>
-                                </tr>
-                                <tr>
-                                    <td>Alexander Pierce</td>
-                                    <td><i class="fa fa-inr" aria-hidden="true"></i> 200</td>
-                                </tr>
+                                @foreach(request()->service_id as $service)
+                                    <tr>
+                                        <td>{{ Service::find($service)->name }}</td>
+                                        <td><i class="fa fa-inr"
+                                               aria-hidden="true"></i> {{ Service::find($service)->price  }}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
