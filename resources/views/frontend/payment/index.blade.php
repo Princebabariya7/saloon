@@ -49,48 +49,28 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
+
                                 <div class="form-group">
-                                    <div class="form-group">
-                                        <label for="Billing">Buyer name</label>
-                                        <input type="text" class="form-control" id="Billing"
-                                               placeholder="Enter your name" name="buyer_name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Billing_email">Buyer email</label>
-                                        <input type="text" class="form-control" id="Billing_email"
-                                               placeholder="Enter your email" name="buyer_email">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="Billing">Buyer name</label>
+                                                <input type="text" class="form-control" id="Billing"
+                                                       placeholder="Enter your name" name="buyer_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="Billing_email">Buyer email</label>
+                                                <input type="text" class="form-control" id="Billing_email"
+                                                       placeholder="Enter your email" name="buyer_email">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="Buyer_Address">Buyer Address</label>
                                         <textarea id="Buyer_Address" class="form-control" rows="2"
                                                   name="buyer_address"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mx-0">
-                        <div class="col-md-12">
-                            <div class="card card-secondary">
-                                <div class="card-header">
-                                    <h3 class="card-title mb-0 text-light">Credit/Debit Card</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                                title="Collapse">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <label>Payment Methods:</label>
-                                    <div class="row payment_methods">
-                                        <div class="col-md">
-                                            <img src="{{asset('cd/page_img/credit/visa.png')}}" alt="Visa">
-                                            <img src="{{asset('cd/page_img/credit/mastercard.png')}}" alt="master card">
-                                            <img src="{{asset('cd/page_img/credit/american-express.png')}}"
-                                                 alt="American Express">
-                                            <img src="{{asset('cd/page_img/credit/paypal2.png')}}" alt="Paypal">
-                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="cardnumber">Enter card number</label>

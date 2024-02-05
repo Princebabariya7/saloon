@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="container mt-4">
-    <h1 class="mb-4">Hairck Salon</h1>
+    <h1 class="mb-4">Hairck Saloon</h1>
     <h2 class="d-none d-sm-block">Salon Appointment Confirmation</h2>
     <p>Thank you for choosing Hairck Salon! Your order has been confirmed.</p>
     <p><strong>Details of your order:</strong></p>
