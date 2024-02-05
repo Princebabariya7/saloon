@@ -37,7 +37,7 @@
             <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Service Category</th>
+                <th scope="col">Category Name</th>
                 <th scope="col">Service Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
