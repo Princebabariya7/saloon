@@ -77,7 +77,6 @@
                         <div class="card-header">
                             <h3 class="card-title mb-0">Selected Services</h3>
                         </div>
-                        {{--                        @dd($appointment)--}}
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
                                 <thead>
@@ -87,13 +86,28 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @php
+                                    $totalPrice = 0;
+                                @endphp
+
                                 @foreach(request()->service_id as $service)
                                     <tr>
                                         <td>{{ Service::find($service)->name }}</td>
                                         <td><i class="fa fa-inr"
-                                               aria-hidden="true"></i> {{ Service::find($service)->price  }}</td>
+                                               aria-hidden="true"></i> {{ Service::find($service)->price }}</td>
                                     </tr>
+                                    @php
+                                        $totalPrice += Service::find($service)->price;
+                                    @endphp
                                 @endforeach
+
+                                <!-- Display Total Row -->
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong><i class="fa fa-inr" aria-hidden="true"></i> <span
+                                                id="totalPrice">{{ $totalPrice }}</span></strong></td>
+                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -127,18 +141,31 @@
 @endsection
 @section('custom_js')
     <script>
-        @if ($errors->any())
-        @foreach ($errors->all() as $error)
-        toastr.error('{{ $error }}');
-        @endforeach
-        @endif
-
         $(document).ready(function () {
             $('#reservationdate').datetimepicker({
                 format: 'MM/YYYY',
                 viewMode: 'months',
                 minViewMode: 'months',
                 minDate: moment(),
+            });
+
+            // Function to calculate and display the total price dynamically
+            function calculateTotalPrice()
+            {
+                var totalPrice = 0;
+
+                $('.table tbody tr').each(function () {
+                    var price = parseFloat($(this).find('td:last-child').text().replace(/\D/g, ''));
+                    totalPrice += price;
+                });
+
+                // Update the total price in the HTML
+                $('#totalPrice').text(totalPrice.toFixed(2));
+            }
+
+            // Call the function when the form is submitted
+            $('form').on('submit', function () {
+                calculateTotalPrice();
             });
         });
     </script>
