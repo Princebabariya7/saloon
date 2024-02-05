@@ -22,26 +22,26 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="Billing">Buyer name</label>
+                                            <label for="Billing">Customer Name</label>
                                             {!! Form::text('buyer_name', null, ['class' => 'form-control', 'id' => 'Billing', 'placeholder' => 'Enter your name']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="Billing_email">Buyer email</label>
+                                            <label for="Billing_email">Customer Email</label>
                                             {!! Form::text('buyer_email', null, ['class' => 'form-control', 'id' => 'Billing_email', 'placeholder' => 'Enter your email']) !!}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Buyer_Address">Buyer Address</label>
+                                    <label for="Buyer_Address">Customer Address</label>
                                     {!! Form::textarea('buyer_address', null, ['class' => 'form-control', 'id' => 'Buyer_Address', 'rows' => 2]) !!}
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="cardnumber">Enter card number</label>
-                                            {!! Form::text('cd_number', null, ['class' => 'form-control', 'id' => 'cardnumber']) !!}
+                                            <label for="cardnumber">Enter Card Number</label>
+                                            {!! Form::text('cd_number', null, ['class' => 'form-control', 'id' => 'cardnumber', 'maxlength'=>'12']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -60,7 +60,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="cvv">CVV</label>
-                                            {!! Form::text('cvv', null, ['class' => 'form-control', 'id' => 'cvv']) !!}
+                                            {!! Form::text('cvv', null, ['class' => 'form-control', 'id' => 'cvv', 'maxlength'=>'3']) !!}
                                         </div>
                                     </div>
                                 </div>
