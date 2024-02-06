@@ -1,5 +1,3 @@
-@php use App\Models\Service; @endphp
-
 @extends('frontend.layout.master')
 @section('title')
     payment
@@ -14,8 +12,7 @@
     </div>
     <div class="container appointment  mt-3">
         <div class="card login_content payment_formpage">
-            {!! Form::open(['route' => 'payment.info.store', 'method' => 'post']) !!}
-            @csrf
+            {{ Form::open(['route' => ['online.info.store'], 'method'=>'post']) }}
             <div class="container main_form pt-3">
                 <div class="container">
                     <div class="row">
@@ -51,7 +48,7 @@
                                         <div class="form-group">
                                             <div class="input-group date" id="reservationdate"
                                                  data-target-input="nearest">
-                                                {!! Form::text('date', null, ['class' => 'form-control appointment-date datetimepicker-input', 'id' => 'date', 'data-target' => '#reservationdate', 'autocomplete' => 'off']) !!}
+                                                {!! Form::text('expiry', null, ['class' => 'form-control appointment-date datetimepicker-input', 'id' => 'date', 'data-target' => '#reservationdate', 'autocomplete' => 'off']) !!}
                                                 <div class="input-group-append" data-target="#reservationdate"
                                                      data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -86,28 +83,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php
-                                    $totalPrice = 0;
-                                @endphp
-
-                                @foreach(request()->service_id as $service)
+                                @foreach($services as $service)
                                     <tr>
-                                        <td>{{ Service::find($service)->name }}</td>
-                                        <td><i class="fa fa-inr"
-                                               aria-hidden="true"></i> {{ Service::find($service)->price }}</td>
+                                        <td>{{$service->name }}</td>
+                                        <td><i class="fa fa-inr" aria-hidden="true"></i> {{ $service->price }}</td>
                                     </tr>
-                                    @php
-                                        $totalPrice += Service::find($service)->price;
-                                    @endphp
                                 @endforeach
 
-                                <!-- Display Total Row -->
                                 <tr>
                                     <td><strong>Total</strong></td>
                                     <td><strong><i class="fa fa-inr" aria-hidden="true"></i> <span
-                                                id="totalPrice">{{ $totalPrice }}</span></strong></td>
+                                                id="totalPrice">{{ $total }}</span> </strong></td>
                                 </tr>
-
                                 </tbody>
                             </table>
                         </div>
@@ -141,31 +128,17 @@
 @endsection
 @section('custom_js')
     <script>
+        @if ($errors -> any())
+        @foreach($errors -> all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
         $(document).ready(function () {
             $('#reservationdate').datetimepicker({
                 format: 'MM/YYYY',
                 viewMode: 'months',
                 minViewMode: 'months',
                 minDate: moment(),
-            });
-
-            // Function to calculate and display the total price dynamically
-            function calculateTotalPrice()
-            {
-                var totalPrice = 0;
-
-                $('.table tbody tr').each(function () {
-                    var price = parseFloat($(this).find('td:last-child').text().replace(/\D/g, ''));
-                    totalPrice += price;
-                });
-
-                // Update the total price in the HTML
-                $('#totalPrice').text(totalPrice.toFixed(2));
-            }
-
-            // Call the function when the form is submitted
-            $('form').on('submit', function () {
-                calculateTotalPrice();
             });
         });
     </script>
