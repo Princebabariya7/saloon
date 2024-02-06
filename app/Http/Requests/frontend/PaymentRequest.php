@@ -18,8 +18,7 @@ class PaymentRequest extends FormRequest
             'buyer_email'   => 'required|email',
             'buyer_address' => 'required',
             'cd_number'     => 'required|numeric',
-            'month'         => 'required|numeric',
-            'year'          => 'required|numeric',
+            'expiry'        => 'required',
             'cvv'           => 'required|numeric',
         ];
     }
