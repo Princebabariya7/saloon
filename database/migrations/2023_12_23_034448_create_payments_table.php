@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePaymentsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('payment', function (Blueprint $table) {
@@ -18,19 +14,13 @@ class CreatePaymentsTable extends Migration
             $table->string('buyer_name',50);
             $table->string('buyer_email',50);
             $table->string('buyer_address',50);
-            $table->integer('cd_number');
-            $table->integer('month');
-            $table->integer('year');
+            $table->string('cd_number',12);
+            $table->string('expiry');
             $table->integer('cvv');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('payments');
