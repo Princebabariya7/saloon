@@ -15,7 +15,8 @@ class Payment extends Model
         'buyer_email' => 'not selected',
         'buyer_address' => 'not selected',
         'cd_number' => 'not selected',
-        'expiry' => 'not selected',
+        'exp_month' => 'not selected',
+        'exp_year' => 'not selected',
         'cvv' => 'not selected',
     ];
         protected $table = 'payment';
