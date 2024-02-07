@@ -38,7 +38,7 @@ class PaymentObserver
                 ];
                 AppointmentSlot::create($input);
             }
-            session()->put('msg', 'your order has been booked');
+            session()->put('msg', 'Your Appointment Has Successfully Booked');
             Mail::to(auth()->user()->email)->send(new OrderMail($appointment));
 
         }
