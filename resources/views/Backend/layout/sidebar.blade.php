@@ -76,6 +76,16 @@
                     </a>
                 </li>
 
+                <li class="nav-item {{ Route::is('admin.payment.index') ? 'menu-open' : '' }}">
+                    <a href="{{ route('admin.payment.index') }}"
+                       class="nav-link {{ Route::is('admin.payment.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-credit-card"></i>
+                        <p>
+                            Payment
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item {{ Route::is('admin.user.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.user.index') }}"
                        class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }}">
