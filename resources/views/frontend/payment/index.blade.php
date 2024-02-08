@@ -36,23 +36,24 @@
                                     <label for="Buyer_Address">Customer Address</label>
                                     {!! Form::textarea('buyer_address', null, ['class' => 'form-control', 'id' => 'Buyer_Address', 'rows' => 2]) !!}
                                 </div>
+                                <div class="form-group">
+                                    <label for="cardnumber">Enter Card Number</label>
+                                    {!! Form::text('cd_number', null, ['class' => 'form-control', 'id' => 'cardnumber', 'maxlength'=>'12']) !!}
+                                </div>
                                 <div class="row">
                                     <div class="col-md-4">
+                                        <label>Expiry Month</label>
                                         <div class="form-group">
-                                            <label for="cardnumber">Enter Card Number</label>
-                                            {!! Form::text('cd_number', null, ['class' => 'form-control', 'id' => 'cardnumber', 'maxlength'=>'12']) !!}
+                                            <div class="input-group">
+                                                {!! Form::text('exp_month', null, ['class' => 'form-control', 'id' => 'month', 'autocomplete' => 'off']) !!}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label>Expiry Date</label>
+                                        <label>Expiry Year</label>
                                         <div class="form-group">
-                                            <div class="input-group date" id="reservationdate"
-                                                 data-target-input="nearest">
-                                                {!! Form::text('expiry', null, ['class' => 'form-control appointment-date datetimepicker-input', 'id' => 'date', 'data-target' => '#reservationdate', 'autocomplete' => 'off']) !!}
-                                                <div class="input-group-append" data-target="#reservationdate"
-                                                     data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
+                                            <div class="input-group">
+                                                {!! Form::text('exp_year', null, ['class' => 'form-control', 'id' => 'month', 'autocomplete' => 'off']) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -126,6 +127,7 @@
         </div>
     </div>
 @endsection
+<script src="https://js.stripe.com/v3/"></script>
 @section('custom_js')
     <script>
         @if ($errors -> any())

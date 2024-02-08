@@ -4,15 +4,19 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
+use App\Http\Requests\frontend\PaymentRequest;
 use App\Mail\OrderMail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
+use App\Models\Payment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\View\View;
+use Stripe\Customer;
+use Stripe\PaymentIntent;
+use Stripe\Stripe;
 
 class AppointmentController extends Controller
 {
@@ -56,7 +60,6 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
-//        dd(auth()->user()->email);
         try
         {
             foreach (request('service_id') as $serviceId)
@@ -67,7 +70,7 @@ class AppointmentController extends Controller
                     'date'       => Carbon::create($request->date)->format('Y-m-d'),
                     'time'       => $request->time,
                     'user_id'    => auth()->user()->id,
-                    'status'     => 'Active',
+                    'status'     => 'Pending',
                     'updated_at' => now(),
                     'created_at' => Carbon::now(),
                 ]);
@@ -76,15 +79,16 @@ class AppointmentController extends Controller
                     'date'           => $appointment->date,
                     'slot'           => $request->time_slot,
                     'appointment_id' => $appointment->id,
-                    'user_id' => $appointment->user_id
-                    ];
+                    'user_id'        => $appointment->user_id
+                ];
                 AppointmentSlot::create($input);
             }
 
             session()->put('msg', 'your order has been booked');
 //            $this->AppointmentConformationMail($appointment);
-//            return redirect(route('online.create'));
-            return view('frontend.payment.index')->with('appointment',$request->all());
+
+            return redirect(route('online.create'));
+//            return view('frontend.payment.index')->with('appointment',$request->all());
         }
         catch (\Exception $e)
         {
@@ -119,8 +123,8 @@ class AppointmentController extends Controller
     {
 //        dd($request->all());
 
-            $orders          = Appointment::find($id);
-            $appointmentSlot = AppointmentSlot::find($id);
+        $orders          = Appointment::find($id);
+        $appointmentSlot = AppointmentSlot::find($id);
 
         foreach (request('service_id') as $serviceId)
         {
@@ -137,15 +141,19 @@ class AppointmentController extends Controller
         session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));
     }
+
     public function destroy($id)
     {
-        try {
+        try
+        {
             $orders = Appointment::find($id);
 
-            if ($orders) {
+            if ($orders)
+            {
                 $appointmentSlot = AppointmentSlot::find($id);
 
-                if ($appointmentSlot) {
+                if ($appointmentSlot)
+                {
                     $appointmentSlot->delete();
                 }
 
@@ -153,7 +161,9 @@ class AppointmentController extends Controller
             }
 
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
@@ -196,8 +206,8 @@ class AppointmentController extends Controller
 
     public function timeSlot()
     {
-        $date     = Carbon::create(\request()->date)->format('Y-m-d');
-        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
+        $date  = Carbon::create(\request()->date)->format('Y-m-d');
+        $slots = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
 
 
         $slotList = $this->slotList();
@@ -206,7 +216,7 @@ class AppointmentController extends Controller
             [
                 'slotHtml' => view('frontend.book.fetchslot')
                     ->with('slotDay', $slotDay)
-                   ->with('slots',$slots)
+                    ->with('slots', $slots)
                     ->with('timeSlots', $slotList)->render(),
             ], 200);
     }
