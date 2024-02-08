@@ -4,19 +4,14 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
-use App\Http\Requests\frontend\PaymentRequest;
 use App\Mail\OrderMail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
-use App\Models\Payment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
-use Stripe\Customer;
-use Stripe\PaymentIntent;
-use Stripe\Stripe;
 
 class AppointmentController extends Controller
 {
@@ -84,11 +79,11 @@ class AppointmentController extends Controller
                 AppointmentSlot::create($input);
             }
 
-//            session()->put('msg', 'your order has been booked');
+            //session()->put('msg', 'your order has been booked');
             // $this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
-             return redirect(route('payment.page'));
+            return redirect(route('payment.page'));
         }
         catch (\Exception $e)
         {
