@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            {{ Form::open(['route' => ['admin.appointment.store'], 'method'=>'post']) }}
+            {{ Form::open(['route' => ['admin.payment.store'], 'method'=>'post','id'=>"payment-form" ]) }}
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -38,112 +38,38 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="w-100">
             <div class="card  mx-3">
-
                 <div class="card-body">
-                    <div class="row">
+                    <div id="payment-element">
+                        <!-- Elements will create form elements here -->
+                    </div>
+
+                    <div class="row mt-5">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="Billing">Customer Name</label>
-                                {!! Form::text('buyer_name', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing', 'placeholder' => 'Enter your name']) !!}
+                            <div class="row payment_methods">
+                                <!-- Payment methods images -->
+                                <div class="col-md">
+                                    <img src="{{ asset('cd/page_img/credit/visa.png') }}" alt="Visa">
+                                    <img src="{{ asset('cd/page_img/credit/mastercard.png') }}" alt="MasterCard">
+                                    <img src="{{ asset('cd/page_img/credit/american-express.png') }}"
+                                         alt="American Express">
+                                    <img src="{{ asset('cd/page_img/credit/paypal2.png') }}" alt="Paypal">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="Billing_email">Customer Email</label>
-                                {!! Form::text('buyer_email', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing_email', 'placeholder' => 'Enter your email']) !!}
-                            </div>
+                            <button id="submit" class="btn btn-sm btn-primary float-right"
+                                    style="margin-right: 5px; float: left; margin-bottom: 20px;">MAKE PAYMENT
+                            </button>
+
+                        </div>
+                        <div id="error-message">
+                            <!-- Display error message to your customers here -->
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="Buyer_Address">Customer Address</label>
-                        {!! Form::textarea('buyer_address', null, ['class' => 'form-control form-control-sm', 'id' => 'Buyer_Address', 'rows' => 1]) !!}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cardnumber">Enter Card Number</label>
-                        {!! Form::text('cd_number', null, ['class' => 'form-control form-control-sm', 'id' => 'cardnumber', 'maxlength'=>'12']) !!}
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label>Expiry Month</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    {!! Form::text('exp_month', null, ['class' => 'form-control form-control-sm', 'id' => 'month', 'autocomplete' => 'off']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Expiry Year</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    {!! Form::text('exp_year', null, ['class' => 'form-control form-control-sm', 'id' => 'month', 'autocomplete' => 'off']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="cvv">CVV</label>
-                                {!! Form::text('cvv', null, ['class' => 'form-control form-control-sm', 'id' => 'cvv', 'maxlength'=>'3']) !!}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title mb-0">Selected Services</h3>
-                        </div>
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Service</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($services as $service)
-                                    <tr>
-                                        <td>{{$service->name }}</td>
-                                        <td><i class="fa fa-inr" aria-hidden="true"></i> {{ $service->price }}</td>
-                                    </tr>
-                                @endforeach
-
-                                <tr>
-                                    <td><strong>Total</strong></td>
-                                    <td><strong><i class="fa fa-inr" aria-hidden="true"></i> <span
-                                                id="totalPrice">{{ $total }}</span> </strong></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="row payment_methods">
-                                    <!-- Payment methods images -->
-                                    <div class="col-md">
-                                        <img src="{{ asset('cd/page_img/credit/visa.png') }}" alt="Visa">
-                                        <img src="{{ asset('cd/page_img/credit/mastercard.png') }}" alt="MasterCard">
-                                        <img src="{{ asset('cd/page_img/credit/american-express.png') }}"
-                                             alt="American Express">
-                                        <img src="{{ asset('cd/page_img/credit/paypal2.png') }}" alt="Paypal">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                {!! Form::submit('MAKE PAYMENT', ['class' => 'btn btn-sm btn-primary float-right', 'style' => 'margin-right: 5px; float: left; margin-bottom: 20px;']) !!}
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -151,9 +77,66 @@
     </section>
 
 @endsection
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
 @section('custom_js')
     <script>
+        // Set your publishable key: remember to change this to your live publishable key in production
+        // See your keys here: https://dashboard.stripe.com/apikeys
+        $(document).ready(function () {
+            var stripe = Stripe('pk_test_51Oh3GkSGdlQqnOKgAeJvDMxNGdxK5HvcoCDLt50Sn3YYqMBlVBL6vV3IhMKUs4KjG6cM9T6kVfuy3BMyoXaCRNpc009dVA2mvf');
+            var elements = stripe.elements();
+
+            // Create and mount the Payment Element
+            var paymentElement = elements.create('card');
+            paymentElement.mount('#payment-element');
+
+            var formElement = $('#payment-form');
+            var submitButton = $('#submit');
+            var errorMessage = $('#error-message');
+
+            formElement.on('submit', function (event) {
+                event.preventDefault();
+                submitButton.prop('disabled', true); // Disable the submit button to prevent double submission
+                stripe.createToken(paymentElement).then(function (result) {
+                    if (result.error)
+                    {
+                        // Inform the user if there was an error
+                        errorMessage.text(result.error.message);
+                        submitButton.prop('disabled', false); // Re-enable the submit button
+                    }
+                    else
+                    {
+                        // Send the token to your server
+                        stripeTokenHandler(result.token);
+                    }
+                });
+            });
+
+            function stripeTokenHandler(token)
+            {
+                var hiddenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
+                formElement.append(hiddenInput);
+                // Now submit the form via AJAX
+                $.ajax({
+                    type: "POST",
+                    url: formElement.attr('action'),
+                    data: formElement.serialize(), // Serialize form data
+                    success: function (response) {
+                        // Handle success response here
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle error response here
+                        console.log(xhr.responseText);
+                    },
+                    complete: function () {
+                        submitButton.prop('disabled', false);
+                    }
+                });
+            }
+        });
+
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
