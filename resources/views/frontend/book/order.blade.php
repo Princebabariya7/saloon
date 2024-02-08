@@ -99,8 +99,8 @@
                             <div class="modal-body" id="timeSlotModalBody">
                                 <div class="list-group" id="date-slot">
                                     @if($timeSlots == null)
-                                        <h6 class="modal-title text-danger" id="timeSlotModalLabel">Please
-                                            Select Date</h6>
+                                        <h6 class="modal-title text-danger font-weight-bold" id="timeSlotModalLabel">Please
+                                            Select Preferred Booking Date</h6>
                                     @endif
                                 </div>
                             </div>
