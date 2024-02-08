@@ -85,10 +85,10 @@ class AppointmentController extends Controller
             }
 
             session()->put('msg', 'your order has been booked');
-//            $this->AppointmentConformationMail($appointment);
-
-            return redirect(route('online.create'));
-//            return view('frontend.payment.index')->with('appointment',$request->all());
+            // $this->AppointmentConformationMail($appointment);
+            session()->put('AppointmentData', $request->all());
+            // return redirect(route('online.create'));
+             return redirect(route('payment.page'));
         }
         catch (\Exception $e)
         {
@@ -121,7 +121,6 @@ class AppointmentController extends Controller
 
     public function update(AppointmentEditRequest $request, $id)
     {
-//        dd($request->all());
 
         $orders          = Appointment::find($id);
         $appointmentSlot = AppointmentSlot::find($id);
