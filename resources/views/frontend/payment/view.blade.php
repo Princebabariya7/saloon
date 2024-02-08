@@ -26,18 +26,18 @@
             </thead>
             <tbody>
 
-            @foreach($data as $n)
-                <tr>
-                    <th>{{$n->id}}</th>
-                    <td>{{$n->buyer_name}}</td>
-                    <td>{{$n->buyer_email}}</td>
-                    <td>{{$n->buyer_address}}</td>
-                    <td>{{$n->cd_number}}</td>
-                    <td>{{$n->month}}</td>
-                    <td>{{$n->year}}</td>
-                    <td>{{$n->cvv}}</td>
-                </tr>
-            @endforeach
+{{--            @foreach($payments as $payment)--}}
+{{--                <tr>--}}
+{{--                    <th>{{$payment->id}}</th>--}}
+{{--                    <td>{{$payment->buyer_name}}</td>--}}
+{{--                    <td>{{$payment->buyer_email}}</td>--}}
+{{--                    <td>{{$payment->buyer_address}}</td>--}}
+{{--                    <td>{{$payment->cd_number}}</td>--}}
+{{--                    <td>{{$payment->month}}</td>--}}
+{{--                    <td>{{$payment->year}}</td>--}}
+{{--                    <td>{{$payment->cvv}}</td>--}}
+{{--                </tr>--}}
+{{--            @endforeach--}}
             </tbody>
         </table>
     </div>

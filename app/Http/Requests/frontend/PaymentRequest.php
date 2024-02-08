@@ -14,12 +14,12 @@ class PaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'buyer_name'    => 'required',
-            'buyer_email'   => 'required|email',
-            'buyer_address' => 'required',
-            'cd_number'     => 'required|numeric',
-            'expiry'        => 'required',
-            'cvv'           => 'required|numeric',
+//            'buyer_name'    => 'required',
+//            'buyer_email'   => 'required|email',
+//            'buyer_address' => 'required',
+//            'cd_number'     => 'required|numeric',
+//            'expiry'        => 'required',
+//            'cvv'           => 'required|numeric',
         ];
     }
 }

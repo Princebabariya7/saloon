@@ -45,7 +45,7 @@ class PaymentController extends Controller
 //            ]);
 
             session()->put('msg', 'payment accepted');
-            return response()->json(['status' => true, 'message' => 'payment accepted', 'url' => route('payment.index')], 200);
+            return response()->json(['status' => true, 'message' => 'payment accepted', 'url' => route('online.create')], 200);
         }
         catch (\Exception $e)
         {

@@ -84,7 +84,7 @@ class AppointmentController extends Controller
                 AppointmentSlot::create($input);
             }
 
-            session()->put('msg', 'your order has been booked');
+//            session()->put('msg', 'your order has been booked');
             // $this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
