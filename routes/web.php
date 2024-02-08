@@ -159,5 +159,13 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/delete', [\App\Http\Controllers\Backend\PriceController::class, 'destroy'])->name('admin.price.delete');
             Route::get('{id}/show', [\App\Http\Controllers\Backend\PriceController::class, 'show'])->name('admin.price.show');
         });
+
+        Route::group(['prefix' => 'payment'], function ()
+        {
+            Route::get('/', [\App\Http\Controllers\Backend\PaymentController::class, 'index'])->name('admin.payment.index');
+            Route::get('create', [\App\Http\Controllers\Backend\PaymentController::class, 'create'])->name('admin.payment.create');
+
+
+        });
     });
 });
