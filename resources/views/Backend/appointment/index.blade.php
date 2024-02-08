@@ -150,12 +150,15 @@
                                             {{$appointment->type}}
                                         </td>
                                         <td class="project-state">
-                                            @if($appointment->status =='Active')
+                                            @if($appointment->status =='Pending')
 
-                                                <span class="badge badge-success">Active</span>
+                                                <span class="badge badge-warning">Pending</span>
 
-                                            @else
-                                                <span class="badge badge-danger">Inactive</span>
+                                            @elseif($appointment->status =='Success')
+                                                <span class="badge badge-success">Success</span>
+
+                                            @elseif($appointment->status =='Cancel')
+                                                <span class="badge badge-danger">Cancel</span>
 
                                             @endif
                                         </td>
@@ -289,7 +292,7 @@
 
         @if (\Session::has('add'))
 
-        toastr.success('Your Data Has Successfully Added!');
+        toastr.success('Your Appointment Has Successfully Added!');
         {{ \Session::forget('add') }}
         @endif
 

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\AppointmentStoreRequest;
 use App\Http\Requests\Backend\AppointmentUpdateRequest;
+use App\Http\Requests\Backend\PaymentStoreRequest;
 use App\Mail\OrderMail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
+use App\Models\Payment;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -43,7 +45,7 @@ class AppointmentController extends Controller
         $category  = Category::getList();
         $timeSlots = [];
         return view('Backend.appointment.appointment_form')->with('editMode', false)
-            ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
+            ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel'=>'Cancel'])
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
     }
@@ -76,7 +78,7 @@ class AppointmentController extends Controller
 
 
         session()->put('add', 'data add');
-        $this->AppointmentConformationMail($appointment);
+//        $this->AppointmentConformationMail($appointment);
         return redirect(route('admin.appointment.index'));
 
     }
@@ -103,7 +105,7 @@ class AppointmentController extends Controller
             ->with('date', Carbon::create($appointment->date)->format('m-d-Y'))
             ->with('timeSlot', $appointment->time)
             ->with('timeSlotid', $appointmentSlot->slot)
-            ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
+            ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel'=>'Cancel'])
             ->with('editMode', true)
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
@@ -134,8 +136,7 @@ class AppointmentController extends Controller
         return redirect(route('admin.appointment.index'));
     }
 
-    public
-    function destroy($id)
+    public function destroy($id)
     {
         try
         {
@@ -162,8 +163,7 @@ class AppointmentController extends Controller
     }
 
 
-    public
-    function fetchServices()
+    public function fetchServices()
     {
         try
         {
@@ -192,8 +192,7 @@ class AppointmentController extends Controller
         }
     }
 
-    public
-    function timeSlot()
+    public function timeSlot()
     {
         $date     = Carbon::create(\request()->date)->format('Y-m-d');
         $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
