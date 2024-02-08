@@ -41,8 +41,23 @@
         </div>
 
         <div class="w-100">
-            <div class="card  mx-3">
+            <div class="card card-primary card-outline mx-3">
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Billing">Customer Name</label>
+                                {!! Form::text('buyer_name', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing', 'placeholder' => 'Enter your name']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Billing_email">Customer Email</label>
+                                {!! Form::text('buyer_email', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing_email', 'placeholder' => 'Enter your email']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <label for="Billing">Card Detail</label>
                     <div id="payment-element">
                         <!-- Elements will create form elements here -->
                     </div>
@@ -124,6 +139,7 @@
                     data: formElement.serialize(), // Serialize form data
                     success: function (response) {
                         // Handle success response here
+                        window.location.replace(response.url);
                         console.log(response);
                     },
                     error: function (xhr, status, error) {
