@@ -46,27 +46,18 @@ class PaymentController extends Controller
                 'payment_method_types' => ['card'],
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
-
-            return response()->json(['status'  => true, 'message' => 'Payment Was Successfully','url'=>route('admin.appointment.index')],200);
+            Payment::create([
+                'buyer_name'  => $request->buyer_name,
+                'buyer_email' => $request->buyer_email,
+                'updated_at'  => now(),
+                'created_at'  => now(),
+            ]);
+            session()->put('msg', 'payment accepted');
+            return response()->json(['status' => true, 'message' => 'Payment Was Successfully', 'url' => route('admin.appointment.index')], 200);
         }
         catch (\Exception $e)
         {
             dd($e->getMessage());
         }
-
-        Payment::create([
-            'buyer_name'    => $request->buyer_name,
-            'buyer_email'   => $request->buyer_email,
-            'buyer_address' => $request->buyer_address,
-            'cd_number'     => $request->cd_number,
-            'exp_month'     => $request->exp_month,
-            'exp_year'      => $request->exp_year,
-            'cvv'           => $request->cvv,
-            'updated_at'    => now(),
-            'created_at'    => now(),
-        ]);
-
-        session()->put('msg', 'payment accepted');
-        return redirect(route('admin.appointment.index'));
     }
 }

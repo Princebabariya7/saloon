@@ -15,13 +15,8 @@ class PaymentStoreRequest extends FormRequest
     public function rules()
     {
         return [
-//            'buyer_name'    => 'required',
-//            'buyer_email'   => 'required|email',
-//            'buyer_address' => 'required',
-//            'cd_number'     => 'required|numeric',
-//            'exp_month'     => 'required',
-//            'exp_year'      => 'required',
-//            'cvv'           => 'required|numeric',
+            'buyer_name'    => 'required|regex:/^[\pL\s]+$/u',
+            'buyer_email'   => 'required|email',
         ];
     }
 }
