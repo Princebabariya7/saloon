@@ -8,16 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
-    protected $fillable = ['buyer_name','buyer_email','buyer_address','cd_number','exp_year','exp_month','cvv'];
+    protected $fillable = ['buyer_name','buyer_email'];
 
     protected $attributes = [
         'buyer_name' => 'not selected',
-        'buyer_email' => 'not selected',
-        'buyer_address' => 'not selected',
-        'cd_number' => 'not selected',
-        'exp_month' => 'not selected',
-        'exp_year' => 'not selected',
-        'cvv' => 'not selected',
+        'buyer_email' => 'not selected'
     ];
         protected $table = 'payment';
 }

@@ -13,11 +13,6 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string('buyer_name',50);
             $table->string('buyer_email',50);
-            $table->string('buyer_address',50);
-            $table->string('cd_number',12);
-            $table->string('exp_month');
-            $table->string('exp_year');
-            $table->integer('cvv');
             $table->timestamps();
         });
     }

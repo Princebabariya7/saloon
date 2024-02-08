@@ -32,17 +32,12 @@ class PaymentController extends Controller
 //            dd($intent);
 //            $capture = PaymentIntent::retrieve($intent->id)->capture();
 
-//            Payment::create([
-//                'buyer_name'    => $request->buyer_name,
-//                'buyer_email'   => $request->buyer_email,
-//                'buyer_address' => $request->buyer_address,
-//                'cd_number'     => $request->cd_number,
-//                'month'         => $request->month,
-//                'year'          => $request->year,
-//                'cvv'           => $request->cvv,
-//                'updated_at'    => now(),
-//                'created_at'    => now(),
-//            ]);
+            Payment::create([
+                'buyer_name'    => $request->buyer_name,
+                'buyer_email'   => $request->buyer_email,
+                'updated_at'    => now(),
+                'created_at'    => now(),
+            ]);
 
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'payment accepted', 'url' => route('online.create')], 200);
