@@ -22,7 +22,7 @@ class AppointmentController extends Controller
     {
         $search       = $request->input('search', '');
         $status       = $request->input('status', '');
-        $currentDate  =Carbon::now();
+        $currentDate  = Carbon::now();
         $appointments = Appointment::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
@@ -45,7 +45,7 @@ class AppointmentController extends Controller
         $category  = Category::getList();
         $timeSlots = [];
         return view('Backend.appointment.appointment_form')->with('editMode', false)
-            ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel'=>'Cancel'])
+            ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel' => 'Cancel'])
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
     }
@@ -79,8 +79,8 @@ class AppointmentController extends Controller
 
         session()->put('add', 'data add');
 //        $this->AppointmentConformationMail($appointment);
-        return redirect(route('admin.appointment.index'));
-
+//        return redirect(route('admin.appointment.index'));
+        return redirect(route('admin.payment.create'));
     }
 
     public function show($id)
@@ -105,7 +105,7 @@ class AppointmentController extends Controller
             ->with('date', Carbon::create($appointment->date)->format('m-d-Y'))
             ->with('timeSlot', $appointment->time)
             ->with('timeSlotid', $appointmentSlot->slot)
-            ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel'=>'Cancel'])
+            ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel' => 'Cancel'])
             ->with('editMode', true)
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
