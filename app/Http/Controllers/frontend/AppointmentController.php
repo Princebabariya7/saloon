@@ -55,6 +55,7 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
+//        dd('hy');
         try
         {
             foreach (request('service_id') as $serviceId)
