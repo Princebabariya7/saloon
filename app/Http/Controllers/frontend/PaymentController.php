@@ -23,20 +23,18 @@ class PaymentController extends Controller
             Stripe::setApiKey(config('services.stripe.secret'));
 
             $intent = PaymentIntent::create([
-                'amount'               => 4949, // Amount in cents
+                'amount'               => 4949 * 100,
                 'currency'             => 'usd',
                 'payment_method_types' => ['card'],
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
-//            dd($intent);
-//            $capture = PaymentIntent::retrieve($intent->id)->capture();
 
             Payment::create([
-                'buyer_name'    => $request->buyer_name,
-                'buyer_email'   => $request->buyer_email,
-                'updated_at'    => now(),
-                'created_at'    => now(),
+                'buyer_name'  => $request->buyer_name,
+                'buyer_email' => $request->buyer_email,
+                'updated_at'  => now(),
+                'created_at'  => now(),
             ]);
 
             session()->put('msg', 'payment accepted');
