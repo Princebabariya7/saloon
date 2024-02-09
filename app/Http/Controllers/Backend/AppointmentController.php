@@ -56,7 +56,7 @@ class AppointmentController extends Controller
         session()->put('AppointmentData', $request->all());
         try
         {
-            Appointment::create([
+            $appointment= Appointment::create([
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
                 'time'       => $request->time,
