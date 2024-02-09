@@ -122,7 +122,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pagination pagination-sm  float-right">
-                            {{--                            {{ $appointments->links() }}--}}
+                            {{ $appointments->links() }}
                         </div>
                         @if(request('search') != '' || request('city') != '')
                             <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match

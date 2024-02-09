@@ -22,10 +22,9 @@ class AppointmentController extends Controller
         $search       = $request->input('search', '');
         $type         = $request->input('type', '');
         $currentDate  = Carbon::now();
-        $AppointmentDetail=AppointmentDetail::all();
+//        $AppointmentDetail=AppointmentDetail::all();
 
-
-        $appointments = AppointmentDetail::when($search, function ($query) use ($search)
+        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -89,7 +88,7 @@ class AppointmentController extends Controller
         $appointmentSlot = AppointmentSlot::find($orders->appointment_id);
         $timeSlots       = [];
 
-        dd($orders->appointment->type);
+//        dd($orders->appointment->type);
         return view('frontend.book.order')
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
