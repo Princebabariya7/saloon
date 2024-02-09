@@ -22,7 +22,7 @@ class AppointmentController extends Controller
         $search      = $request->input('search', '');
         $type        = $request->input('type', '');
         $currentDate = Carbon::now();
-        $orders      = AppointmentDetail::with('services')
+        $orders      = Appointment::with('services')
             ->when($search, function ($query) use ($search)
             {
                 return $query->where(function ($query) use ($search)
@@ -59,16 +59,19 @@ class AppointmentController extends Controller
         session()->put('AppointmentData', $request->all());
         try
         {
-            Appointment::create([
-                'type'       => $request->type,
-                'date'       => Carbon::create($request->date)->format('Y-m-d'),
-                'time'       => $request->time,
-                'user_id'    => auth()->user()->id,
-                'status'     => 'Pending',
-                'updated_at' => now(),
-                'created_at' => Carbon::now(),
-            ]);
-
+            foreach (request('service_id') as $serviceId)
+            {
+                Appointment::create([
+                    'service_id' => $serviceId,
+                    'type'       => $request->type,
+                    'date'       => Carbon::create($request->date)->format('Y-m-d'),
+                    'time'       => $request->time,
+                    'user_id'    => auth()->user()->id,
+                    'status'     => 'Pending',
+                    'updated_at' => now(),
+                    'created_at' => Carbon::now(),
+                ]);
+            }
             //session()->put('msg', 'your order has been booked');
             // $this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());

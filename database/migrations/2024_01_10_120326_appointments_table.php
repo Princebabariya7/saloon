@@ -16,6 +16,7 @@ class AppointmentsTable extends Migration
             $table->string('time',100);
             $table->enum('status', ['Pending', 'Success' ,'Cancel'])->default('Pending');
             $table->integer('user_id');
+            $table->integer('service_id');
              $table->timestamps();
         });
     }
