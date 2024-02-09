@@ -55,30 +55,18 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
-//        dd('hy');
+        session()->put('AppointmentData', $request->all());
         try
         {
-            foreach (request('service_id') as $serviceId)
-            {
-                $appointment = Appointment::create([
-                    'service_id' => $serviceId,
-                    'type'       => $request->type,
-                    'date'       => Carbon::create($request->date)->format('Y-m-d'),
-                    'time'       => $request->time,
-                    'user_id'    => auth()->user()->id,
-                    'status'     => 'Pending',
-                    'updated_at' => now(),
-                    'created_at' => Carbon::now(),
-                ]);
-
-                $input = [
-                    'date'           => $appointment->date,
-                    'slot'           => $request->time_slot,
-                    'appointment_id' => $appointment->id,
-                    'user_id'        => $appointment->user_id
-                ];
-                AppointmentSlot::create($input);
-            }
+            Appointment::create([
+                'type'       => $request->type,
+                'date'       => Carbon::create($request->date)->format('Y-m-d'),
+                'time'       => $request->time,
+                'user_id'    => auth()->user()->id,
+                'status'     => 'Pending',
+                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+            ]);
 
             //session()->put('msg', 'your order has been booked');
             // $this->AppointmentConformationMail($appointment);
@@ -128,7 +116,7 @@ class AppointmentController extends Controller
             $orders->time          = $request->input('time');
             $orders->date          = Carbon::create($request->date)->format('Y-m-d');
             $appointmentSlot->date = Carbon::create($request->date)->format('Y-m-d');
-            $appointmentSlot->slot = $request->input('time_slot');
+            $appointmentSlot->slot = $request->input('time');
 
             $appointmentSlot->update();
             $orders->update();
@@ -219,18 +207,18 @@ class AppointmentController extends Controller
     public function slotList()
     {
         return [
-            '9_to_10'  => '9:00 AM - 10:00 AM',
-            '10_to_11' => '10:00 AM - 11:00 AM',
-            '11_to_12' => '11:00 AM - 12:00 PM',
-            '12_to_1'  => '12:00 PM - 1:00 PM',
-            '1_to_2'   => '1:00 PM - 2:00 PM',
-            '2_to_3'   => '2:00 PM - 3:00 PM',
-            '3_to_4'   => '3:00 PM - 4:00 PM',
-            '4_to_5'   => '4:00 PM - 5:00 PM',
-            '5_to_6'   => '5:00 PM - 6:00 PM',
-            '6_to_7'   => '6:00 PM - 7:00 PM',
-            '7_to_8'   => '7:00 PM - 8:00 PM',
-            '8_to_9'   => '8:00 PM - 9:00 PM',
+            '9:00 AM - 10:00 AM'  => '9:00 AM - 10:00 AM',
+            '10:00 AM - 11:00 AM' => '10:00 AM - 11:00 AM',
+            '11:00 AM - 12:00 PM' => '11:00 AM - 12:00 PM',
+            '12:00 PM - 1:00 PM'  => '12:00 PM - 1:00 PM',
+            '1:00 PM - 2:00 PM'   => '1:00 PM - 2:00 PM',
+            '2:00 PM - 3:00 PM'   => '2:00 PM - 3:00 PM',
+            '3:00 PM - 4:00 PM'   => '3:00 PM - 4:00 PM',
+            '4:00 PM - 5:00 PM'   => '4:00 PM - 5:00 PM',
+            '5:00 PM - 6:00 PM'   => '5:00 PM - 6:00 PM',
+            '6:00 PM - 7:00 PM'   => '6:00 PM - 7:00 PM',
+            '7:00 PM - 8:00 PM'   => '7:00 PM - 8:00 PM',
+            '8:00 PM - 9:00 PM'   => '8:00 PM - 9:00 PM',
         ];
     }
 
