@@ -19,9 +19,9 @@ class AppointmentController extends Controller
 
     public function index(Request $request)
     {
-        $search       = $request->input('search', '');
-        $type         = $request->input('type', '');
-        $currentDate  = Carbon::now();
+        $search      = $request->input('search', '');
+        $type        = $request->input('type', '');
+        $currentDate = Carbon::now();
 //        $AppointmentDetail=AppointmentDetail::all();
 
         $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
@@ -57,7 +57,7 @@ class AppointmentController extends Controller
         session()->put('AppointmentData', $request->all());
         try
         {
-            Appointment::create([
+            $appointment = Appointment::create([
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
                 'time'       => $request->time,
@@ -68,7 +68,7 @@ class AppointmentController extends Controller
             ]);
 
             //session()->put('msg', 'your order has been booked');
-            // $this->AppointmentConformationMail($appointment);
+//            $this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
             return redirect(route('payment.page'));
