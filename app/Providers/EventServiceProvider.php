@@ -21,6 +21,6 @@ class EventServiceProvider extends ServiceProvider
 
     public function boot()
     {
-//        Payment::observe(PaymentObserver::class);
+        Payment::observe(PaymentObserver::class);
     }
 }
