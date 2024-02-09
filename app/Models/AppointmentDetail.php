@@ -21,5 +21,9 @@ class AppointmentDetail extends Model
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+    }
 
 }
