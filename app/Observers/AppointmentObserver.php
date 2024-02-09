@@ -22,7 +22,8 @@ class AppointmentObserver
         {
             AppointmentDetail::create([
                 'appointment_id' => $appointment->id,
-                'service_id'     => $serviceId
+                'service_id'     => $serviceId,
+                'user_id'        => auth()->user()->id,
             ]);
         }
         $input = [

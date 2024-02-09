@@ -22,8 +22,5 @@ class Appointment extends Model
     protected $table = 'appointments';
 
 
-    public function services()
-    {
-        return $this->belongsTo(Service::class, 'service_id', 'id');
-    }
+
 }

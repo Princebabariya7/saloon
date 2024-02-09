@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
 use App\Mail\OrderMail;
+use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
@@ -21,7 +22,7 @@ class AppointmentController extends Controller
         $search      = $request->input('search', '');
         $type        = $request->input('type', '');
         $currentDate = Carbon::now();
-        $orders      = Appointment::with('services')
+        $orders      = AppointmentDetail::with('services')
             ->when($search, function ($query) use ($search)
             {
                 return $query->where(function ($query) use ($search)
