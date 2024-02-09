@@ -49,6 +49,7 @@
                             @if(count($orders) != 0)
                                 <tbody>
                                 @foreach($orders as $order)
+                                    @dd($order->details)
                                     <tr>
                                         <td>{{\App\Models\User::find($order->user_id)->firstname}}</td>
                                         <td>{{Category::find($order->services->category_id)->type}}</td>

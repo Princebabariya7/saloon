@@ -21,5 +21,8 @@ class Appointment extends Model
 
     protected $table = 'appointments';
 
-
+    public function details()
+    {
+        return $this->hasMany(AppointmentDetail::class, 'appointment_id', 'id');
+    }
 }

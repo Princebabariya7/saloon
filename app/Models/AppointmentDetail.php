@@ -17,12 +17,9 @@ class AppointmentDetail extends Model
         'service_id'     => 'not selected',
     ];
 
-    public function appointmentDetail()
-    {
-        return $this->hasMany(Appointment::class, 'appointment_id', 'id');
-    }
     public function services()
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+
 }

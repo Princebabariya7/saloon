@@ -22,7 +22,7 @@ class AppointmentController extends Controller
         $search      = $request->input('search', '');
         $type        = $request->input('type', '');
         $currentDate = Carbon::now();
-        $orders      = AppointmentDetail::when($search, function ($query) use ($search)
+        $orders      = Appointment::when($search, function ($query) use ($search)
             {
                 return $query->where(function ($query) use ($search)
                 {
