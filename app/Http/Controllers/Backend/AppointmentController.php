@@ -6,6 +6,7 @@ use App\Http\Requests\Backend\AppointmentStoreRequest;
 use App\Http\Requests\Backend\AppointmentUpdateRequest;
 use App\Http\Requests\Backend\PaymentStoreRequest;
 use App\Mail\OrderMail;
+use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
@@ -23,7 +24,7 @@ class AppointmentController extends Controller
         $search       = $request->input('search', '');
         $status       = $request->input('status', '');
         $currentDate  = Carbon::now();
-        $appointments = Appointment::when($search, function ($query) use ($search)
+        $appointments = AppointmentDetail::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -36,7 +37,7 @@ class AppointmentController extends Controller
         })->when($status, function ($query) use ($status)
         {
             return $query->where('status', $status);
-        })->sortable(['service' => 'asc'])->paginate(5);
+        })->paginate(5);
         return view('Backend.appointment.index')->with('appointments', $appointments)->with('currentDate', $currentDate);
     }
 
@@ -52,10 +53,10 @@ class AppointmentController extends Controller
 
     public function store(AppointmentStoreRequest $request)
     {
-        foreach (request('service_id') as $serviceId)
+        session()->put('AppointmentData', $request->all());
+        try
         {
-            $appointment = Appointment::create([
-                'service_id' => $serviceId,
+            Appointment::create([
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
                 'time'       => $request->time,
@@ -65,22 +66,17 @@ class AppointmentController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-            $input = [
-
-                'date'           => $appointment->date,
-                'slot'           => $request->time,
-                'appointment_id' => $appointment->id,
-                'user_id'        => $appointment->user_id
-            ];
-
-            AppointmentSlot::create($input);
+            session()->put('add', 'data add');
+//        $this->AppointmentConformationMail($appointment);
+//        return redirect(route('admin.appointment.index'));
+            return redirect(route('admin.payment.create'));
+        }
+        catch (\Exception $e){
+            dd($e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
 
 
-        session()->put('add', 'data add');
-//        $this->AppointmentConformationMail($appointment);
-//        return redirect(route('admin.appointment.index'));
-        return redirect(route('admin.payment.create'));
     }
 
     public function show($id)
