@@ -86,17 +86,17 @@ class AppointmentController extends Controller
         $category        = Category::pluck('type', 'id')->toArray();
         $service         = Service::pluck('name', 'id')->toArray();
         $orders          = AppointmentDetail::find($id);
-//        $appointmentSlot = AppointmentSlot::find($id);
+        $appointmentSlot = AppointmentSlot::find($orders->appointment_id);
         $timeSlots       = [];
 
-//        dd($appointmentSlot);
+        dd($orders->appointment->type);
         return view('frontend.book.order')
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
             ->with('category_id', (Service::find($orders->service_id)->category_id))
             ->with('date', Carbon::create($orders->appointment->date)->format('m-d-Y'))
             ->with('timeSlot', $orders->appointment->time)
-//            ->with('timeSlotid', $appointmentSlot->slot)
+            ->with('timeSlotid', $appointmentSlot->slot)
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service)

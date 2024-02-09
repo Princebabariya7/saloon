@@ -16,10 +16,8 @@ class AppointmentSlot extends Model
         'slot'       => 'not selected',
     ];
 
-
-
-//    public function slot()
-//    {
-//        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
-//    }
+    public function slot()
+    {
+        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+    }
 }
