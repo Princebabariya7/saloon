@@ -101,12 +101,12 @@
                                 @foreach($appointments as $appointment)
                                     <tr>
                                         <td>
-                                            {{\App\Models\User::find($appointment->user_id)->firstname}}
+                                            {{auth()->user()->firstname}}
                                         </td>
                                         <td>
-                                            {{\App\Models\User::find($appointment->user_id)->lastname}}
+                                            {{auth()->user()->lastname}}
                                         </td>
-                                        @if($appointment->date > $currentDate->toDateString())
+                                        @if($appointment->appointment->date > $currentDate->toDateString())
                                             <td>
                                                 <a href="{{route('admin.appointment.edit',$appointment->id)}}">
                                                     {{Category::find($appointment->services->category_id)->type}}
@@ -139,30 +139,30 @@
                                             {{$appointment->services->name}}
                                         </td>
                                         <td>
-                                            {{$appointment->date}}
+                                            {{$appointment->appointment->date}}
                                         </td>
 
                                         <td>
-                                            {{$appointment->time}}
+                                            {{$appointment->appointment->time}}
                                         </td>
 
                                         <td>
-                                            {{$appointment->type}}
+                                            {{$appointment->appointment->type}}
                                         </td>
                                         <td class="project-state">
-                                            @if($appointment->status =='Pending')
+                                            @if($appointment->appointment->status =='Pending')
 
                                                 <span class="badge badge-warning">Pending</span>
 
-                                            @elseif($appointment->status =='Success')
+                                            @elseif($appointment->appointment->status =='Success')
                                                 <span class="badge badge-success">Success</span>
 
-                                            @elseif($appointment->status =='Cancel')
+                                            @elseif($appointment->appointment->status =='Cancel')
                                                 <span class="badge badge-danger">Cancel</span>
 
                                             @endif
                                         </td>
-                                        @if($appointment->date > $currentDate->toDateString())
+                                        @if($appointment->appointment->date > $currentDate->toDateString())
                                             <td class="project-actions text-right">
                                                 <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                         data-bs-toggle="dropdown">

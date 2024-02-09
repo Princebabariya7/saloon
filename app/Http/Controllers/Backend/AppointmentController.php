@@ -21,10 +21,11 @@ class AppointmentController extends Controller
 {
     public function index(Request $request)
     {
-        $search       = $request->input('search', '');
-        $status       = $request->input('status', '');
-        $currentDate  = Carbon::now();
-        $appointments = AppointmentDetail::when($search, function ($query) use ($search)
+        $search            = $request->input('search', '');
+        $status            = $request->input('status', '');
+        $currentDate       = Carbon::now();
+//        $AppointmentDetail = AppointmentDetail::all();
+        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
         {
             return $query->where(function ($query) use ($search)
             {
@@ -32,13 +33,12 @@ class AppointmentController extends Controller
                 {
                     $query->where('name', 'LIKE', '%' . $search . '%');
                 });
-                $query->orWhere('type', 'LIKE', '%' . $search . '%');
             });
         })->when($status, function ($query) use ($status)
         {
             return $query->where('status', $status);
         })->paginate(5);
-        return view('Backend.appointment.index')->with('appointments', $appointments)->with('currentDate', $currentDate);
+        return view('Backend.appointment.index')->with('appointments', $AppointmentDetail)->with('currentDate', $currentDate);
     }
 
     public function create()
@@ -71,7 +71,8 @@ class AppointmentController extends Controller
 //        return redirect(route('admin.appointment.index'));
             return redirect(route('admin.payment.create'));
         }
-        catch (\Exception $e){
+        catch (\Exception $e)
+        {
             dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -88,8 +89,8 @@ class AppointmentController extends Controller
     public function edit($id)
     {
         $category        = Category::getList();
-        $appointment     = Appointment::find($id);
-        $appointmentSlot = AppointmentSlot::find($id);
+        $appointment     = AppointmentDetail::find($id);
+        $appointmentSlot = AppointmentSlot::find($appointment->appointment_id);
         $timeSlots       = [];
 
 
@@ -98,8 +99,8 @@ class AppointmentController extends Controller
             ->with('service_id', $appointment->service_id)
             ->with('category_id', (Service::find($appointment->service_id)->category_id))
             ->with('type', $appointment->type)
-            ->with('date', Carbon::create($appointment->date)->format('m-d-Y'))
-            ->with('timeSlot', $appointment->time)
+            ->with('date', Carbon::create($appointment->appointment->date)->format('m-d-Y'))
+            ->with('timeSlot', $appointment->appointment->time)
             ->with('timeSlotid', $appointmentSlot->slot)
             ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel' => 'Cancel'])
             ->with('editMode', true)
