@@ -64,11 +64,11 @@
         </tr>
         <tr>
             <th>Category</th>
-            <td>{{ $appointment->services->categories->type }}</td>
+{{--            <td>{{ $appointment->services->categories->type }}</td>--}}
         </tr>
         <tr>
             <th>Service</th>
-            <td>{{ $appointment->services->name }}</td>
+{{--            <td>{{ $appointment->services->name }}</td>--}}
         </tr>
         <tr>
             <th>Date</th>
