@@ -21,5 +21,8 @@ class AppointmentDetail extends Model
     {
         return $this->hasMany(Appointment::class, 'appointment_id', 'id');
     }
-
+    public function services()
+    {
+        return $this->belongsTo(Service::class, 'service_id', 'id');
+    }
 }

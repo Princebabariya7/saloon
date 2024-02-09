@@ -10,7 +10,7 @@ class Appointment extends Model
 {
     use HasFactory, Sortable;
 
-    protected $fillable = ['type', 'date', 'time', 'status', 'user_id', 'service_id'];
+    protected $fillable = ['type', 'date', 'time', 'status', 'user_id'];
 
     protected $attributes = [
         'type'       => 'not selected',
@@ -22,8 +22,4 @@ class Appointment extends Model
     protected $table = 'appointments';
 
 
-    public function services()
-    {
-        return $this->belongsTo(Service::class, 'service_id', 'id');
-    }
 }
