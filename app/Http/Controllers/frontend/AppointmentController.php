@@ -19,27 +19,27 @@ class AppointmentController extends Controller
 
     public function index(Request $request)
     {
-        $search      = $request->input('search', '');
-        $type        = $request->input('type', '');
-        $currentDate = Carbon::now();
-        $orders      = Appointment::when($search, function ($query) use ($search)
-            {
-                return $query->where(function ($query) use ($search)
-                {
-                    $query->orWhereHas('services', function ($query) use ($search)
-                    {
-                        $query->where('name', 'LIKE', '%' . $search . '%');
-                    });
-                });
-            })
-            ->when($type, function ($query) use ($type)
-            {
-                return $query->where('type', $type);
-            })
-            ->where('user_id', '=', auth()->user()->id)
-            ->paginate(5);
+        $search       = $request->input('search', '');
+        $type         = $request->input('type', '');
+        $currentDate  = Carbon::now();
+        $AppointmentDetail=AppointmentDetail::all();
 
-        return view('frontend.book.onlineorderview')->with('orders', $orders)
+
+        $appointments = AppointmentDetail::when($search, function ($query) use ($search)
+        {
+            return $query->where(function ($query) use ($search)
+            {
+                $query->orWhereHas('services', function ($query) use ($search)
+                {
+                    $query->where('name', 'LIKE', '%' . $search . '%');
+                });
+            });
+        })->when($type, function ($query) use ($type)
+        {
+            return $query->where('type', $type);
+        })->where('user_id', '=', auth()->user()->id)->paginate(5);
+
+        return view('frontend.book.onlineorderview')->with('appointments', $AppointmentDetail)
             ->with('currentDate', $currentDate);
     }
 
@@ -85,17 +85,18 @@ class AppointmentController extends Controller
     {
         $category        = Category::pluck('type', 'id')->toArray();
         $service         = Service::pluck('name', 'id')->toArray();
-        $orders          = Appointment::find($id);
-        $appointmentSlot = AppointmentSlot::find($id);
+        $orders          = AppointmentDetail::find($id);
+//        $appointmentSlot = AppointmentSlot::find($id);
         $timeSlots       = [];
 
+//        dd($appointmentSlot);
         return view('frontend.book.order')
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
             ->with('category_id', (Service::find($orders->service_id)->category_id))
-            ->with('date', Carbon::create($orders->date)->format('m-d-Y'))
-            ->with('timeSlot', $orders->time)
-            ->with('timeSlotid', $appointmentSlot->slot)
+            ->with('date', Carbon::create($orders->appointment->date)->format('m-d-Y'))
+            ->with('timeSlot', $orders->appointment->time)
+//            ->with('timeSlotid', $appointmentSlot->slot)
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service)

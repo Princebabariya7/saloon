@@ -46,18 +46,17 @@
                                 <th class="text-right" scope="col">Action</th>
                             </tr>
                             </thead>
-                            @if(count($orders) != 0)
+                            @if(count($appointments) != 0)
                                 <tbody>
-                                @foreach($orders as $order)
-                                    @dd($order->details)
+                                @foreach($appointments as $appointment)
                                     <tr>
-                                        <td>{{\App\Models\User::find($order->user_id)->firstname}}</td>
-                                        <td>{{Category::find($order->services->category_id)->type}}</td>
-                                        <td>{{$order->services->name}}</td>
-                                        <td>{{$order->type}}</td>
-                                        <td>{{$order->date}}</td>
-                                        <td>{{$order->time}}</td>
-                                        @if($order->date > $currentDate->toDateString())
+                                        <td>{{auth()->user()->firstname}}</td>
+                                        <td>{{Category::find($appointment->services->category_id)->type}}</td>
+                                        <td>{{$appointment->services->name}}</td>
+                                        <td>{{$appointment->appointment->type}}</td>
+                                        <td>{{$appointment->appointment->date}}</td>
+                                        <td>{{$appointment->appointment->time}}</td>
+                                        @if($appointment->appointment->date > $currentDate->toDateString())
                                             <td class="project-actions text-right">
                                                 <button type="button"
                                                         class="btn btn-light border btn-sm dropdown-toggle"
@@ -68,7 +67,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="{{route('online.edit',$order->id)}}">
+                                                               href="{{route('online.edit',$appointment->id)}}">
                                                                 <i class="fa fa-edit"> </i> Edit
                                                             </a>
                                                         </li>
@@ -76,7 +75,7 @@
                                                         <li>
                                                             <a class="dropdown-item  delete_pop text-danger"
                                                                href="#"
-                                                               data-href="{{route('online.delete',$order->id)}}">
+                                                               data-href="{{route('online.delete',$appointment->id)}}">
                                                                 <i class="fa fa-trash"></i> Delete
                                                             </a>
                                                         </li>
@@ -123,10 +122,10 @@
                     </div>
                     <div class="card-footer">
                         <div class="pagination pagination-sm  float-right">
-                            {{ $orders->links() }}
+                            {{--                            {{ $appointments->links() }}--}}
                         </div>
                         @if(request('search') != '' || request('city') != '')
-                            <i class="fa fa-filter"></i> {{ $orders->total()}} Records Match
+                            <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
                             <a href="#" class="btn-link    clear">Clear</a>
                         @endif
                     </div>
@@ -137,8 +136,7 @@
 @endsection
 @section('custom_js')
     <script>
-        $(document).ready(function ()
-        {
+        $(document).ready(function () {
             $('.delete_pop').click(function () {
                 var $_this = $(this);
                 Swal.fire({
