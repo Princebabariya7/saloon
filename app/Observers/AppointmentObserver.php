@@ -44,13 +44,4 @@ class AppointmentObserver
         //
     }
 
-    public function restored(Appointment $appointment)
-    {
-        //
-    }
-
-    public function forceDeleted(Appointment $appointment)
-    {
-        //
-    }
 }
