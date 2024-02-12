@@ -51,15 +51,16 @@
                     <label>Preferred Booking Type</label>
                     <div class="col-md-12 text-center mx-auto">
                         <div class="form-check form-check-inline">
-                            {{ Form::radio('type', 'Appointment',($editMode) ? $type=='Appointment' : null,false, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
+                            {{ Form::radio('type', 'Appointment', ($editMode && $type=='Appointment') ? true : null, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
                             <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            {{ Form::radio('type', 'HomeService',($editMode) ? $type=='HomeService' : null , false, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
+                            {{ Form::radio('type', 'HomeService', ($editMode && $type=='HomeService') ? true : null, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
                             <label class="form-check-label ml-2" for="inlineRadio2">HomeService</label>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="form-group">
                     <label>Preferred Booking Date</label>
