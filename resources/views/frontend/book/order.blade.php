@@ -47,16 +47,15 @@
                 </div>
 
                 <div class="dropdown-divider"></div>
-
                 <div class="form-group clearfix">
                     <label>Preferred Booking Type</label>
                     <div class="col-md-12 text-center mx-auto">
                         <div class="form-check form-check-inline">
-                            {{ Form::radio('type', 'Appointment', false, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
+                            {{ Form::radio('type', 'Appointment',($editMode) ? $type=='Appointment' : null,false, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
                             <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            {{ Form::radio('type', 'HomeService', false, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
+                            {{ Form::radio('type', 'HomeService',($editMode) ? $type=='HomeService' : null , false, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
                             <label class="form-check-label ml-2" for="inlineRadio2">HomeService</label>
                         </div>
                     </div>
@@ -99,7 +98,8 @@
                             <div class="modal-body" id="timeSlotModalBody">
                                 <div class="list-group" id="date-slot">
                                     @if($timeSlots == null)
-                                        <h6 class="modal-title text-danger font-weight-bold" id="timeSlotModalLabel">Please
+                                        <h6 class="modal-title text-danger font-weight-bold" id="timeSlotModalLabel">
+                                            Please
                                             Select Preferred Booking Date</h6>
                                     @endif
                                 </div>

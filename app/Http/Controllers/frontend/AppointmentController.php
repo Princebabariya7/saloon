@@ -88,7 +88,6 @@ class AppointmentController extends Controller
         $appointmentSlot = AppointmentSlot::find($orders->appointment_id);
         $timeSlots       = [];
 
-//        dd($orders->appointment->type);
         return view('frontend.book.order')
             ->with('orders', $orders)
             ->with('service_id', $orders->service_id)
@@ -96,11 +95,11 @@ class AppointmentController extends Controller
             ->with('date', Carbon::create($orders->appointment->date)->format('m-d-Y'))
             ->with('timeSlot', $orders->appointment->time)
             ->with('timeSlotid', $appointmentSlot->slot)
+            ->with('type', $orders->appointment->type)
             ->with('editMode', true)
             ->with('category', $category)
             ->with('service', $service)
             ->with('timeSlots', $timeSlots);
-
     }
 
     public function update(AppointmentEditRequest $request, $id)
