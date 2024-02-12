@@ -105,18 +105,18 @@ class AppointmentController extends Controller
     public function update(AppointmentEditRequest $request, $id)
     {
 
-        $appointmentsDetail    = AppointmentDetail::find($id);
-        $appointments    = Appointment::find($appointmentsDetail->appointment_id);
-        $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
+        $appointmentsDetail = AppointmentDetail::find($id);
+        $appointments       = Appointment::find($appointmentsDetail->appointment_id);
+        $appointmentSlot    = AppointmentSlot::find($appointmentsDetail->appointment_id);
 
         foreach (request('service_id') as $serviceId)
         {
             $appointmentsDetail->service_id = $serviceId;
-            $appointments->type       = $request->input('type');
-            $appointments->time       = $request->input('time');
-            $appointments->date       = Carbon::create($request->date)->format('Y-m-d');
-            $appointmentSlot->date    = Carbon::create($request->date)->format('Y-m-d');
-            $appointmentSlot->slot    = $request->input('time');
+            $appointments->type             = $request->input('type');
+            $appointments->time             = $request->input('time');
+            $appointments->date             = Carbon::create($request->date)->format('Y-m-d');
+            $appointmentSlot->date          = Carbon::create($request->date)->format('Y-m-d');
+            $appointmentSlot->slot          = $request->input('time');
 
             $appointmentSlot->update();
             $appointmentsDetail->update();
@@ -130,18 +130,15 @@ class AppointmentController extends Controller
     {
         try
         {
-            $orders = Appointment::find($id);
+            $appointmentsDetail = AppointmentDetail::find($id);
+            $appointmentsDetail->delete();
 
-            if ($orders)
+            if ($appointmentsDetail->count() == 0)
             {
-                $appointmentSlot = AppointmentSlot::find($id);
-
-                if ($appointmentSlot)
-                {
-                    $appointmentSlot->delete();
-                }
-
-                $orders->delete();
+                $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
+                $appointment     = Appointment::find($appointmentsDetail->appointment_id);
+                $appointmentSlot->delete();
+                $appointment->delete();
             }
 
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
