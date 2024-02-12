@@ -68,6 +68,7 @@
                                 <div class="select2-primary">
                                     @if($editMode)
                                         {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm',  'disabled'=>true]) !!}
+
                                     @else
                                         {!! Form::select('service_id[]', [],  null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
                                     @endif
@@ -136,8 +137,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+
                                 <label for="inputStatus">Status</label>
-                                {!! Form::select('status', $status, null, ['class' => 'form-control form-control-sm']) !!}
+                                {!! Form::select('status', $status, (($editMode) ? $appointment->appointment->status : null),['class' => 'form-control form-control-sm']) !!}
                             </div>
                         </div>
                     </div>

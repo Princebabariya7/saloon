@@ -21,9 +21,9 @@ class AppointmentController extends Controller
 {
     public function index(Request $request)
     {
-        $search            = $request->input('search', '');
-        $status            = $request->input('status', '');
-        $currentDate       = Carbon::now();
+        $search      = $request->input('search', '');
+        $status      = $request->input('status', '');
+        $currentDate = Carbon::now();
 //        $AppointmentDetail = AppointmentDetail::all();
         $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
         {
@@ -45,9 +45,10 @@ class AppointmentController extends Controller
     {
         $category  = Category::getList();
         $timeSlots = [];
-        return view('Backend.appointment.appointment_form')->with('editMode', false)
+        return view('Backend.appointment.appointment_form')
             ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel' => 'Cancel'])
             ->with('category', $category)
+            ->with('editMode', false)
             ->with('timeSlots', $timeSlots);
     }
 
@@ -56,7 +57,7 @@ class AppointmentController extends Controller
         session()->put('AppointmentData', $request->all());
         try
         {
-            $appointment= Appointment::create([
+            $appointment = Appointment::create([
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
                 'time'       => $request->time,
@@ -93,12 +94,11 @@ class AppointmentController extends Controller
         $appointmentSlot = AppointmentSlot::find($appointment->appointment_id);
         $timeSlots       = [];
 
-
         return view('Backend.appointment.appointment_form')
             ->with('appointment', $appointment)
             ->with('service_id', $appointment->service_id)
             ->with('category_id', (Service::find($appointment->service_id)->category_id))
-            ->with('type', $appointment->type)
+            ->with('type', $appointment->appointment->type)
             ->with('date', Carbon::create($appointment->appointment->date)->format('m-d-Y'))
             ->with('timeSlot', $appointment->appointment->time)
             ->with('timeSlotid', $appointmentSlot->slot)
