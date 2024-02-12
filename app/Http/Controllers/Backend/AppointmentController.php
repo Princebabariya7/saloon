@@ -111,12 +111,13 @@ class AppointmentController extends Controller
 
     public function update(AppointmentUpdateRequest $request, $id)
     {
-        $appointment     = Appointment::find($id);
-        $appointmentSlot = AppointmentSlot::find($id);
+        $appointmentsDetail    = AppointmentDetail::find($id);
+        $appointment     = Appointment::find($appointmentsDetail->appointment_id);
+        $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
 
         foreach (request('service_id') as $serviceId)
         {
-            $appointment->service_id = $serviceId;
+            $appointmentsDetail->service_id = $serviceId;
             $dateTime                = Carbon::create($request->date)->format('Y-m-d');
             $appointment->type       = $request->input('type');
             $appointment->time       = $request->input('time');
@@ -127,6 +128,7 @@ class AppointmentController extends Controller
 
             $appointmentSlot->update();
             $appointment->update();
+            $appointmentsDetail->update();
         }
 
         session()->put('update', 'data update');
