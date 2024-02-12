@@ -68,7 +68,7 @@ class AppointmentController extends Controller
             ]);
 
             //session()->put('msg', 'your order has been booked');
-//            $this->AppointmentConformationMail($appointment);
+            //$this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
             return redirect(route('payment.page'));
@@ -192,7 +192,7 @@ class AppointmentController extends Controller
 
 
         $slotList = $this->slotList();
-        $slotDay  = (\Carbon\Carbon::create(\request()->date)->dayName);
+        $slotDay  = (Carbon::create(\request()->date)->dayName);
         return response()->json(
             [
                 'slotHtml' => view('frontend.book.fetchslot')

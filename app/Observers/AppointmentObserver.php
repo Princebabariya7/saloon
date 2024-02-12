@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class AppointmentObserver
 {
@@ -33,6 +34,7 @@ class AppointmentObserver
             'user_id'        => auth()->user()->id,
         ];
         AppointmentSlot::create($input);
+        session()->forget('AppointmentData');
     }
 
     public function updated(Appointment $appointment)
