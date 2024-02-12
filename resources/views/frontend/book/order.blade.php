@@ -13,7 +13,7 @@
     <div class="container login-box  d-flex justify-content-center">
         <div class="registration-form">
             @if($editMode)
-                {!! Form::model($orders, ['route' => ['online.update', 'id' => $orders->id], 'method'=>'put']) !!}
+                {!! Form::model($appointments, ['route' => ['online.update', 'id' => $appointments->id], 'method'=>'put']) !!}
             @else
                 {{ Form::open(['route' => ['online.info.store'], 'method'=>'post']) }}
             @endif
