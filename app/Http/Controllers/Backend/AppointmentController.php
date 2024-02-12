@@ -139,17 +139,14 @@ class AppointmentController extends Controller
     {
         try
         {
-            $appointment = Appointment::find($id);
+            $appointmentsDetail = AppointmentDetail::find($id);
+            $appointmentsDetail->delete();
 
-            if ($appointment)
+            if ($appointmentsDetail->count() == 0)
             {
-                $appointmentSlot = AppointmentSlot::find($id);
-
-                if ($appointmentSlot)
-                {
-                    $appointmentSlot->delete();
-                }
-
+                $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
+                $appointment     = Appointment::find($appointmentsDetail->appointment_id);
+                $appointmentSlot->delete();
                 $appointment->delete();
             }
 
