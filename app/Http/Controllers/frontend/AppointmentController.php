@@ -84,7 +84,7 @@ class AppointmentController extends Controller
     {
         $category        = Category::pluck('type', 'id')->toArray();
         $service         = Service::pluck('name', 'id')->toArray();
-        $appointments          = AppointmentDetail::find($id);
+        $appointments    = AppointmentDetail::find($id);
         $appointmentSlot = AppointmentSlot::find($appointments->appointment_id);
         $timeSlots       = [];
 
