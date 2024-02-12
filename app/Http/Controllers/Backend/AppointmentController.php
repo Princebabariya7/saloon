@@ -83,7 +83,7 @@ class AppointmentController extends Controller
 
     public function show($id)
     {
-        $appointment = Appointment::find($id);
+        $appointment = AppointmentDetail::find($id);
         return view('Backend.appointment.show', ['appointment' => $appointment]);
     }
 

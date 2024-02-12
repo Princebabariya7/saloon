@@ -37,19 +37,19 @@
                             </tr>
                             <tr>
                                 <td>Type:</td>
-                                <td>{{$appointment->type}}</td>
+                                <td>{{$appointment->appointment->type}}</td>
                             </tr>
                             <tr>
                                 <td>Date:</td>
-                                <td>{{$appointment->date}}</td>
+                                <td>{{$appointment->appointment->date}}</td>
                             </tr>
                             <tr>
                                 <td>Time:</td>
-                                <td>{{$appointment->time}}</td>
+                                <td>{{$appointment->appointment->time}}</td>
                             </tr>
                             <tr>
                                 <td>Status:</td>
-                                <td>{{$appointment->status }}</td>
+                                <td>{{$appointment->appointment->status }}</td>
                             </tr>
                             <tr>
                                 <td>Created at:</td>
