@@ -43,6 +43,7 @@
                                 <th scope="col">Type</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Time</th>
+                                <th scope="col">Status</th>
                                 <th class="text-right" scope="col">Action</th>
                             </tr>
                             </thead>
@@ -55,6 +56,7 @@
                                         <td>{{$appointment->services->name}}</td>
                                         <td>{{$appointment->appointment->type}}</td>
                                         <td>{{$appointment->appointment->date}}</td>
+                                        <td>{{$appointment->appointment->time}}</td>
                                         <td>{{$appointment->appointment->time}}</td>
                                         @if($appointment->appointment->date > $currentDate->toDateString())
                                             <td class="project-actions text-right">

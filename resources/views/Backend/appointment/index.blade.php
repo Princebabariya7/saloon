@@ -67,33 +67,15 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>
-                                    First Name
-                                </th>
-                                <th>
-                                    Last Name
-                                </th>
-                                <th>
-                                    Category
-                                </th>
-                                <th>
-                                    Service
-                                </th>
-                                <th>
-                                    Date
-                                </th>
-                                <th>
-                                    Time
-                                </th>
-                                <th>
-                                    Type
-                                </th>
-                                <th class="text-center">
-                                    Status
-                                </th>
-                                <th class="text-right">
-                                    Action
-                                </th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Category</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Type</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-right">Action</th>
                             </tr>
                             </thead>
                             @if(count($appointments) > 0)
@@ -151,15 +133,11 @@
                                         </td>
                                         <td class="project-state">
                                             @if($appointment->appointment->status =='Pending')
-
                                                 <span class="badge badge-warning">Pending</span>
-
                                             @elseif($appointment->appointment->status =='Success')
                                                 <span class="badge badge-success">Success</span>
-
                                             @elseif($appointment->appointment->status =='Cancel')
                                                 <span class="badge badge-danger">Cancel</span>
-
                                             @endif
                                         </td>
                                         @if($appointment->appointment->date > $currentDate->toDateString())
@@ -230,7 +208,6 @@
                         </table>
                     </div>
 
-
                     <div class="card-footer">
                         <div class="pagination pagination-sm float-right">
                             {{ $appointments->links() }}
@@ -249,7 +226,6 @@
             </div>
         </section>
     </div>
-
 @endsection
 
 @section('custom_js')
@@ -303,5 +279,3 @@
         @endif
     </script>
 @endsection
-
-
