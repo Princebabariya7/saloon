@@ -105,20 +105,22 @@ class AppointmentController extends Controller
     public function update(AppointmentEditRequest $request, $id)
     {
 
-        $orders          = Appointment::find($id);
-        $appointmentSlot = AppointmentSlot::find($id);
+        $appointmentsDetail    = AppointmentDetail::find($id);
+        $appointments    = Appointment::find($appointmentsDetail->appointment_id);
+        $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
 
         foreach (request('service_id') as $serviceId)
         {
-            $orders->service_id    = $serviceId;
-            $orders->type          = $request->input('type');
-            $orders->time          = $request->input('time');
-            $orders->date          = Carbon::create($request->date)->format('Y-m-d');
-            $appointmentSlot->date = Carbon::create($request->date)->format('Y-m-d');
-            $appointmentSlot->slot = $request->input('time');
+            $appointmentsDetail->service_id = $serviceId;
+            $appointments->type       = $request->input('type');
+            $appointments->time       = $request->input('time');
+            $appointments->date       = Carbon::create($request->date)->format('Y-m-d');
+            $appointmentSlot->date    = Carbon::create($request->date)->format('Y-m-d');
+            $appointmentSlot->slot    = $request->input('time');
 
             $appointmentSlot->update();
-            $orders->update();
+            $appointmentsDetail->update();
+            $appointments->update();
         }
         session()->put('update', 'your order has been updated');
         return redirect(route('online.index'));
