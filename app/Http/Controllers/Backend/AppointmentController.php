@@ -139,15 +139,16 @@ class AppointmentController extends Controller
         try
         {
             $appointmentsDetail = AppointmentDetail::find($id);
-            $appointmentsDetail->delete();
+            $appointmentsCount  = AppointmentDetail::find($id)->where('appointment_id', '=', $appointmentsDetail->appointment_id);
 
-            if ($appointmentsDetail->count() == 0)
+            if ($appointmentsCount->count() == 1)
             {
                 $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
                 $appointment     = Appointment::find($appointmentsDetail->appointment_id);
                 $appointmentSlot->delete();
                 $appointment->delete();
             }
+            $appointmentsDetail->delete();
 
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
