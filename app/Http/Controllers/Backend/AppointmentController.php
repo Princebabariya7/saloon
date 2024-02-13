@@ -67,10 +67,14 @@ class AppointmentController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-            session()->put('add', 'data add');
 //        $this->AppointmentConformationMail($appointment);
-//        return redirect(route('admin.appointment.index'));
-            return redirect(route('admin.payment.create',['id'=>$appointment->id]));
+            session()->put('AppointmentData', $request->all());
+            $services = Service::whereIn('id', $request->service_id)->get();
+            $total    = $services->sum('price');
+            session()->put('totalPrice', $total);
+            session()->put('add', 'data add');
+
+            return redirect(route('admin.payment.create',['id'=>$appointment->id,'total'=>$total]));
         }
         catch (\Exception $e)
         {

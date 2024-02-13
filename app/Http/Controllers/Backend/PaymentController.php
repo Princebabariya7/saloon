@@ -31,21 +31,23 @@ class PaymentController extends Controller
 
     public function create($token)
     {
-        return view('Backend.payment.payment_form')->with('token',$token);
+        return view('Backend.payment.payment_form')->with('token', $token);
     }
 
 
     public function store(PaymentStoreRequest $request)
     {
-        try {
+        try
+        {
             Stripe::setApiKey(config('services.stripe.secret'));
+            $total  = session()->get('totalPrice');
             $intent = PaymentIntent::create([
-                'amount'               => 821275,
+                'amount'               => $total * 100,
                 'currency'             => 'usd',
                 'payment_method_types' => ['card'],
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
-
+            $intent->confirm();
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully']);
 
             $statusData = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
@@ -63,10 +65,12 @@ class PaymentController extends Controller
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
-
+            session()->forget('totalPrice');
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'Payment Was Successfully', 'url' => route('admin.appointment.index')], 200);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             // Handle exceptions here
             return response()->json(['status' => false, 'message' => 'Payment failed', 'error' => $e->getMessage()], 500);
         }
