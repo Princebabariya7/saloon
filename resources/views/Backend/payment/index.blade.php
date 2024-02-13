@@ -66,19 +66,13 @@
                                     Email
                                 </th>
                                 <th>
-                                    Address
+                                    Transaction Id
                                 </th>
                                 <th>
-                                    Card Number
+                                    Gateway
                                 </th>
-                                <th>
-                                    Month
-                                </th>
-                                <th>
-                                    Year
-                                </th>
-                                <th>
-                                    CVV
+                                <th class="text-center">
+                                    Status
                                 </th>
                                 <th class="text-right">
                                     Action
@@ -96,19 +90,19 @@
                                             {{$payment->buyer_email}}
                                         </td>
                                         <td>
-                                            {{$payment->buyer_address}}
+                                            {{$payment->transaction_id}}
                                         </td>
                                         <td>
-                                            {{$payment->cd_number}}
+                                            {{$payment->gateway}}
                                         </td>
-                                        <td>
-                                            {{$payment->exp_month}}
-                                        </td>
-                                        <td>
-                                            {{$payment->exp_year}}
-                                        </td>
-                                        <td>
-                                            {{$payment->cvv}}
+                                        <td class="project-state">
+                                            @if($payment->status =='Pending')
+                                                <span class="badge badge-warning">Pending</span>
+                                            @elseif($payment->status =='Success')
+                                                <span class="badge badge-success">Success</span>
+                                            @elseif($payment->status =='Cancel')
+                                                <span class="badge badge-danger">Cancel</span>
+                                            @endif
                                         </td>
                                         <td class="project-actions text-right">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"
@@ -118,7 +112,7 @@
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <a class="dropdown-item small"
-                                                       href="#">
+                                                       href="{{route('admin.payment.show',$payment->id)}}">
                                                         <i class="fa fa-eye"> </i> View
                                                     </a>
                                                 </li>

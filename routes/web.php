@@ -165,6 +165,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('/', [\App\Http\Controllers\Backend\PaymentController::class, 'index'])->name('admin.payment.index');
             Route::get('{id}/create', [\App\Http\Controllers\Backend\PaymentController::class, 'create'])->name('admin.payment.create');
             Route::post('store', [\App\Http\Controllers\Backend\PaymentController::class, 'store'])->name('admin.payment.store');
+            Route::get('{id}/show', [\App\Http\Controllers\Backend\PaymentController::class, 'show'])->name('admin.payment.show');
 
         });
     });

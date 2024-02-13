@@ -73,4 +73,10 @@ class PaymentController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $payment = Payment::find($id);
+        return view('Backend.payment.show', ['payment' => $payment]);
+    }
+
 }
