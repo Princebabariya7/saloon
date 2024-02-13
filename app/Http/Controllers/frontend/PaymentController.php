@@ -30,7 +30,7 @@ class PaymentController extends Controller
             $intent->confirm();
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully']);
 
-            $statusData = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
+            $statusData = json_decode($transactionDetail, true);
 
             $status = $statusData['status'] == true ? 'Success' : 'Pending';
 
