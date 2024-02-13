@@ -146,6 +146,10 @@
 @endsection
 @section('custom_js')
     <script>
+        @if (\Session:: has('msg'))
+        toastr.success('your order has been booked');
+        {{\Session::forget('msg')}}
+        @endif
         $(document).ready(function () {
             $('.delete_pop').click(function () {
                 var $_this = $(this);

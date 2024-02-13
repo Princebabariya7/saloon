@@ -127,10 +127,6 @@
         toastr.error('{{ $error }}');
         @endforeach
         @endif
-        @if (\Session:: has('msg'))
-        toastr.success('your order has been booked');
-        {{\Session::forget('msg')}}
-        @endif
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
