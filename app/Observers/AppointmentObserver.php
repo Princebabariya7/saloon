@@ -2,10 +2,12 @@
 
 namespace App\Observers;
 
+use App\Mail\OrderMail;
 use App\Models\Appointment;
 use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class AppointmentObserver
@@ -16,11 +18,12 @@ class AppointmentObserver
 
         foreach ($AppointmentData['service_id'] as $serviceId)
         {
-            AppointmentDetail::create([
+            $AppointmentDetail = AppointmentDetail::create([
                 'appointment_id' => $appointment->id,
                 'service_id'     => $serviceId,
                 'user_id'        => auth()->user()->id,
             ]);
+            $this->AppointmentConformationMail($AppointmentDetail);
         }
         $input = [
             'date'           => Carbon::create($AppointmentData['date'])->format('Y-m-d'),
@@ -32,4 +35,8 @@ class AppointmentObserver
         session()->forget('AppointmentData');
     }
 
+    public function AppointmentConformationMail($AppointmentDetail)
+    {
+        Mail::to(auth()->user()->email)->send(new OrderMail($AppointmentDetail));
+    }
 }

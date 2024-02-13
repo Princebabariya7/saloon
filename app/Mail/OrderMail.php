@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\AppointmentDetail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use App\Models\Appointment;
@@ -11,11 +12,11 @@ class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public Appointment $appointment;
+    public AppointmentDetail $AppointmentDetail;
 
-    public function __construct($appointment)
+    public function __construct($AppointmentDetail)
     {
-        $this->appointment = $appointment;
+        $this->AppointmentDetail = $AppointmentDetail;
     }
 
     public function build()

@@ -67,7 +67,6 @@ class AppointmentController extends Controller
             ]);
 
             //session()->put('msg', 'your order has been booked');
-            //$this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
             $services = Service::whereIn('id', $request->service_id)->get();
@@ -221,10 +220,5 @@ class AppointmentController extends Controller
             '7:00 PM - 8:00 PM'   => '7:00 PM - 8:00 PM',
             '8:00 PM - 9:00 PM'   => '8:00 PM - 9:00 PM',
         ];
-    }
-
-    public function AppointmentConformationMail($appointment)
-    {
-        Mail::to(auth()->user()->email)->send(new OrderMail($appointment));
     }
 }
