@@ -67,7 +67,6 @@ class AppointmentController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-//        $this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             $services = Service::whereIn('id', $request->service_id)->get();
             $total    = $services->sum('price');
@@ -225,10 +224,5 @@ class AppointmentController extends Controller
             '7:00 PM - 8:00 PM'   => '7:00 PM - 8:00 PM',
             '8:00 PM - 9:00 PM'   => '8:00 PM - 9:00 PM',
         ];
-    }
-
-    public function AppointmentConformationMail($appointment)
-    {
-        Mail::to(auth()->user()->email)->send(new OrderMail($appointment));
     }
 }
