@@ -71,7 +71,7 @@ class AppointmentController extends Controller
             //$this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
-            return redirect(route('payment.page',['id'=>$appointment->id]));
+            return redirect(route('payment.page', ['id' => $appointment->id]));
         }
         catch (\Exception $e)
         {
@@ -131,15 +131,15 @@ class AppointmentController extends Controller
         try
         {
             $appointmentsDetail = AppointmentDetail::find($id);
-            $appointmentsDetail->delete();
-
-            if ($appointmentsDetail->count() == 0)
+            $appointmentsCount  = AppointmentDetail::find($id)->where('appointment_id', '=', $appointmentsDetail->appointment_id);
+            if ($appointmentsCount->count() == 1)
             {
                 $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
                 $appointment     = Appointment::find($appointmentsDetail->appointment_id);
                 $appointmentSlot->delete();
                 $appointment->delete();
             }
+            $appointmentsDetail->delete();
 
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
