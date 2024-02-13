@@ -40,7 +40,7 @@ class PaymentController extends Controller
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
-
+            dd(response());
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'payment accepted', 'url' => route('online.create')], 200);
         }
@@ -50,9 +50,9 @@ class PaymentController extends Controller
         }
     }
 
-    public function view($token)
+    public function create($token)
     {
-        return view('frontend.payment.index')->with('token',$token);
+        return view('frontend.payment.index')->with('token', $token);
     }
 
     public function invoice()

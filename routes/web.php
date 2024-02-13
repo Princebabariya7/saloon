@@ -46,7 +46,7 @@ Route::group(['prefix' => 'frontend'], function ()
 
         Route::group(['prefix' => 'payment'], function ()
         {
-            Route::get('{id}', [PaymentController:: class, 'view'])->name('payment.page');
+            Route::get('{id}', [PaymentController:: class, 'create'])->name('payment.page');
             Route::post('store', [PaymentController::class, 'store'])->name('payment.info.store');
             Route::get('index', [PaymentController::class, 'index'])->name('payment.index');
             Route::get('invoice', [PaymentController::class, 'invoice'])->name('payment.invoice');
