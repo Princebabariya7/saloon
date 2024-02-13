@@ -25,18 +25,16 @@ class AppointmentController extends Controller
         $status      = $request->input('status', '');
         $currentDate = Carbon::now();
 //        $AppointmentDetail = AppointmentDetail::all();
-        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
-        {
-            return $query->where(function ($query) use ($search)
-            {
-                $query->orWhereHas('services', function ($query) use ($search)
-                {
+        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->whereHas('services', function ($query) use ($search) {
                     $query->where('name', 'LIKE', '%' . $search . '%');
                 });
             });
-        })->when($status, function ($query) use ($status)
-        {
-            return $query->where('status', $status);
+        })->when($status, function ($query) use ($status) {
+            $query->whereHas('appointment', function ($query) use ($status) {
+                $query->where('status', 'LIKE', '%' . $status . '%');
+            });
         })->paginate(5);
         return view('Backend.appointment.index')->with('appointments', $AppointmentDetail)->with('currentDate', $currentDate);
     }
