@@ -4,7 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\PaymentRequest;
 use App\Models\Payment;
-use App\Models\Service;
 use Illuminate\Routing\Controller;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
@@ -20,8 +19,8 @@ class PaymentController extends Controller
     {
         try
         {
-
             Stripe::setApiKey(config('services.stripe.secret'));
+
             $total = session()->get('totalPrice');
             $intent = PaymentIntent::create([
                 'amount'               => $total * 100,
