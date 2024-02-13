@@ -34,6 +34,7 @@ class PaymentController extends Controller
         return view('Backend.payment.payment_form')->with('token',$token);
     }
 
+
     public function store(PaymentStoreRequest $request)
     {
         try {
@@ -47,6 +48,10 @@ class PaymentController extends Controller
 
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully']);
 
+            $statusData = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
+
+            $status = $statusData['status'] == true ? 'Success' : 'Pending';
+
             Payment::create([
                 'buyer_name'         => $request->buyer_name,
                 'buyer_email'        => $request->buyer_email,
@@ -54,17 +59,18 @@ class PaymentController extends Controller
                 'transaction_detail' => $transactionDetail,
                 'gateway'            => 'Stripe',
                 'appointment_id'     => $request->token,
-                'status'             => 'Pending',
+                'status'             => $status,
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
 
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'Payment Was Successfully', 'url' => route('admin.appointment.index')], 200);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // Handle exceptions here
             return response()->json(['status' => false, 'message' => 'Payment failed', 'error' => $e->getMessage()], 500);
         }
 
     }
+
 }
