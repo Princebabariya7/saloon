@@ -70,14 +70,13 @@ class AppointmentController extends Controller
             session()->put('add', 'data add');
 //        $this->AppointmentConformationMail($appointment);
 //        return redirect(route('admin.appointment.index'));
-            return redirect(route('admin.payment.create'));
+            return redirect(route('admin.payment.create',['id'=>$appointment->id]));
         }
         catch (\Exception $e)
         {
             dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }
-
 
     }
 

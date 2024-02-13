@@ -23,6 +23,7 @@
                 </div>
             </div>
             {{ Form::open(['route' => ['admin.payment.store'], 'method'=>'post','id'=>"payment-form" ]) }}
+            {{ Form::hidden('token',$token) }}
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">

@@ -29,9 +29,9 @@ class PaymentController extends Controller
         return view('Backend.payment.index')->with('payments', $payments);
     }
 
-    public function create()
+    public function create($token)
     {
-        return view('Backend.payment.payment_form');
+        return view('Backend.payment.payment_form')->with('token',$token);
     }
 
     public function store(PaymentStoreRequest $request)
@@ -48,6 +48,11 @@ class PaymentController extends Controller
             Payment::create([
                 'buyer_name'  => $request->buyer_name,
                 'buyer_email' => $request->buyer_email,
+                'transaction_id'     => $request->stripeToken,
+                'transaction_detail' => 'ok',
+                'gateway'            => 'Stripe',
+                'appointment_id'     => $request->token,
+                'status'             => 'Pending',
                 'updated_at'  => now(),
                 'created_at'  => now(),
             ]);
