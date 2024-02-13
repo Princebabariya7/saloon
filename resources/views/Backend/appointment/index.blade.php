@@ -161,8 +161,7 @@
                                                     </li>
                                                     <li class="dropdown-divider"></li>
                                                     <li>
-                                                        <a class="dropdown-item small appointment-delete text-danger"
-                                                           href="#"
+                                                        <a class="dropdown-item small appointment-delete text-danger" href="#"
                                                            data-href="{{route('admin.appointment.delete',$appointment->id)}}">
                                                             <i class="fa fa-trash"> </i> Delete
                                                         </a>
