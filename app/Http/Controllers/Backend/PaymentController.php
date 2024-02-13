@@ -29,7 +29,6 @@ class PaymentController extends Controller
         return view('Backend.payment.index')->with('payments', $payments);
     }
 
-
     public function create()
     {
         return view('Backend.payment.payment_form');
@@ -41,7 +40,7 @@ class PaymentController extends Controller
         {
             Stripe::setApiKey(config('services.stripe.secret'));
             $intent = PaymentIntent::create([
-                'amount'               => 222552,
+                'amount'               => 821275,
                 'currency'             => 'usd',
                 'payment_method_types' => ['card'],
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
