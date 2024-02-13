@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\PaymentRequest;
 use App\Models\Payment;
+use App\Models\Service;
 use Illuminate\Routing\Controller;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
@@ -19,10 +20,11 @@ class PaymentController extends Controller
     {
         try
         {
-            Stripe::setApiKey(config('services.stripe.secret'));
 
+            Stripe::setApiKey(config('services.stripe.secret'));
+            $total = session()->get('totalPrice');
             $intent = PaymentIntent::create([
-                'amount'               => 4949 * 100,
+                'amount'               => $total * 100,
                 'currency'             => 'usd',
                 'payment_method_types' => ['card'],
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
@@ -45,10 +47,12 @@ class PaymentController extends Controller
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
-
+            session()->forget('totalPrice');
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'Payment Was Successfully', 'url' => route('online.index')], 200);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             return response()->json(['status' => false, 'message' => 'Payment failed', 'error' => $e->getMessage()], 500);
         }
     }

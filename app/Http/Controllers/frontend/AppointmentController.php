@@ -54,7 +54,6 @@ class AppointmentController extends Controller
 
     public function store(AppointmentAddRequest $request)
     {
-        session()->put('AppointmentData', $request->all());
         try
         {
             $appointment = Appointment::create([
@@ -71,7 +70,11 @@ class AppointmentController extends Controller
             //$this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
-            return redirect(route('payment.page', ['id' => $appointment->id]));
+            $services = Service::whereIn('id', $request->service_id)->get();
+            $total    = $services->sum('price');
+            session()->put('totalPrice', $total);
+
+            return redirect(route('payment.page', ['id' => $appointment->id,'total'=>$total]));
         }
         catch (\Exception $e)
         {
