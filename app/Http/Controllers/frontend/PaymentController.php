@@ -28,25 +28,24 @@ class PaymentController extends Controller
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
-            //dd($request->all());
+            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully']);
+
             Payment::create([
                 'buyer_name'         => $request->buyer_name,
                 'buyer_email'        => $request->buyer_email,
                 'transaction_id'     => $request->stripeToken,
-                'transaction_detail' => 'ok',
+                'transaction_detail' => $transactionDetail,
                 'gateway'            => 'Stripe',
                 'appointment_id'     => $request->token,
                 'status'             => 'Pending',
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
-            dd(response());
+
             session()->put('msg', 'payment accepted');
-            return response()->json(['status' => true, 'message' => 'payment accepted', 'url' => route('online.create')], 200);
-        }
-        catch (\Exception $e)
-        {
-            dd($e->getMessage());
+            return response()->json(['status' => true, 'message' => 'payment accepted', 'url' => route('online.index')], 200);
+        } catch (\Exception $e) {
+            return response()->json(['status' => false, 'message' => 'Payment failed', 'error' => $e->getMessage()], 500);
         }
     }
 
