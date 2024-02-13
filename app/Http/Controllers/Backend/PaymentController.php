@@ -48,11 +48,11 @@ class PaymentController extends Controller
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
-            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully']);
+            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
 
             $statusData = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
 
-            $status = $statusData['status'] == true ? 'Success' : 'Pending';
+            $status = $statusData['status'] ? 'Success' : 'Pending';
 
             Payment::create([
                 'buyer_name'         => $request->buyer_name,
