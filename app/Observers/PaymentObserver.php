@@ -16,24 +16,4 @@ class PaymentObserver
             $appointments->update();
         }
     }
-
-    public function updated(Payment $payment)
-    {
-        //
-    }
-
-    public function deleted(Payment $payment)
-    {
-        //
-    }
-
-    public function restored(Payment $payment)
-    {
-        //
-    }
-
-    public function forceDeleted(Payment $payment)
-    {
-        //
-    }
 }

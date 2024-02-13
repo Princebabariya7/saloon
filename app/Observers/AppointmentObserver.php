@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Session;
 
 class AppointmentObserver
 {
-    public function creating(Appointment $appointment)
-    {
-        //
-    }
-
     public function created(Appointment $appointment)
     {
         $AppointmentData = session()->get('AppointmentData');
@@ -35,16 +30,6 @@ class AppointmentObserver
         ];
         AppointmentSlot::create($input);
         session()->forget('AppointmentData');
-    }
-
-    public function updated(Appointment $appointment)
-    {
-        //
-    }
-
-    public function deleted(Appointment $appointment)
-    {
-        //
     }
 
 }
