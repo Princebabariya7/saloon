@@ -57,7 +57,15 @@
                                         <td>{{$appointment->appointment->type}}</td>
                                         <td>{{$appointment->appointment->date}}</td>
                                         <td>{{$appointment->appointment->time}}</td>
-                                        <td>{{$appointment->appointment->time}}</td>
+                                        <td>
+                                            @if($appointment->appointment->status =='Pending')
+                                                <span class="badge badge-warning">Pending</span>
+                                            @elseif($appointment->appointment->status =='Success')
+                                                <span class="badge badge-success">Success</span>
+                                            @elseif($appointment->appointment->status =='Cancel')
+                                                <span class="badge badge-danger">Cancel</span>
+                                            @endif
+                                        </td>
                                         @if($appointment->appointment->date > $currentDate->toDateString())
                                             <td class="project-actions text-right">
                                                 <button type="button"

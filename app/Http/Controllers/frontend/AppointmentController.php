@@ -71,7 +71,7 @@ class AppointmentController extends Controller
             //$this->AppointmentConformationMail($appointment);
             session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
-            return redirect(route('payment.page'));
+            return redirect(route('payment.page',['id'=>$appointment->id]));
         }
         catch (\Exception $e)
         {
