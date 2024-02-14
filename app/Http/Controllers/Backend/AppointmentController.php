@@ -25,14 +25,19 @@ class AppointmentController extends Controller
         $status      = $request->input('status', '');
         $currentDate = Carbon::now();
 //        $AppointmentDetail = AppointmentDetail::all();
-        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search) {
-            $query->where(function ($query) use ($search) {
-                $query->whereHas('services', function ($query) use ($search) {
+        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
+        {
+            $query->where(function ($query) use ($search)
+            {
+                $query->whereHas('services', function ($query) use ($search)
+                {
                     $query->where('name', 'LIKE', '%' . $search . '%');
                 });
             });
-        })->when($status, function ($query) use ($status) {
-            $query->whereHas('appointment', function ($query) use ($status) {
+        })->when($status, function ($query) use ($status)
+        {
+            $query->whereHas('appointment', function ($query) use ($status)
+            {
                 $query->where('status', 'LIKE', '%' . $status . '%');
             });
         })->paginate(5);
@@ -71,7 +76,7 @@ class AppointmentController extends Controller
             session()->put('totalPrice', $total);
             session()->put('add', 'data add');
 
-            return redirect(route('admin.payment.create',['id'=>$appointment->id,'total'=>$total]));
+            return redirect(route('admin.payment.create', ['id' => $appointment->id, 'total' => $total]));
         }
         catch (\Exception $e)
         {
@@ -111,20 +116,20 @@ class AppointmentController extends Controller
 
     public function update(AppointmentUpdateRequest $request, $id)
     {
-        $appointmentsDetail    = AppointmentDetail::find($id);
-        $appointment     = Appointment::find($appointmentsDetail->appointment_id);
-        $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
+        $appointmentsDetail = AppointmentDetail::find($id);
+        $appointment        = Appointment::find($appointmentsDetail->appointment_id);
+        $appointmentSlot    = AppointmentSlot::find($appointmentsDetail->appointment_id);
 
         foreach (request('service_id') as $serviceId)
         {
             $appointmentsDetail->service_id = $serviceId;
-            $dateTime                = Carbon::create($request->date)->format('Y-m-d');
-            $appointment->type       = $request->input('type');
-            $appointment->time       = $request->input('time');
-            $appointment->date       = $dateTime;
-            $appointment->status     = $request->input('status');
-            $appointmentSlot->date   = $dateTime;
-            $appointmentSlot->slot   = $request->input('time');
+            $dateTime                       = Carbon::create($request->date)->format('Y-m-d');
+            $appointment->type              = $request->input('type');
+            $appointment->time              = $request->input('time');
+            $appointment->date              = $dateTime;
+            $appointment->status            = $request->input('status');
+            $appointmentSlot->date          = $dateTime;
+            $appointmentSlot->slot          = $request->input('time');
 
             $appointmentSlot->update();
             $appointment->update();
