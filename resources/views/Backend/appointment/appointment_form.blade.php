@@ -17,7 +17,12 @@
                             <li class="breadcrumb-item active"><a href="{{route('admin.appointment.index')}}">
                                     Appointment</a>
                             </li>
+                            @if($editMode)
                             <li class="breadcrumb-item text-secondary">Edit</li>
+                            @else
+                                <li class="breadcrumb-item text-secondary">Create</li>
+                            @endif
+
                         </ol>
                     </div>
                 </div>
