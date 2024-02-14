@@ -50,7 +50,6 @@
 
         <div class="w-100">
             <div class="card  mx-3">
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -61,14 +60,12 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Service</label>
                                 <div class="select2-primary">
                                     @if($editMode)
                                         {!! Form::select('service_id[]', [],  ($editMode) ? $service_id : null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm',  'disabled'=>true]) !!}
-
                                     @else
                                         {!! Form::select('service_id[]', [],  null , ['id'=>'services', 'class' => 'form-control form-control-sm custom-select-sm select2',  'multiple'=>'multiple', 'disabled'=>true]) !!}
                                     @endif
@@ -76,7 +73,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -137,7 +133,6 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-
                                 <label for="inputStatus">Status</label>
                                 {!! Form::select('status', $status, (($editMode) ? $appointment->appointment->status : null),['class' => 'form-control form-control-sm']) !!}
                             </div>

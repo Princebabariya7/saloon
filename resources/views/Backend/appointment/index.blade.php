@@ -123,11 +123,9 @@
                                         <td>
                                             {{$appointment->appointment->date}}
                                         </td>
-
                                         <td>
                                             {{$appointment->appointment->time}}
                                         </td>
-
                                         <td>
                                             {{$appointment->appointment->type}}
                                         </td>
