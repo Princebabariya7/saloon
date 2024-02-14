@@ -16,7 +16,11 @@
                                     Home</a></li>
                             <li class="breadcrumb-item active"><a href="{{route('admin.service.index')}}"> Service</a>
                             </li>
-                            <li class="breadcrumb-item text-secondary">Edit</li>
+                            @if($editMode)
+                                <li class="breadcrumb-item text-secondary">Edit</li>
+                            @else
+                                <li class="breadcrumb-item text-secondary">Create</li>
+                            @endif
 
                         </ol>
                     </div>
