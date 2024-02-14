@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn btn-block">Confirm Booking</button>
+                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn">Confirm Booking</button>
 
                 </div>
                 {!! Form::close() !!}
