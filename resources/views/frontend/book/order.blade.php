@@ -109,7 +109,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn">Confirm Booking</button>
+                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn">Confirm Booking
+                    </button>
 
                 </div>
                 {!! Form::close() !!}
@@ -140,7 +141,8 @@
         })
         $('#saveButton').on('click', function () {
 
-            if ($(this).hasClass('disabled')) {
+            if ($(this).hasClass('disabled'))
+            {
                 return false;
             }
 
