@@ -1,4 +1,3 @@
-@php use App\Models\Service; @endphp
 @extends ('Backend.layout.index')
 @section("title")
     Payment Form
@@ -82,7 +81,6 @@
                                     class="text-light text-bold"><i class="fa fa-inr" aria-hidden="true"></i>
                                     {{request('total')}}</h6>
                             </button>
-
                         </div>
                         <div id="error-message">
                             <!-- Display error message to your customers here -->
@@ -93,7 +91,6 @@
         </div>
         {!! Form::close() !!}
     </section>
-
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
@@ -155,7 +152,6 @@
                 });
             }
         });
-
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
