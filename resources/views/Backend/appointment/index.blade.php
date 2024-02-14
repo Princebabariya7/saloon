@@ -161,7 +161,8 @@
                                                     </li>
                                                     <li class="dropdown-divider"></li>
                                                     <li>
-                                                        <a class="dropdown-item small appointment-delete text-danger" href="#"
+                                                        <a class="dropdown-item small appointment-delete text-danger"
+                                                           href="#"
                                                            data-href="{{route('admin.appointment.delete',$appointment->id)}}">
                                                             <i class="fa fa-trash"> </i> Delete
                                                         </a>
@@ -171,12 +172,33 @@
                                         @else
                                             <td class="project-actions text-right">
                                                 <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn"
-                                                        data-toggle="modal"
-                                                        data-target="#exampleModal">
+                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"
+                                                        data-bs-toggle="dropdown">
                                                     Action
                                                 </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item small"
+                                                           href="{{route('admin.appointment.show',$appointment->id)}}">
+                                                            <i class="fa fa-eye"> </i> View
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item  small" data-target="#exampleModal"
+                                                           data-toggle="modal"
+                                                           href="{{route('admin.appointment.edit',$appointment->id)}}">
+                                                            <i class="fa fa-pen"> </i> Edit
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-divider"></li>
+                                                    <li>
+                                                        <a class="dropdown-item small appointment-delete text-danger"
+                                                           href="#"
+                                                           data-href="{{route('admin.appointment.delete',$appointment->id)}}">
+                                                            <i class="fa fa-trash"> </i> Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
