@@ -46,7 +46,8 @@ Route::group(['prefix' => 'frontend'], function ()
 
         Route::group(['prefix' => 'payment'], function ()
         {
-            Route::get('{id}', [PaymentController:: class, 'create'])->name('payment.page');
+            Route::get('{id}/create', [PaymentController:: class, 'create'])->name('payment.page');
+            Route::get('{id}/pending', [PaymentController:: class, 'pending'])->name('payment.pending');
             Route::post('store', [PaymentController::class, 'store'])->name('payment.info.store');
             Route::get('index', [PaymentController::class, 'index'])->name('payment.index');
             Route::get('invoice', [PaymentController::class, 'invoice'])->name('payment.invoice');
@@ -166,7 +167,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/create', [\App\Http\Controllers\Backend\PaymentController::class, 'create'])->name('admin.payment.create');
             Route::post('store', [\App\Http\Controllers\Backend\PaymentController::class, 'store'])->name('admin.payment.store');
             Route::get('{id}/show', [\App\Http\Controllers\Backend\PaymentController::class, 'show'])->name('admin.payment.show');
-
+            Route::get('{id}/pending', [\App\Http\Controllers\Backend\PaymentController::class, 'pending'])->name('admin.payment.pending');
         });
     });
 });

@@ -82,5 +82,9 @@ class PaymentController extends Controller
         $payment = Payment::find($id);
         return view('Backend.payment.show', ['payment' => $payment]);
     }
+    public function pending($id)
+    {
+        //
+    }
 
 }
