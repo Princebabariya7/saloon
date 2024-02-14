@@ -78,7 +78,7 @@
                         <div class="col-md-6">
                             <button id="submit" class="btn btn-sm btn-primary float-right"
                                     style="margin-right: 5px; float: left; margin-bottom: 20px;">MAKE PAYMENT<h6
-                                    class="text-light text-bold"><i class="fa fa-inr" aria-hidden="true"></i>
+                                    class="text-light text-bold"><i class='fas fa-rupee-sign'></i>
                                     {{request('total')}}</h6>
                             </button>
                         </div>
