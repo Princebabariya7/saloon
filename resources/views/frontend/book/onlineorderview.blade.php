@@ -96,12 +96,31 @@
                                         @else
                                             <td class="project-actions text-right">
                                                 <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn"
-                                                        data-toggle="modal"
-                                                        data-target="#exampleModal">
+                                                <button type="button" class="btn btn-light border btn-sm dropdown-toggle modelBtn"
+                                                        data-bs-toggle="dropdown">
                                                     Action
                                                 </button>
+                                                <div class="action-btn">
+
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" data-target="#exampleModal"
+                                                               data-toggle="modal"
+                                                               href="{{route('online.edit',$appointment->id)}}">
+                                                                <i class="fa fa-edit"> </i> Edit
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown-divider"></li>
+                                                        <li>
+                                                            <a class="dropdown-item  delete_pop text-danger"
+                                                               href="#"
+                                                               data-href="{{route('online.delete',$appointment->id)}}">
+                                                                <i class="fa fa-trash"></i> Delete
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                                      aria-labelledby="exampleModalLabel" aria-hidden="true">

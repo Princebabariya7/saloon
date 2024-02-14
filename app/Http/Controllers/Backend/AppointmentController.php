@@ -88,8 +88,9 @@ class AppointmentController extends Controller
 
     public function show($id)
     {
+        $currentDate = Carbon::now();
         $appointment = AppointmentDetail::find($id);
-        return view('Backend.appointment.show', ['appointment' => $appointment]);
+        return view('Backend.appointment.show', ['appointment' => $appointment])->with('currentDate', $currentDate);
     }
 
     public function edit($id)
