@@ -83,10 +83,10 @@
                                 @foreach($appointments as $appointment)
                                     <tr>
                                         <td>
-                                            {{auth()->user()->firstname}}
+                                            {{$appointment->appointment->user->firstname}}
                                         </td>
                                         <td>
-                                            {{auth()->user()->lastname}}
+                                            {{$appointment->appointment->user->lastname}}
                                         </td>
                                         @if($appointment->appointment->date > $currentDate->toDateString())
                                             <td>
