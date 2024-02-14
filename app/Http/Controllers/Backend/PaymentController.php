@@ -36,7 +36,6 @@ class PaymentController extends Controller
         return view('Backend.payment.payment_form')->with('token', $token);
     }
 
-
     public function store(PaymentStoreRequest $request)
     {
         try
@@ -73,10 +72,8 @@ class PaymentController extends Controller
         }
         catch (\Exception $e)
         {
-            // Handle exceptions here
             return response()->json(['status' => false, 'message' => 'Payment failed', 'error' => $e->getMessage()], 500);
         }
-
     }
 
     public function show($id)
@@ -84,6 +81,7 @@ class PaymentController extends Controller
         $payment = Payment::find($id);
         return view('Backend.payment.show', ['payment' => $payment]);
     }
+
     public function pending($token)
     {
         $appointmentId     = AppointmentDetail::find($token);
@@ -94,5 +92,4 @@ class PaymentController extends Controller
 
         return redirect(route('admin.payment.create', ['id' => $appointmentId->appointment_id, 'total' => $total]));
     }
-
 }
