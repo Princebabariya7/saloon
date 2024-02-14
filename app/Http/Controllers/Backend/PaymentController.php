@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Requests\Backend\PaymentStoreRequest;
+use App\Models\AppointmentDetail;
 use App\Models\Payment;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
@@ -82,9 +84,15 @@ class PaymentController extends Controller
         $payment = Payment::find($id);
         return view('Backend.payment.show', ['payment' => $payment]);
     }
-    public function pending($id)
+    public function pending($token)
     {
-        //
+        $appointmentId     = AppointmentDetail::find($token);
+        $appointmentDetail = AppointmentDetail::where('appointment_id', AppointmentDetail::find($token)->appointment_id)->get();
+        $servicesIds       = $appointmentDetail->pluck('service_id')->toArray();
+        $services          = Service::whereIn('id', $servicesIds)->get();
+        $total             = $services->sum('price');
+
+        return redirect(route('admin.payment.create', ['id' => $appointmentId->appointment_id, 'total' => $total]));
     }
 
 }

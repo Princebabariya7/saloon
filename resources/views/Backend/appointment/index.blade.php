@@ -159,6 +159,16 @@
                                                             <i class="fa fa-pen"> </i> Edit
                                                         </a>
                                                     </li>
+                                                    @if($appointment->appointment->status != 'Success')
+                                                        <li class="dropdown-divider"></li>
+                                                        <li>
+                                                            <a class="dropdown-item small"
+                                                               href="{{route('admin.payment.pending',$appointment->id)}}">
+                                                                <i class="fas fa-credit-card"></i> Payment
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                    @endif
                                                     <li class="dropdown-divider"></li>
                                                     <li>
                                                         <a class="dropdown-item small appointment-delete text-danger"
