@@ -151,13 +151,39 @@
                                                             <i class="fa fa-eye"> </i> View
                                                         </a>
                                                     </li>
-                                                    <li>
-                                                        <a class="dropdown-item small"
-                                                           href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                            <i class="fa fa-pen"> </i> Edit
-                                                        </a>
-                                                    </li>
-                                                    @if($appointment->appointment->status != 'Success')
+                                                    @if($appointment->appointment->status == 'Success')
+                                                        <li>
+                                                            <a class="dropdown-item small" data-target="#exampleModal{{$appointment->id}}"
+                                                               data-toggle="modal"
+                                                               href="{{route('admin.appointment.edit',$appointment->id)}}">
+                                                                <i class="fa fa-pen"></i> Edit
+                                                            </a>
+                                                        </li>
+                                                        <div class="modal fade" id="exampleModal{{$appointment->id}}" tabindex="-1"
+                                                             role="dialog"
+                                                             aria-labelledby="exampleModalLabel{{$appointment->id}}" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="p-3 bg-danger">
+                                                                        <h5 class="modal-title text-light text-center"
+                                                                            id="exampleModalLabel{{$appointment->id}}">This Appointment
+                                                                            Can't Be
+                                                                            Changable </h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <li>
+                                                            <a class="dropdown-item small"
+                                                               href="{{route('admin.appointment.edit',$appointment->id)}}">
+                                                                <i class="fa fa-pen"> </i> Edit
+                                                            </a>
+                                                        </li>
+                                                    @endif
+
+
+                                                @if($appointment->appointment->status != 'Success')
                                                         <li class="dropdown-divider"></li>
                                                         <li>
                                                             <a class="dropdown-item small"
