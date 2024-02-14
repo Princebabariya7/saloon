@@ -66,15 +66,15 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ Route::is('admin.price.index') ? 'menu-open' : '' }}">
-                    <a href="{{ route('admin.price.index') }}"
-                       class="nav-link {{ Route::is('admin.price.index') ? 'active' : '' }} {{Request::segment(2) == 'price' ? 'active' :'' }}">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
-                        <p>
-                            Prices
-                        </p>
-                    </a>
-                </li>
+{{--                <li class="nav-item {{ Route::is('admin.price.index') ? 'menu-open' : '' }}">--}}
+{{--                    <a href="{{ route('admin.price.index') }}"--}}
+{{--                       class="nav-link {{ Route::is('admin.price.index') ? 'active' : '' }} {{Request::segment(2) == 'price' ? 'active' :'' }}">--}}
+{{--                        <i class="nav-icon fas fa-dollar-sign"></i>--}}
+{{--                        <p>--}}
+{{--                            Prices--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <li class="nav-item {{ Route::is('admin.payment.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.payment.index') }}"
