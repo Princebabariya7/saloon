@@ -71,7 +71,7 @@
                                 <th>
                                     Mobile
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Status
                                 </th>
                                 <th class="text-end action">
@@ -95,9 +95,16 @@
                                         <td>
                                             {{$user->mobile}}
                                         </td>
-                                        <td>
-                                            {{$user->user_status}}
+                                        <td class="project-state">
+                                            @if($user->user_status =='Admin')
+                                                <span class="badge badge-danger">Admin</span>
+                                            @else
+                                                <span class="badge badge-primary">User</span>
+                                            @endif
                                         </td>
+{{--                                        <td>--}}
+{{--                                            {{$user->user_status}}--}}
+{{--                                        </td>--}}
                                         <td class="project-actions text-right">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                     data-bs-toggle="dropdown">
