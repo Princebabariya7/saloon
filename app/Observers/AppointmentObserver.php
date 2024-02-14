@@ -8,7 +8,6 @@ use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
 
 class AppointmentObserver
 {

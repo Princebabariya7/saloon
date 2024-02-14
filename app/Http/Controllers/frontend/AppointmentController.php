@@ -59,6 +59,7 @@ class AppointmentController extends Controller
     {
         try
         {
+            session()->put('AppointmentData', $request->all());
             $appointment = Appointment::create([
                 'type'       => $request->type,
                 'date'       => Carbon::create($request->date)->format('Y-m-d'),
@@ -68,14 +69,11 @@ class AppointmentController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
-
             //session()->put('msg', 'your order has been booked');
-            session()->put('AppointmentData', $request->all());
             // return redirect(route('online.create'));
             $services = Service::whereIn('id', $request->service_id)->get();
             $total    = $services->sum('price');
             session()->put('totalPrice', $total);
-
             return redirect(route('payment.page', ['id' => $appointment->id, 'total' => $total]));
         }
         catch (\Exception $e)
