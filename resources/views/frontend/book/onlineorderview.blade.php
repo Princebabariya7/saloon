@@ -96,7 +96,8 @@
                                         @else
                                             <td class="project-actions text-right">
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-light border btn-sm dropdown-toggle modelBtn"
+                                                <button type="button"
+                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn"
                                                         data-bs-toggle="dropdown">
                                                     Action
                                                 </button>
@@ -156,7 +157,7 @@
                         </div>
                         @if(request('search') != '' || request('city') != '')
                             <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
-                            <a href="#" class="btn-link    clear">Clear</a>
+                            <a href="#" class="btn-link clear">Clear</a>
                         @endif
                     </div>
                 </div>
