@@ -154,7 +154,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item  small "
+                                                        <a class="dropdown-item small"
                                                            href="{{route('admin.appointment.edit',$appointment->id)}}">
                                                             <i class="fa fa-pen"> </i> Edit
                                                         </a>
@@ -174,7 +174,7 @@
                                                         <a class="dropdown-item small appointment-delete text-danger"
                                                            href="#"
                                                            data-href="{{route('admin.appointment.delete',$appointment->id)}}">
-                                                            <i class="fa fa-trash"> </i> Delete
+                                                            <i class="fa fa-trash"></i> Delete
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -190,14 +190,14 @@
                                                     <li>
                                                         <a class="dropdown-item small"
                                                            href="{{route('admin.appointment.show',$appointment->id)}}">
-                                                            <i class="fa fa-eye"> </i> View
+                                                            <i class="fa fa-eye"></i> View
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item  small" data-target="#exampleModal"
                                                            data-toggle="modal"
                                                            href="{{route('admin.appointment.edit',$appointment->id)}}">
-                                                            <i class="fa fa-pen"> </i> Edit
+                                                            <i class="fa fa-pen"></i> Edit
                                                         </a>
                                                     </li>
                                                     <li class="dropdown-divider"></li>
@@ -205,7 +205,7 @@
                                                         <a class="dropdown-item small appointment-delete text-danger"
                                                            href="#"
                                                            data-href="{{route('admin.appointment.delete',$appointment->id)}}">
-                                                            <i class="fa fa-trash"> </i> Delete
+                                                            <i class="fa fa-trash"></i> Delete
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -246,7 +246,6 @@
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')
                                 <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
-
                                 <button type="button" class="btn btn-sm btn-link" id="btn-clear-filters">
                                     Clear
                                 </button>
@@ -264,7 +263,6 @@
         $(document).ready(function () {
             $('.appointment-delete').click(function () {
                 var $_this = $(this);
-
                 Swal.fire({
                     title: 'Are you sure?',
                     text: 'You won\'t be able to revert this!',
@@ -296,15 +294,12 @@
                 $('.search').trigger('click');
             })
         });
-
         @if (\Session::has('add'))
-
         toastr.success('Your Appointment Has Successfully Added!');
         {{ \Session::forget('add') }}
         @endif
 
         @if (\Session::has('update'))
-
         toastr.success('Your Data Has Successfully Updated!');
         {{ \Session::forget('update') }}
         @endif
