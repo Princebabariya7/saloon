@@ -39,7 +39,7 @@ class PriceController extends Controller
         $price          = new Price;
         $price->service = $request->input('service');
         $price->price   = $request->input('price');
-        $price->status = $request->input('status');
+        $price->status  = $request->input('status');
         if ($request->hasFile('image'))
         {
             $file     = $request->file('image');
@@ -76,7 +76,7 @@ class PriceController extends Controller
         $price          = Price::find($id);
         $price->price   = $request->input('price');
         $price->service = $request->input('service');
-        $price->status = $request->input('status');
+        $price->status  = $request->input('status');
 
 
         if ($request->hasFile('image'))
