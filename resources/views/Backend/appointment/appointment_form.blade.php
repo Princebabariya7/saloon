@@ -39,7 +39,9 @@
                                 </a>
                             </li>
                             <li>
-                                <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>
+{{--                                <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>--}}
+                                <button type="submit" id="saveButton" class="btn btn-primary btn-sm btn-block">Save</button>
+
                             </li>
                         </ol>
                     </div>
@@ -155,6 +157,15 @@
             format: 'L',
             minDate: moment(),
 
+        });
+
+        $('#saveButton').on('click', function () {
+
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
+
+            $(this).addClass('disabled').html('<i class="fa fa-spinner fa-spin"></i> Processing...');
         });
 
 

@@ -109,7 +109,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-sm simple_btn" type="submit">Confirm Booking</button>
+                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn btn-block">Confirm Booking</button>
+
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -137,6 +138,14 @@
                 minDate: moment(),
             });
         })
+        $('#saveButton').on('click', function () {
+
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
+
+            $(this).addClass('disabled').html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+        });
 
         $(document).ready(function () {
             $.ajaxSetup({
