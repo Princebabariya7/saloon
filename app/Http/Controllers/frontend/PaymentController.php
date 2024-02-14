@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\PaymentRequest;
+use App\Models\AppointmentDetail;
 use App\Models\Payment;
+use App\Models\Service;
 use Illuminate\Routing\Controller;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
@@ -21,7 +23,7 @@ class PaymentController extends Controller
         {
             Stripe::setApiKey(config('services.stripe.secret'));
 
-            $total = session()->get('totalPrice');
+            $total  = session()->get('totalPrice');
             $intent = PaymentIntent::create([
                 'amount'               => $total * 100,
                 'currency'             => 'usd',
@@ -29,7 +31,7 @@ class PaymentController extends Controller
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
-            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully','total'=>$total]);
+            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
 
             $statusData = json_decode($transactionDetail, true);
 
@@ -59,6 +61,17 @@ class PaymentController extends Controller
     public function create($token)
     {
         return view('frontend.payment.index')->with('token', $token);
+    }
+
+    public function pending($token)
+    {
+        $appointmentId     = AppointmentDetail::find($token);
+        $appointmentDetail = AppointmentDetail::where('appointment_id', AppointmentDetail::find($token)->appointment_id)->get();
+        $servicesIds       = $appointmentDetail->pluck('service_id')->toArray();
+        $services          = Service::whereIn('id', $servicesIds)->get();
+        $total             = $services->sum('price');
+
+        return redirect(route('payment.page', ['id' => $appointmentId->appointment_id, 'total' => $total]));
     }
 
     public function invoice()

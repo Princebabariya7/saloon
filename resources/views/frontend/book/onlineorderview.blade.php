@@ -90,6 +90,16 @@
                                                                 <i class="fa fa-trash"></i> Delete
                                                             </a>
                                                         </li>
+                                                        @if($appointment->appointment->status != 'Success')
+                                                            <li class="dropdown-divider"></li>
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                   href="{{route('payment.pending',$appointment->id)}}">
+                                                                    <i class="fa fa-trash"></i> make
+                                                                </a>
+                                                            </li>
+                                                        @else
+                                                        @endif
                                                     </ul>
                                                 </div>
                                             </td>
