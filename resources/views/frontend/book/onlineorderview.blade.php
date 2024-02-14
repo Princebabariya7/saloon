@@ -76,6 +76,17 @@
                                                 </button>
                                                 <div class="btn-group">
                                                     <ul class="dropdown-menu">
+                                                        @if($appointment->appointment->status != 'Success')
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                   href="{{route('payment.pending',$appointment->id)}}">
+                                                                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                    Make Payment
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-divider"></li>
+                                                        @else
+                                                        @endif
                                                         <li>
                                                             <a class="dropdown-item"
                                                                href="{{route('online.edit',$appointment->id)}}">
@@ -90,16 +101,6 @@
                                                                 <i class="fa fa-trash"></i> Delete
                                                             </a>
                                                         </li>
-                                                        @if($appointment->appointment->status != 'Success')
-                                                            <li class="dropdown-divider"></li>
-                                                            <li>
-                                                                <a class="dropdown-item"
-                                                                   href="{{route('payment.pending',$appointment->id)}}">
-                                                                    <i class="fa fa-trash"></i> make
-                                                                </a>
-                                                            </li>
-                                                        @else
-                                                        @endif
                                                     </ul>
                                                 </div>
                                             </td>
