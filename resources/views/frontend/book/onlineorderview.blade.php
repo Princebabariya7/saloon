@@ -28,7 +28,6 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-2">
-
                                 {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancle' => 'Cancle'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </div>
                         </div>
