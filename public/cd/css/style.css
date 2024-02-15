@@ -174,7 +174,7 @@ a:focus {
 .navbar .navbar-brand {
     margin: 0;
     color: #ffffff;
-    font-size: 45px;
+    font-size: 35px;
     line-height: 0px;
     font-weight: 600;
 }
@@ -277,7 +277,7 @@ a:focus {
 .hero .hero-text {
     position: relative;
     padding-left: 75px;
-    height: calc(100vh - 60px);
+    height: calc(103vh - 76px);
     display: flex;
     align-items: flex-start;
     justify-content: center;
