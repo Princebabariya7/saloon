@@ -24,7 +24,6 @@
                             <label>Select Categories</label>
                             <div class="select2-secondary">
                                 {!! Form::select('categories[]', $category, ($editMode) ? $category_id : null , ['id'=>'categories', 'class' => 'form-control']) !!}
-
                             </div>
                         </div>
                     </div>
@@ -45,7 +44,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="dropdown-divider"></div>
                 <div class="form-group clearfix">
                     <label>Preferred Booking Type</label>
@@ -60,11 +58,8 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="form-group">
                     <label>Preferred Booking Date</label>
-
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
                         {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control appointment-date datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
                         <div class="input-group-append" data-target="#reservationdate"
@@ -73,7 +68,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="inputStatus">Preferred Booking Slot</label>
                     <div class="input-group date" id="appointmentTime" data-target-input="nearest">
@@ -83,7 +77,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="modal fade" id="timeSlotModal" tabindex="-1" role="dialog"
                      aria-labelledby="timeSlotModalLabel"
                      aria-hidden="true">
@@ -100,8 +93,7 @@
                                 <div class="list-group" id="date-slot">
                                     @if($timeSlots == null)
                                         <h6 class="modal-title text-danger font-weight-bold" id="timeSlotModalLabel">
-                                            Please
-                                            Select Preferred Booking Date</h6>
+                                            Please Select Preferred Booking Date</h6>
                                     @endif
                                 </div>
                             </div>
