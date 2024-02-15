@@ -165,7 +165,7 @@
                         <div class="pagination pagination-sm  float-right">
                             {{ $appointments->links() }}
                         </div>
-                        @if(request('search') != '' || request('city') != '')
+                        @if(request('search') != '' || request('status') != '')
                             <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
                             <a href="#" class="btn-link clear">Clear</a>
                         @endif
