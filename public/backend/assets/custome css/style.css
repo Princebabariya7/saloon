@@ -33,6 +33,9 @@
     .galary_img {
         width: 100% !important;
     }
+    .form-inline {
+        display: unset;
+    }
 }
 
 .action {
