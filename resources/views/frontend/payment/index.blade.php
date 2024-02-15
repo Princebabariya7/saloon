@@ -20,13 +20,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Billing">Customer Name</label>
-                                {!! Form::text('buyer_name', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing', 'placeholder' => 'Enter your name']) !!}
+                                {!! Form::text('buyer_name', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing', 'placeholder' => 'Enter your name', 'autocomplete' => 'off']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Billing_email">Customer Email</label>
-                                {!! Form::text('buyer_email', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing_email', 'placeholder' => 'Enter your email']) !!}
+                                {!! Form::text('buyer_email', null, ['class' => 'form-control form-control-sm', 'id' => 'Billing_email', 'placeholder' => 'Enter your email', 'autocomplete' => 'off']) !!}
                             </div>
                         </div>
                     </div>
