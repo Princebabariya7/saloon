@@ -488,8 +488,13 @@ a:focus {
 .page-header h2 {
     position: relative;
     color: #1d2434;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 700;
+}
+.font-weight-normal{
+    color: #1D2434 !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
 }
 
 .page-header a {

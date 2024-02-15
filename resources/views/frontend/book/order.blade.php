@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="font-weight-normal">Online Booking</h1>
+                <h2 class="font-weight-normal">Online Booking</h2>
             </div>
         </div>
     </div>
