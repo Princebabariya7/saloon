@@ -32,7 +32,7 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'gender.required'   => 'We need to know your email address!',
+            'gender.required'   => 'Please Select gender',
             'password.required' => 'Password must be a minimum of 8 characters and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*#?&).
 '
         ];

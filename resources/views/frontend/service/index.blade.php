@@ -16,7 +16,6 @@
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Saloon Services</p>
                 <h2>Best Saloon and Barber Services for You</h2>
             </div>
             <div class="row">
