@@ -73,7 +73,7 @@
                                                         data-bs-toggle="dropdown">
                                                     Action
                                                 </button>
-                                                <div class="btn-group">
+                                                <div>
                                                     <ul class="dropdown-menu">
                                                         @if($appointment->appointment->status != 'Success')
                                                             <li>
