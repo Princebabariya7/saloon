@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('title')
-    gallery
+    Gallery
 @endsection
 @section('mainContent')
     <div class="page-header">

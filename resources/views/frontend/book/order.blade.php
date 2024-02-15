@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('title')
-    order
+    Online Booking
 @endsection
 @section('mainContent')
     <div class="page-header m-0">

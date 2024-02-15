@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('title')
-    payment
+    Payment
 @endsection
 @section('mainContent')
     <div class="page-header m-0">

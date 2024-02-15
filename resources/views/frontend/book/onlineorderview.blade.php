@@ -7,7 +7,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">Book Appointment</h1>
+                <h1 class="login_logo font-weight-normal">Appointment List</h1>
             </div>
         </div>
     </div>

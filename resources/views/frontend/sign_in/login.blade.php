@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('title')
-    login
+    Login
 @endsection
 @section('mainContent')
     <div class="page-header m-0">
