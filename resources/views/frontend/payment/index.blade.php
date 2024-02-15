@@ -10,6 +10,7 @@
             </div>
         </div>
     </div>
+
     <div class="container appointment  mt-3">
         {{ Form::open(['route' => ['payment.info.store'], 'method'=>'post','id'=>"payment-form" ]) }}
         {{ Form::hidden('token',$token) }}
