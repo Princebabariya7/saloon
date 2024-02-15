@@ -86,12 +86,15 @@
                                                             <li class="dropdown-divider"></li>
                                                         @else
                                                         @endif
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                               href="{{route('online.edit',$appointment->id)}}">
-                                                                <i class="fa fa-edit"> </i> Edit
-                                                            </a>
-                                                        </li>
+                                                        @if($appointment->appointment->status != 'Success')
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                   href="{{route('online.edit',$appointment->id)}}">
+                                                                    <i class="fa fa-edit"> </i> Edit
+                                                                </a>
+                                                            </li>
+                                                        @else
+                                                        @endif
                                                         <li class="dropdown-divider"></li>
                                                         <li>
                                                             <a class="dropdown-item  delete_pop text-danger"
@@ -114,6 +117,17 @@
                                                 <div class="action-btn">
 
                                                     <ul class="dropdown-menu">
+                                                        @if($appointment->appointment->status != 'Success')
+                                                            <li>
+                                                                <a class="dropdown-item"
+                                                                   href="{{route('payment.pending',$appointment->id)}}">
+                                                                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                    Make Payment
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-divider"></li>
+                                                        @else
+                                                        @endif
                                                         <li>
                                                             <a class="dropdown-item" data-target="#exampleModal"
                                                                data-toggle="modal"
