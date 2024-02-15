@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('gender',['m','f'])->nullable();
-            $table->date('dob')->nullable();
             $table->string('mobile',10)->unique()->nullable();
             $table->string('address',100)->nullable();
             $table->string('city',20)->nullable();

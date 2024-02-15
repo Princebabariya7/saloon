@@ -18,7 +18,7 @@ class User extends Authenticatable
         'user_status' => 'user',
     ];
 
-    protected $fillable = ['firstname', 'lastname', 'dob', 'mobile', 'gender', 'email', 'password', 'address', 'city', 'state', 'zipcode', 'user_status'];
+    protected $fillable = ['firstname', 'lastname', 'mobile', 'gender', 'email', 'password', 'address', 'city', 'state', 'zipcode', 'user_status'];
 
     protected $hidden = [
         'password',

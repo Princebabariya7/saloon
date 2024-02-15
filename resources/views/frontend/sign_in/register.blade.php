@@ -13,13 +13,10 @@
 
     <div class="container login-box d-flex justify-content-center">
         <div class="registration-form">
-
             {!! Form::open(['route' => 'user.info.store' , 'method' => 'post'])!!}
-
             <div class="form-icon">
                 <span><i class="icon icon-user"></i></span>
             </div>
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -32,8 +29,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group clearfix">
                 <div class="col-md-12 mx-auto text-center">
                     <div class="form-check form-check-inline">
@@ -46,17 +41,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    {!! Form::text('date',null, ['class' => 'form-control','id'=>'datepicker','placeholder'=> 'DOB' , 'autocomplete' =>'off']) !!}
-                    <div class="input-group-append" data-target="#reservationdate"
-                         data-toggle="datetimepicker">
-                        <div class="input-group-text item" id="calendar-icon"><i class="fa fa-calendar"></i></div>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -87,7 +71,6 @@
                     {!! Form::textarea('address',null,['class'=>'form-control','rows'=>'1', 'style'=>'width: 100%;']) !!}
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -102,7 +85,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -111,7 +93,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 {!! Form::button('Create Account',['type' => 'submit', 'class' => 'btn btn-sm btn-block create-account']) !!}
             </div>
@@ -121,22 +102,10 @@
             </div>
         </div>
     </div>
-
 @endsection
+
 @section('custom_js')
     <script>
-        $(function () {
-            //Date picker
-            $('#datepicker').datepicker({
-                startDate: '01-01-1900',
-                endDate: "-10y",
-                todayHighlight: true
-            });
-            $('#calendar-icon').click(function () {
-                $('#datepicker').datepicker('show');
-            });
-        });
-
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');

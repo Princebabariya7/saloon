@@ -18,10 +18,9 @@ class RegisterRequest extends FormRequest
             'firstname'  => 'required|alpha',
             'lastname'   => 'required|alpha',
             'gender'     => 'required',
-            'date'       => 'required',
             'number'     => 'required|numeric|digits:10',
             'email'      => 'required|email',
-            'password'   => 'required',
+            'password'   => ['required', 'string', 'min:8', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&]/',],
             'repassword' => 'required|same:password',
             'address'    => 'required',
             'city'       => 'required',
@@ -33,7 +32,9 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'gender.required' => 'We need to know your email address!',
+            'gender.required'   => 'We need to know your email address!',
+            'password.required' => 'Password must be a minimum of 8 characters and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*#?&).
+'
         ];
     }
 }
