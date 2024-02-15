@@ -151,12 +151,15 @@
                                                             <i class="fa fa-eye"> </i> View
                                                         </a>
                                                     </li>
+                                                    @if($appointment->appointment->status != 'Success')
                                                     <li>
                                                         <a class="dropdown-item small"
                                                            href="{{route('admin.appointment.edit',$appointment->id)}}">
                                                             <i class="fa fa-pen"> </i> Edit
                                                         </a>
                                                     </li>
+                                                    @else
+                                                    @endif
                                                     @if($appointment->appointment->status != 'Success')
                                                         <li class="dropdown-divider"></li>
                                                         <li>
