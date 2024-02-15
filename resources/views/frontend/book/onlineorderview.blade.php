@@ -95,7 +95,6 @@
                                                             </li>
                                                         @else
                                                         @endif
-                                                        <li class="dropdown-divider"></li>
                                                         <li>
                                                             <a class="dropdown-item  delete_pop text-danger"
                                                                href="#"
