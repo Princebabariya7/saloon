@@ -107,8 +107,7 @@
                 {!! Form::close() !!}
             </div>
             <div class="social-media">
-                <label>After Sometime
-                    <br>We Send Conformation Mail</label>
+                <label>After Sometime<br>We Send Conformation Mail</label>
             </div>
         </div>
     </div>
