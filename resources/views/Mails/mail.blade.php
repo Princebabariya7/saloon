@@ -60,24 +60,24 @@
     <table>
         <tr>
             <th>Name</th>
-            <td>{{ auth()->user()->firstname }}</td>
+            <td>{{ $appointmentDetail['user'] }}</td>
         </tr>
-        {{--@dd($AppointmentDetail)--}}
+
         <tr>
             <th>Category</th>
-            <td>{{ $AppointmentDetail->services->categories->type }}</td>
+            <td>{{ $appointmentDetail['category'] }}</td>
         </tr>
         <tr>
             <th>Service</th>
-            <td>{{ $AppointmentDetail->services->name }}</td>
+            <td>{{ $appointmentDetail['service'] }}</td>
         </tr>
         <tr>
             <th>Date</th>
-            <td>{{ $AppointmentDetail->appointment->date }}</td>
+            <td>{{ $appointmentDetail['date'] }}</td>
         </tr>
         <tr>
             <th>Time</th>
-            <td>{{ $AppointmentDetail->appointment->time }}</td>
+            <td>{{ $appointmentDetail['time'] }}</td>
         </tr>
     </table>
     <p style="color: #555;">We look forward to serving you. If you have any questions, feel free to contact us.</p>

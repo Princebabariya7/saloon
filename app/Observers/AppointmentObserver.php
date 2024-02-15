@@ -13,29 +13,38 @@ class AppointmentObserver
 {
     public function created(Appointment $appointment)
     {
-        $AppointmentData = session()->get('AppointmentData');
-
-        foreach ($AppointmentData['service_id'] as $serviceId)
+        $appointmentData      = session()->get('AppointmentData');
+        $appointmentEmailData = $serviceName = [];
+        foreach ($appointmentData['service_id'] as $key => $serviceId)
         {
-            $AppointmentDetail = AppointmentDetail::create([
+            $appointmentDetail = AppointmentDetail::create([
                 'appointment_id' => $appointment->id,
                 'service_id'     => $serviceId,
                 'user_id'        => auth()->user()->id,
             ]);
-            $this->AppointmentConformationMail($AppointmentDetail);
+            $serviceName[]     = $appointmentDetail->services->name;
         }
         $input = [
-            'date'           => Carbon::create($AppointmentData['date'])->format('Y-m-d'),
-            'slot'           => $AppointmentData['time'],
+            'date'           => Carbon::create($appointmentData['date'])->format('Y-m-d'),
+            'slot'           => $appointmentData['time'],
             'appointment_id' => $appointment->id,
             'user_id'        => auth()->user()->id,
         ];
         AppointmentSlot::create($input);
+        $appointmentEmailData = [
+            'user'     => auth()->user()->firstname,
+            'category' => $appointmentDetail->services->categories->type,
+            'date'     => Carbon::parse($appointmentDetail->appointment->date)->format('d-m-Y'),
+            'time'     => $appointmentDetail->appointment->time,
+        ];
+        $appointmentEmailData['service'] = implode(',', $serviceName);
+        $this->appointmentConformationMail($appointmentEmailData);
+
         session()->forget('AppointmentData');
     }
 
-    public function AppointmentConformationMail($AppointmentDetail)
+    public function appointmentConformationMail($appointmentDetail)
     {
-        Mail::to(auth()->user()->email)->send(new OrderMail($AppointmentDetail));
+        Mail::to(auth()->user()->email)->send(new OrderMail($appointmentDetail));
     }
 }

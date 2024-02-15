@@ -12,11 +12,11 @@ class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public AppointmentDetail $AppointmentDetail;
+    public $appointmentDetail;
 
-    public function __construct($AppointmentDetail)
+    public function __construct($appointmentDetail)
     {
-        $this->AppointmentDetail = $AppointmentDetail;
+        $this->appointmentDetail = $appointmentDetail;
     }
 
     public function build()
