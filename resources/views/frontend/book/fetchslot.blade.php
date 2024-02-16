@@ -10,7 +10,7 @@
                             {{ $timeSlot }}
                         @else
                         <input type="radio" name="time_slot" value="{{ $key }}"
-                               onclick="selectTimeSlot('{{ $timeSlot }}' , '{{ $key }}')">
+                                onclick="selectTimeSlot('{{ $timeSlot }}' , '{{ $key }}')">
                         {{ $timeSlot }}
                         @endisset
                     </label>
