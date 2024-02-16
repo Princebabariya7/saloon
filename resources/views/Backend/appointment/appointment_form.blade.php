@@ -237,7 +237,7 @@
                         if (currentTime.isAfter(slotTime))
                         {
                             $(this).find('input').remove();
-                            $(this).find('label').html('<i class="fa fa-ban"></i>' + $(this).find('label').text());
+                            $(this).find('label').html('<i class="fa fa-ban text-danger"></i>' + $(this).find('label').text());
                         }
                     }
                 });

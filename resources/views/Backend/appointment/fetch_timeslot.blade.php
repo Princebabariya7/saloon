@@ -5,7 +5,7 @@
                 <div class="list-group-item p-3">
                     <label class="m-0 slote-size">
                         @isset($slots[$key])
-                            <i class="fa fa-ban"></i>
+                            <i class="fa fa-ban text-danger"></i>
                             {{ $timeSlot }}
                         @else
                             <input type="radio" name="time_slot" value="{{ $key }}"
