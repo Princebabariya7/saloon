@@ -60,7 +60,7 @@ class PaymentController extends Controller
 
     public function create($token)
     {
-        return view('frontend.payment.index')->with('token', $token);
+        return view('frontend.payment.index')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
     }
 
     public function pending($token)
