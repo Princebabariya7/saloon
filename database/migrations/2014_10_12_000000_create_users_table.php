@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('state',20)->nullable();
             $table->integer('zipcode')->nullable();
             $table->enum('user_status',['Admin','User']);
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
     }
