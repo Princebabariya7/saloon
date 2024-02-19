@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                @if(auth()->user() == null)
+                @if(auth()->user()->email_verified_at == null)
                     <div class="top-bar-left">
                         <div class="text">
                             <a href="{{route('user.register')}}">
@@ -55,7 +55,7 @@
                 <a href="{{route('price')}}" class="nav-item nav-link">Price</a>
                 <a href="{{route('team')}}" class="nav-item nav-link">Barber</a>
                 <a href="{{route('gallery')}}" class="nav-item nav-link">Gallery</a>
-                @if(auth()->user() == null)
+                @if(auth()->user()->email_verified_at == null)
 
                 @else
                     <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class='fas fa-calendar-check'></i></a>
