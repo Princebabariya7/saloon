@@ -1,11 +1,16 @@
 @extends('frontend.layout.master')
 
 @section('mainContent')
-
+    <div class="page-header m-0">
+        <div class="container">
+            <div class="row justify-content-around">
+                <h1 class="login_logo font-weight-normal">Verify Your Email</h1>
+            </div>
+        </div>
+    </div>
     <div class="row justify-content-center mt-5 w-100">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Verify Your Email Address</div>
+            <div class="card mb-5">
                 <div class="card-body">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success" role="alert">
