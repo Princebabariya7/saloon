@@ -2,7 +2,7 @@
 
 @section('mainContent')
 
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5 w-100">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Verify Your Email Address</div>
