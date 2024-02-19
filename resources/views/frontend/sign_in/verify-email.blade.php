@@ -1,5 +1,4 @@
 @extends('frontend.layout.master')
-
 @section('mainContent')
     <div class="page-header m-0">
         <div class="container">
@@ -26,5 +25,4 @@
             </div>
         </div>
     </div>
-
 @endsection
