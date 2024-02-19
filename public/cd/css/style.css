@@ -1546,3 +1546,6 @@ body{
 .slote-size{
     font-size: 15px;
 }
+.registration-form .text_simple{
+    font-size: 14px!important;
+}
