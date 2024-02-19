@@ -25,7 +25,7 @@ Route::group(['prefix' => 'frontend'], function ()
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
     });
 
-    Route::group(['prefix' => 'varification'], function ()
+    Route::group(['prefix' => 'verification'], function ()
     {
         Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
         Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
