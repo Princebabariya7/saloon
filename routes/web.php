@@ -5,6 +5,7 @@ use App\Http\Controllers\frontend\AppointmentController;
 use App\Http\Controllers\frontend\PaymentController;
 use App\Http\Controllers\frontend\PriceController;
 use App\Http\Controllers\frontend\RegisterDate;
+use App\Http\Controllers\frontend\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -24,8 +25,17 @@ Route::group(['prefix' => 'frontend'], function ()
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
     });
 
+    Route::group(['prefix' => 'varification'], function ()
+    {
+        Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
+        Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+        Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+
+    });
+
     Route::post('store', [RegisterDate::class, 'store'])->name('user.info.store');
     Route::post('logins', [RegisterDate::class, 'login'])->name('user.info.login');
+    Route::post('authenticate', [RegisterDate::class, 'authenticate'])->name('authenticate');
     Route::post('forgot', [RegisterDate::class, 'forgot'])->name('user.info.forgot');
 
     Route::group(['middleware' => 'PreventBackButtonMiddleware'], function ()
@@ -68,8 +78,8 @@ Route::group(['prefix' => 'frontend'], function ()
 });
 Route::group(['prefix' => 'backend'], function ()
 {
-    Route::get('appointment_details',[App\Http\Controllers\Backend\DashboardController::class, 'appointmentDetails']) ->name('admin.appointment.details');
-    Route::get('orders_details',[App\Http\Controllers\Backend\DashboardController::class, 'orderDetails']) ->name('admin.order.details');
+    Route::get('appointment_details', [App\Http\Controllers\Backend\DashboardController::class, 'appointmentDetails'])->name('admin.appointment.details');
+    Route::get('orders_details', [App\Http\Controllers\Backend\DashboardController::class, 'orderDetails'])->name('admin.order.details');
 
     Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.index')->middleware('LogoutMiddleware');
 
@@ -112,7 +122,6 @@ Route::group(['prefix' => 'backend'], function ()
             Route::post('fetch/timeslot', [\App\Http\Controllers\Backend\AppointmentController::class, 'timeSlot'])->name('admin.fetch.timeslot');
 
         });
-
 
 
         Route::group(['prefix' => 'category'], function ()

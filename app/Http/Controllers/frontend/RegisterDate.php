@@ -5,26 +5,29 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Requests\frontend\ForgotRequest;
 use App\Http\Requests\frontend\LoginRequest;
 use App\Http\Requests\frontend\RegisterRequest;
-use App\Models\Register;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterDate extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        $register = Register::all();
-        return view('frontend.sign_in.index', compact('register'));
+        $this->middleware('guest')->except([
+            'logout', 'home'
+        ]);
+        $this->middleware('auth')->only('logout', 'home');
+        $this->middleware('verified')->only('home');
     }
-
     public function store(RegisterRequest $request)
     {
         try
         {
-            User::create([
+            $user= User::create([
                 'firstname'   => $request->firstname,
                 'lastname'    => $request->lastname,
                 'email'       => $request->email,
@@ -40,8 +43,13 @@ class RegisterDate extends Controller
                 'updated_at'  => now(),
                 'created_at'  => now(),
             ]);
+            event(new Registered($user));
+
+            $credentials = $request->only('email', 'password');
+            Auth::attempt($credentials);
+            $request->session()->regenerate();
             session()->put('registerMsg', 'you are successfully registered');
-            return redirect(route('user.login'));
+            return redirect(route('verification.notice'));
         }
         catch (\Exception $e)
         {
@@ -81,6 +89,24 @@ class RegisterDate extends Controller
         }
     }
 
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials))
+        {
+            $request->session()->regenerate();
+            return redirect()->route('home');
+        }
+
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match in our records.',
+        ])->onlyInput('email');
+
+    }
     public function forgot(ForgotRequest $request)
     {
         try

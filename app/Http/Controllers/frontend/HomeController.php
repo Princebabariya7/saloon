@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Models\Gallery;
 use App\Models\Price;
 use App\Models\Service;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,11 +53,13 @@ class HomeController extends Controller
         return view('frontend.service.index');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         session()->put('logout', 'you are successfully logged out');
-        return redirect()->route('home')->with('services', Price::all());
+        return redirect()->route('home')->with('services', Price::all())->withSuccess('You have logged out successfully!');
     }
 }
 
