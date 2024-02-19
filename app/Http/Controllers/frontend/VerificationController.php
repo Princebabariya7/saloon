@@ -16,6 +16,7 @@ class VerificationController extends Controller
 
     public function notice(Request $request)
     {
+        $request->user()->sendEmailVerificationNotification();
         return $request->user()->hasVerifiedEmail()
             ? redirect()->route('home') : view('frontend.sign_in.verify-email');
     }
