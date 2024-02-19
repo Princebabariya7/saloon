@@ -33,8 +33,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'gender.required'   => 'Please Select gender',
-            'password.required' => 'Password must be a minimum of 8 characters and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*#?&).
-'
+            'password.required' => 'Password must be a minimum of 8 characters and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*#?&).'
         ];
     }
 }

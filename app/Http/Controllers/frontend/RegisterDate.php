@@ -23,6 +23,7 @@ class RegisterDate extends Controller
         $this->middleware('auth')->only('logout', 'home');
         $this->middleware('verified')->only('home');
     }
+
     public function store(RegisterRequest $request)
     {
         try
@@ -44,7 +45,6 @@ class RegisterDate extends Controller
                 'created_at'  => now(),
             ]);
             event(new Registered($user));
-
             $credentials = $request->only('email', 'password');
             Auth::attempt($credentials);
             $request->session()->regenerate();
@@ -54,7 +54,6 @@ class RegisterDate extends Controller
         catch (\Exception $e)
         {
             session()->put('duplicateMsg', 'This Email Address Is Already Registered');
-
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
@@ -101,12 +100,11 @@ class RegisterDate extends Controller
             $request->session()->regenerate();
             return redirect()->route('home');
         }
-
         return back()->withErrors([
             'email' => 'Your provided credentials do not match in our records.',
         ])->onlyInput('email');
-
     }
+
     public function forgot(ForgotRequest $request)
     {
         try

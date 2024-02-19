@@ -111,6 +111,7 @@
         toastr.error('{{ $error }}');
         @endforeach
         @endif
+            
         @if (\Session::has('duplicateMsg'))
         toastr.error('This Email Address Is Already Registered');
         {{\Session::forget('duplicateMsg')}}
