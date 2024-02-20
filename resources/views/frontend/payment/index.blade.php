@@ -10,7 +10,6 @@
             </div>
         </div>
     </div>
-
     <div class="container appointment  mt-3">
         {{ Form::open(['route' => ['payment.info.store'], 'method'=>'post','id'=>"payment-form" ]) }}
         {{ Form::hidden('token',$token) }}
@@ -33,13 +32,10 @@
                     </div>
                     <label for="Billing">Card Detail</label>
                     <div id="payment-element">
-                        <!-- Elements will create form elements here -->
                     </div>
-
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <div class="row payment_methods">
-                                <!-- Payment methods images -->
                                 <div class="col-md">
                                     <img src="{{ asset('cd/page_img/credit/visa.png') }}" alt="Visa">
                                     <img src="{{ asset('cd/page_img/credit/mastercard.png') }}" alt="MasterCard">
@@ -57,7 +53,6 @@
                             </button>
                         </div>
                         <div id="error-message">
-                            <!-- Display error message to your customers here -->
                         </div>
                     </div>
                 </div>
@@ -83,37 +78,29 @@
                 minDate: moment(),
             });
         });
-
         $(document).ready(function () {
             var stripe = Stripe('pk_test_51Oh3GkSGdlQqnOKgAeJvDMxNGdxK5HvcoCDLt50Sn3YYqMBlVBL6vV3IhMKUs4KjG6cM9T6kVfuy3BMyoXaCRNpc009dVA2mvf');
             var elements = stripe.elements();
-
-            // Create and mount the Payment Element
             var paymentElement = elements.create('card');
             paymentElement.mount('#payment-element');
-
             var formElement = $('#payment-form');
             var submitButton = $('#submit');
             var errorMessage = $('#error-message');
-
             formElement.on('submit', function (event) {
                 event.preventDefault();
                 submitButton.prop('disabled', true); // Disable the submit button to prevent double submission
                 stripe.createToken(paymentElement).then(function (result) {
                     if (result.error)
                     {
-                        // Inform the user if there was an error
                         errorMessage.text(result.error.message);
-                        submitButton.prop('disabled', false); // Re-enable the submit button
+                        submitButton.prop('disabled', false);
                     }
                     else
                     {
-                        // Send the token to your server
                         stripeTokenHandler(result.token);
                     }
                 });
             });
-
             function stripeTokenHandler(token)
             {
                 var hiddenInput = $('<input type="hidden" name="stripeToken">').val(token.id);

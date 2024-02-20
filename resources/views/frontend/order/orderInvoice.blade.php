@@ -82,7 +82,6 @@
                             <img src="{{asset('cd/page_img/credit/mastercard.png')}}" alt="Mastercard">
                             <img src="{{asset('cd/page_img/credit/american-express.png')}}" alt="American Express">
                             <img src="{{asset('cd/page_img/credit/paypal2.png')}}" alt="Paypal">
-
                             <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                                 Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya
                                 handango imeem

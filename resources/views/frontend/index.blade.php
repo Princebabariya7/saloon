@@ -1,9 +1,7 @@
 @extends('frontend.layout.master')
-
 @section('title')
     Hairck Saloon
 @endsection
-
 @section('mainContent')
     <!-- Hero Start -->
     <div class="hero">
@@ -31,8 +29,6 @@
             </div>
         </div>
     </div>
-
-    <!-- About Start -->
     <div class="about">
         <div class="container">
             <div class="row align-items-center">
@@ -65,9 +61,6 @@
             </div>
         </div>
     </div>
-    <!-- About End -->
-
-    <!-- Service Start -->
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
@@ -114,14 +107,10 @@
             </div>
         </div>
     </div>
-    <!-- Service End -->
-
-    <!-- Pricing Start -->
     <div class="price">
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Best Pricing</p>
-
                 <h2>Best Price in the City</h2>
             </div>
             <div class="row">
@@ -150,9 +139,6 @@
             </div>
         </div>
     </div>
-    <!-- Pricing End -->
-
-    <!-- Testimonial Start -->
     <div class="testimonial">
         <div class="container">
             <div class="owl-carousel testimonials-carousel">
@@ -167,7 +153,6 @@
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-
                     <p>"I've been a loyal customer of Hairck Saloon All Boys for years, and I can confidently say it's
                         the best men's Saloon in town. The attention to detail and precision in their haircuts is
                         unmatched. The staff is professional, and the ambiance is comfortable. I always leave feeling
@@ -176,7 +161,6 @@
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-
                     <p>"Hairck Saloon All Boys has consistently exceeded my expectations. The stylists are not only
                         skilled but also attentive to my preferences. Whether I want a classic look or something more
                         contemporary, they always deliver. The Saloon has a cool vibe, and the personalized service
@@ -188,14 +172,10 @@
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
-
-    <!-- Team Start -->
     <div class="team">
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Barber Team</p>
-
                 <h2>Meet Our Hair Cut Expert Barber</h2>
             </div>
             <div class="row">
@@ -246,9 +226,7 @@
             </div>
         </div>
     </div>
-    <!-- Team End -->
 @endsection
-
 @section('custom_js')
     <script>
         @if (\Session::has('msg'))

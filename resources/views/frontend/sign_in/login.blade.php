@@ -39,7 +39,6 @@
         </div>
     </div>
 @endsection
-
 @section('custom_js')
     <script>
         @if ($errors->any())

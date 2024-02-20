@@ -10,7 +10,6 @@
             </div>
         </div>
     </div>
-
     <div class="container login-box d-flex justify-content-center">
         <div class="registration-form">
             {!! Form::open(['route' => 'user.info.store' , 'method' => 'post'])!!}
@@ -103,7 +102,6 @@
         </div>
     </div>
 @endsection
-
 @section('custom_js')
     <script>
         @if ($errors->any())
@@ -111,7 +109,6 @@
         toastr.error('{{ $error }}');
         @endforeach
         @endif
-            
         @if (\Session::has('duplicateMsg'))
         toastr.error('This Email Address Is Already Registered');
         {{\Session::forget('duplicateMsg')}}

@@ -132,24 +132,18 @@
             {
                 return false;
             }
-
             $(this).addClass('disabled').html('<i class="fa fa-spinner fa-spin"></i> Processing...');
         });
-
         $(document).ready(function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
             $('#categories').change(function () {
-
                 $('#services').attr('disabled', false);
-
                 var id = $(this).val();
                 var url = "{{ route('online.fetch.services') }}";
-
                 $.post(url, {id: id})
                     .done(function (data) {
                         var services = data.services;
@@ -174,18 +168,13 @@
             @if ($editMode)
             $('#categories').trigger('change')
             @endif
-
             $('#appointmentTime').on('click', function () {
-
-                // Open the time slot modal
                 $('#timeSlotModal').modal('show');
-                // Get the current time
                 var currentTime = moment();
                 var currentTimeformate = moment().format('MM/DD/YYYY');
                 var date = $('.appointment-date').val();
                 $('#timeSlotModalBody .time_remove').each(function () {
                     var timeSlot = $(this).text();
-
                     var slotTime = moment(timeSlot.split('-')[0].trim(), 'h:mm A');
                     if (date == currentTimeformate)
                     {
@@ -198,18 +187,15 @@
                 });
             });
         });
-
         $(document).ready(function () {
             $("#reservationdate").on("change.datetimepicker", ({date, oldDate}) => {
                 $('#selectedTimeSlot').val(null);
                 AjaxTimeSlot();
             })
-
             @if ($editMode)
             AjaxTimeSlot();
             @endif
         });
-
         function AjaxTimeSlot()
         {
             $.ajaxSetup({
@@ -217,7 +203,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
             $.ajax({
                 type: "POST",
                 url: "{{ route('online.fetch.timeslot') }}",
@@ -229,7 +214,6 @@
                 },
             });
         }
-
         function selectTimeSlot(timeSlot)
         {
             // Set the selected time slot to the input field

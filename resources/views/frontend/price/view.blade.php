@@ -138,7 +138,6 @@
             $('#search').val('');
             $('.search-btn').trigger('click');
         });
-
         @if (\Session::has('update'))
         toastr.success('Your price Has Successfully Updated!');
         {{ \Session::forget('update') }}
