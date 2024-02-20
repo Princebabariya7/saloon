@@ -23,9 +23,7 @@
                         <h3 class="card-title text-bold">Category</h3>
                     </div>
                     <div class="container">
-
                         <table class="table">
-
                             <tbody>
                             <tr>
                                 <td>Category Type:</td>

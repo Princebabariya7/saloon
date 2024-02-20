@@ -99,16 +99,11 @@
                                                 {{$gallery->name}}
                                             </a>
                                         </td>
-
                                         <td class="project-state">
-
                                             @if($gallery->status =='Active')
-
                                                 <span class="badge badge-success">Active</span>
-
                                             @else
                                                 <span class="badge badge-danger">Inactive</span>
-
                                             @endif
                                         </td>
                                         <td class="project-actions text-right">
