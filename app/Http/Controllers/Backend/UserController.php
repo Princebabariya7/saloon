@@ -15,9 +15,7 @@ class UserController extends Controller
 
     public function changePassword(ChangePasswordRequest $request)
     {
-
-        $user = Auth::user();
-
+        $user           = Auth::user();
         $user->password = Hash::make($request->input('new_password'));
         $user->save();
         session()->put('Password', 'Your Password has changed');
