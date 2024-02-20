@@ -47,24 +47,20 @@ class PriceController extends Controller
             $file->move('uploads/gallery', $filename);
             $price->image = $filename;
         }
-
         $price->save();
         session()->put('add', 'your price was added');
-
         return redirect(route('admin.price.index'));
     }
 
     public function show($id)
     {
         $price = Price::find($id);
-
         return view('Backend.price.show', ['price' => $price]);
     }
 
     public function edit($id)
     {
         $price = Price::find($id);
-
         return view('Backend.price.price_form')
             ->with('price', $price)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
@@ -77,7 +73,6 @@ class PriceController extends Controller
         $price->price   = $request->input('price');
         $price->service = $request->input('service');
         $price->status  = $request->input('status');
-
 
         if ($request->hasFile('image'))
         {

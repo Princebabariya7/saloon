@@ -32,7 +32,6 @@ class ServiceController extends Controller
     {
         $category = Category::pluck('type', 'id')->toArray();
         return view('Backend.service.service_form')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])->with('category', $category);
-
     }
 
     public function store(ServiceStoreRequest $request)
@@ -58,7 +57,6 @@ class ServiceController extends Controller
         session()->put('add', 'data add');
         return redirect(route('admin.service.index'));
     }
-
 
     public function show($id)
     {

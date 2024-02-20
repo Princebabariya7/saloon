@@ -23,7 +23,6 @@ class PaymentController extends Controller
             {
                 $query->orWhere('buyer_name', 'LIKE', '%' . $search . '%');
             });
-
         })->when($status, function ($query) use ($status)
         {
             return $query->where('status', $status);
@@ -33,7 +32,7 @@ class PaymentController extends Controller
 
     public function create($token)
     {
-        return view('Backend.payment.payment_form')->with('token', $token)->with('buyer_name',auth()->user()->firstname)->with('buyer_email',auth()->user()->email);
+        return view('Backend.payment.payment_form')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
     }
 
     public function store(PaymentStoreRequest $request)
