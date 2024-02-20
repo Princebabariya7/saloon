@@ -41,7 +41,6 @@
             </div>
         </div>
     </div>
-
     <!-- Change Password Modal -->
     <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"
          aria-labelledby="changePasswordModalLabel" aria-hidden="true">

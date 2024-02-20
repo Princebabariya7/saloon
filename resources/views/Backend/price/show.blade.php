@@ -24,7 +24,6 @@
                     </div>
                     <div class="container">
                         <table class="table">
-
                             <tbody>
                             <tr>
                                 <td>Name:</td>

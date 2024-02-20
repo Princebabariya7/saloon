@@ -80,19 +80,17 @@
             </div>
         </section>
     </div>
-
 @endsection
+
 @section('custom_js')
     <script>
         @if (\Session::has('msg'))
         toastr.success('Your Are Successfully Logged In!');
-
         {{\Session::forget('msg')}}
         @endif
 
         @if (\Session::has('Password'))
         toastr.success('Your Password Has Successfully Changed!');
-
         {{\Session::forget('Password')}}
         @endif
     </script>

@@ -25,11 +25,8 @@
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-
                         {!! Form::open(['route' => ['admin.price.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
-
                         <ul class="nav nav-pills nav-search pt-1">
-
                             <li class="nav-item mr-1">
                                 <div class="input-group mb-1">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','autofocus']) !!}
@@ -68,7 +65,6 @@
                                     Service
                                 </th>
                                 <th>
-                                    {{--                                    @sortablelink('Price')--}}
                                     Price
                                 </th>
 
@@ -189,7 +185,6 @@
         $(document).ready(function () {
             $('.price-delete').click(function () {
                 var $_this = $(this);
-
                 Swal.fire({
                     title: 'Are you sure?',
                     text: 'You won\'t be able to revert this!',
