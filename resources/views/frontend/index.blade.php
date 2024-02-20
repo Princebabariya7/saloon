@@ -255,9 +255,5 @@
         toastr.success('You are successfully logged in');
         {{\Session::forget('msg')}}
         @endif
-        @if (\Session::has('logout'))
-        toastr.success('You are successfully logged out');
-        {{\Session::forget('logout')}}
-        @endif
     </script>
 @endsection

@@ -103,7 +103,7 @@ class RegisterDate extends Controller
             }
         }
         return back()->withErrors([
-            'email' => 'Email Is Not Verified',
+            'email' => 'Please Check Your Email And Password And Try Again',
         ])->onlyInput('email');
     }
 

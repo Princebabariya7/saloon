@@ -84,5 +84,9 @@
         toastr.error('Please check your email and password ');
         {{\Session::forget('wrongPass')}}
         @endif
+        @if (\Session::has('logout'))
+        toastr.success('You are successfully logged out');
+        {{\Session::forget('logout')}}
+        @endif
     </script>
 @endsection
