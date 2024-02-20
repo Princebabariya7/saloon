@@ -84,7 +84,10 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td>
-                                            {{$user->firstname}}
+                                            <a href="{{route('admin.user.show',$user->id)}}">
+                                                {{$user->firstname}}
+                                            </a>
+
                                         </td>
                                         <td>
                                             {{$user->lastname}}
@@ -102,9 +105,9 @@
                                                 <span class="badge badge-primary">User</span>
                                             @endif
                                         </td>
-{{--                                        <td>--}}
-{{--                                            {{$user->user_status}}--}}
-{{--                                        </td>--}}
+                                        {{--                                        <td>--}}
+                                        {{--                                            {{$user->user_status}}--}}
+                                        {{--                                        </td>--}}
                                         <td class="project-actions text-right">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                     data-bs-toggle="dropdown">

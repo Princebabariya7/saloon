@@ -84,7 +84,9 @@
                                 @foreach($payments as $payment)
                                     <tr>
                                         <td>
+                                            <a href="{{route('admin.payment.show',$payment->id)}}">
                                                 {{$payment->buyer_name}}
+                                            </a>
                                         </td>
                                         <td>
                                             {{$payment->buyer_email}}
