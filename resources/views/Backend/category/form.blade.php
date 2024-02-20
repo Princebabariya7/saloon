@@ -38,9 +38,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="mr-2">
-                                <a class="btn btn-default btn-sm btn-block" href="{{route('admin.category.index')}}">
-                                    Back
-                                </a>
+                                <a class="btn btn-default btn-sm btn-block" href="{{route('admin.category.index')}}">Back</a>
                             </li>
                             <li>
                                 <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>
@@ -49,11 +47,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="w-100">
             <div class="card  mx-3">
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -85,4 +81,3 @@
         @endif
     </script>
 @endsection
-

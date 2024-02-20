@@ -7,7 +7,6 @@ use App\Http\Requests\frontend\LoginRequest;
 use App\Http\Requests\frontend\RegisterRequest;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;

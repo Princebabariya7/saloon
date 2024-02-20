@@ -25,11 +25,8 @@
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-
                         {!! Form::open(['route' => ['admin.category.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
-
                         <ul class="nav nav-pills nav-search pt-1">
-
                             <li class="nav-item mr-1">
                                 <div class="input-group mb-1">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','autofocus']) !!}
@@ -48,9 +45,7 @@
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 <a class="btn btn-primary btn-sm float-right"
                                    href="{{route('admin.category.create')}}">
-                                    <i class="fa fa-plus">
-                                    </i>
-                                    Add
+                                    <i class="fa fa-plus"></i>Add
                                 </a>
                             </li>
                         </ul>
@@ -140,7 +135,6 @@
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')
                                 <i class="fa fa-filter"></i> {{ $categories->total()}} Records Match
-
                                 <button type="button" class="btn btn-sm btn-link" id="btn-clear-filters">
                                     Clear
                                 </button>
@@ -151,7 +145,6 @@
             </div>
         </section>
     </div>
-
 @endsection
 
 @section('custom_js')

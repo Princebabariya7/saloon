@@ -42,8 +42,7 @@
                                 <td>
                                     <a href="{{ asset('uploads/gallery/'.$gallery->image) }}" target="_blank">
                                         <img src="{{ asset('uploads/gallery/'.$gallery->image) }}" width="200px"
-                                             alt="Image">
-                                    </a>
+                                             alt="Image"></a>
                                 </td>
                             </tr>
                             </tbody>

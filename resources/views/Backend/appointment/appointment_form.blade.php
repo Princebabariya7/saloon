@@ -44,10 +44,8 @@
                                 </a>
                             </li>
                             <li>
-                                {{--                                <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>--}}
                                 <button type="submit" id="saveButton" class="btn btn-primary btn-sm btn-block">Save
                                 </button>
-
                             </li>
                         </ol>
                     </div>
