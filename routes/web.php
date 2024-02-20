@@ -14,11 +14,10 @@ Route::group(['prefix' => 'verification'], function ()
     Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
     Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
-
 });
+
 Route::group(['prefix' => 'frontend'], function ()
 {
-
     Route::group(['prefix' => 'home'], function ()
     {
         Route::get('service', [HomeController::class, 'service'])->name('service');
@@ -72,13 +71,12 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::get('{id}/delete', [PriceController::class, 'destroy'])->name('price.delete');
         });
     });
-
 });
+
 Route::group(['prefix' => 'backend'], function ()
 {
     Route::get('appointment_details', [App\Http\Controllers\Backend\DashboardController::class, 'appointmentDetails'])->name('admin.appointment.details');
     Route::get('orders_details', [App\Http\Controllers\Backend\DashboardController::class, 'orderDetails'])->name('admin.order.details');
-
     Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.index')->middleware('LogoutMiddleware');
 
     Route::prefix('Admin')->group(function ()
@@ -88,7 +86,6 @@ Route::group(['prefix' => 'backend'], function ()
         Route::get('sign_up', [App\Http\Controllers\Backend\AdminController::class, 'signUp'])->name('admin.sign_up');
         Route::get('forgot-password', [App\Http\Controllers\Backend\AdminController::class, 'forgot'])->name('admin.forgot-password');
     });
-
 
     Route::prefix('user')->group(function ()
     {
@@ -102,7 +99,6 @@ Route::group(['prefix' => 'backend'], function ()
 
     Route::middleware(['LogoutMiddleware'])->group(function ()
     {
-
         Route::get('profile', [App\Http\Controllers\Backend\UserController::class, 'profile'])->name('user.profile');
         Route::get('change-password', [App\Http\Controllers\Backend\UserController::class, 'changePassword'])->name('profile.change-password');
         Route::post('change-password', [App\Http\Controllers\Backend\UserController::class, 'changePassword'])->name('user.change_password.post');
@@ -118,9 +114,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [\App\Http\Controllers\Backend\AppointmentController::class, 'show'])->name('admin.appointment.show');
             Route::post('fetch/services', [\App\Http\Controllers\Backend\AppointmentController::class, 'fetchServices'])->name('admin.fetch.services');
             Route::post('fetch/timeslot', [\App\Http\Controllers\Backend\AppointmentController::class, 'timeSlot'])->name('admin.fetch.timeslot');
-
         });
-
 
         Route::group(['prefix' => 'category'], function ()
         {
@@ -144,7 +138,6 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [\App\Http\Controllers\Backend\ServiceController::class, 'show'])->name('admin.service.show');
         });
 
-
         Route::group(['prefix' => 'gallery'], function ()
         {
             Route::get('/', [\App\Http\Controllers\Backend\GalleryController::class, 'index'])->name('admin.gallery.index');
@@ -155,7 +148,6 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/delete', [\App\Http\Controllers\Backend\GalleryController::class, 'destroy'])->name('admin.gallery.delete');
             Route::get('{id}/show', [\App\Http\Controllers\Backend\GalleryController::class, 'show'])->name('admin.gallery.show');
         });
-
 
         Route::group(['prefix' => 'price'], function ()
         {
