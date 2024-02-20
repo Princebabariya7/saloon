@@ -89,8 +89,8 @@ class RegisterDate extends Controller
 
         if (Auth::attempt($credentials))
         {
-//            $request->session()->regenerate();
-//            return redirect()->route('home');
+            //$request->session()->regenerate();
+            //return redirect()->route('home');
             if (auth()->user()->user_status == "User")
             {
                 session()->put('msg', 'You Are Logged in');
