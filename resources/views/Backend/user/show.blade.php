@@ -2,7 +2,6 @@
 @section("title")
     User View
 @endsection
-
 @section('content')
     <div class="content-wrapper">
         <section class="content-header pt-0">
@@ -23,7 +22,6 @@
                     </div>
                     <div class="container">
                         <table class="table">
-
                             <tbody>
                             <tr>
                                 <td>First Name:</td>

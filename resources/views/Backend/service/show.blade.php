@@ -2,7 +2,6 @@
 @section("title")
     Service View
 @endsection
-
 @section('content')
     <div class="content-wrapper">
         <section class="content-header pt-0">

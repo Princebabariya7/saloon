@@ -13,7 +13,6 @@
         </div>
         <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-
             {!! Form::open(['route' => 'admin.user.login', 'method' => 'post']) !!}
             <div class="input-group">
                 {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'autocomplete' => 'off']) !!}
@@ -55,22 +54,16 @@
     @endif
     @if (\Session::has('msg'))
     toastr.success('You Are Successfully Registered!');
-
     {{\Session::forget('msg')}}
     @endif
-
     @if (\Session::has('Password'))
     toastr.success('Your Password Has Successfully Changed!');
-
     {{\Session::forget('Password')}}
     @endif
-
     @if (\Session::has('logout'))
     toastr.success('You Are Successfully Logged Out!');
-
     {{\Session::forget('logout')}}
     @endif
-
     @if (\Session::has('wrongPass'))
     toastr.error('Please Check Your Email And Password ');
     {{\Session::forget('wrongPass')}}
