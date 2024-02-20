@@ -39,7 +39,6 @@
                 </div>
             </div>
         </div>
-
         <div class="w-100">
             <div class="card card-primary card-outline mx-3">
                 <div class="card-body">
@@ -57,12 +56,10 @@
                             </div>
                         </div>
                     </div>
-
                     <label for="Billing">Card Detail</label>
                     <div id="payment-element">
                         <!-- Elements will create form elements here -->
                     </div>
-
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <div class="row payment_methods">
@@ -102,15 +99,12 @@
         $(document).ready(function () {
             var stripe = Stripe('pk_test_51Oh3GkSGdlQqnOKgAeJvDMxNGdxK5HvcoCDLt50Sn3YYqMBlVBL6vV3IhMKUs4KjG6cM9T6kVfuy3BMyoXaCRNpc009dVA2mvf');
             var elements = stripe.elements();
-
             // Create and mount the Payment Element
             var paymentElement = elements.create('card');
             paymentElement.mount('#payment-element');
-
             var formElement = $('#payment-form');
             var submitButton = $('#submit');
             var errorMessage = $('#error-message');
-
             formElement.on('submit', function (event) {
                 event.preventDefault();
                 submitButton.prop('disabled', true); // Disable the submit button to prevent double submission

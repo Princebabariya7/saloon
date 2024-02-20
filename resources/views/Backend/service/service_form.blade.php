@@ -21,7 +21,6 @@
                             @else
                                 <li class="breadcrumb-item text-secondary">Create</li>
                             @endif
-
                         </ol>
                     </div>
                 </div>
@@ -50,7 +49,6 @@
                 </div>
             </div>
         </div>
-
         <div class="w-100">
             <div class="card  mx-3">
                 <div class="card-body">
@@ -96,7 +94,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label>Image</label>
                         {!! Form::file('image', ['class' => 'form-control form-control-sm border-0']) !!}
@@ -112,7 +109,6 @@
         </div>
         {!! Form::close() !!}
     </section>
-
 @endsection
 
 @section('custom_js')
