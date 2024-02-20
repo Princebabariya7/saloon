@@ -57,7 +57,6 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-
     /**
      * The application's route middleware.
      *
@@ -65,7 +64,6 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
-
     protected $routeMiddleware = [
         'auth'                        => Authenticate::class,
         'auth.basic'                  => AuthenticateWithBasicAuth::class,
@@ -79,6 +77,5 @@ class Kernel extends HttpKernel
         'PreventBackButtonMiddleware' => PreventBackButtonMiddleware::class,
         'LogoutMiddleware'            => LogoutMiddleware::class,
         'EmailVerificationMiddleware' => EmailVerificationMiddleware::class,
-
     ];
 }
