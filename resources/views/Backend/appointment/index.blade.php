@@ -22,7 +22,6 @@
                 </div>
             </div>
         </section>
-
         <section class="content">
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
@@ -41,15 +40,12 @@
                                         </button>
                                     </div>
                                 </div>
-
                             </li>
                         </ul>
-
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please select', 'Pending'=>'Pending', 'Success'=>'Success', 'Cancel'=>'Cancel'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
                             </li>
-
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 <a class="btn btn-primary btn-sm float-right"
                                    href="{{route('admin.appointment.create')}}">
@@ -58,11 +54,9 @@
                                     Add
                                 </a>
                             </li>
-
                         </ul>
                         {!! Form::close() !!}
                     </div>
-
                     <div class="card-body table-responsive p-0 ">
                         <table class="table table-striped projects">
                             <thead>
@@ -309,7 +303,6 @@
         toastr.success('Your Appointment Has Successfully Added!');
         {{ \Session::forget('add') }}
         @endif
-
         @if (\Session::has('update'))
         toastr.success('Your Data Has Successfully Updated!');
         {{ \Session::forget('update') }}

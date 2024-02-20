@@ -21,16 +21,12 @@
                 </div>
             </div>
         </section>
-
         <section class="content">
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-
                         {!! Form::open(['route' => ['admin.gallery.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
-
                         <ul class="nav nav-pills nav-search pt-1">
-
                             <li class="nav-item mr-1">
                                 <div class="input-group mb-1">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','autofocus']) !!}
@@ -40,15 +36,12 @@
                                         </button>
                                     </div>
                                 </div>
-
                             </li>
                         </ul>
-
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please select', 'Active'=>'Active', 'Inactive'=>'Inactive'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
                             </li>
-
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 <a class="btn btn-primary btn-sm float-right"
                                    href="{{route('admin.gallery.create')}}">
@@ -57,12 +50,9 @@
                                     Add
                                 </a>
                             </li>
-
                         </ul>
-
                         {!! Form::close() !!}
                     </div>
-
                     <div class="card-body table-responsive p-0 ">
                         <table class="table table-striped projects">
                             <thead>
@@ -163,8 +153,6 @@
                             @endif
                         </table>
                     </div>
-
-
                     <div class="card-footer">
                             <div class="pagination pagination-sm float-right">
                                 {{ $galleries->links() }}
@@ -183,7 +171,6 @@
             </div>
         </section>
     </div>
-
 @endsection
 
 @section('custom_js')
@@ -222,17 +209,12 @@
                 $('#status').val('');
                 $('.search').trigger('click');
             })
-
         });
-
         @if (\Session::has('add'))
-
         toastr.success('Your Data Has Successfully Added!');
         {{ \Session::forget('add') }}
         @endif
-
         @if (\Session::has('update'))
-
         toastr.success('Your Data Has Successfully Updated!');
         {{ \Session::forget('update') }}
         @endif

@@ -3,7 +3,6 @@
     Payment
 @endsection
 @section("content")
-
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
@@ -22,7 +21,6 @@
                 </div>
             </div>
         </section>
-
         <section class="content">
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
@@ -41,20 +39,15 @@
                                         </button>
                                     </div>
                                 </div>
-
                             </li>
                         </ul>
-
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please select', 'Pending'=>'Pending', 'Success'=>'Success', 'Cancel'=>'Cancel'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
                             </li>
-
                         </ul>
-
                         {!! Form::close() !!}
                     </div>
-
                     <div class="card-body table-responsive p-0 ">
                         <table class="table table-striped projects">
                             <thead>
