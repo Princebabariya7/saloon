@@ -8,7 +8,7 @@ use App\Http\Controllers\frontend\RegisterDate;
 use App\Http\Controllers\frontend\VerificationController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('EmailVerificationMiddleware');
 
 Route::group(['prefix' => 'frontend'], function ()
 {
