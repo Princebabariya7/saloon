@@ -96,7 +96,7 @@
                                         </td>
                                         <td>
                                             <a href="{{route('admin.gallery.edit',$gallery->id)}}">
-                                            {{$gallery->name}}
+                                                {{$gallery->name}}
                                             </a>
                                         </td>
 
@@ -154,9 +154,9 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                            <div class="pagination pagination-sm float-right">
-                                {{ $galleries->links() }}
-                            </div>
+                        <div class="pagination pagination-sm float-right">
+                            {{ $galleries->links() }}
+                        </div>
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')
                                 <i class="fa fa-filter"></i> {{ $galleries->total()}} Records Match

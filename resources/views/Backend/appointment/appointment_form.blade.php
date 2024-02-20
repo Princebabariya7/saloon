@@ -18,7 +18,7 @@
                                     Appointment</a>
                             </li>
                             @if($editMode)
-                            <li class="breadcrumb-item text-secondary">Edit</li>
+                                <li class="breadcrumb-item text-secondary">Edit</li>
                             @else
                                 <li class="breadcrumb-item text-secondary">Create</li>
                             @endif
@@ -44,8 +44,9 @@
                                 </a>
                             </li>
                             <li>
-{{--                                <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>--}}
-                                <button type="submit" id="saveButton" class="btn btn-primary btn-sm btn-block">Save</button>
+                                {{--                                <button type="submit" class="btn btn-primary btn-sm btn-block">Save</button>--}}
+                                <button type="submit" id="saveButton" class="btn btn-primary btn-sm btn-block">Save
+                                </button>
 
                             </li>
                         </ol>
@@ -161,7 +162,8 @@
         });
         $('#saveButton').on('click', function () {
 
-            if ($(this).hasClass('disabled')) {
+            if ($(this).hasClass('disabled'))
+            {
                 return false;
             }
 
@@ -244,6 +246,7 @@
             AjaxTimeSlot();
             @endif
         });
+
         function AjaxTimeSlot()
         {
             $.ajaxSetup({
@@ -263,6 +266,7 @@
                 },
             });
         }
+
         function selectTimeSlot(timeSlot, key)
         {
             // Set the selected time slot to the input field

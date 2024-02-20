@@ -146,12 +146,12 @@
                                                         </a>
                                                     </li>
                                                     @if($appointment_detail->appointment->status != 'Success')
-                                                    <li>
-                                                        <a class="dropdown-item small"
-                                                           href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
-                                                            <i class="fa fa-pen"> </i> Edit
-                                                        </a>
-                                                    </li>
+                                                        <li>
+                                                            <a class="dropdown-item small"
+                                                               href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
+                                                                <i class="fa fa-pen"> </i> Edit
+                                                            </a>
+                                                        </li>
                                                     @else
                                                     @endif
                                                     @if($appointment_detail->appointment->status != 'Success')
