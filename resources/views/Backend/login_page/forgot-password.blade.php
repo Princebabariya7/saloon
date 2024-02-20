@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <title> Forgot Password </title>
-
 @include('Backend.layout.head')
-
 <body class="hold-transition login-page">
 <div class="login-box">
     <h2 class="text-center saloon_logo">Hairec Saloon</h2>
@@ -31,10 +28,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="input-group mt-3">
                 {!! Form::password('conform_password', ['class' => 'form-control', 'placeholder' => 'Conform Password']) !!}
-
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fa fa-lock"></span>
@@ -47,7 +42,6 @@
                 </div>
             </div>
             {!! Form::close() !!}
-
             <p class="mt-3 mb-1">
                 <a href="{{route('admin.sign_in')}}" class="text-center pt-2 mt-3 d-block border-top">Login</a>
             </p>

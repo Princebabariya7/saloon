@@ -52,9 +52,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="w-100">
             <div class="card  mx-3">
                 <div class="card-body">
@@ -150,7 +148,6 @@
         </div>
         {!! Form::close() !!}
     </section>
-
 @endsection
 
 @section('custom_js')
@@ -161,9 +158,7 @@
         $('#reservationdate').datetimepicker({
             format: 'L',
             minDate: moment(),
-
         });
-
         $('#saveButton').on('click', function () {
 
             if ($(this).hasClass('disabled')) {
@@ -172,21 +167,17 @@
 
             $(this).addClass('disabled').html('<i class="fa fa-spinner fa-spin"></i> Processing...');
         });
-
-
         @if ($errors->any())
         @foreach ($errors->all() as $error)
         toastr.error('{{ $error }}');
         @endforeach
         @endif
-
         $(document).ready(function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
             $('#categories').change(function () {
 
                 $('#services').attr('disabled', false);
@@ -249,12 +240,10 @@
                 $('#selectedTimeSlot').val(null);
                 AjaxTimeSlot();
             })
-
             @if($editMode)
             AjaxTimeSlot();
             @endif
         });
-
         function AjaxTimeSlot()
         {
             $.ajaxSetup({
@@ -274,7 +263,6 @@
                 },
             });
         }
-
         function selectTimeSlot(timeSlot, key)
         {
             // Set the selected time slot to the input field
