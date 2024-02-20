@@ -69,13 +69,11 @@ class AppointmentController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
-
             session()->put('AppointmentData', $request->all());
             $services = Service::whereIn('id', $request->service_id)->get();
             $total    = $services->sum('price');
             session()->put('totalPrice', $total);
             session()->put('add', 'data add');
-
             return redirect(route('admin.payment.create', ['id' => $appointment->id, 'total' => $total]));
         }
         catch (\Exception $e)
@@ -83,7 +81,6 @@ class AppointmentController extends Controller
             dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }
-
     }
 
     public function show($id)
@@ -112,7 +109,6 @@ class AppointmentController extends Controller
             ->with('editMode', true)
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
-
     }
 
     public function update(AppointmentUpdateRequest $request, $id)
@@ -165,12 +161,10 @@ class AppointmentController extends Controller
         }
     }
 
-
     public function fetchServices()
     {
         try
         {
-
             $service = [];
 
             if (request('id'))
@@ -183,7 +177,6 @@ class AppointmentController extends Controller
                     'services' => $service,
                     'message'  => ''
                 ], 200);
-
         }
         catch (\Exception $e)
         {
@@ -209,7 +202,6 @@ class AppointmentController extends Controller
                     ->with('timeSlots', $slotList)
                     ->render(),
             ], 200);
-
     }
 
     public function slotList()

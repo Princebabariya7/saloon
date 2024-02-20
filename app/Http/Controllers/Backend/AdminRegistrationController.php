@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-
 use App\Http\Requests\Backend\ForgotPasswordRequest;
 use App\Http\Requests\Backend\SignInRequest;
 use App\Http\Requests\Backend\SignUpRequest;
@@ -94,7 +93,6 @@ class AdminRegistrationController extends Controller
 
         session()->put('Password', 'Your Password has Changed');
         return redirect(route('admin.sign_in'));
-
     }
 
     public function show($id)
@@ -103,7 +101,6 @@ class AdminRegistrationController extends Controller
 
         return view('Backend.user.show', ['user' => $user]);
     }
-
 
     public function destroy($id)
     {
@@ -115,16 +112,12 @@ class AdminRegistrationController extends Controller
                 $user->delete();
                 $user->appointment()->delete();
                 $user->appointments()->delete();
-
             }
-
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
         catch (\Exception $e)
         {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
-
     }
-
 }
