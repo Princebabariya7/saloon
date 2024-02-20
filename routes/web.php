@@ -9,7 +9,13 @@ use App\Http\Controllers\frontend\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('EmailVerificationMiddleware');
+Route::group(['prefix' => 'verification'], function ()
+{
+    Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+    Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
+});
 Route::group(['prefix' => 'frontend'], function ()
 {
 
@@ -23,14 +29,6 @@ Route::group(['prefix' => 'frontend'], function ()
         Route::get('login', [HomeController::class, 'login'])->name('user.login');
         Route::get('register', [HomeController::class, 'register'])->name('user.register');
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
-    });
-
-    Route::group(['prefix' => 'verification'], function ()
-    {
-        Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
-        Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-        Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
-
     });
 
     Route::post('store', [RegisterDate::class, 'store'])->name('user.info.store');
