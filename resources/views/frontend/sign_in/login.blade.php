@@ -73,19 +73,19 @@
         @endforeach
         @endif
         @if (\Session::has('msg'))
-        toastr.success('Your password was changed!');
+        toastr.success('Your Password Was Changed!');
         {{\Session::forget('msg')}}
         @endif
         @if (\Session::has('registerMsg'))
-        toastr.success('you are successfully registered');
+        toastr.success('You Are Successfully Registered Please Verify Your Email');
         {{\Session::forget('registerMsg')}}
         @endif
         @if (\Session::has('wrongPass'))
-        toastr.error('Please check your email and password ');
+        toastr.error('Please Check Your Email And Password ');
         {{\Session::forget('wrongPass')}}
         @endif
         @if (\Session::has('logout'))
-        toastr.success('You are successfully logged out');
+        toastr.success('You Are Successfully Logged Out');
         {{\Session::forget('logout')}}
         @endif
     </script>
