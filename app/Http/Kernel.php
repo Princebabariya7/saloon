@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\EmailVerificationMiddleware;
 use App\Http\Middleware\LogoutMiddleware;
 use App\Http\Middleware\PreventBackButtonMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -77,6 +78,7 @@ class Kernel extends HttpKernel
         'verified'                    => EnsureEmailIsVerified::class,
         'PreventBackButtonMiddleware' => PreventBackButtonMiddleware::class,
         'LogoutMiddleware'            => LogoutMiddleware::class,
+        'EmailVerificationMiddleware' => EmailVerificationMiddleware::class,
 
     ];
 }
