@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                @if(auth()->user() == null)
+                @if(auth()->user() == null || empty(auth()->user()->email_verified_at))
                     <div class="top-bar-left">
                         <div class="text">
                             <a href="{{route('user.register')}}">
@@ -20,7 +20,7 @@
                     <div class="top-bar-left">
                         <div class="text">
                             <a href="{{route('logout')}}">
-                                    <h2><i class="fa fa-sign-out fa-2x"></i></h2>
+                                <h2><i class="fa fa-sign-out fa-2x"></i></h2>
                             </a>
                         </div>
                     </div>
@@ -57,9 +57,11 @@
                 <a href="{{route('gallery')}}" class="nav-item nav-link">Gallery</a>
                 @if(auth()->user() == null)
 
-                @else
-                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i class='fas fa-calendar-check'></i></a>
-                    <a href="{{route('online.index')}}" class="nav-item nav-link"><i class="fa fa-shopping-cart  text-light" aria-hidden="true"></i></a>
+                @elseif(!empty(auth()->user()->email_verified_at))
+                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i
+                            class='fas fa-calendar-check'></i></a>
+                    <a href="{{route('online.index')}}" class="nav-item nav-link"><i
+                            class="fa fa-shopping-cart  text-light" aria-hidden="true"></i></a>
                 @endif
             </div>
         </div>
