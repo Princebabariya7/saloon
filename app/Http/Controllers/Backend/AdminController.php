@@ -12,21 +12,16 @@ class AdminController extends Controller
         session()->put('logout','You Are Logout');
         return redirect(route('admin.sign_in'));
     }
-
     public function signIn()
     {
         return view('Backend.login_page.sign_in');
     }
-
     public function signUp()
     {
         return view('Backend.login_page.sign_up');
     }
-
     public function forgot()
     {
         return view('Backend.login_page.forgot-password');
     }
-
-
 }
