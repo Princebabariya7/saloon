@@ -36,3 +36,11 @@
 </div>
 </body>
 </html>
+@section('custom_js')
+    <script>
+        @if (\Session::has('registerMsg'))
+        toastr.success('You Are Successfully Registered Please Verify Your Email');
+        {{\Session::forget('registerMsg')}}
+    @endif
+        </script>
+@endsection
