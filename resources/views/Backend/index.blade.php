@@ -21,7 +21,6 @@
                 </div>
             </div>
         </section>
-
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -38,7 +37,6 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-info">
                             <div class="inner">
@@ -65,7 +63,6 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-warning">
                             <div class="inner">
@@ -98,6 +95,5 @@
 
         {{\Session::forget('Password')}}
         @endif
-
     </script>
 @endsection
