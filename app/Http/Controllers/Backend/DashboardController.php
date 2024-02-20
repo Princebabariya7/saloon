@@ -17,17 +17,16 @@ class DashboardController extends Controller
 
         $paymentDetails = Payment::all()->pluck('transaction_detail')->toArray();
 
-        $totalAmount = collect($paymentDetails)->map(function ($detail) {
+        $totalAmount = collect($paymentDetails)->map(function ($detail)
+        {
             $decodedDetail = json_decode($detail, true);
             return $decodedDetail['total'] ?? 0;
         })->sum();
-
-
         return view('Backend.index', [
             'appointmentCount' => $appointmentCount,
             'orderCount'       => $orderCount,
             'userCount'        => $userCount,
-            'totalAmount'    => $totalAmount,
+            'totalAmount'      => $totalAmount,
         ]);
     }
 
@@ -37,7 +36,6 @@ class DashboardController extends Controller
         $appointments = Appointment::where('type', 'Appointment')->paginate(10);
         return view('Backend.appointment.index')->with('appointments', $appointments)
             ->with('currentDate', $currentDate);
-
     }
 
     public function orderDetails()

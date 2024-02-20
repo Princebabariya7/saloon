@@ -47,7 +47,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-
         return view('Backend.category.show', ['category' => $category]);
     }
 
@@ -70,7 +69,6 @@ class CategoryController extends Controller
 
         session()->put('update', 'data update');
         return redirect(route('admin.category.index'));
-
     }
 
     public function destroy($id)
@@ -89,6 +87,5 @@ class CategoryController extends Controller
         {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
-
     }
 }

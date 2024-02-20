@@ -30,7 +30,6 @@ class GalleryController extends Controller
     public function create()
     {
         return view('Backend.gallery.gallery_management')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive']);
-
     }
 
     public function store(GalleryStoreRequest $request)
@@ -49,14 +48,10 @@ class GalleryController extends Controller
 
             $gallery->image = $filename;
         }
-
         $gallery->save();
-
         session()->put('add', 'data add');
         return redirect(route('admin.gallery.index'));
-
     }
-
 
     public function show($id)
     {
@@ -90,7 +85,6 @@ class GalleryController extends Controller
             {
                 File::delete($destination);
             }
-
             $file     = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads/gallery', $filename);
@@ -125,5 +119,4 @@ class GalleryController extends Controller
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
-
 }
