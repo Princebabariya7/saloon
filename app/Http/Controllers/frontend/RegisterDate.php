@@ -15,20 +15,11 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterDate extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest')->except([
-            'logout', 'home'
-        ]);
-        $this->middleware('auth')->only('logout', 'home');
-        $this->middleware('verified')->only('home');
-    }
-
     public function store(RegisterRequest $request)
     {
         try
         {
-            $user= User::create([
+            $user = [
                 'firstname'   => $request->firstname,
                 'lastname'    => $request->lastname,
                 'email'       => $request->email,
@@ -43,12 +34,13 @@ class RegisterDate extends Controller
                 'user_status' => 'user',
                 'updated_at'  => now(),
                 'created_at'  => now(),
-            ]);
-            event(new Registered($user));
+            ];
+            User::create($user);
             $credentials = $request->only('email', 'password');
             Auth::attempt($credentials);
-            $request->session()->regenerate();
+
             session()->put('registerMsg', 'you are successfully registered');
+
             return redirect(route('verification.notice'));
         }
         catch (\Exception $e)
@@ -91,17 +83,27 @@ class RegisterDate extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email'    => 'required|email',
             'password' => 'required'
         ]);
 
-        if(Auth::attempt($credentials))
+        if (Auth::attempt($credentials))
         {
-            $request->session()->regenerate();
-            return redirect()->route('home');
+//            $request->session()->regenerate();
+//            return redirect()->route('home');
+            if (auth()->user()->user_status == "User")
+            {
+                session()->put('msg', 'You Are Logged in');
+                return redirect()->route('home');
+            }
+            elseif (auth()->user()->user_status == "Admin")
+            {
+                session()->put('msg', 'You Are Logged in');
+                return redirect()->route('dashboard.index');
+            }
         }
         return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
+            'email' => 'Email Is Not Verified',
         ])->onlyInput('email');
     }
 
