@@ -21,7 +21,6 @@
             </div>
             <div class="input-group mt-3">
                 {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fa fa-lock"></span>

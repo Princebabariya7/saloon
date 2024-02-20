@@ -2,4 +2,3 @@
     <strong>Copyright &copy; <a href="">Hairck Saloon</a>.</strong>
     All rights reserved.
 </footer>
-

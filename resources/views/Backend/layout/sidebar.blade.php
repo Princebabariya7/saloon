@@ -1,5 +1,4 @@
 <!-- Main Sidebar Container -->
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('dashboard.index')}}" class="brand-link">
@@ -17,7 +16,6 @@
                 <a href="{{ route('user.profile') }}" class="d-block">{{ auth()->user()->firstname }}</a>
             </div>
         </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -66,16 +64,6 @@
                         </p>
                     </a>
                 </li>
-{{--                <li class="nav-item {{ Route::is('admin.price.index') ? 'menu-open' : '' }}">--}}
-{{--                    <a href="{{ route('admin.price.index') }}"--}}
-{{--                       class="nav-link {{ Route::is('admin.price.index') ? 'active' : '' }} {{Request::segment(2) == 'price' ? 'active' :'' }}">--}}
-{{--                        <i class="nav-icon fas fa-dollar-sign"></i>--}}
-{{--                        <p>--}}
-{{--                            Prices--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-
                 <li class="nav-item {{ Route::is('admin.payment.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.payment.index') }}"
                        class="nav-link {{ Route::is('admin.payment.index') ? 'active' : '' }} {{Request::segment(2) == 'payment' ? 'active' :'' }}">
@@ -85,7 +73,6 @@
                         </p>
                     </a>
                 </li>
-
                 <li class="nav-item {{ Route::is('admin.user.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.user.index') }}"
                        class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }}">
@@ -99,6 +86,5 @@
         </nav>
         <!-- /.sidebar-menu -->
     </div>
-
     <!-- /.sidebar -->
 </aside>

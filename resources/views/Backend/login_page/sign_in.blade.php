@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <title> Sign In </title>
-
 @include('Backend.layout.head')
-
 <body class="hold-transition login-page">
 <div class="login-box">
     <h2 class="text-center saloon_logo">Hairec Saloon</h2>
@@ -35,10 +33,8 @@
             </div>
             {!! Form::close() !!}
 
-            <p class="mb-1">
-                <a href="{{route('admin.forgot-password')}}" class="text-center d-block pt-2">I forgot my
-                    password</a>
-            </p>
+            <p class="mb-1"><a href="{{route('admin.forgot-password')}}" class="text-center d-block pt-2">I forgot my
+                    password</a></p>
             <p class="mb-0">
                 <a href="{{route('admin.sign_up')}}" class="text-center d-block pt-2">Register a new admin</a>
             </p>

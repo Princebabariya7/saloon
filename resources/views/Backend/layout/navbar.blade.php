@@ -10,14 +10,6 @@
             <a href="{{route('dashboard.index')}}" class="nav-link">Home</a>
         </li>
     </ul>
-
-    <!-- Right navbar links -->
-    {{--    <ul class="navbar-nav ml-auto">--}}
-    {{--        <li class="nav-item">--}}
-    {{--            <a href="{{route('admin.logout')}}" class="nav-link text-danger" title="Logout" role="button">--}}
-    {{--                <i class="fa fa-power-off left-toogle"></i></a>--}}
-    {{--        </li>--}}
-    {{--    </ul>--}}
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a href="#" class="nav-link text-danger" title="Logout" role="button" onclick="confirmLogout()">
@@ -49,5 +41,3 @@
         });
     }
 </script>
-
-

@@ -25,11 +25,8 @@
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-
                         {!! Form::open(['route' => ['admin.payment.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
-
                         <ul class="nav nav-pills nav-search pt-1">
-
                             <li class="nav-item mr-1">
                                 <div class="input-group mb-1">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','autofocus']) !!}
@@ -134,7 +131,6 @@
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')
                                 <i class="fa fa-filter"></i> {{ $payments->total()}} Records Match
-
                                 <button type="button" class="btn btn-sm btn-link" id="btn-clear-filters">
                                     Clear
                                 </button>
@@ -145,7 +141,6 @@
             </div>
         </section>
     </div>
-
 @endsection
 
 @section('custom_js')
@@ -162,4 +157,3 @@
         });
     </script>
 @endsection
-
