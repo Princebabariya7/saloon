@@ -14,7 +14,6 @@ class AppointmentStoreRequest extends FormRequest
 
     public function rules()
     {
-
         return [
             'categories' => 'required',
             'service_id' => 'required',

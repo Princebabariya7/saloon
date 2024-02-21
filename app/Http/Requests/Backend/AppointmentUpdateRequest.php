@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AppointmentUpdateRequest extends FormRequest
 {
-
     public function authorize()
     {
         return true;
@@ -17,11 +16,11 @@ class AppointmentUpdateRequest extends FormRequest
         return [
 
             'categories' => 'required',
-            'service_id'    => 'required',
+            'service_id' => 'required',
             'date'       => 'required',
             'time'       => 'required',
             'type'       => 'required',
-            'status'        => 'required'
+            'status'     => 'required'
 
         ];
     }
