@@ -1,4 +1,3 @@
-<!-- Footer Start -->
 <div class="footer ">
     <div class="container">
         <div class="row">
@@ -44,5 +43,4 @@
         </div>
     </div>
 </div>
-<!-- Footer End -->
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
