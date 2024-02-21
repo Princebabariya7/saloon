@@ -2,10 +2,8 @@
 
 namespace App\Mail;
 
-use App\Models\AppointmentDetail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use App\Models\Appointment;
 use Illuminate\Queue\SerializesModels;
 
 class OrderMail extends Mailable
