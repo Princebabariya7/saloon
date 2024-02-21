@@ -77,16 +77,13 @@ class PriceController extends Controller
         if ($request->hasFile('image'))
         {
             $destination = 'uploads/gallery/' . $price->image;
-
             if (File::exists($destination))
             {
                 File::delete($destination);
             }
-
             $file     = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads/gallery', $filename);
-
             $price->image = $filename;
         }
         $price->update();

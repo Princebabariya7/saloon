@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
-
 class HomeController extends Controller
 {
     public function index()
@@ -62,4 +61,3 @@ class HomeController extends Controller
         return redirect()->route('home')->with('services', Price::all())->withSuccess('You have logged out successfully!');
     }
 }
-

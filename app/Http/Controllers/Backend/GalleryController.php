@@ -91,9 +91,7 @@ class GalleryController extends Controller
 
             $gallery->image = $filename;
         }
-
         $gallery->update();
-
         session()->put('update', 'data update');
         return redirect(route('admin.gallery.index'));
     }
@@ -109,9 +107,7 @@ class GalleryController extends Controller
             {
                 File::delete($destination);
             }
-
             $gallery->delete();
-
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
         }
         catch (\Exception $e)

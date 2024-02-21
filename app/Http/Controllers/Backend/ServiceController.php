@@ -128,6 +128,5 @@ class ServiceController extends Controller
         {
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
-
     }
 }

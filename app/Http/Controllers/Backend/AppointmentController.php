@@ -21,10 +21,9 @@ class AppointmentController extends Controller
 {
     public function index(Request $request)
     {
-        $search      = $request->input('search', '');
-        $status      = $request->input('status', '');
-        $currentDate = Carbon::now();
-//        $AppointmentDetail = AppointmentDetail::all();
+        $search            = $request->input('search', '');
+        $status            = $request->input('status', '');
+        $currentDate       = Carbon::now();
         $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
         {
             $query->where(function ($query) use ($search)

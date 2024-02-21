@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-
 use App\Http\Requests\Backend\PaymentStoreRequest;
 use App\Models\AppointmentDetail;
 use App\Models\Payment;
@@ -49,10 +48,8 @@ class PaymentController extends Controller
             ]);
             $intent->confirm();
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
-
-            $statusData = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
-
-            $status = $statusData['status'] ? 'Success' : 'Pending';
+            $statusData        = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
+            $status            = $statusData['status'] ? 'Success' : 'Pending';
 
             Payment::create([
                 'buyer_name'         => $request->buyer_name,

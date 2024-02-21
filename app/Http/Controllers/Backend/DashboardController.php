@@ -16,8 +16,7 @@ class DashboardController extends Controller
         $userCount        = User::count();
 
         $paymentDetails = Payment::all()->pluck('transaction_detail')->toArray();
-
-        $totalAmount = collect($paymentDetails)->map(function ($detail)
+        $totalAmount    = collect($paymentDetails)->map(function ($detail)
         {
             $decodedDetail = json_decode($detail, true);
             return $decodedDetail['total'] ?? 0;
@@ -46,6 +45,3 @@ class DashboardController extends Controller
             ->with('currentDate', $currentDate);
     }
 }
-
-
-

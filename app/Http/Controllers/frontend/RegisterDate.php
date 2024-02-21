@@ -37,9 +37,7 @@ class RegisterDate extends Controller
             User::create($user);
             $credentials = $request->only('email', 'password');
             Auth::attempt($credentials);
-
             session()->put('registerMsg', 'you are successfully registered');
-
             return redirect(route('verification.notice'));
         }
         catch (\Exception $e)
@@ -88,8 +86,6 @@ class RegisterDate extends Controller
 
         if (Auth::attempt($credentials))
         {
-            //$request->session()->regenerate();
-            //return redirect()->route('home');
             if (auth()->user()->user_status == "User")
             {
                 session()->put('msg', 'You Are Logged in');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\AppointmentAddRequest;
 use App\Http\Requests\frontend\AppointmentEditRequest;
-use App\Mail\OrderMail;
 use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
@@ -12,11 +11,9 @@ use App\Models\Appointment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
-
     public function index(Request $request)
     {
         $search      = $request->input('search', '');
@@ -38,8 +35,7 @@ class AppointmentController extends Controller
             {
                 $query->where('status', 'LIKE', '%' . $status . '%');
             });
-        })
-            ->where('user_id', '=', auth()->user()->id)->paginate(5);
+        })->where('user_id', '=', auth()->user()->id)->paginate(5);
 
         return view('frontend.book.onlineorderview')->with('appointments', $AppointmentDetail)
             ->with('currentDate', $currentDate);
@@ -107,7 +103,6 @@ class AppointmentController extends Controller
 
     public function update(AppointmentEditRequest $request, $id)
     {
-
         $appointmentsDetail = AppointmentDetail::find($id);
         $appointments       = Appointment::find($appointmentsDetail->appointment_id);
         $appointmentSlot    = AppointmentSlot::find($appointmentsDetail->appointment_id);
@@ -190,10 +185,8 @@ class AppointmentController extends Controller
 
     public function timeSlot()
     {
-        $date  = Carbon::create(\request()->date)->format('Y-m-d');
-        $slots = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
-
-
+        $date     = Carbon::create(\request()->date)->format('Y-m-d');
+        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
         $slotList = $this->slotList();
         $slotDay  = (Carbon::create(\request()->date)->dayName);
         return response()->json(
