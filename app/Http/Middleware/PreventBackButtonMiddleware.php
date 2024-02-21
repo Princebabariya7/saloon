@@ -9,7 +9,6 @@ class PreventBackButtonMiddleware
 {
     public function handle($request, Closure $next)
     {
-
         $user = User::find(auth()->user()->id);
 
         if (auth()->user() == null)
@@ -23,5 +22,4 @@ class PreventBackButtonMiddleware
 
         return $next($request);
     }
-
 }
