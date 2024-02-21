@@ -18,5 +18,4 @@ class Price extends Model
         'image' => 'not selected',
     ];
     protected $table = "prices";
-
 }
