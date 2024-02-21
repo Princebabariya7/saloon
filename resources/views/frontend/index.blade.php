@@ -3,7 +3,6 @@
     Hairck Saloon
 @endsection
 @section('mainContent')
-    <!-- Hero Start -->
     <div class="hero">
         <div class="container-fluid">
             <div class="row">
@@ -15,9 +14,9 @@
                             and expertise, dedicated to delivering the ultimate in grooming and pampering
                             experiences. </p>
                         @if(auth()->user() == null || empty(auth()->user()->email_verified_at))
-
                         @else
-                            <a class="btn" href="{{route('online.create')}}">Book Appointment<i class="fa fa-arrow-right ms-5 arrowForbook"></i></a>
+                            <a class="btn" href="{{route('online.create')}}">Book Appointment<i
+                                    class="fa fa-arrow-right ms-5 arrowForbook"></i></a>
                         @endif
                     </div>
                 </div>
@@ -76,8 +75,7 @@
                         <h3>Hair Cut</h3>
                         <p> A haircut is what a barber does when he trims your hair with scissors. You might decide it's
                             time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Saloons
-                            for
-                            a haircut.</p>
+                            for a haircut.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -87,9 +85,8 @@
                         </div>
                         <h3>Beard Style</h3>
                         <p> The ultimate goal of your beard style is to add contrast and dimension to your face.
-                            Different
-                            face shapes should highlight certain facial features—not every style looks great on every
-                            guy.
+                            Different face shapes should highlight certain facial features—not every style looks great
+                            on every guy.
                         </p>
                     </div>
                 </div>
@@ -100,8 +97,7 @@
                         </div>
                         <h3>Color & Wash</h3>
                         <p> Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
-                            cuticle
-                            layer of your hair it is also known as semi-permanent hair color.</p>
+                            cuticle layer of your hair it is also known as semi-permanent hair color.</p>
                     </div>
                 </div>
             </div>
@@ -127,7 +123,6 @@
                                 <h2>
                                     {{$service->name}}
                                 </h2>
-
                                 <h3>
                                     <i class="fa fa-inr" aria-hidden="true"></i>
                                     {{$service->price}}
@@ -164,8 +159,7 @@
                     <p>"Hairck Saloon All Boys has consistently exceeded my expectations. The stylists are not only
                         skilled but also attentive to my preferences. Whether I want a classic look or something more
                         contemporary, they always deliver. The Saloon has a cool vibe, and the personalized service
-                        makes
-                        me feel like a valued client. I wouldn't consider going anywhere else for my grooming
+                        makes me feel like a valued client. I wouldn't consider going anywhere else for my grooming
                         needs." </p>
                     <h2>john doe</h2>
                 </div>
