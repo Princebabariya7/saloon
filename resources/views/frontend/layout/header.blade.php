@@ -1,4 +1,3 @@
-<!-- Top Bar Start -->
 <div class="top-bar d-none d-md-block">
     <div class="container-fluid">
         <div class="row">
@@ -39,9 +38,7 @@
         </div>
     </div>
 </div>
-<!-- Top Bar End -->
 
-<!-- Nav Bar Start -->
 <div class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container-fluid">
         <a href="{{route('home')}}" class="navbar-brand hair">Hairck <span>Saloon</span></a>
@@ -69,4 +66,3 @@
         </div>
     </div>
 </div>
-<!-- Nav Bar End -->
