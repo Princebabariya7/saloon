@@ -3,7 +3,6 @@
     Service
 @endsection
 @section('mainContent')
-    <!-- Service Start -->
     <div class="page-header">
         <div class="container">
             <div class="row">
