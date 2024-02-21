@@ -9,11 +9,12 @@ class CreatePricesTable extends Migration
 {
     public function up()
     {
-        Schema::create('prices', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table)
+        {
             $table->id();
-            $table->string('service',50);
+            $table->string('service', 50);
             $table->integer('price');
-            $table->string('image',100);
+            $table->string('image', 100);
             $table->enum('status', ['Active', 'Inactive']);
             $table->timestamps();
         });

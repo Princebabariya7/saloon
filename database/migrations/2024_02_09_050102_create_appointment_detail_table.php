@@ -9,7 +9,8 @@ class CreateAppointmentDetailTable extends Migration
 
     public function up()
     {
-        Schema::create('appointment_detail', function (Blueprint $table) {
+        Schema::create('appointment_detail', function (Blueprint $table)
+        {
             $table->id();
             $table->integer('appointment_id');
             $table->integer('service_id');

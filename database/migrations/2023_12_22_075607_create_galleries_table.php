@@ -17,6 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->timestamps();
         });
     }
+
     public function down()
     {
         Schema::dropIfExists('galleries');
