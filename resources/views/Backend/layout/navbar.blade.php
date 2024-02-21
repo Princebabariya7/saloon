@@ -1,6 +1,4 @@
-<!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light pt-0 pb-0">
-    <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
@@ -18,12 +16,9 @@
         </li>
     </ul>
 </nav>
-<!-- /.navbar -->
-
 <script>
     function confirmLogout()
     {
-        // Use SweetAlert2 for confirmation
         Swal.fire({
             title: 'Are you sure?',
             text: 'You will be logged out',
@@ -35,7 +30,6 @@
         }).then((result) => {
             if (result.isConfirmed)
             {
-                // Redirect to the logout route
                 window.location.href = "{{ route('admin.logout') }}";
             }
         });
