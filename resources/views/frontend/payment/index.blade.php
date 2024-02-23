@@ -102,28 +102,26 @@
                     }
                 });
             });
+
             function stripeTokenHandler(token)
             {
                 var hiddenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
                 formElement.append(hiddenInput);
                 console.log(formElement.attr('action'));
-                // Now submit the form via AJAX
                 $.ajax({
                     type: "POST",
                     url: formElement.attr('action'),
-                    data: formElement.serialize(), // Serialize form data
+                    data: formElement.serialize(),
                     success: function (response) {
-                        // Handle success response here
                         window.location.replace(response.url);
 
                         console.log(response);
                     },
                     error: function (xhr, status, error) {
-                        // Handle error response here
                         console.log(xhr.responseText);
                     },
                     complete: function () {
-                        submitButton.prop('disabled', false); // Re-enable the submit button after AJAX request completes
+                        submitButton.prop('disabled', false);
                     }
                 });
             }
