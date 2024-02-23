@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\AppointmentController;
 use App\Http\Controllers\frontend\PaymentController;
@@ -120,35 +123,35 @@ Route::group(['prefix' => 'backend'], function ()
 
         Route::group(['prefix' => 'category'], function ()
         {
-            Route::get('/', [\App\Http\Controllers\Backend\CategoryController::class, 'index'])->name('admin.category.index');
-            Route::get('create', [\App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('admin.category.create');
-            Route::post('store', [\App\Http\Controllers\Backend\CategoryController::class, 'store'])->name('admin.category.store');
-            Route::get('{id}/edit', [\App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('admin.category.edit');
-            Route::put('{id}/update', [\App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('admin.category.update');
-            Route::get('{id}/delete', [\App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('admin.category.delete');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\CategoryController::class, 'show'])->name('admin.category.show');
+            Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
+            Route::get('create', [CategoryController::class, 'create'])->name('admin.category.create');
+            Route::post('store', [CategoryController::class, 'store'])->name('admin.category.store');
+            Route::get('{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+            Route::put('{id}/update', [CategoryController::class, 'update'])->name('admin.category.update');
+            Route::get('{id}/delete', [CategoryController::class, 'destroy'])->name('admin.category.delete');
+            Route::get('{id}/show', [CategoryController::class, 'show'])->name('admin.category.show');
         });
 
         Route::group(['prefix' => 'service'], function ()
         {
-            Route::get('/', [\App\Http\Controllers\Backend\ServiceController::class, 'index'])->name('admin.service.index');
-            Route::get('create', [\App\Http\Controllers\Backend\ServiceController::class, 'create'])->name('admin.service.create');
-            Route::post('store', [\App\Http\Controllers\Backend\ServiceController::class, 'store'])->name('admin.service.store');
-            Route::get('{id}/edit', [\App\Http\Controllers\Backend\ServiceController::class, 'edit'])->name('admin.service.edit');
-            Route::put('{id}/update', [\App\Http\Controllers\Backend\ServiceController::class, 'update'])->name('admin.service.update');
-            Route::get('{id}/delete', [\App\Http\Controllers\Backend\ServiceController::class, 'destroy'])->name('admin.service.delete');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\ServiceController::class, 'show'])->name('admin.service.show');
+            Route::get('/', [ServiceController::class, 'index'])->name('admin.service.index');
+            Route::get('create', [ServiceController::class, 'create'])->name('admin.service.create');
+            Route::post('store', [ServiceController::class, 'store'])->name('admin.service.store');
+            Route::get('{id}/edit', [ServiceController::class, 'edit'])->name('admin.service.edit');
+            Route::put('{id}/update', [ServiceController::class, 'update'])->name('admin.service.update');
+            Route::get('{id}/delete', [ServiceController::class, 'destroy'])->name('admin.service.delete');
+            Route::get('{id}/show', [ServiceController::class, 'show'])->name('admin.service.show');
         });
 
         Route::group(['prefix' => 'gallery'], function ()
         {
-            Route::get('/', [\App\Http\Controllers\Backend\GalleryController::class, 'index'])->name('admin.gallery.index');
-            Route::get('create', [\App\Http\Controllers\Backend\GalleryController::class, 'create'])->name('admin.gallery.create');
-            Route::post('store', [\App\Http\Controllers\Backend\GalleryController::class, 'store'])->name('admin.gallery.store');
-            Route::get('{id}/edit', [\App\Http\Controllers\Backend\GalleryController::class, 'edit'])->name('admin.gallery.edit');
-            Route::put('{id}/update', [\App\Http\Controllers\Backend\GalleryController::class, 'update'])->name('admin.gallery.update');
-            Route::get('{id}/delete', [\App\Http\Controllers\Backend\GalleryController::class, 'destroy'])->name('admin.gallery.delete');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\GalleryController::class, 'show'])->name('admin.gallery.show');
+            Route::get('/', [GalleryController::class, 'index'])->name('admin.gallery.index');
+            Route::get('create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+            Route::post('store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+            Route::get('{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+            Route::put('{id}/update', [GalleryController::class, 'update'])->name('admin.gallery.update');
+            Route::get('{id}/delete', [GalleryController::class, 'destroy'])->name('admin.gallery.delete');
+            Route::get('{id}/show', [GalleryController::class, 'show'])->name('admin.gallery.show');
         });
 
         Route::group(['prefix' => 'price'], function ()
