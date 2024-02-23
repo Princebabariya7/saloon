@@ -97,11 +97,6 @@ class RegisterDate extends Controller
                 return redirect()->route('dashboard.index');
             }
         }
-        else
-        {
-            session()->put('wrongPass', 'please check your email and password ');
-            return redirect()->back();
-        }
         return back()->withErrors([
             'email' => 'Please Check Your Email And Password And Try Again',
         ])->onlyInput('email');
