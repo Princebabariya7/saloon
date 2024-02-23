@@ -13,12 +13,10 @@
                                class="btn btn-primary btn-sm mb-3">Edit</a>
                         @else
                             <td class="project-actions">
-                                <!-- Button trigger modal -->
                                 <a data-toggle="modal"
                                    data-target="#exampleModal"
                                    href="{{ route('admin.appointment.edit', ['id' => $appointment->id]) }}"
                                    class="btn btn-primary btn-sm mb-3">Edit</a>
-                                <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

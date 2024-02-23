@@ -55,10 +55,6 @@
                 @if(auth()->user() == null)
 
                 @elseif(!empty(auth()->user()->email_verified_at))
-{{--                    <a href="{{route('online.create')}}" class="nav-item nav-link"> <i--}}
-{{--                            class='fas fa-calendar-check'></i></a>--}}
-{{--                    <a href="{{route('online.index')}}" class="nav-item nav-link"><i--}}
-{{--                            class="fa fa-shopping-cart  text-light" aria-hidden="true"></i></a>--}}
                     <a href="{{route('online.index')}}" class="nav-item nav-link">Appointments</a>
 
                 @endif

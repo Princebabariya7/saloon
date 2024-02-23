@@ -9,7 +9,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Payment</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item text-secondary"><a href="{{route('admin.payment.index')}}">
@@ -58,12 +58,10 @@
                     </div>
                     <label for="Billing">Card Detail</label>
                     <div id="payment-element">
-                        <!-- Elements will create form elements here -->
                     </div>
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <div class="row payment_methods">
-                                <!-- Payment methods images -->
                                 <div class="col-md">
                                     <img src="{{ asset('cd/page_img/credit/visa.png') }}" alt="Visa">
                                     <img src="{{ asset('cd/page_img/credit/mastercard.png') }}" alt="MasterCard">
@@ -81,7 +79,6 @@
                             </button>
                         </div>
                         <div id="error-message">
-                            <!-- Display error message to your customers here -->
                         </div>
                     </div>
                 </div>

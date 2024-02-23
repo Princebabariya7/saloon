@@ -25,19 +25,6 @@
             </tr>
             </thead>
             <tbody>
-
-{{--            @foreach($payments as $payment)--}}
-{{--                <tr>--}}
-{{--                    <th>{{$payment->id}}</th>--}}
-{{--                    <td>{{$payment->buyer_name}}</td>--}}
-{{--                    <td>{{$payment->buyer_email}}</td>--}}
-{{--                    <td>{{$payment->buyer_address}}</td>--}}
-{{--                    <td>{{$payment->cd_number}}</td>--}}
-{{--                    <td>{{$payment->month}}</td>--}}
-{{--                    <td>{{$payment->year}}</td>--}}
-{{--                    <td>{{$payment->cvv}}</td>--}}
-{{--                </tr>--}}
-{{--            @endforeach--}}
             </tbody>
         </table>
     </div>

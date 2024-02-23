@@ -107,7 +107,6 @@
                                             </td>
                                         @else
                                             <td class="project-actions text-right">
-                                                <!-- Button trigger modal -->
                                                 <button type="button"
                                                         class="btn btn-light border btn-sm dropdown-toggle modelBtn"
                                                         data-bs-toggle="dropdown">
