@@ -28,6 +28,8 @@ Route::group(['prefix' => 'frontend'], function ()
         Route::get('login', [HomeController::class, 'login'])->name('user.login');
         Route::get('register', [HomeController::class, 'register'])->name('user.register');
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
+        Route::get('terms', [HomeController::class, 'terms'])->name('terms');
+        Route::get('privacy', [HomeController::class, 'privacy'])->name('privacy');
     });
 
     Route::post('store', [RegisterDate::class, 'store'])->name('user.info.store');
