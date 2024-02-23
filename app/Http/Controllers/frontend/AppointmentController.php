@@ -65,8 +65,8 @@ class AppointmentController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
-            $services = Service::whereIn('id', $request->service_id)->get();
-            $total    = $services->sum('price');
+            $services    = Service::whereIn('id', $request->service_id)->get();
+            $total       = $services->sum('price');
             session()->put('totalPrice', $total);
             return redirect(route('payment.page', ['id' => $appointment->id, 'total' => $total]));
         }
