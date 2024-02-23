@@ -14,15 +14,10 @@ class AppointmentReminderMail extends Mailable
 
     public $appointment;
 
-//    public function __construct(Appointment $appointment)
-//    {
-//        $this->appointment = $appointment;
-//    }
-    public function __construct()
+    public function __construct(Appointment $appointment)
     {
-
+        $this->appointment = $appointment;
     }
-
     public function build()
     {
         return $this->subject('Appointment Reminder')
