@@ -65,8 +65,6 @@ class AppointmentController extends Controller
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
-            //session()->put('msg', 'your order has been booked');
-            // return redirect(route('online.create'));
             $services = Service::whereIn('id', $request->service_id)->get();
             $total    = $services->sum('price');
             session()->put('totalPrice', $total);
