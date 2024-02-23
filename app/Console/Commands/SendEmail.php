@@ -24,8 +24,8 @@ class SendEmail extends Command
         {
             $currentDate                = Carbon::now();
             $startAndEndAppointmentTime = explode(' -', $appointment->time);
-            $date                       = $appointment->date;
             $startTime                  = $startAndEndAppointmentTime[0];
+            $date                       = $appointment->date;
             $convertedTime              = Carbon::createFromFormat('g:i A', $startTime)->format('H:i');
             $startDateTimeString        = $date . ' ' . $convertedTime;
             $startCarbonDate            = Carbon::create($startDateTimeString);
