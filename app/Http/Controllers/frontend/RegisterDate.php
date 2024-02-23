@@ -109,7 +109,7 @@ class RegisterDate extends Controller
             $user           = User::whereEmail($request->email)->first();
             $user->password = Hash::make($request->input('password'));
             $user->update();
-            session()->put('msg', 'your password has been changed');
+            session()->put('forgot', 'your password has been changed');
             return view('frontend.sign_in.login');
         }
         catch (\Exception $e)

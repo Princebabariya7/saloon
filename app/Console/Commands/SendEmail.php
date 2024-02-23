@@ -29,7 +29,7 @@ class SendEmail extends Command
             $startDateTimeString        = $date . ' ' . $convertedTime;
             $startCarbonDate            = Carbon::create($startDateTimeString);
             $minutesDifference          = $startCarbonDate->diffInMinutes($currentDate);
-//            if ($minutesDifference <= 30 && $minutesDifference >= 25)
+            //if ($minutesDifference <= 30 && $minutesDifference >= 25)
             if ($minutesDifference == 60)
             {
                 Mail::to($appointment->user->email)->send(new AppointmentReminderMail($appointment));

@@ -46,9 +46,9 @@
         toastr.error('{{ $error }}');
         @endforeach
         @endif
-        @if (\Session::has('msg'))
+        @if (\Session::has('forgot'))
         toastr.success('Your Password Was Changed!');
-        {{\Session::forget('msg')}}
+        {{\Session::forget('forgot')}}
         @endif
         @if (\Session::has('registerMsg'))
         toastr.success('You Are Successfully Registered Please Verify Your Email');
