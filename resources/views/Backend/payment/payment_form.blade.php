@@ -106,18 +106,19 @@
                 event.preventDefault();
                 submitButton.prop('disabled', true); // Disable the submit button to prevent double submission
                 stripe.createToken(paymentElement).then(function (result) {
-                    if (result.error)
-                    {
+                    if (result.error) {
                         // Inform the user if there was an error
                         errorMessage.text(result.error.message);
                         submitButton.prop('disabled', false); // Re-enable the submit button
-                    }
-                    else
-                    {
+                    } else {
+                        // Display the spinner while processing
+                        submitButton.html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+
                         // Send the token to your server
                         stripeTokenHandler(result.token);
                     }
                 });
+
             });
 
             function stripeTokenHandler(token)
