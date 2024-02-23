@@ -97,7 +97,7 @@
                     }
                     else
                     {
-                        submitButton.html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+                        submitButton.html('<i class="fa fa-spinner fa-spin"></i> Please Wait...');
                         stripeTokenHandler(result.token);
                     }
                 });

@@ -112,7 +112,7 @@
                         submitButton.prop('disabled', false); // Re-enable the submit button
                     } else {
                         // Display the spinner while processing
-                        submitButton.html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+                        submitButton.html('<i class="fa fa-spinner fa-spin"></i> Please Wait...');
 
                         // Send the token to your server
                         stripeTokenHandler(result.token);
