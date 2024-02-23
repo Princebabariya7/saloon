@@ -79,7 +79,7 @@
             });
         });
         $(document).ready(function () {
-            var stripe = Stripe('pk_test_51Oh3GkSGdlQqnOKgAeJvDMxNGdxK5HvcoCDLt50Sn3YYqMBlVBL6vV3IhMKUs4KjG6cM9T6kVfuy3BMyoXaCRNpc009dVA2mvf');
+            var stripe = Stripe('pk_test_51Oh3DySJVbxBeWNZmETZLr6xYA9iBDWcRZtwVNuuER07GavyTFefKgr1UzZiQ66cxfafkN62lfooMCp3TgaarT9o00VpYkC88e');
             var elements = stripe.elements();
             var paymentElement = elements.create('card');
             paymentElement.mount('#payment-element');
