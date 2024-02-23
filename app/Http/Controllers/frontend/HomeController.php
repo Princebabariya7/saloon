@@ -34,7 +34,16 @@ class HomeController extends Controller
     public function gallery()
     {
         return view('frontend.gallery.index')->with('galleries', Gallery::all());
+    }
 
+    public function terms()
+    {
+        return view('frontend.terms_policy.index');
+    }
+
+    public function privacy()
+    {
+        return view('frontend.terms_policy.privacy');
     }
 
     public function team()
