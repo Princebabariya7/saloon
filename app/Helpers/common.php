@@ -1,6 +1,6 @@
 <?php
 
-function buha()
+function username()
 {
     return 'yash';
 }
