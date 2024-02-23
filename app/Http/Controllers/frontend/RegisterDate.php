@@ -47,12 +47,46 @@ class RegisterDate extends Controller
         }
     }
 
-    public function login(LoginRequest $request)
+//    public function login(LoginRequest $request)
+//    {
+//        try
+//        {
+//            $credit = $request->only('email', 'password');
+//            if (Auth::attempt($credit))
+//            {
+//                if (auth()->user()->user_status == "User")
+//                {
+//                    session()->put('msg', 'You Are Logged in');
+//                    return redirect()->route('home');
+//                }
+//                elseif (auth()->user()->user_status == "Admin")
+//                {
+//                    session()->put('msg', 'You Are Logged in');
+//                    return redirect()->route('dashboard.index');
+//                }
+//            }
+//            else
+//            {
+//                session()->put('wrongPass', 'please check your email and password ');
+//                return redirect()->back();
+//            }
+//        }
+//        catch (\Exception $e)
+//        {
+//            return redirect()->back()->with('error', $e->getMessage());
+//        }
+//    }
+
+    public function authenticate(Request $request)
     {
-        try
+        $credentials = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials))
         {
-            $credit = $request->only('email', 'password');
-            if (Auth::attempt($credit))
+            if (auth()->user()->email_verified_at != null)
             {
                 if (auth()->user()->user_status == "User")
                 {
@@ -67,34 +101,7 @@ class RegisterDate extends Controller
             }
             else
             {
-                session()->put('wrongPass', 'please check your email and password ');
-                return redirect()->back();
-            }
-        }
-        catch (\Exception $e)
-        {
-            return redirect()->back()->with('error', $e->getMessage());
-        }
-    }
-
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if (Auth::attempt($credentials))
-        {
-            if (auth()->user()->user_status == "User")
-            {
-                session()->put('msg', 'You Are Logged in');
-                return redirect()->route('home');
-            }
-            elseif (auth()->user()->user_status == "Admin")
-            {
-                session()->put('msg', 'You Are Logged in');
-                return redirect()->route('dashboard.index');
+                session()->put('email_verified', 'You Are Logged in');
             }
         }
         return back()->withErrors([

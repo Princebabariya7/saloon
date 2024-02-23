@@ -62,5 +62,9 @@
         toastr.success('You Are Successfully Logged Out');
         {{\Session::forget('logout')}}
         @endif
+        @if (\Session::has('email_verified'))
+        toastr.error('Your Email Is Not verified');
+        {{\Session::forget('email_verified')}}
+        @endif
     </script>
 @endsection
