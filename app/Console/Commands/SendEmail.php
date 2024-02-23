@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SendEmail extends Command
 {
-    protected $signature   = 'send:email';
-//    protected $description = 'Send an email every 5 minutes';
+    protected $signature = 'send:email';
 
     public function __construct()
     {
