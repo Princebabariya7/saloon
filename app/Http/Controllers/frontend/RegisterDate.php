@@ -96,7 +96,9 @@ class RegisterDate extends Controller
                 session()->put('msg', 'You Are Logged in');
                 return redirect()->route('dashboard.index');
             }
-        }else{
+        }
+        else
+        {
             session()->put('wrongPass', 'please check your email and password ');
             return redirect()->back();
         }
