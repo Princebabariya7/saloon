@@ -111,4 +111,40 @@ class AdminRegistrationController extends Controller
             return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
         }
     }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('Backend.user.edit')
+            ->with('user', $user)
+            ->with('firstname', $user->firstname)
+            ->with('lastname', $user->lastname)
+            ->with('email', $user->email)
+            ->with('mobile', $user->mobile)
+            ->with('address', $user->address)
+            ->with('city', $user->city)
+            ->with('state', $user->state)
+            ->with('zipcode', $user->zipcode)
+            ->with('user_status', $user->user_status)
+            ->with('editMode', true);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user              = User::find($id);
+        $user->firstname   = $request->input('firstname');
+        $user->lastname    = $request->input('lastname');
+        $user->email       = $request->input('email');
+        $user->mobile      = $request->input('mobile');
+        $user->address     = $request->input('address');
+        $user->city        = $request->input('city');
+        $user->state       = $request->input('state');
+        $user->zipcode     = $request->input('zipcode');
+        $user->user_status = $request->input('user_status');
+        $user->update();
+
+        session()->put('update', 'data update');
+        return redirect(route('admin.user.index'));
+    }
 }
