@@ -1,6 +1,6 @@
 @extends('Backend.layout.index')
 @section("title")
-    Service View
+    Service Detail
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3 class="card-title text-bold">Service</h3>
+                        <h3 class="card-title text-bold">Service Detail</h3>
                     </div>
                     <div class="container">
                         <table class="table">

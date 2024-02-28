@@ -1,6 +1,6 @@
 @extends('Backend.layout.index')
 @section("title")
-    Gallery View
+    Gallery Detail
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3 class="card-title text-bold">Gallery</h3>
+                        <h3 class="card-title text-bold">Gallery Detail</h3>
                     </div>
                     <div class="container">
                         <table class="table">

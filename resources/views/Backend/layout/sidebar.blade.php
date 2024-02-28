@@ -64,13 +64,13 @@
                        class="nav-link {{ Route::is('admin.payment.index') ? 'active' : '' }} {{Request::segment(2) == 'payment' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-credit-card"></i>
                         <p>
-                            Payment
+                            Payments
                         </p>
                     </a>
                 </li>
                 <li class="nav-item {{ Route::is('admin.user.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.user.index') }}"
-                       class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }}">
+                       class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }} {{Request::segment(2) == 'user' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users

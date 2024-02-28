@@ -1,6 +1,6 @@
 @extends('Backend.layout.index')
 @section("title")
-    Payment View
+    Payment Detail
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3 class="card-title text-bold">Payment</h3>
+                        <h3 class="card-title text-bold">Payment Detail</h3>
                     </div>
                     <div class="container">
                         <table class="table">
@@ -38,6 +38,10 @@
                             <tr>
                                 <td>Gateway:</td>
                                 <td>{{$payment->gateway}}</td>
+                            </tr>
+                            <tr>
+                                <td>Amount:</td>
+                                <td><i class="fas fa-rupee-sign"></i> {{$payment->transaction_amount}}</td>
                             </tr>
                             <tr>
                                 <td>Status:</td>
