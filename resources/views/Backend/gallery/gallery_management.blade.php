@@ -73,7 +73,7 @@
                         @if($editMode)
                             <a href="#">
                                 <img src="{{ asset('uploads/gallery/'.$gallery->image) }}"
-                                     width="100px" alt="Image">
+                                     width="100px" class="pt-2" alt="Image">
                             </a>
                         @endif
                     </div>
