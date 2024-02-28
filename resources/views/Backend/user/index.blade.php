@@ -107,15 +107,21 @@
                                                         <i class="fa fa-eye"> </i> View
                                                     </a>
                                                 </li>
-                                                @if($user->user_status !='Admin')
                                                 <li class="dropdown-divider"></li>
                                                 <li>
-                                                    <a class="dropdown-item small user-delete text-danger"
-                                                       href="#"
-                                                       data-href="{{route('admin.user.delete',$user->id)}}">
-                                                        <i class="fa fa-trash"> </i> Delete
+                                                    <a class="dropdown-item small"
+                                                       href="{{route('admin.user.edit',$user->id)}}">
+                                                        <i class="fa fa-pen"> </i> Edit
                                                     </a>
                                                 </li>
+                                                @if($user->user_status !='Admin')
+                                                    <li class="dropdown-divider"></li>
+                                                    <li>
+                                                        <a class="dropdown-item small user-delete text-danger"
+                                                           data-href="{{route('admin.user.delete',$user->id)}}">
+                                                            <i class="fa fa-trash"> </i> Delete
+                                                        </a>
+                                                    </li>
                                                 @endif
                                             </ul>
                                         </td>
