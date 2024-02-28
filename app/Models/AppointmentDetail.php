@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+
 
 class AppointmentDetail extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
+
+    public $sortable = [
+        'user_id',
+        'appointment_id',
+        'service_id',
+        'users.firstname as u_tet'
+    ];
 
     protected $table    = 'appointment_detail';
     protected $fillable = ['appointment_id', 'service_id', 'user_id'];
@@ -21,8 +30,39 @@ class AppointmentDetail extends Model
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+
     public function appointment()
     {
         return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
     }
+
+    public function scopeSearch($query, $search)
+    {
+        if ($search)
+        {
+            $query->where('users.firstname', 'LIKE', '%' . $search . '%');
+            $query->orwhere('users.lastname', 'LIKE', '%' . $search . '%');
+            $query->orwhere('status', 'LIKE', '%' . $search . '%');
+            $query->orwhere('type', 'LIKE', '%' . $search . '%');
+//            $query->orwhere('services.name', 'LIKE', '%' . $search . '%');
+        }
+        return $query;
+    }
+
+    public function scopeStatusType($query, $status, $type)
+    {
+
+        if ($status)
+        {
+            $query->where('status', 'LIKE', '%' . $status . '%');
+        }
+
+        if ($type)
+        {
+            $query->where('type', 'LIKE', '%' . $type . '%');
+        }
+
+        return $query;
+    }
+
 }
