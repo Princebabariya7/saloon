@@ -18,6 +18,12 @@ class Appointment extends Model
         'time'   => 'not selected',
         'status' => 'Unknown',
     ];
+    public $sortable = [
+        'type',
+        'date',
+        'time',
+        'status',
+    ];
 
     protected $table = 'appointments';
 
