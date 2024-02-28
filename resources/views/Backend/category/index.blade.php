@@ -1,6 +1,6 @@
 @extends ('Backend.layout.index')
 @section("title")
-    Category
+    Categories
 @endsection
 @section("content")
     <div class="content-wrapper">
@@ -56,10 +56,10 @@
                             <thead>
                             <tr>
                                 <th>
-                                    Type
+                                    @sortablelink('type','Type')
                                 </th>
                                 <th class="text-center">
-                                    Status
+                                    @sortablelink('status','Status')
                                 </th>
                                 <th class="text-end action">
                                     Action

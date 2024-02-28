@@ -1,6 +1,6 @@
 @extends ('Backend.layout.index')
 @section("title")
-    Payment
+    Payments
 @endsection
 @section("content")
     <div class="content-wrapper">
@@ -50,19 +50,19 @@
                             <thead>
                             <tr>
                                 <th>
-                                    Customer Name
+                                    @sortablelink('buyer_name','Customer Name')
                                 </th>
                                 <th>
-                                    Email
+                                    @sortablelink('buyer_email','Email')
                                 </th>
                                 <th>
-                                    Transaction Id
+                                    @sortablelink('transaction_id','TransactionId')
                                 </th>
                                 <th>
-                                    Gateway
+                                    @sortablelink('transaction_detail','Amount')
                                 </th>
                                 <th class="text-center">
-                                    Status
+                                    @sortablelink('status','Status')
                                 </th>
                                 <th class="text-right">
                                     Action
@@ -85,7 +85,7 @@
                                             {{$payment->transaction_id}}
                                         </td>
                                         <td>
-                                            {{$payment->gateway}}
+                                            <i class="fas fa-rupee-sign"></i> {{$payment->transaction_amount}}
                                         </td>
                                         <td class="project-state">
                                             @if($payment->status =='Pending')

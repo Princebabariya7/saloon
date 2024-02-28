@@ -58,14 +58,14 @@
                             <thead>
                             <tr>
                                 <th>
-                                    Image
+                                    @sortablelink('image','Image')
                                 </th>
                                 <th>
-                                    Name
+                                    @sortablelink('name','Name')
                                 </th>
 
                                 <th class="text-center">
-                                    Status
+                                    @sortablelink('status','Status')
                                 </th>
                                 <th class="text-end action">
                                     Action

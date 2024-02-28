@@ -1,7 +1,7 @@
 @php use App\Models\Category; @endphp
 @extends ('Backend.layout.index')
 @section("title")
-    Appointment
+    Appointments
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-6">
-                        <h1><i class="fas fa-calendar-check"></i> Appointment </h1>
+                        <h1><i class="fas fa-calendar-check"></i> Appointments </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -44,7 +44,14 @@
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
-                                {!! Form::select('status',[''=>'Please select', 'Pending'=>'Pending', 'Success'=>'Success', 'Cancel'=>'Cancel'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
+                                {!! Form::text('daterange', null, ['class' => 'form-control form-control-sm float-right', 'id' => 'reservation', 'placeholder' => 'Please Select']) !!}
+                            </li>
+
+                            <li class="nav-item mt-1 mb-1 mr-1">
+                                {!! Form::select('type',[''=>'Select Type', 'HomeService'=>'HomeService', 'Appointment'=>'Appointment'], request('type'),['class'=>'form-control form-control-sm', 'id'=>'type']) !!}
+                            </li>
+                            <li class="nav-item mt-1 mb-1 mr-1">
+                                {!! Form::select('status',[''=>'Select Status', 'Pending'=>'Pending', 'Success'=>'Success', 'Cancel'=>'Cancel'], request('status'),['class'=>'form-control form-control-sm', 'id'=>'status']) !!}
                             </li>
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 <a class="btn btn-primary btn-sm float-right"
@@ -61,15 +68,35 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Category</th>
-                                <th>Service</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Type</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-right">Action</th>
+                                <th>
+                                    {{--                                    @sortablelink('u_tet', 'First Name')--}}
+                                    First Name
+
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    Category
+                                </th>
+                                <th>
+                                    Service
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Time
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th class="text-center">
+                                    Status
+                                </th>
+                                <th class="text-right">
+                                    Action
+                                </th>
                             </tr>
                             </thead>
                             @if(count($appointments) > 0)
@@ -249,7 +276,7 @@
                             {{ $appointments->links() }}
                         </div>
                         <div class="clear-btn">
-                            @if(request('search') != '' || request('status') != '')
+                            @if(request('search') != '' || request('status') != '' || request('type') != '')
                                 <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
                                 <button type="button" class="btn btn-sm btn-link" id="btn-clear-filters">
                                     Clear
@@ -290,13 +317,35 @@
                     }
                 });
             });
-            $('#status').change(function () {
+            // $('#status').change(function () {
+            //     $('.search').trigger('click');
+            // });
+            // $('#type').change(function () {
+            //     $('.search').trigger('click');
+            // });
+            // $('#btn-clear-filters').click(function () {
+            //     $('#search').val('');
+            //     $('#status').val('');
+            //     $('#type').val('');
+            //     $('.search').trigger('click');
+            // })
+            $('#status, #type').change(function () {
                 $('.search').trigger('click');
             });
+
             $('#btn-clear-filters').click(function () {
                 $('#search').val('');
-                $('#status').val('');
+                $('#status, #type').val('');
                 $('.search').trigger('click');
+            });
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
             })
         });
         @if (\Session::has('add'))

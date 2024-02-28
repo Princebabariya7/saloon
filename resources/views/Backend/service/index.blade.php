@@ -1,6 +1,6 @@
 @extends ('Backend.layout.index')
 @section("title")
-    Service
+    Services
 @endsection
 @section("content")
     <div class="content-wrapper">
@@ -58,25 +58,25 @@
                             <thead>
                             <tr>
                                 <th>
-                                    Image
+                                    @sortablelink('image','Image')
                                 </th>
                                 <th>
-                                    Category
+                                    @sortablelink('Category')
                                 </th>
                                 <th>
-                                    Service
+                                    @sortablelink('name','Service')
                                 </th>
                                 <th>
-                                    Detail
+                                    @sortablelink('detail','Detail')
                                 </th>
                                 <th>
-                                    Price
+                                    @sortablelink('price','Price')
                                 </th>
                                 <th>
-                                    Duration
+                                    @sortablelink('duration','Duration')
                                 </th>
                                 <th class="text-center">
-                                    Status
+                                    @sortablelink('status','Status')
                                 </th>
                                 <th class="text-end action">
                                     Action
@@ -106,18 +106,19 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.service.edit',$service->id)}}">
+                                            <a href="{{route('admin.category.index')}}">
                                                 {{$service->categories->type}}
                                             </a>
                                         </td>
                                         <td>
+                                            <a href="{{route('admin.service.edit',$service->id)}}">
                                             {{$service->name}}
                                         </td>
                                         <td>
                                             {{$service->detail}}
                                         </td>
                                         <td>
-                                            {{$service->price}}
+                                            <i class="fas fa-rupee-sign"></i> {{$service->price}}
                                         </td>
                                         <td>
                                             {{$service->duration}}
