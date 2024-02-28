@@ -28,7 +28,7 @@
                        class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }} {{Request::segment(2) == 'appointment' ? 'active' :'' }} {{Request::segment(2) == 'orders_details' ? 'active' :'' }} {{Request::segment(2) == 'appointment_details' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>
-                            Appointments
+                            Appointments / Orders
                         </p>
                     </a>
                 </li>
@@ -70,7 +70,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.user.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.user.index') }}"
-                       class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }} {{Request::segment(2) == 'user' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }} {{Request::segment(1) == 'user' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users

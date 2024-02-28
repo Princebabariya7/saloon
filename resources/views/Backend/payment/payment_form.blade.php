@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item text-secondary"><a href="{{route('admin.payment.index')}}">
                                     Home</a></li>
                             <li class="breadcrumb-item active"><a href="{{route('admin.payment.index')}}">
-                                    Payment</a>
+                                    Payments</a>
                             </li>
                         </ol>
                     </div>

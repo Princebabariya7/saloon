@@ -14,7 +14,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item text-secondary"><a href="{{route('admin.service.index')}}">
                                     Home</a></li>
-                            <li class="breadcrumb-item active"><a href="{{route('admin.service.index')}}"> Service</a>
+                            <li class="breadcrumb-item active"><a href="{{route('admin.service.index')}}"> Services</a>
                             </li>
                             @if($editMode)
                                 <li class="breadcrumb-item text-secondary">Edit</li>

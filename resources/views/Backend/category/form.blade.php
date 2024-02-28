@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item text-secondary"><a href="{{route('admin.category.index')}}">
                                     Home</a>
                             </li>
-                            <li class="breadcrumb-item active"><a href="{{route('admin.category.index')}}"> Category</a>
+                            <li class="breadcrumb-item active"><a href="{{route('admin.category.index')}}"> Categories</a>
                             </li>
                             @if($editMode)
                                 <li class="breadcrumb-item text-secondary">Edit</li>
