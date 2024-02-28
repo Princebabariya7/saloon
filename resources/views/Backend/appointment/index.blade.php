@@ -87,7 +87,7 @@
                                     @sortablelink('services.name', 'Service')
                                 </th>
                                 <th>
-                                    @sortablelink('type', 'Type')
+                                    Type
                                 </th>
                                 <th>
                                     Date
@@ -96,9 +96,7 @@
                                     Time
                                 </th>
                                 <th class="text-center">
-
-                                    @sortablelink('status', 'Status')
-
+                                    Status
                                 </th>
                                 <th class="text-right">
                                     Action
