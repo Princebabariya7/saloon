@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Appointment;
+use App\Models\AppointmentDetail;
 use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
@@ -11,9 +12,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $appointmentCount = Appointment::where('type', 'Appointment')->count();
-        $orderCount       = Appointment::where('type', 'HomeService')->count();
-        $userCount        = User::count();
+        $appointmentCount = Appointment::leftjoin('appointment_detail', 'appointments.id', '=', 'appointment_detail.appointment_id')
+            ->where('type', 'Appointment')
+            ->count();
+
+        $orderCount = Appointment::leftjoin('appointment_detail', 'appointments.id', '=', 'appointment_detail.appointment_id')
+            ->where('type', 'HomeService')
+            ->count();
+        $userCount  = User::count();
 
         $paymentDetails = Payment::all()->pluck('transaction_detail')->toArray();
         $totalAmount    = collect($paymentDetails)->map(function ($detail)
@@ -31,16 +37,20 @@ class DashboardController extends Controller
 
     public function appointmentDetails()
     {
-        $currentDate  = Carbon::now();
-        $appointments = Appointment::where('type', 'Appointment')->paginate(10);
-        return view('Backend.appointment.index')->with('appointments', $appointments)
+        $currentDate       = Carbon::now();
+        $appointmentDetail = AppointmentDetail::
+        leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')->where('type','Appointment')->paginate(5);
+
+        return view('Backend.appointment.index')->with('appointments', $appointmentDetail)
             ->with('currentDate', $currentDate);
     }
 
     public function orderDetails()
     {
         $currentDate = Carbon::now();
-        $orders      = Appointment::where('type', 'HomeService')->paginate(10);
+        $orders      = AppointmentDetail::
+        leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')->where('type','HomeService')->paginate(5);
+
         return view('Backend.appointment.index')->with('appointments', $orders)
             ->with('currentDate', $currentDate);
     }
