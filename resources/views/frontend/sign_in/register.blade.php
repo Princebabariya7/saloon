@@ -19,12 +19,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::text('firstname' ,null,['class'=>'form-control item','placeholder'=>'Enter Your First Name' , 'autocomplete' => 'off']) !!}
+                        {!! Form::text('firstname' ,null,['class'=>'form-control item','placeholder'=>'Enter First Name' , 'autocomplete' => 'off']) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::text('lastname' ,null,['class'=>'form-control item','placeholder'=>'Enter Your Last Name', 'autocomplete' =>'off']) !!}
+                        {!! Form::text('lastname' ,null,['class'=>'form-control item','placeholder'=>'Enter Last Name', 'autocomplete' =>'off']) !!}
                     </div>
                 </div>
             </div>
@@ -43,12 +43,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Enter Your Mobile' , 'id' => 'name' ,'autocomplete' =>'off' , 'maxlength'=>'10']) !!}
+                        {!! Form::text('number',null,['class' => 'form-control item' , 'placeholder'=>'Enter Mobile' , 'id' => 'name' ,'autocomplete' =>'off' , 'maxlength'=>'10']) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Your Email' ,'autocomplete'=>'off']) !!}
+                        {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email' ,'autocomplete'=>'off']) !!}
                     </div>
                 </div>
             </div>
