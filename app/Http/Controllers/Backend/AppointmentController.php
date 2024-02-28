@@ -49,13 +49,14 @@ class AppointmentController extends Controller
 
     public function index(Request $request)
     {
-        $search = $request->input('search', '');
-        $status = $request->input('status', '');
-        $type = $request->input('type', '');
-        $dateRange = $request->input('anotherInput', '');
+        $search      = $request->input('search', '');
+        $status      = $request->input('status', '');
+        $type        = $request->input('type', '');
+        $dateRange   = $request->input('anotherInput', '');
         $currentDate = Carbon::now();
-        $direction = $request->input('direction', 'asc');
-        if (!in_array($direction, ['asc', 'desc'])) {
+        $direction   = $request->input('direction', 'asc');
+        if (!in_array($direction, ['asc', 'desc']))
+        {
             $direction = 'asc';
         }
 
@@ -68,15 +69,17 @@ class AppointmentController extends Controller
             ->statusType($status, $type);
 
         // Check if $request->sort is set and not empty before applying orderBy
-        if ($request->has('sort') && $request->sort !== '') {
+        if ($request->has('sort') && $request->sort !== '')
+        {
             $query->orderBy($request->sort, $direction);
         }
 
         // Add this condition to filter by date range
-        if ($dateRange) {
+        if ($dateRange)
+        {
             $dateRange = explode(' - ', $dateRange);
             $startDate = Carbon::createFromFormat('m/d/Y', $dateRange[0])->startOfDay();
-            $endDate = Carbon::createFromFormat('m/d/Y', $dateRange[1])->endOfDay();
+            $endDate   = Carbon::createFromFormat('m/d/Y', $dateRange[1])->endOfDay();
             $query->whereBetween('appointments.date', [$startDate, $endDate]);
         }
 
@@ -86,7 +89,6 @@ class AppointmentController extends Controller
             ->with('appointments', $AppointmentDetail)
             ->with('currentDate', $currentDate);
     }
-
 
 
     public function create()
