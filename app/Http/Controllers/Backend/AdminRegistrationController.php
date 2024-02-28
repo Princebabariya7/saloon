@@ -12,22 +12,32 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminRegistrationController extends Controller
 {
+//    public function index(Request $request)
+//    {
+//        $search = $request->input('search', '');
+//        $status = $request->input('status', '');
+//        $users  = User::when($search, function ($query) use ($search)
+//        {
+//            return $query->where(function ($query) use ($search)
+//            {
+//                $query->orWhere('firstname', 'LIKE', '%' . $search . '%');
+//            });
+//
+//        })->when($status, function ($query) use ($status)
+//        {
+//            return $query->where('user_status', $status);
+//        })->sortable(['firstname' => 'asc', 'lastname' => 'asc','email' => 'asc', 'status' => 'asc'])->paginate(5);
+//        return view('Backend.user.index')->with('users', $users);
+//    }
+
     public function index(Request $request)
     {
         $search = $request->input('search', '');
         $status = $request->input('status', '');
-        $users  = User::when($search, function ($query) use ($search)
-        {
-            return $query->where(function ($query) use ($search)
-            {
-                $query->orWhere('firstname', 'LIKE', '%' . $search . '%');
-            });
+        $users  = User::search($search)->status($status)->sortable()->paginate(5);
 
-        })->when($status, function ($query) use ($status)
-        {
-            return $query->where('user_status', $status);
-        })->paginate(5);
-        return view('Backend.user.index')->with('users', $users);
+        return view('Backend.user.index')
+            ->with('users', $users);
     }
 
     public function store(SignUpRequest $request)
