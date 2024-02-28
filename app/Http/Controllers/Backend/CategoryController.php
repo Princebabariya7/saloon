@@ -9,23 +9,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-//    public function index(Request $request)
-//    {
-//        $search     = $request->input('search', '');
-//        $status     = $request->input('status', '');
-//        $categories = Category::when($search, function ($query) use ($search)
-//        {
-//            return $query->where(function ($query) use ($search)
-//            {
-//                $query->orWhere('type', 'LIKE', '%' . $search . '%');
-//            });
-//
-//        })->when($status, function ($query) use ($status)
-//        {
-//            return $query->where('status', $status);
-//        })->sortable(['type' => 'asc', 'status' => 'asc'])->paginate(5);
-//        return view('Backend.category.index')->with('categories', $categories);
-//    }
     public function index(Request $request)
     {
         $search     = $request->input('search', '');
