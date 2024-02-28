@@ -141,7 +141,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pagination pagination-sm float-right">
-                            {{ $users->links() }}
+                            {{ $users->appends(request()->input())->links() }}
                         </div>
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')

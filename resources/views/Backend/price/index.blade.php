@@ -163,7 +163,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pagination pagination-sm float-right">
-                            {{ $prices->links() }}
+                            {{ $prices->appends(request()->input())->links() }}
                         </div>
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')

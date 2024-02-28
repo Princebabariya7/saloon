@@ -179,7 +179,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pagination pagination-sm float-right">
-                            {{ $services->links() }}
+                            {{ $services->appends(request()->input())->links() }}
                         </div>
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '')
