@@ -37,7 +37,7 @@ class Service extends Model
             $query->orwhere('detail', 'LIKE', '%' . $search . '%');
             $query->orwhere('price', 'LIKE', '%' . $search . '%');
             $query->orwhere('duration', 'LIKE', '%' . $search . '%');
-            $query->orwhere('status', 'LIKE', '%' . $search . '%');
+            $query->orwhere('services.status', 'LIKE', '%' . $search . '%');
         }
         return $query;
     }
@@ -47,7 +47,7 @@ class Service extends Model
 
         if ($status)
         {
-            $query->where('status', $status);
+            $query->where('services.status', $status);
         }
 
         return $query;
