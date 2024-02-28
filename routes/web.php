@@ -132,7 +132,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [CategoryController::class, 'show'])->name('admin.category.show');
         });
 
-        Route::group(['prefix' => 'services '], function ()
+        Route::group(['prefix' => 'services'], function ()
         {
             Route::get('/', [ServiceController::class, 'index'])->name('admin.service.index');
             Route::get('create', [ServiceController::class, 'create'])->name('admin.service.create');
