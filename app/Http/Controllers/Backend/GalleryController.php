@@ -10,21 +10,30 @@ use Illuminate\Support\Facades\File;
 
 class GalleryController extends Controller
 {
+//    public function index(Request $request)
+//    {
+//        $search    = $request->input('search', '');
+//        $status    = $request->input('status', '');
+//        $galleries = Gallery::when($search, function ($query) use ($search)
+//        {
+//            return $query->where(function ($query) use ($search)
+//            {
+//                $query->orWhere('name', 'LIKE', '%' . $search . '%');
+//            });
+//        })->when($status, function ($query) use ($status)
+//        {
+//            return $query->where('status', $status);
+//        })->sortable(['image' => 'asc','name' => 'asc', 'status' => 'asc'])->paginate(5);
+//        return view('Backend.gallery.index')->with('galleries', $galleries);
+//    }
+
     public function index(Request $request)
     {
         $search    = $request->input('search', '');
         $status    = $request->input('status', '');
-        $galleries = Gallery::when($search, function ($query) use ($search)
-        {
-            return $query->where(function ($query) use ($search)
-            {
-                $query->orWhere('name', 'LIKE', '%' . $search . '%');
-            });
-        })->when($status, function ($query) use ($status)
-        {
-            return $query->where('status', $status);
-        })->paginate(5);
-        return view('Backend.gallery.index')->with('galleries', $galleries);
+        $galleries = Gallery::search($search)->status($status)->sortable()->paginate(5);
+        return view('Backend.gallery.index')
+            ->with('galleries', $galleries);
     }
 
     public function create()
