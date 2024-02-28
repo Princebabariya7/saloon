@@ -58,7 +58,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @sortablelink('image','Image')
+                                    Image
                                 </th>
                                 <th>
                                     @sortablelink('name','Name')

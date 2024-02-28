@@ -87,13 +87,13 @@
                                     @sortablelink('service', 'Service')
                                 </th>
                                 <th>
-                                    @sortablelink('date', 'Date')
-                                </th>
-                                <th>
-                                    @sortablelink('time', 'Time')
-                                </th>
-                                <th>
                                     @sortablelink('type', 'Type')
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Time
                                 </th>
                                 <th class="text-center">
 
@@ -148,13 +148,13 @@
                                             {{$appointment_detail->services->name}}
                                         </td>
                                         <td>
+                                            {{$appointment_detail->appointment->type}}
+                                        </td>
+                                        <td>
                                             {{$appointment_detail->appointment->date}}
                                         </td>
                                         <td>
                                             {{$appointment_detail->appointment->time}}
-                                        </td>
-                                        <td>
-                                            {{$appointment_detail->appointment->type}}
                                         </td>
                                         <td class="project-state">
                                             @if($appointment_detail->appointment->status =='Pending')
