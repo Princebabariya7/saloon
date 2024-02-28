@@ -36,8 +36,7 @@ class AppointmentController extends Controller
             ->leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')
             ->search($search)
             ->statusType($status, $type)
-            ->orderBy('users.firstname', $direction);
-//        ->orderBy('users.lastname', $direction)
+            ->orderBy($request->sort, $direction);
 
         // Add this condition to filter by date range
         if ($dateRange) {
@@ -47,7 +46,7 @@ class AppointmentController extends Controller
             $query->whereBetween('appointments.date', [$startDate, $endDate]);
         }
 
-        $AppointmentDetail = $query->sortable()->paginate(5);
+        $AppointmentDetail = $query->paginate(5);
 
         return view('Backend.appointment.index')
             ->with('appointments', $AppointmentDetail)

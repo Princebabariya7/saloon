@@ -72,19 +72,19 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @sortablelink('firstname', 'First Name')
+                                    @sortablelink('users.firstname','First Name')
                                 </th>
                                 <th>
-                                    @sortablelink('lastname', ' Last Name')
+                                    @sortablelink('users.lastname', ' Last Name')
 
                                 </th>
                                 <th>
-                                    @sortablelink('category', 'Category')
+                                    @sortablelink('categories.type', 'Category')
 
 
                                 </th>
                                 <th>
-                                    @sortablelink('service', 'Service')
+                                    @sortablelink('services.name', 'Service')
                                 </th>
                                 <th>
                                     @sortablelink('type', 'Type')
