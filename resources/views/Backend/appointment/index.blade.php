@@ -44,9 +44,9 @@
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
-                                {!! Form::text('daterange', null, ['class' => 'form-control form-control-sm float-right', 'id' => 'reservation', 'placeholder' => 'Please Select']) !!}
-{{--                                <input type="hidden" id="anotherInput" name="anotherInput"--}}
-{{--                                       placeholder="Selected Date Range">--}}
+                                {!! Form::text('daterange', request('anotherInput') , ['class' => 'form-control form-control-sm float-right', 'id' => 'reservation', 'placeholder' => 'Select Date']) !!}
+                                {{--                                <input type="hidden" id="anotherInput" name="anotherInput"--}}
+                                {{--                                       placeholder="Selected Date Range">--}}
                                 {!! Form::hidden('anotherInput', request('anotherInput') , ['id'=>'anotherInput' , 'placeholder'=>'Selected Date Range']) !!}
                             </li>
 
@@ -72,7 +72,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                                                        @sortablelink('firstname', 'First Name')
+                                    @sortablelink('firstname', 'First Name')
                                 </th>
                                 <th>
                                     @sortablelink('lastname', ' Last Name')
