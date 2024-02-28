@@ -61,7 +61,7 @@
                                     Image
                                 </th>
                                 <th>
-                                    @sortablelink('Category')
+                                    @sortablelink('categories.type','Category')
                                 </th>
                                 <th>
                                     @sortablelink('name','Service')
