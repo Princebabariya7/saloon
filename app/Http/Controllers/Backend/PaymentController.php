@@ -12,21 +12,31 @@ use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
+//    public function index(Request $request)
+//    {
+//        $search   = $request->input('search', '');
+//        $status   = $request->input('status', '');
+//        $payments = Payment::when($search, function ($query) use ($search)
+//        {
+//            return $query->where(function ($query) use ($search)
+//            {
+//                $query->orWhere('buyer_name', 'LIKE', '%' . $search . '%');
+//            });
+//        })->when($status, function ($query) use ($status)
+//        {
+//            return $query->where('status', $status);
+//        })->paginate(5);
+//        return view('Backend.payment.index')->with('payments', $payments);
+//    }
+
     public function index(Request $request)
     {
         $search   = $request->input('search', '');
         $status   = $request->input('status', '');
-        $payments = Payment::when($search, function ($query) use ($search)
-        {
-            return $query->where(function ($query) use ($search)
-            {
-                $query->orWhere('buyer_name', 'LIKE', '%' . $search . '%');
-            });
-        })->when($status, function ($query) use ($status)
-        {
-            return $query->where('status', $status);
-        })->paginate(5);
-        return view('Backend.payment.index')->with('payments', $payments);
+        $payments = Payment::search($search)->status($status)->sortable()->paginate(5);
+
+        return view('Backend.payment.index')
+            ->with('payments', $payments);
     }
 
     public function create($token)
