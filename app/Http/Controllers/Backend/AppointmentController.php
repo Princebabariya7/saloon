@@ -4,17 +4,13 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\AppointmentStoreRequest;
 use App\Http\Requests\Backend\AppointmentUpdateRequest;
-use App\Http\Requests\Backend\PaymentStoreRequest;
-use App\Mail\OrderMail;
 use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
-use App\Models\Payment;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
