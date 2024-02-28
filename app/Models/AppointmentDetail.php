@@ -11,13 +11,6 @@ class AppointmentDetail extends Model
 {
     use HasFactory, Sortable;
 
-    public $sortable = [
-        'user_id',
-        'appointment_id',
-        'service_id',
-        'users.firstname as u_tet'
-    ];
-
     protected $table    = 'appointment_detail';
     protected $fillable = ['appointment_id', 'service_id', 'user_id'];
 
