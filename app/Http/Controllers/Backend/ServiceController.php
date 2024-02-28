@@ -11,29 +11,22 @@ use Illuminate\Support\Facades\File;
 
 class ServiceController extends Controller
 {
-//    public function index(Request $request)
-//    {
-//        $search   = $request->input('search', '');
-//        $status   = $request->input('status', '');
-//        $services = Service::when($search, function ($query) use ($search)
-//        {
-//            return $query->where(function ($query) use ($search)
-//            {
-//                $query->orWhere('name', 'LIKE', '%' . $search . '%');
-//            });
-//        })->when($status, function ($query) use ($status)
-//        {
-//            return $query->where('status', $status);
-//        })->sortable(['type' => 'asc', 'status' => 'asc'])->paginate(5);
-//        return view('Backend.service.index')->with('services', $services);
-//    }
 
     public function index(Request $request)
     {
         $search   = $request->input('search', '');
         $status   = $request->input('status', '');
-        $services = Service::search($search)->status($status)->sortable()->paginate(5);
-
+        $direction = $request->input('direction', 'asc');
+        if (!in_array($direction, ['asc', 'desc'])) {
+            $direction = 'asc';
+        }
+        $query = Service::leftJoin('categories', 'categories.id', '=', 'services.category_id')
+        ->search($search)
+            ->status($status);
+        if ($request->has('sort') && $request->sort !== '') {
+            $query->orderBy($request->sort, $direction);
+        }
+        $services = $query->paginate(5);
         return view('Backend.service.index')
             ->with('services', $services);
     }
