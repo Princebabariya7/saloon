@@ -15,7 +15,6 @@ use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\View\View;
 
 class AppointmentController extends Controller
 {
