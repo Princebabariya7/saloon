@@ -11,21 +11,31 @@ use Illuminate\Support\Facades\File;
 
 class ServiceController extends Controller
 {
+//    public function index(Request $request)
+//    {
+//        $search   = $request->input('search', '');
+//        $status   = $request->input('status', '');
+//        $services = Service::when($search, function ($query) use ($search)
+//        {
+//            return $query->where(function ($query) use ($search)
+//            {
+//                $query->orWhere('name', 'LIKE', '%' . $search . '%');
+//            });
+//        })->when($status, function ($query) use ($status)
+//        {
+//            return $query->where('status', $status);
+//        })->sortable(['type' => 'asc', 'status' => 'asc'])->paginate(5);
+//        return view('Backend.service.index')->with('services', $services);
+//    }
+
     public function index(Request $request)
     {
         $search   = $request->input('search', '');
         $status   = $request->input('status', '');
-        $services = Service::when($search, function ($query) use ($search)
-        {
-            return $query->where(function ($query) use ($search)
-            {
-                $query->orWhere('name', 'LIKE', '%' . $search . '%');
-            });
-        })->when($status, function ($query) use ($status)
-        {
-            return $query->where('status', $status);
-        })->paginate(5);
-        return view('Backend.service.index')->with('services', $services);
+        $services = Service::search($search)->status($status)->sortable()->paginate(5);
+
+        return view('Backend.service.index')
+            ->with('services', $services);
     }
 
     public function create()
