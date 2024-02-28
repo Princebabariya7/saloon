@@ -55,6 +55,10 @@
                                 <td>{{$payment->gateway}}</td>
                             </tr>
                             <tr>
+                                <td>Transaction Detail:</td>
+                                <td>{{$payment->transaction_detail}}</td>
+                            </tr>
+                            <tr>
                                 <td>Amount:</td>
                                 <td><i class="fas fa-rupee-sign"></i> {{$payment->transaction_amount}}</td>
                             </tr>
