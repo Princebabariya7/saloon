@@ -69,7 +69,7 @@ class AppointmentController extends Controller
             ->statusType($status, $type);
 
         // Check if $request->sort is set and not empty before applying orderBy
-        if ($request->has('sort') && $request->sort !== '')
+        if ($request->has('sort') && $request->sort != '')
         {
             $query->orderBy($request->sort, $direction);
         }
