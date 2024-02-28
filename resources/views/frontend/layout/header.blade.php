@@ -6,12 +6,12 @@
                     <div class="top-bar-left">
                         <div class="text">
                             <a href="{{route('user.register')}}">
-                                <h2>sign up</h2>
+                                <h2>Sign Up</h2>
                             </a>
                         </div>
                         <div class="text">
                             <a href="{{route('user.login')}}">
-                                <h2>sign in</h2>
+                                <h2>Sign In</h2>
                             </a>
                         </div>
                     </div>
