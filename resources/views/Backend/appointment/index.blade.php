@@ -277,7 +277,7 @@
 
                     <div class="card-footer">
                         <div class="pagination pagination-sm float-right">
-                            {{ $appointments->links() }}
+                            {{ $appointments->appends(request()->except('page'))->render() }}
                         </div>
                         <div class="clear-btn">
                             @if(request('search') != '' || request('status') != '' || request('type') != '' || request('anotherInput') != '')
