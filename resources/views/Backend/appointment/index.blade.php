@@ -1,4 +1,4 @@
-@php use App\Models\Category; @endphp
+@php use App\Models\Category;use Collective\Html\Eloquent\FormAccessible; @endphp
 @extends ('Backend.layout.index')
 @section("title")
     Appointments
@@ -45,6 +45,9 @@
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::text('daterange', null, ['class' => 'form-control form-control-sm float-right', 'id' => 'reservation', 'placeholder' => 'Please Select']) !!}
+{{--                                <input type="hidden" id="anotherInput" name="anotherInput"--}}
+{{--                                       placeholder="Selected Date Range">--}}
+                                {!! Form::hidden('anotherInput', request('anotherInput') , ['id'=>'anotherInput' , 'placeholder'=>'Selected Date Range']) !!}
                             </li>
 
                             <li class="nav-item mt-1 mb-1 mr-1">
@@ -69,30 +72,33 @@
                             <thead>
                             <tr>
                                 <th>
-                                    {{--                                    @sortablelink('u_tet', 'First Name')--}}
-                                    First Name
+                                                                        @sortablelink('firstname', 'First Name')
+                                </th>
+                                <th>
+                                    @sortablelink('lastname', ' Last Name')
 
                                 </th>
                                 <th>
-                                    Last Name
+                                    @sortablelink('category', 'Category')
+
+
                                 </th>
                                 <th>
-                                    Category
+                                    @sortablelink('service', 'Service')
                                 </th>
                                 <th>
-                                    Service
+                                    @sortablelink('date', 'Date')
                                 </th>
                                 <th>
-                                    Date
+                                    @sortablelink('time', 'Time')
                                 </th>
                                 <th>
-                                    Time
-                                </th>
-                                <th>
-                                    Type
+                                    @sortablelink('type', 'Type')
                                 </th>
                                 <th class="text-center">
-                                    Status
+
+                                    @sortablelink('status', 'Status')
+
                                 </th>
                                 <th class="text-right">
                                     Action
@@ -276,7 +282,7 @@
                             {{ $appointments->links() }}
                         </div>
                         <div class="clear-btn">
-                            @if(request('search') != '' || request('status') != '' || request('type') != '')
+                            @if(request('search') != '' || request('status') != '' || request('type') != '' || request('anotherInput') != '')
                                 <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
                                 <button type="button" class="btn btn-sm btn-link" id="btn-clear-filters">
                                     Clear
@@ -317,36 +323,34 @@
                     }
                 });
             });
-            // $('#status').change(function () {
-            //     $('.search').trigger('click');
-            // });
-            // $('#type').change(function () {
-            //     $('.search').trigger('click');
-            // });
-            // $('#btn-clear-filters').click(function () {
-            //     $('#search').val('');
-            //     $('#status').val('');
-            //     $('#type').val('');
-            //     $('.search').trigger('click');
-            // })
+
             $('#status, #type').change(function () {
                 $('.search').trigger('click');
             });
 
             $('#btn-clear-filters').click(function () {
                 $('#search').val('');
+                $('#anotherInput').val('');
                 $('#status, #type').val('');
                 $('.search').trigger('click');
             });
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
+            $('#reservation').daterangepicker({
+                autoUpdateInput: false,
                 locale: {
-                    format: 'MM/DD/YYYY hh:mm A'
+                    cancelLabel: 'Clear'
                 }
-            })
+            });
+
+            $('#reservation').on('apply.daterangepicker', function (ev, picker) {
+                var startDate = picker.startDate.format('MM/DD/YYYY');
+                var endDate = picker.endDate.format('MM/DD/YYYY');
+
+                // Update the input field with the selected date range
+                $('#anotherInput').val(startDate + ' - ' + endDate);
+
+                $('#filter').submit();
+            });
+
         });
         @if (\Session::has('add'))
         toastr.success('Your Appointment Has Successfully Added!');
