@@ -49,6 +49,7 @@ class PaymentController extends Controller
                 'buyer_email'        => $request->buyer_email,
                 'transaction_id'     => $request->stripeToken,
                 'transaction_detail' => $transactionDetail,
+                'total'              => $total,
                 'gateway'            => 'Stripe',
                 'appointment_id'     => $request->token,
                 'status'             => $status,

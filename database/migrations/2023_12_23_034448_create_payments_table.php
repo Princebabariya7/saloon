@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration
             $table->string('buyer_email', 50);
             $table->string('transaction_id');
             $table->json('transaction_detail');
+            $table->integer('total');
             $table->string('gateway', 50);
             $table->integer('appointment_id');
             $table->enum('status', ['Pending', 'Success', 'Cancel'])->default('Pending');

@@ -85,7 +85,7 @@
                                             {{$payment->transaction_id}}
                                         </td>
                                         <td>
-                                            <i class="fas fa-rupee-sign"></i> {{$payment->transaction_amount}}
+                                            <i class="fas fa-rupee-sign"></i> {{$payment->total}}
                                         </td>
                                         <td class="project-state">
                                             @if($payment->status =='Pending')
