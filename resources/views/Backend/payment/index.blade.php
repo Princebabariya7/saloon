@@ -59,7 +59,7 @@
                                     @sortablelink('transaction_id','TransactionId')
                                 </th>
                                 <th>
-                                    @sortablelink('transaction_detail','Amount')
+                                    @sortablelink('total','Amount')
                                 </th>
                                 <th class="text-center">
                                     @sortablelink('status','Status')
