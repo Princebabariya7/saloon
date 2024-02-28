@@ -92,7 +92,7 @@ Route::group(['prefix' => 'backend'], function ()
         Route::get('forgot-password', [App\Http\Controllers\Backend\AdminController::class, 'forgot'])->name('admin.forgot-password');
     });
 
-    Route::prefix('user')->group(function ()
+    Route::prefix('users')->group(function ()
     {
         Route::get('/', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'index'])->name('admin.user.index');
         Route::post('store', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'store'])->name('admin.user.store');
@@ -108,7 +108,7 @@ Route::group(['prefix' => 'backend'], function ()
         Route::get('change-password', [App\Http\Controllers\Backend\UserController::class, 'changePassword'])->name('profile.change-password');
         Route::post('change-password', [App\Http\Controllers\Backend\UserController::class, 'changePassword'])->name('user.change_password.post');
 
-        Route::group(['prefix' => 'appointment'], function ()
+        Route::group(['prefix' => 'appointments'], function ()
         {
             Route::get('/', [\App\Http\Controllers\Backend\AppointmentController::class, 'index'])->name('admin.appointment.index');
             Route::get('create', [\App\Http\Controllers\Backend\AppointmentController::class, 'create'])->name('admin.appointment.create');
@@ -121,7 +121,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::post('fetch/timeslot', [\App\Http\Controllers\Backend\AppointmentController::class, 'timeSlot'])->name('admin.fetch.timeslot');
         });
 
-        Route::group(['prefix' => 'category'], function ()
+        Route::group(['prefix' => 'categories'], function ()
         {
             Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
             Route::get('create', [CategoryController::class, 'create'])->name('admin.category.create');
@@ -132,7 +132,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [CategoryController::class, 'show'])->name('admin.category.show');
         });
 
-        Route::group(['prefix' => 'service'], function ()
+        Route::group(['prefix' => 'services '], function ()
         {
             Route::get('/', [ServiceController::class, 'index'])->name('admin.service.index');
             Route::get('create', [ServiceController::class, 'create'])->name('admin.service.create');
@@ -154,7 +154,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [GalleryController::class, 'show'])->name('admin.gallery.show');
         });
 
-        Route::group(['prefix' => 'price'], function ()
+        Route::group(['prefix' => 'prices'], function ()
         {
             Route::get('/', [\App\Http\Controllers\Backend\PriceController::class, 'index'])->name('admin.price.index');
             Route::get('create', [\App\Http\Controllers\Backend\PriceController::class, 'create'])->name('admin.price.create');
@@ -165,7 +165,7 @@ Route::group(['prefix' => 'backend'], function ()
             Route::get('{id}/show', [\App\Http\Controllers\Backend\PriceController::class, 'show'])->name('admin.price.show');
         });
 
-        Route::group(['prefix' => 'payment'], function ()
+        Route::group(['prefix' => 'payments'], function ()
         {
             Route::get('/', [\App\Http\Controllers\Backend\PaymentController::class, 'index'])->name('admin.payment.index');
             Route::get('{id}/create', [\App\Http\Controllers\Backend\PaymentController::class, 'create'])->name('admin.payment.create');
