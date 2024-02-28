@@ -35,23 +35,23 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function appointmentDetails()
-    {
-        $currentDate       = Carbon::now();
-        $appointmentDetail = AppointmentDetail::
-        leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')->where('type','Appointment')->paginate(5);
-
-        return view('Backend.appointment.index')->with('appointments', $appointmentDetail)
-            ->with('currentDate', $currentDate);
-    }
-
-    public function orderDetails()
-    {
-        $currentDate = Carbon::now();
-        $orders      = AppointmentDetail::
-        leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')->where('type','HomeService')->paginate(5);
-
-        return view('Backend.appointment.index')->with('appointments', $orders)
-            ->with('currentDate', $currentDate);
-    }
+//    public function appointmentDetails()
+//    {
+//        $currentDate       = Carbon::now();
+//        $appointmentDetail = AppointmentDetail::
+//        leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')->where('type','Appointment')->paginate(5);
+//
+//        return view('Backend.appointment.index')->with('appointments', $appointmentDetail)
+//            ->with('currentDate', $currentDate);
+//    }
+//
+//    public function orderDetails()
+//    {
+//        $currentDate = Carbon::now();
+//        $orders      = AppointmentDetail::
+//        leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')->where('type','HomeService')->paginate(5);
+//
+//        return view('Backend.appointment.index')->with('appointments', $orders)
+//            ->with('currentDate', $currentDate);
+//    }
 }

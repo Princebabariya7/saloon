@@ -41,12 +41,12 @@
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3>{{ $orderCount }}</h3>
-                                <p>New Orders</p>
+                                <p>Home Services</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="{{ route('admin.order.details') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('admin.appointment.index', ['type' => 'HomeService']) }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -54,12 +54,12 @@
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3>{{ $appointmentCount }}</h3>
-                                <p>New Appointments</p>
+                                <p>Appointments</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="{{ route('admin.appointment.details') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('admin.appointment.index', ['type' => 'Appointment']) }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

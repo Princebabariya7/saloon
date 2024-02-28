@@ -80,8 +80,8 @@ Route::group(['prefix' => 'frontend'], function ()
 
 Route::group(['prefix' => 'backend'], function ()
 {
-    Route::get('appointment_details', [App\Http\Controllers\Backend\DashboardController::class, 'appointmentDetails'])->name('admin.appointment.details');
-    Route::get('orders_details', [App\Http\Controllers\Backend\DashboardController::class, 'orderDetails'])->name('admin.order.details');
+//    Route::get('appointment_details', [App\Http\Controllers\Backend\DashboardController::class, 'appointmentDetails'])->name('admin.appointment.details');
+//    Route::get('orders_details', [App\Http\Controllers\Backend\DashboardController::class, 'orderDetails'])->name('admin.order.details');
     Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.index')->middleware('LogoutMiddleware');
 
     Route::prefix('Admin')->group(function ()
