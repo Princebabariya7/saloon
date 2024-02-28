@@ -107,6 +107,7 @@
                                                         <i class="fa fa-eye"> </i> View
                                                     </a>
                                                 </li>
+                                                @if($user->user_status !='Admin')
                                                 <li class="dropdown-divider"></li>
                                                 <li>
                                                     <a class="dropdown-item small user-delete text-danger"
@@ -115,6 +116,7 @@
                                                         <i class="fa fa-trash"> </i> Delete
                                                     </a>
                                                 </li>
+                                                @endif
                                             </ul>
                                         </td>
                                     </tr>
