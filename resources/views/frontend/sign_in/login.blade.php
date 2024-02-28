@@ -17,10 +17,10 @@
                 <span><i class="icon icon-user"></i></span>
             </div>
             <div class="form-group">
-                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Email' ,'value' => '{{old(email)}}' , 'autocomplete' => 'off']) !!}
+                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Your Email' ,'value' => '{{old(email)}}' , 'autocomplete' => 'off']) !!}
             </div>
             <div class="form-group">
-                {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Password']) !!}
+                {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Your Password']) !!}
             </div>
             <div class="form-group">
                 {!! Form::button('Log In', ['type' =>'submit','class'=>'btn btn-sm btn-block create-account']) !!}
