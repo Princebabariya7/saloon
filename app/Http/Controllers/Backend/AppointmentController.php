@@ -19,54 +19,6 @@ use Illuminate\View\View;
 
 class AppointmentController extends Controller
 {
-//    public function index(Request $request)
-//    {
-//        $search            = $request->input('search', '');
-//        $status            = $request->input('status', '');
-//        $currentDate       = Carbon::now();
-//
-//        $AppointmentDetail = AppointmentDetail::select('appointment_detail.*')
-//            ->leftJoin('users', 'users.id', '=', 'appointment_detail.user_id')
-//            ->when($search, function ($query) use ($search) {
-//                $query->where(function ($query) use ($search) {
-//                    $query->whereHas('services', function ($query) use ($search) {
-//                        $query->where('name', 'LIKE', '%' . $search . '%');
-//                    });
-//                });
-//            })->when($status, function ($query) use ($status) {
-//                $query->whereHas('appointment', function ($query) use ($status) {
-//                    $query->where('status', 'LIKE', '%' . $status . '%');
-//                });
-//            })->sortable()->paginate(5);
-//
-////       $appoinment =  Appointment::all();
-////        dd($appoinment);
-//
-//        return view('Backend.appointment.index')
-//            ->with('appointments', $AppointmentDetail)
-//            ->with('currentDate', $currentDate);
-//    }
-//    public function index(Request $request)
-//    {
-//        $search            = $request->input('search', '');
-//        $status            = $request->input('status', '');
-//        $type              = $request->input('type', '');
-//        $currentDate       = Carbon::now();
-//
-//        $AppointmentDetail = AppointmentDetail::select('appointment_detail.*')
-//            ->leftJoin('users', 'users.id', '=', 'appointment_detail.user_id')
-//            ->leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')
-////            ->leftJoin('services', 'services.id', '=', 'appointment_detail.service_id')
-//            ->search($search)
-//            ->statusType($status,$type)
-//            ->sortable()->paginate(5);
-//
-//        return view('Backend.appointment.index')
-//            ->with('appointments', $AppointmentDetail)
-//            ->with('currentDate', $currentDate);
-//    }
-
-
     public function index(Request $request)
     {
         $search = $request->input('search', '');
@@ -74,12 +26,18 @@ class AppointmentController extends Controller
         $type = $request->input('type', '');
         $dateRange = $request->input('anotherInput', '');
         $currentDate = Carbon::now();
+        $direction = $request->input('direction', 'asc');
+        if (!in_array($direction, ['asc', 'desc'])) {
+            $direction = 'asc';
+        }
 
         $query = AppointmentDetail::select('appointment_detail.*')
             ->leftJoin('users', 'users.id', '=', 'appointment_detail.user_id')
             ->leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')
             ->search($search)
-            ->statusType($status, $type);
+            ->statusType($status, $type)
+            ->orderBy('users.firstname', $direction);
+//        ->orderBy('users.lastname', $direction)
 
         // Add this condition to filter by date range
         if ($dateRange) {
