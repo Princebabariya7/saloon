@@ -100,6 +100,8 @@ Route::group(['prefix' => 'backend'], function ()
         Route::get('{id}/delete', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'destroy'])->name('admin.user.delete');
         Route::post('login', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'login'])->name('admin.user.login');
         Route::post('forgot', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'forgot'])->name('admin.user.forgot');
+        Route::get('{id}/edit', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'edit'])->name('admin.user.edit');
+        Route::put('{id}/update', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'update'])->name('admin.user.update');
     });
 
     Route::middleware(['LogoutMiddleware'])->group(function ()
