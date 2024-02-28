@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Requests\frontend\ForgotRequest;
-use App\Http\Requests\frontend\LoginRequest;
 use App\Http\Requests\frontend\RegisterRequest;
 use App\Models\User;
 use Carbon\Carbon;
