@@ -47,12 +47,12 @@ class AppointmentDetail extends Model
 
         if ($status)
         {
-            $query->where('status', 'LIKE', '%' . $status . '%');
+            $query->where('appointments.status', 'LIKE', '%' . $status . '%');
         }
 
         if ($type)
         {
-            $query->where('type', 'LIKE', '%' . $type . '%');
+            $query->where('appointments.type', 'LIKE', '%' . $type . '%');
         }
 
         return $query;
