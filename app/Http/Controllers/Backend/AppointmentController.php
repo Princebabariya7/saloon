@@ -62,8 +62,8 @@ class AppointmentController extends Controller
         $query = AppointmentDetail::select('appointment_detail.*')
             ->leftJoin('users', 'users.id', '=', 'appointment_detail.user_id')
             ->leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')
-            ->leftJoin('services', 'services.id', '=', 'appointment_detail.service_id')
-            ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
+//            ->leftJoin('services', 'services.id', '=', 'appointment_detail.service_id')
+//            ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
             ->search($search)
             ->statusType($status, $type);
 
