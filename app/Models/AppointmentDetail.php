@@ -37,7 +37,7 @@ class AppointmentDetail extends Model
             $query->orwhere('users.lastname', 'LIKE', '%' . $search . '%');
             $query->orwhere('appointments.status', 'LIKE', '%' . $search . '%');
             $query->orwhere('appointments.type', 'LIKE', '%' . $search . '%');
-//            $query->orwhere('services.name', 'LIKE', '%' . $search . '%');
+            $query->orwhere('services.name', 'LIKE', '%' . $search . '%');
         }
         return $query;
     }
