@@ -16,7 +16,7 @@
                                     Home</a></li>
                             <li class="breadcrumb-item active"><a href="{{route('admin.user.index')}}"> User</a>
                             </li>
-                                <li class="breadcrumb-item text-secondary">Edit</li>
+                            <li class="breadcrumb-item text-secondary">Edit</li>
                         </ol>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Mobile</label>
-                                {!! Form::text('mobile', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::text('mobile', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off', 'maxlength'=>'10']) !!}
                             </div>
                         </div>
                     </div>
@@ -76,13 +76,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Address</label>
-                                {!! Form::text('address', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::textarea('address',null,['class'=>'form-control form-control-sm ','rows'=>'1', 'style'=>'width: 100%;']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">City</label>
-                                {!! Form::text('city', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::select('city', ['' => 'Select one', 'Ahmedabad' => 'Ahmedabad','Rajkot' => 'Rajkot'], null, ['class' => 'form-control form-control-sm select2bs4','style'=>'width: 100%;']) !!}
                             </div>
                         </div>
                     </div>
@@ -90,13 +90,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>State</label>
-                                {!! Form::text('state', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::select('state', ['' => 'Select one', 'Gujrat' => 'Gujrat','Mumbai' => 'Mumbai'], null, ['class' => 'form-control form-control-sm select2bs4','style'=>'width: 100%;']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputStatus">Zipcode</label>
-                                {!! Form::text('zipcode', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::text('zipcode', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off', 'maxlength'=>'6']) !!}
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>User Status</label>
-                                {!! Form::text('user_status', null, ['class' => 'form-control form-control-sm' , 'autocomplete' => 'off']) !!}
+                                {!! Form::select('user_status', ['' => 'Select one', 'Admin' => 'Admin','User' => 'User'], null, ['class' => 'form-control select2bs4 form-control-sm']) !!}
                             </div>
                         </div>
                     </div>
