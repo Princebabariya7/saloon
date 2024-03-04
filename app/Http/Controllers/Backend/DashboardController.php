@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Appointment;
-use App\Models\AppointmentDetail;
 use App\Models\Payment;
 use App\Models\User;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -21,17 +19,20 @@ class DashboardController extends Controller
             ->count();
         $userCount  = User::count();
 
-        $paymentDetails = Payment::all()->pluck('transaction_detail')->toArray();
-        $totalAmount    = collect($paymentDetails)->map(function ($detail)
-        {
-            $decodedDetail = json_decode($detail, true);
-            return $decodedDetail['total'] ?? 0;
-        })->sum();
+//        $paymentDetails = Payment::all()->pluck('transaction_detail')->toArray();
+        $allPayment   = Payment::all()->pluck('total')->toArray();
+        $totalPayment = array_sum($allPayment);
+//        dd($sum);
+//        $totalAmount    = collect($totalPayment)->map(function ($detail)
+//        {
+//            $decodedDetail = json_decode($detail, true);
+//            return $decodedDetail['total'] ?? 0;
+//        })->sum();
         return view('Backend.index', [
             'appointmentCount' => $appointmentCount,
             'orderCount'       => $orderCount,
             'userCount'        => $userCount,
-            'totalAmount'      => $totalAmount,
+            'totalAmount'      => $totalPayment,
         ]);
     }
 
