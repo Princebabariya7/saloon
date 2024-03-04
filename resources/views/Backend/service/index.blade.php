@@ -67,13 +67,13 @@
                                     @sortablelink('name','Service')
                                 </th>
                                 <th>
-                                    @sortablelink('detail','Detail')
+                                    @sortablelink('duration','Duration')
+                                </th>
+                                <th>
+                                    Detail
                                 </th>
                                 <th>
                                     @sortablelink('price','Price')
-                                </th>
-                                <th>
-                                    @sortablelink('duration','Duration')
                                 </th>
                                 <th class="text-center">
                                     @sortablelink('status','Status')
@@ -115,14 +115,14 @@
                                             {{$service->name}}
                                         </td>
                                         <td>
+                                            {{$service->duration}}
+                                            <span>Hr</span>
+                                        </td>
+                                        <td>
                                             {{$service->detail}}
                                         </td>
                                         <td>
                                             <i class="fas fa-rupee-sign"></i> {{$service->price}}
-                                        </td>
-                                        <td>
-                                            {{$service->duration}}
-                                            <span>Hr</span>
                                         </td>
                                         <td class="project-state">
 
