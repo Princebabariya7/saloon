@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\Backend\ForgotPasswordRequest;
 use App\Http\Requests\Backend\SignInRequest;
 use App\Http\Requests\Backend\SignUpRequest;
+use App\Http\Requests\Backend\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,13 +99,19 @@ class AdminRegistrationController extends Controller
         try
         {
             $user = User::find($id);
-            if ($user)
+            if ($user->user_status == "User")
             {
                 $user->delete();
                 $user->appointment()->delete();
                 $user->appointments()->delete();
+                $user->appointmentDetail()->delete();
+            }
+            else
+            {
+                return response()->json(['status' => false, 'message' => 'Record was not deleted'], 200);
             }
             return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
+
         }
         catch (\Exception $e)
         {
@@ -130,7 +137,7 @@ class AdminRegistrationController extends Controller
             ->with('editMode', true);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         $user              = User::find($id);
         $user->firstname   = $request->input('firstname');
@@ -144,7 +151,7 @@ class AdminRegistrationController extends Controller
         $user->user_status = $request->input('user_status');
         $user->update();
 
-        session()->put('update', 'data update');
+        session()->put('update', 'user data was updated');
         return redirect(route('admin.user.index'));
     }
 }
