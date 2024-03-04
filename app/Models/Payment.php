@@ -23,12 +23,12 @@ class Payment extends Model
         protected $table = 'payment';
 
 
-    public function getTransactionAmountAttribute()
-    {
-        $transaction_detail = json_decode($this->transaction_detail);
-
-        return $transaction_detail->total;
-    }
+//    public function getTransactionAmountAttribute()
+//    {
+//        $transaction_detail = json_decode($this->transaction_detail);
+//
+//        return $transaction_detail->total;
+//    }
 
     public function scopeSearch($query, $search)
     {
