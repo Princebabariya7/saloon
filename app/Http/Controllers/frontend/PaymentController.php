@@ -31,17 +31,48 @@ class PaymentController extends Controller
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
+//            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
+//
+//            $statusData = json_decode($transactionDetail, true);
+//
+//            $status = $statusData['status'] ? 'Success' : 'Pending';
+            if ($intent->status === 'requires_action' || $intent->status === 'requires_source_action')
+            {
+                $intentResponse = response()->json([
+                    'status'            => 'requires_action',
+                    'payment_intent_id' => $intent->id,
+                    //'client_secret'     => $intent->client_secret,
+                    'message'           => 'Payment requires additional action',
+                ]);
+            }
+            elseif ($intent->status === 'succeeded')
+            {
+                // Payment was successful
+                $intentResponse = response()->json([
+                    'status'            => 'success',
+                    'payment_intent_id' => $intent->id,
+                    'message'           => 'Payment successful',
+                ]);
+            }
+            else
+            {
+                // Handle other possible status values
+                $intentResponse = response()->json([
+                    'status'  => 'error',
+                    'message' => 'Payment failed',
+                    'details' => $intent->last_payment_error ? $intent->last_payment_error->message : '',
+                ], 500);
+            }
+            //dd($intentResponse);
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
-
-            $statusData = json_decode($transactionDetail, true);
-
-            $status = $statusData['status'] ? 'Success' : 'Pending';
-
+            $statusData        = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
+            $status            = $statusData['status'] ? 'Success' : 'Pending';
             Payment::create([
                 'buyer_name'         => $request->buyer_name,
                 'buyer_email'        => $request->buyer_email,
                 'transaction_id'     => $request->stripeToken,
-                'transaction_detail' => $transactionDetail,
+                'transaction_detail' => json_encode($intentResponse),
+                'total'              => $total,
                 'gateway'            => 'Stripe',
                 'appointment_id'     => $request->token,
                 'status'             => $status,
