@@ -18,24 +18,44 @@ class AppointmentController extends Controller
     {
         $search      = $request->input('search', '');
         $status      = $request->input('status', '');
-        $currentDate = Carbon::now();
+        $type        = $request->input('type', '');
+        $dateRange   = $request->input('anotherInput', '');
+        $currentDate = \Carbon\Carbon::now();
+        $direction   = $request->input('direction', 'asc');
+        if (!in_array($direction, ['asc', 'desc']))
+        {
+            $direction = 'asc';
+        }
 
-        $AppointmentDetail = AppointmentDetail::when($search, function ($query) use ($search)
+        $query = AppointmentDetail::select('appointment_detail.*')
+            ->leftJoin('users', 'users.id', '=', 'appointment_detail.user_id')
+            ->leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')
+            ->leftJoin('services', 'services.id', '=', 'appointment_detail.service_id')
+            ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
+            ->search($search)
+            ->statusType($status, $type);
+
+        // Check if $request->sort is set and not empty before applying orderBy
+        if ($request->has('sort') && $request->sort != '')
         {
-            $query->where(function ($query) use ($search)
-            {
-                $query->whereHas('services', function ($query) use ($search)
-                {
-                    $query->where('name', 'LIKE', '%' . $search . '%');
-                });
-            });
-        })->when($status, function ($query) use ($status)
+            $query->orderBy($request->sort, $direction);
+        }
+
+        // Add this condition to filter by date range
+        if ($dateRange)
         {
-            $query->whereHas('appointment', function ($query) use ($status)
-            {
-                $query->where('status', 'LIKE', '%' . $status . '%');
-            });
-        })->where('user_id', '=', auth()->user()->id)->paginate(5);
+            $dateRange = explode(' - ', $dateRange);
+            $startDate = Carbon::createFromFormat('m/d/Y', $dateRange[0])->startOfDay();
+            $endDate   = Carbon::createFromFormat('m/d/Y', $dateRange[1])->endOfDay();
+            $query->whereBetween('appointments.date', [$startDate, $endDate]);
+        }
+
+        if ($type)
+        {
+            $query->where('appointments.type', $type);
+        }
+
+        $AppointmentDetail = $query->paginate(5);
 
         return view('frontend.book.onlineorderview')->with('appointments', $AppointmentDetail)
             ->with('currentDate', $currentDate);
