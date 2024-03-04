@@ -59,10 +59,10 @@
                                     @sortablelink('email','Email')
                                 </th>
                                 <th>
-                                    @sortablelink('mobile','Mobile')
+                                    Mobile
                                 </th>
                                 <th class="text-center">
-                                    @sortablelink('status','Status')
+                                    Status
                                 </th>
                                 <th class="text-end action">
                                     Action
@@ -77,7 +77,6 @@
                                             <a href="{{route('admin.user.show',$user->id)}}">
                                                 {{$user->firstname}}
                                             </a>
-
                                         </td>
                                         <td>
                                             {{$user->lastname}}
@@ -207,5 +206,9 @@
                 $('.search').trigger('click');
             })
         });
+        @if (\Session::has('update'))
+        toastr.success('User Data Was Updated');
+        {{\Session::forget('update')}}
+        @endif
     </script>
 @endsection
