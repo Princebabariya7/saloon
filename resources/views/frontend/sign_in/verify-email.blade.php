@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @include('frontend.layout.allcss')
-</head>
-<body>
+@extends('frontend.layout.master')
+@section('title')
+    Verify Email
+    @endsection
+@section('mainContent')
+{{--<!DOCTYPE html>--}}
+{{--<html lang="en">--}}
+{{--<head>--}}
+{{--    <meta charset="UTF-8">--}}
+{{--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
+{{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
+{{--    @include('frontend.layout.allcss')--}}
+{{--</head>--}}
+{{--<body>--}}
 <div class="page-header m-0">
     <div class="container">
         <div class="row justify-content-around">
@@ -35,6 +40,7 @@
 </div>
 </body>
 </html>
+@endsection
 @section('custom_js')
     <script>
         @if (\Session::has('registerMsg'))
