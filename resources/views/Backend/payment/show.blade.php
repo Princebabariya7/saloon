@@ -60,7 +60,7 @@
                             </tr>
                             <tr>
                                 <td>Amount:</td>
-                                <td><i class="fas fa-rupee-sign"></i> {{$payment->transaction_amount}}</td>
+                                <td><i class="fas fa-rupee-sign"></i> {{$payment->total}}</td>
                             </tr>
                             <tr>
                                 <td>Status:</td>
