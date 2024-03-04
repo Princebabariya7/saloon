@@ -26,7 +26,6 @@
             <div class="container-fluid">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-
                         {!! Form::open(['route' => ['admin.appointment.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
 
                         <ul class="nav nav-pills nav-search pt-1">
@@ -71,21 +70,10 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>
-                                    @sortablelink('users.firstname','First Name')
-                                </th>
-                                <th>
-                                    @sortablelink('users.lastname', ' Last Name')
-
-                                </th>
-                                <th>
-                                    @sortablelink('categories.type', 'Category')
-
-
-                                </th>
-                                <th>
-                                    @sortablelink('services.name', 'Service')
-                                </th>
+                                <th>@sortablelink('users.firstname','First Name')</th>
+                                <th>@sortablelink('users.lastname', ' Last Name')</th>
+                                <th>@sortablelink('categories.type', 'Category')</th>
+                                <th>@sortablelink('services.name', 'Service')</th>
                                 <th>
                                     Type
                                 </th>
@@ -176,15 +164,15 @@
                                                             <i class="fa fa-eye"> </i> View
                                                         </a>
                                                     </li>
-{{--                                                    @if($appointment_detail->appointment->status != 'Success')--}}
-                                                        <li>
-                                                            <a class="dropdown-item small"
-                                                               href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
-                                                                <i class="fa fa-pen"> </i> Edit
-                                                            </a>
-                                                        </li>
-{{--                                                    @else--}}
-{{--                                                    @endif--}}
+                                                    {{--                                                    @if($appointment_detail->appointment->status != 'Success')--}}
+                                                    <li>
+                                                        <a class="dropdown-item small"
+                                                           href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
+                                                            <i class="fa fa-pen"> </i> Edit
+                                                        </a>
+                                                    </li>
+                                                    {{--                                                    @else--}}
+                                                    {{--                                                    @endif--}}
                                                     @if($appointment_detail->appointment->status != 'Success')
                                                         <li class="dropdown-divider"></li>
                                                         <li>
@@ -357,6 +345,10 @@
         @if (\Session::has('update'))
         toastr.success('Your Data Has Successfully Updated!');
         {{ \Session::forget('update') }}
+        @endif
+        @if (\Session::has('paymentmsg'))
+        toastr.success('payment accepted');
+        {{\Session::forget('paymentmsg')}}
         @endif
     </script>
 @endsection
