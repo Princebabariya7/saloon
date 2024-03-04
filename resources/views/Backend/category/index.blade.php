@@ -55,15 +55,9 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>
-                                    @sortablelink('type','Type')
-                                </th>
-                                <th class="text-center">
-                                    @sortablelink('status','Status')
-                                </th>
-                                <th class="text-end action">
-                                    Action
-                                </th>
+                                <th>@sortablelink('type','Type')</th>
+                                <th class="text-center">@sortablelink('status','Status')</th>
+                                <th class="text-end action">Action</th>
                             </tr>
                             </thead>
                             @if(count($categories) > 0)
@@ -71,19 +65,13 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <td>
-                                            <a href="{{route('admin.category.edit',$category->id)}}">
-                                                {{$category->type}}
-                                            </a>
+                                            <a href="{{route('admin.category.edit',$category->id)}}">{{$category->type}}</a>
                                         </td>
                                         <td class="project-state">
-
                                             @if($category->status =='Active')
-
                                                 <span class="badge badge-success">Active</span>
-
                                             @else
                                                 <span class="badge badge-danger">Inactive</span>
-
                                             @endif
                                         </td>
                                         <td class="project-actions text-right">
