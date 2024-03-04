@@ -93,7 +93,7 @@
                                                                     <i class="fa fa-edit"> </i> Edit
                                                                 </a>
                                                             </li>
-                                                                <li class="dropdown-divider"></li>
+                                                            <li class="dropdown-divider"></li>
                                                         @else
                                                         @endif
                                                         <li>
@@ -151,7 +151,8 @@
                                                             <div class="p-3 bg-danger">
                                                                 <h5 class="modal-title text-light text-center"
                                                                     id="exampleModalLabel">This Appointment Can't Be
-                                                                    Changable </h5>
+                                                                    Changable
+                                                                </h5>
                                                             </div>
                                                         </div>
                                                     </div>
