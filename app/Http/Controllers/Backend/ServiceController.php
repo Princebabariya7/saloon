@@ -14,16 +14,18 @@ class ServiceController extends Controller
 
     public function index(Request $request)
     {
-        $search   = $request->input('search', '');
-        $status   = $request->input('status', '');
+        $search    = $request->input('search', '');
+        $status    = $request->input('status', '');
         $direction = $request->input('direction', 'asc');
-        if (!in_array($direction, ['asc', 'desc'])) {
+        if (!in_array($direction, ['asc', 'desc']))
+        {
             $direction = 'asc';
         }
         $query = Service::leftJoin('categories', 'categories.id', '=', 'services.category_id')
-        ->search($search)
+            ->search($search)
             ->status($status);
-        if ($request->has('sort') && $request->sort !== '') {
+        if ($request->has('sort') && $request->sort !== '')
+        {
             $query->orderBy($request->sort, $direction);
         }
         $services = $query->paginate(5);
