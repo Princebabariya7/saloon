@@ -57,19 +57,10 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>
-                                    Image
-                                </th>
-                                <th>
-                                    @sortablelink('name','Name')
-                                </th>
-
-                                <th class="text-center">
-                                    @sortablelink('status','Status')
-                                </th>
-                                <th class="text-end action">
-                                    Action
-                                </th>
+                                <th>Image</th>
+                                <th>@sortablelink('name','Name')</th>
+                                <th class="text-center">@sortablelink('status','Status')</th>
+                                <th class="text-end action">Action</th>
                             </tr>
                             </thead>
                             @if(count($galleries) > 0)
