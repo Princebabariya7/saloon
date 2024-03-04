@@ -37,9 +37,9 @@
                         <table class="table table-striped table-sm ordertable">
                             <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Categories</th>
-                                <th scope="col">Service</th>
+                                <th>@sortablelink('users.firstname','Name')</th>
+                                <th>@sortablelink('categories.type', 'Category')</th>
+                                <th>@sortablelink('services.name', 'Service')</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Time</th>
@@ -93,6 +93,7 @@
                                                                     <i class="fa fa-edit"> </i> Edit
                                                                 </a>
                                                             </li>
+                                                                <li class="dropdown-divider"></li>
                                                         @else
                                                         @endif
                                                         <li>
@@ -173,7 +174,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pagination pagination-sm  float-right">
-                            {{ $appointments->links() }}
+                            {{ $appointments->appends(request()->input())->links() }}
                         </div>
                         @if(request('search') != '' || request('status') != '')
                             <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
