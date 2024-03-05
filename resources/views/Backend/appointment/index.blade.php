@@ -1,4 +1,4 @@
-@php use App\Models\Category;use Collective\Html\Eloquent\FormAccessible; @endphp
+@php use Illuminate\Support\Facades\Lang; @endphp
 @extends ('Backend.layout.index')
 @section("title")
     Appointments
@@ -44,8 +44,6 @@
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::text('daterange', request('anotherInput') , ['class' => 'form-control form-control-sm float-right', 'id' => 'reservation', 'placeholder' => 'Select Date']) !!}
-                                {{--                                <input type="hidden" id="anotherInput" name="anotherInput"--}}
-                                {{--                                       placeholder="Selected Date Range">--}}
                                 {!! Form::hidden('anotherInput', request('anotherInput') , ['id'=>'anotherInput' , 'placeholder'=>'Selected Date Range']) !!}
                             </li>
 
@@ -70,41 +68,41 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>@sortablelink('users.firstname','First Name')</th>
-                                <th>@sortablelink('users.lastname', ' Last Name')</th>
-                                <th>@sortablelink('categories.type', 'Category')</th>
-                                <th>@sortablelink('services.name', 'Service')</th>
+                                <th>@sortablelink('users.firstname',Lang::get('saloon.username'))</th>
+                                <th>@sortablelink('categories.type', Lang::get('saloon.category_type'))</th>
+                                <th>@sortablelink('services.name', Lang::get('saloon.service_name'))</th>
                                 <th>
-                                    Type
+                                    {{ Lang::get('saloon.type') }}
                                 </th>
                                 <th>
-                                    Date
+                                    {{ Lang::get('saloon.booking_date') }}
                                 </th>
                                 <th>
-                                    Time
+                                    {{ Lang::get('saloon.app_date') }}
+                                </th>
+                                <th>
+                                    {{ Lang::get('saloon.time') }}
                                 </th>
                                 <th class="text-center">
-                                    Status
+                                    {{ Lang::get('saloon.status') }}
                                 </th>
                                 <th class="text-right">
-                                    Action
+                                    {{ Lang::get('saloon.action') }}
                                 </th>
                             </tr>
                             </thead>
                             @if(count($appointments) > 0)
                                 <tbody>
-                                @foreach($appointments as $appointment_detail)
+                                @foreach($appointments as $detail)
+
                                     <tr>
                                         <td>
-                                            {{$appointment_detail->appointment->user->firstname}}
+                                            {{$detail->getUsername()}}
                                         </td>
-                                        <td>
-                                            {{$appointment_detail->appointment->user->lastname}}
-                                        </td>
-                                        @if($appointment_detail->appointment->date > $currentDate->toDateString())
+                                        @if($detail->date > $currentDate->toDateString())
                                             <td>
-                                                <a href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
-                                                    {{Category::find($appointment_detail->services->category_id)->type}}
+                                                <a href="{{route('admin.appointment.edit',$detail->id)}}">
+                                                    {{ $detail->type }}
                                                 </a>
                                             </td>
                                         @else
@@ -112,8 +110,8 @@
                                                 <!-- Button trigger modal -->
                                                 <a data-toggle="modal"
                                                    data-target="#exampleModal"
-                                                   href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
-                                                    {{Category::find($appointment_detail->services->category_id)->type}}
+                                                   href="{{route('admin.appointment.edit',$detail->id)}}">
+                                                    {{ $detail->type }}
                                                 </a>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -131,27 +129,30 @@
                                             </td>
                                         @endif
                                         <td>
-                                            {{$appointment_detail->services->name}}
+                                            {{$detail->name}}
                                         </td>
                                         <td>
-                                            {{$appointment_detail->appointment->type}}
+                                            {{$detail->type}}
                                         </td>
                                         <td>
-                                            {{$appointment_detail->appointment->date}}
+                                            {{$detail->created_at}}
                                         </td>
                                         <td>
-                                            {{$appointment_detail->appointment->time}}
+                                            {{$detail->date}}
+                                        </td>
+                                        <td>
+                                            {{$detail->time}}
                                         </td>
                                         <td class="project-state">
-                                            @if($appointment_detail->appointment->status =='Pending')
+                                            @if($detail->status =='Pending')
                                                 <span class="badge badge-warning">Pending</span>
-                                            @elseif($appointment_detail->appointment->status =='Success')
+                                            @elseif($detail->status =='Success')
                                                 <span class="badge badge-success">Success</span>
-                                            @elseif($appointment_detail->appointment->status =='Cancel')
+                                            @elseif($detail->status =='Cancel')
                                                 <span class="badge badge-danger">Cancel</span>
                                             @endif
                                         </td>
-                                        @if($appointment_detail->appointment->date > $currentDate->toDateString())
+                                        @if($detail->date > $currentDate->toDateString())
                                             <td class="project-actions text-right">
                                                 <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                         data-bs-toggle="dropdown">
@@ -160,24 +161,21 @@
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a class="dropdown-item small"
-                                                           href="{{route('admin.appointment.show',$appointment_detail->id)}}">
+                                                           href="{{route('admin.appointment.show',$detail->id)}}">
                                                             <i class="fa fa-eye"> </i> View
                                                         </a>
                                                     </li>
-                                                    {{--                                                    @if($appointment_detail->appointment->status != 'Success')--}}
                                                     <li>
                                                         <a class="dropdown-item small"
-                                                           href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
+                                                           href="{{route('admin.appointment.edit',$detail->id)}}">
                                                             <i class="fa fa-pen"> </i> Edit
                                                         </a>
                                                     </li>
-                                                    {{--                                                    @else--}}
-                                                    {{--                                                    @endif--}}
-                                                    @if($appointment_detail->appointment->status != 'Success')
+                                                    @if($detail->status != 'Success')
                                                         <li class="dropdown-divider"></li>
                                                         <li>
                                                             <a class="dropdown-item small"
-                                                               href="{{route('admin.payment.pending',$appointment_detail->id)}}">
+                                                               href="{{route('admin.payment.pending',$detail->id)}}">
                                                                 <i class="fas fa-credit-card"></i> Payment
                                                             </a>
                                                         </li>
@@ -187,7 +185,7 @@
                                                     <li>
                                                         <a class="dropdown-item small appointment-delete text-danger"
                                                            href="#"
-                                                           data-href="{{route('admin.appointment.delete',$appointment_detail->id)}}">
+                                                           data-href="{{route('admin.appointment.delete',$detail->id)}}">
                                                             <i class="fa fa-trash"></i> Delete
                                                         </a>
                                                     </li>
@@ -203,22 +201,22 @@
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a class="dropdown-item small"
-                                                           href="{{route('admin.appointment.show',$appointment_detail->id)}}">
+                                                           href="{{route('admin.appointment.show',$detail->id)}}">
                                                             <i class="fa fa-eye"></i> View
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item  small" data-target="#exampleModal"
                                                            data-toggle="modal"
-                                                           href="{{route('admin.appointment.edit',$appointment_detail->id)}}">
+                                                           href="{{route('admin.appointment.edit',$detail->id)}}">
                                                             <i class="fa fa-pen"></i> Edit
                                                         </a>
                                                     </li>
-                                                    @if($appointment_detail->appointment->status != 'Success')
+                                                    @if($detail->status != 'Success')
                                                         <li class="dropdown-divider"></li>
                                                         <li>
                                                             <a class="dropdown-item small"
-                                                               href="{{route('admin.payment.pending',$appointment_detail->id)}}">
+                                                               href="{{route('admin.payment.pending',$detail->id)}}">
                                                                 <i class="fas fa-credit-card"></i> Payment
                                                             </a>
                                                         </li>
@@ -228,7 +226,7 @@
                                                     <li>
                                                         <a class="dropdown-item small appointment-delete text-danger"
                                                            href="#"
-                                                           data-href="{{route('admin.appointment.delete',$appointment_detail->id)}}">
+                                                           data-href="{{route('admin.appointment.delete',$detail->id)}}">
                                                             <i class="fa fa-trash"></i> Delete
                                                         </a>
                                                     </li>
@@ -339,7 +337,7 @@
 
         });
         @if (\Session::has('add'))
-        toastr.success('Your Appointment Has Successfully Added!');
+        toastr.success({{ Lang::get('saloon.success') }});
         {{ \Session::forget('add') }}
         @endif
         @if (\Session::has('update'))
