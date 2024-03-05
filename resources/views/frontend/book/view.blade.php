@@ -1,4 +1,3 @@
-@php use App\Models\Category; @endphp
 @extends('Frontend.layout.master')
 @section('title')
     order list
@@ -144,7 +143,7 @@
                                                         </li>
                                                         <li class="dropdown-divider"></li>
                                                         <li>
-                                                            <a class="dropdown-item  delete_pop text-danger"
+                                                            <a class="dropdown-item delete_pop text-danger"
                                                                href="#"
                                                                data-href="{{route('online.delete',$detail->id)}}">
                                                                 <i class="fa fa-trash"></i> Delete
