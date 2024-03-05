@@ -11,5 +11,5 @@ return [
     'app_date'     => 'App. Date',
     'booking_date' => 'Booking Date',
     'status'       => 'Status',
-    'success'      => 'Your appointment is successfully added!!',
+    'success'      => 'Your appointment is successfully added!',
 ];
