@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\frontend\PaymentRequest;
+use App\Http\Requests\Frontend\PaymentRequest;
 use App\Models\AppointmentDetail;
 use App\Models\Payment;
 use App\Models\Service;
@@ -14,7 +14,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        return view('frontend.payment.view')->with('data', Payment::all());
+        return view('Frontend.payment.view')->with('data', Payment::all());
     }
 
     public function store(PaymentRequest $request)
@@ -91,7 +91,7 @@ class PaymentController extends Controller
 
     public function create($token)
     {
-        return view('frontend.payment.index')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
+        return view('Frontend.payment.index')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
     }
 
     public function pending($token)
@@ -107,6 +107,6 @@ class PaymentController extends Controller
 
     public function invoice()
     {
-        return view('frontend.order.orderInvoice');
+        return view('Frontend.order.orderInvoice');
     }
 }
