@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\frontend\ForgotRequest;
-use App\Http\Requests\frontend\RegisterRequest;
+use App\Http\Requests\Frontend\ForgotRequest;
+use App\Http\Requests\Frontend\RegisterRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -116,7 +116,7 @@ class RegisterDate extends Controller
             $user->password = Hash::make($request->input('password'));
             $user->update();
             session()->put('forgot', 'your password has been changed');
-            return view('frontend.sign_in.login');
+            return view('Frontend.sign_in.login');
         }
         catch (\Exception $e)
         {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ class VerificationController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
         return $request->user()->hasVerifiedEmail()
-            ? redirect()->route('home') : view('frontend.sign_in.verify-email');
+            ? redirect()->route('home') : view('Frontend.sign_in.verify-email');
     }
 
     public function verify(EmailVerificationRequest $request)
