@@ -57,7 +57,7 @@ class AppointmentController extends Controller
 
         $AppointmentDetail = $query->paginate(5);
 
-        return view('frontend.book.onlineorderview')->with('appointments', $AppointmentDetail)
+        return view('frontend.book.view')->with('appointments', $AppointmentDetail)
             ->with('currentDate', $currentDate);
     }
 

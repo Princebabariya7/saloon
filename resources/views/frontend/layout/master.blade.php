@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('Frontend.layout.allcss')
+@include('Frontend.layout.all_css')
 <body>
 @include('Frontend.layout.header')
 @yield('mainContent')

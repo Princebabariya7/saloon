@@ -25,7 +25,7 @@ class PriceController extends Controller
 
     public function create()
     {
-        return view('Frontend.price.priceAdd')->with('editMode', false);
+        return view('Frontend.price.price_add')->with('editMode', false);
     }
 
     public function store(PriceRequest $request)
@@ -53,7 +53,7 @@ class PriceController extends Controller
     {
         $price = Price::find($id);
 
-        return view('Frontend.price.priceAdd')
+        return view('Frontend.price.price_add')
             ->with('price', $price)
             ->with('editMode', true);
     }
@@ -112,6 +112,6 @@ class PriceController extends Controller
 
     public function view()
     {
-        return view('price.priceAdd');
+        return view('price.price_add');
     }
 }
