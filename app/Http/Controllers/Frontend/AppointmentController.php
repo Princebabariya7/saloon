@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\frontend\AppointmentAddRequest;
-use App\Http\Requests\frontend\AppointmentEditRequest;
+use App\Http\Requests\Frontend\AppointmentAddRequest;
+use App\Http\Requests\Frontend\AppointmentEditRequest;
 use App\Models\AppointmentDetail;
 use App\Models\AppointmentSlot;
 use App\Models\Category;
@@ -69,7 +69,7 @@ class AppointmentController extends Controller
 
         $AppointmentDetail = $query->paginate(5);
 
-        return view('frontend.book.view')->with('appointments', $AppointmentDetail)
+        return view('Frontend.book.view')->with('appointments', $AppointmentDetail)
             ->with('currentDate', $currentDate);
     }
 
@@ -78,7 +78,7 @@ class AppointmentController extends Controller
         $category  = Category::getList();
         $timeSlots = [];
 
-        return view('frontend.book.order')->with('editMode', false)
+        return view('Frontend.book.order')->with('editMode', false)
             ->with('category', $category)
             ->with('timeSlots', $timeSlots);
     }
@@ -117,7 +117,7 @@ class AppointmentController extends Controller
         $appointmentSlot = AppointmentSlot::find($appointments->appointment_id);
         $timeSlots       = [];
 
-        return view('frontend.book.order')
+        return view('Frontend.book.order')
             ->with('appointments', $appointments)
             ->with('service_id', $appointments->service_id)
             ->with('category_id', (Service::find($appointments->service_id)->category_id))
@@ -179,12 +179,12 @@ class AppointmentController extends Controller
 
     public function view()
     {
-        return view('frontend.book.order');
+        return view('Frontend.book.order');
     }
 
     public function orderlist()
     {
-        return view('frontend.order.orderlist');
+        return view('Frontend.order.orderlist');
     }
 
     public function fetchServices()
@@ -221,7 +221,7 @@ class AppointmentController extends Controller
         $slotDay  = (Carbon::create(\request()->date)->dayName);
         return response()->json(
             [
-                'slotHtml' => view('frontend.book.fetchslot')
+                'slotHtml' => view('Frontend.book.fetchslot')
                     ->with('slotDay', $slotDay)
                     ->with('slots', $slots)
                     ->with('timeSlots', $slotList)->render(),

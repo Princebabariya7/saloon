@@ -1,4 +1,4 @@
-@extends('frontend.layout.master')
+@extends('Frontend.layout.master')
 @section('title')
     Privacy Policy
 @endsection
