@@ -29,7 +29,7 @@ class AppointmentController extends Controller
 
         $query = Appointment::with('details')
             ->select(
-                'appointments.id',
+                'appointment_detail.id',
                 'appointments.date',
                 'appointments.time',
                 'users.firstname',
