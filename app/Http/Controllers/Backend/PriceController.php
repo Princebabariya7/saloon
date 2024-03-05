@@ -31,7 +31,7 @@ class PriceController extends Controller
 
     public function create()
     {
-        return view('Backend.price.price_form')->with('editMode', false);
+        return view('Backend.price.form')->with('editMode', false);
     }
 
     public function store(PriceStoreRequest $request)
@@ -61,7 +61,7 @@ class PriceController extends Controller
     public function edit($id)
     {
         $price = Price::find($id);
-        return view('Backend.price.price_form')
+        return view('Backend.price.form')
             ->with('price', $price)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true);
