@@ -1,5 +1,5 @@
 @php use App\Models\Category; @endphp
-@extends('frontend.layout.master')
+@extends('Frontend.layout.master')
 @section('title')
     order list
 @endsection
