@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Models\Gallery;
 use App\Models\Price;
@@ -13,52 +13,52 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.index')->with('services', Service::all());
+        return view('Frontend.index')->with('services', Service::all());
     }
 
     public function register()
     {
-        return view('frontend.sign_in.register');
+        return view('Frontend.sign_in.register');
     }
 
     public function login()
     {
-        return view('frontend.sign_in.login');
+        return view('Frontend.sign_in.login');
     }
 
     public function forgot()
     {
-        return view('frontend.sign_in.forgot');
+        return view('Frontend.sign_in.forgot');
     }
 
     public function gallery()
     {
-        return view('frontend.gallery.index')->with('galleries', Gallery::all());
+        return view('Frontend.gallery.index')->with('galleries', Gallery::all());
     }
 
     public function terms()
     {
-        return view('frontend.terms_policy.index');
+        return view('Frontend.terms_policy.index');
     }
 
     public function privacy()
     {
-        return view('frontend.terms_policy.privacy');
+        return view('Frontend.terms_policy.privacy');
     }
 
     public function team()
     {
-        return view('frontend.team.index');
+        return view('Frontend.team.index');
     }
 
     public function price()
     {
-        return view('frontend.price.index')->with('services', Service::all());
+        return view('Frontend.price.index')->with('services', Service::all());
     }
 
     public function service()
     {
-        return view('frontend.service.index');
+        return view('Frontend.service.index');
     }
 
     public function logout(Request $request)
