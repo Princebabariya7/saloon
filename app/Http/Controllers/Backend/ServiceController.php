@@ -47,7 +47,7 @@ class ServiceController extends Controller
     public function create()
     {
         $category = Category::pluck('type', 'id')->toArray();
-        return view('Backend.service.service_form')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])->with('category', $category);
+        return view('Backend.service.form')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])->with('category', $category);
     }
 
     public function store(ServiceStoreRequest $request)
@@ -86,7 +86,7 @@ class ServiceController extends Controller
         $category = Category::pluck('type', 'id')->toArray();
 
         $service = Service::find($id);
-        return view('Backend.service.service_form')
+        return view('Backend.service.form')
             ->with('service', $service)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true)
