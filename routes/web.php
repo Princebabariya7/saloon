@@ -89,7 +89,7 @@ Route::group(['prefix' => 'backend'], function ()
         Route::get('logout', [App\Http\Controllers\Backend\AdminController::class, 'logout'])->name('admin.logout');
         Route::get('sign_in', [App\Http\Controllers\Backend\AdminController::class, 'signIn'])->name('admin.sign_in');
         Route::get('sign_up', [App\Http\Controllers\Backend\AdminController::class, 'signUp'])->name('admin.sign_up');
-        Route::get('forgot-password', [App\Http\Controllers\Backend\AdminController::class, 'forgot'])->name('admin.forgot-password');
+        Route::get('forgot_password', [App\Http\Controllers\Backend\AdminController::class, 'forgot'])->name('admin.forgot_password');
     });
 
     Route::prefix('users')->group(function ()
