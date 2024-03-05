@@ -14,32 +14,29 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="card my-5">
-                    <div class="card-header p-0">
-                        {{ Form::open(['route' => ['online.index'], 'method'=>'get']) }}
-                        <div class="row  justify-content-between px-3 pt-3">
-                            <div class="col-md-2">
-                                <div class="input-group pb-2">
+                    <div class="card-header">
+                        {!! Form::open(['route' => ['online.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
+
+                        <ul class="nav nav-pills nav-search pt-1">
+
+                            <li class="nav-item mr-1">
+                                <div class="input-group mb-1">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','placeholder' => 'Search','autocomplete' =>'off']) !!}
                                     <div class="input-group-append">
                                         <button class="btn btn-sm btn-secondary search-btn" type="submit">
                                             <i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="custom-control custom-switch float-right">
-                                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                            <label class="custom-control-label" for="customSwitch1"></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-pills  ml-auto">
+                            <li class="nav-item mt-1 mb-1 mr-1">
+                                {!! Form::select('language', ['en' => 'English', 'es' => 'Spanish', 'fr' => 'French'], request('language'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
+                            </li>
+                            <li class="nav-item mt-1 mb-1 mr-1">
+                                {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
+                            </li>
+                        </ul>
                         {!! Form::close() !!}
                     </div>
                     <div class="card-body p-0">
