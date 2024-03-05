@@ -21,7 +21,7 @@ class GalleryController extends Controller
 
     public function create()
     {
-        return view('Backend.gallery.gallery_management')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive']);
+        return view('Backend.gallery.form')->with('editMode', false)->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive']);
     }
 
     public function store(GalleryStoreRequest $request)
@@ -56,7 +56,7 @@ class GalleryController extends Controller
     {
         $gallery = gallery::find($id);
 
-        return view('Backend.gallery.gallery_management')
+        return view('Backend.gallery.form')
             ->with('gallery', $gallery)
             ->with('status', ['' => 'Select one', 'Active' => 'Active', 'Inactive' => 'Inactive'])
             ->with('editMode', true);
