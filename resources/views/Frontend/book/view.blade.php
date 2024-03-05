@@ -17,7 +17,7 @@
                     <div class="card-header p-0">
                         {{ Form::open(['route' => ['online.index'], 'method'=>'get']) }}
                         <div class="row  justify-content-between px-3 pt-3">
-                            <div class=" col-md-2">
+                            <div class="col-md-2">
                                 <div class="input-group pb-2">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','placeholder' => 'Search','autocomplete' =>'off']) !!}
                                     <div class="input-group-append">
@@ -26,8 +26,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-2">
-                                {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
+                            <div class="form-group col-md-4">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="custom-control custom-switch float-right">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                            <label class="custom-control-label" for="customSwitch1"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {!! Form::close() !!}
