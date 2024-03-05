@@ -3,12 +3,12 @@
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\ServiceController;
-use App\Http\Controllers\frontend\HomeController;
-use App\Http\Controllers\frontend\AppointmentController;
-use App\Http\Controllers\frontend\PaymentController;
-use App\Http\Controllers\frontend\PriceController;
-use App\Http\Controllers\frontend\RegisterDate;
-use App\Http\Controllers\frontend\VerificationController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\AppointmentController;
+use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\PriceController;
+use App\Http\Controllers\Frontend\RegisterDate;
+use App\Http\Controllers\Frontend\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('EmailVerificationMiddleware');
