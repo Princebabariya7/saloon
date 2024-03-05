@@ -68,9 +68,9 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>@sortablelink('users.firstname',Lang::get('saloon.username'))</th>
-                                <th>@sortablelink('categories.type', Lang::get('saloon.category_type'))</th>
-                                <th>@sortablelink('services.name', Lang::get('saloon.service_name'))</th>
+                                <th>@sortablelink('users.firstname',__('saloon.user_name'))</th>
+                                <th>@sortablelink('categories.type', __('saloon.category'))</th>
+                                <th>@sortablelink('services.name', __('saloon.service_name'))</th>
                                 <th>
                                     {{ Lang::get('saloon.type') }}
                                 </th>

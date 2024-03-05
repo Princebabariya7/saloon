@@ -4,6 +4,7 @@ return [
     'action'       => 'Action',
     'user_name'    => 'Username',
     'category'     => 'Category',
+    'service_name'     => 'Service',
     'type'         => 'Type',
     'date'         => 'Date',
     'time'         => 'Time',
