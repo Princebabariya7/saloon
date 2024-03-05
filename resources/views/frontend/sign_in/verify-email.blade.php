@@ -1,4 +1,4 @@
-@extends('frontend.layout.master')
+@extends('Frontend.layout.master')
 @section('title')
     Verify Email
     @endsection
@@ -9,7 +9,7 @@
 {{--    <meta charset="UTF-8">--}}
 {{--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
 {{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
-{{--    @include('frontend.layout.allcss')--}}
+{{--    @include('Frontend.layout.allcss')--}}
 {{--</head>--}}
 {{--<body>--}}
 <div class="page-header m-0">
