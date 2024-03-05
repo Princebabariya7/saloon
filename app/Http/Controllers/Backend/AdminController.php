@@ -25,6 +25,6 @@ class AdminController extends Controller
 
     public function forgot()
     {
-        return view('Backend.login_page.forgot-password');
+        return view('Backend.login_page.forgot_password');
     }
 }
