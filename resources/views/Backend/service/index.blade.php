@@ -107,7 +107,7 @@
                                         </td>
                                         <td>
                                             <a href="{{route('admin.category.index')}}">
-                                                {{$service->categories->type}}
+                                                {{$service->type}}
                                             </a>
                                         </td>
                                         <td>

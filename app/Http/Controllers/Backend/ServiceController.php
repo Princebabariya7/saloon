@@ -21,7 +21,18 @@ class ServiceController extends Controller
         {
             $direction = 'asc';
         }
-        $query = Service::leftJoin('categories', 'categories.id', '=', 'services.category_id')
+
+        $query = Service::select(
+            'services.id',
+            'services.image',
+            'categories.type',
+            'services.name',
+            'services.duration',
+            'services.detail',
+            'services.price',
+            'services.status',
+        )
+            ->join('categories', 'categories.id', '=', 'services.category_id')
             ->search($search)
             ->status($status);
         if ($request->has('sort') && $request->sort !== '')
