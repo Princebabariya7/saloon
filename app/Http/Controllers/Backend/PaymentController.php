@@ -24,7 +24,7 @@ class PaymentController extends Controller
 
     public function create($token)
     {
-        return view('Backend.payment.payment_form')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
+        return view('Backend.payment.form')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
     }
 
     public function store(PaymentStoreRequest $request)
