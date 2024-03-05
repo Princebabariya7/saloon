@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('frontend.layout.allcss')
+@include('Frontend.layout.allcss')
 <body>
-@include('frontend.layout.header')
+@include('Frontend.layout.header')
 @yield('mainContent')
-@include('frontend.layout.footer')
-@include('frontend.layout.all_js')
+@include('Frontend.layout.footer')
+@include('Frontend.layout.all_js')
 </body>
 </html>
