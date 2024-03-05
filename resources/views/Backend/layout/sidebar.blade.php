@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.appointment.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.appointment.index') }}"
-                       class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }} {{Request::segment(2) == 'appointment' ? 'active' :'' }} {{Request::segment(2) == 'orders_details' ? 'active' :'' }} {{Request::segment(2) == 'appointment_details' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.appointment.index') ? 'active' : '' }} {{Request::segment(2) == 'appointments' ? 'active' :'' }} {{Request::segment(2) == 'orders_details' ? 'active' :'' }} {{Request::segment(2) == 'appointment_details' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>
                             Appointments / Orders
@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.category.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.category.index') }}"
-                       class="nav-link {{ Route::is('admin.category.index') ? 'active' : '' }} {{Request::segment(2) == 'category' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.category.index') ? 'active' : '' }} {{Request::segment(2) == 'categories' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-cubes"></i>
                         <p>
                             Categories
@@ -43,7 +43,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.service.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.service.index') }}"
-                       class="nav-link {{ Route::is('admin.service.index') ? 'active' : '' }} {{Request::segment(2) == 'service' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.service.index') ? 'active' : '' }} {{Request::segment(2) == 'services' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-cut"></i>
                         <p>
                             Services
@@ -61,7 +61,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.payment.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.payment.index') }}"
-                       class="nav-link {{ Route::is('admin.payment.index') ? 'active' : '' }} {{Request::segment(2) == 'payment' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.payment.index') ? 'active' : '' }} {{Request::segment(2) == 'payments' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-credit-card"></i>
                         <p>
                             Payments
@@ -70,7 +70,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('admin.user.index') ? 'menu-open' : '' }}">
                     <a href="{{ route('admin.user.index') }}"
-                       class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }} {{Request::segment(1) == 'user' ? 'active' :'' }}">
+                       class="nav-link {{ Route::is('admin.user.index') ? 'active' : '' }} {{Request::segment(2) == 'users' ? 'active' :'' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
