@@ -36,7 +36,6 @@
                                         </button>
                                     </div>
                                 </div>
-
                             </li>
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
