@@ -34,7 +34,7 @@ class AppointmentController extends Controller
                 'appointments.time',
                 'users.firstname',
                 'users.lastname',
-                'categories.type',
+                'categories.type as category',
                 'services.name',
                 'appointments.type',
                 'appointments.status',

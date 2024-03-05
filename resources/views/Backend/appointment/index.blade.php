@@ -102,7 +102,7 @@
                                         @if($detail->date > $currentDate->toDateString())
                                             <td>
                                                 <a href="{{route('admin.appointment.edit',$detail->id)}}">
-                                                    {{ $detail->type }}
+                                                    {{ $detail->category }}
                                                 </a>
                                             </td>
                                         @else
@@ -111,7 +111,7 @@
                                                 <a data-toggle="modal"
                                                    data-target="#exampleModal"
                                                    href="{{route('admin.appointment.edit',$detail->id)}}">
-                                                    {{ $detail->type }}
+                                                    {{ $detail->category }}
                                                 </a>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -249,7 +249,7 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-                            @else
+    @else
                                 <tfoot>
                                 <tr>
                                     <td colspan="8" class="text-center">
