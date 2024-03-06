@@ -54,6 +54,7 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::get('create', [AppointmentController::class, 'create'])->name('online.create');
             Route::post('fetch/services', [AppointmentController::class, 'fetchServices'])->name('online.fetch.services');
             Route::post('fetch/timeslot', [AppointmentController::class, 'timeSlot'])->name('online.fetch.timeslot');
+            Route::post('/set-locale', [AppointmentController::class, 'setLocale'])->name('online.setLocale');
         });
 
         Route::group(['prefix' => 'payment'], function ()

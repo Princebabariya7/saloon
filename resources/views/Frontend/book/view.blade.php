@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">Appointment List</h1>
+                <h1 class="login_logo font-weight-normal">{{ $orderListTranslation }}</h1>
             </div>
         </div>
     </div>
@@ -31,7 +31,9 @@
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
-                                {!! Form::select('language', ['en' => 'English', 'es' => 'Spanish', 'fr' => 'French'], request('language'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
+                                {{--                                {!! Form::select('language', ['en' => 'English', 'hi' => 'Hindi'], null, ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}--}}
+                                {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], null, ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
+
                             </li>
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
@@ -203,21 +205,23 @@
 @endsection
 @section('custom_js')
     <script>
-        @if (\Session:: has('msg'))
-        toastr.success('your order has been booked');
-        {{\Session::forget('msg')}}
+        @if (\Session::has('msg'))
+        toastr.success('{{ __('saloon.your_order_booked') }}');
+        {{ \Session::forget('msg') }}
         @endif
+
         $(document).ready(function () {
             $('.delete_pop').click(function () {
                 var $_this = $(this);
+
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'You won\'t be able to revert this!',
+                    title: '{{ __('saloon.confirm_delete_title') }}',
+                    text: '{{ __('saloon.confirm_delete_text') }}',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: '{{ __('saloon.confirm_delete_button') }}'
                 }).then((result) => {
                     if (result.isConfirmed)
                     {
@@ -232,18 +236,50 @@
                     }
                 });
             });
+
             @if (\Session::has('update'))
-            toastr.success('your order has been updated');
-            {{\Session::forget('update')}}
+            toastr.success('{{ __('saloon.update_message') }}');
+            {{ \Session::forget('update') }}
             @endif
+
             $('#myDropdown').change(function () {
                 $('.search-btn').trigger('click');
             });
+
             $('.clear').click(function () {
                 $('#search').val('');
                 $('#myDropdown').val('');
                 $('.search-btn').trigger('click');
             });
         });
+
+        // Add the language switch logic
+        $('#languageDropdown').change(function () {
+            var selectedLanguage = $(this).val();
+            console.log(selectedLanguage);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Your AJAX request here
+            $.ajax({
+                url: '{{route('online.setLocale')}}',
+                type: 'POST',
+                data: {locale: selectedLanguage},
+                success: function (response) {
+                    // Refresh the page or update content based on the new locale
+                    // location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error updating language:', error);
+                    console.log(xhr.responseText);
+                }
+
+            });
+        });
     </script>
+
 @endsection

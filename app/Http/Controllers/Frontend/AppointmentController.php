@@ -11,6 +11,7 @@ use App\Models\Appointment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 
 class AppointmentController extends Controller
 {
@@ -245,4 +246,18 @@ class AppointmentController extends Controller
             '8:00 PM - 9:00 PM'   => '8:00 PM - 9:00 PM',
         ];
     }
+    public function setLocale(Request $request)
+    {
+        $locale = $request->input('locale', 'en'); // Default to English if no locale is provided
+        dd($locale);
+        App::setLocale($locale);
+
+        // You can store the selected locale in the session if needed
+//        $request->session()->put('locale', $locale);
+
+        return response()->json(['success' => true]);
+    }
+
+
+
 }
