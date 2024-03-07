@@ -7,7 +7,7 @@ Stylist
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Barber</h2>
+                    <h2> {{ Lang::get('saloon.barber') }}</h2>
                 </div>
             </div>
         </div>
@@ -15,8 +15,8 @@ Stylist
     <div class="team">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Barber Team</p>
-                <h2>Meet Our Hair Cut Expert Barber</h2>
+                <p>{{ Lang::get('saloon.our_barber_team_main') }}</p>
+                <h2>{{ Lang::get('saloon.meet_our_expert_barber') }}</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -25,8 +25,8 @@ Stylist
                             <img src="{{asset('cd/img/team-1.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>Master Barber</p>
+                            <h2>{{ Lang::get('saloon.adam_phillips') }}</h2>
+                            <p>{{ Lang::get('saloon.master_barber') }}</p>
                         </div>
                     </div>
                 </div>
@@ -36,8 +36,8 @@ Stylist
                             <img src="{{asset('cd/img/team-2.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Dylan Adams</h2>
-                            <p>Hair Expert</p>
+                            <h2>{{ Lang::get('saloon.dylan_adams') }}</h2>
+                            <p>{{ Lang::get('saloon.hair_expert') }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,8 +47,8 @@ Stylist
                             <img src="{{asset('cd/img/team-3.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Gloria Edwards</h2>
-                            <p>Beard Expert</p>
+                            <h2>{{ Lang::get('saloon.gloria_edwards') }}</h2>
+                            <p>{{ Lang::get('saloon.beard_expert') }}</p>
                         </div>
                     </div>
                 </div>
@@ -58,8 +58,8 @@ Stylist
                             <img src="{{asset('cd/img/team-4.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Josh Dunn</h2>
-                            <p>Color Expert</p>
+                            <h2>{{ Lang::get('saloon.josh_dunn') }}</h2>
+                            <p>{{ Lang::get('saloon.color_expert') }}</p>
                         </div>
                     </div>
                 </div>

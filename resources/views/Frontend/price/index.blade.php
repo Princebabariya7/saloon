@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Price</h2>
+                    <h2>{{ Lang::get('saloon.price') }}</h2>
                 </div>
             </div>
         </div>
@@ -15,8 +15,8 @@
     <div class="price">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Best Pricing</p>
-                <h2>We Provide Best Price in the City</h2>
+                <p>{{ Lang::get('saloon.our_best_pricing') }}</p>
+                <h2>{{ Lang::get('saloon.best_price_city') }}</h2>
             </div>
             <div class="row">
                 @foreach($services as $service)

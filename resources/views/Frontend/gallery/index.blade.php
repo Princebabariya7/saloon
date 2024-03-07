@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Gallery</h2>
+                    <h2>{{ Lang::get('saloon.gallery') }}</h2>
                 </div>
             </div>
         </div>
@@ -15,8 +15,8 @@
     <div class="portfolio">
         <div class="container">
             <div class="section-header text-center">
-                <p>Barber Image Gallery</p>
-                <h2>Some Images From Our Barber Gallery</h2>
+                <p>{{ Lang::get('saloon.barber_image_gallery') }}</p>
+                <h2>{{ Lang::get('saloon.some_images_from_our_barber_gallery') }}</h2>
             </div>
             <div class="row portfolio-container">
 

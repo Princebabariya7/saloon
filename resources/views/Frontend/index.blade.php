@@ -8,15 +8,12 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <div class="hero-text">
-                        <h1>Welcome To Hairck Saloon</h1>
-                        <p> Welcome to Hairck Saloon, where beauty meets sophistication. Our Saloon is a haven of
-                            elegance
-                            and expertise, dedicated to delivering the ultimate in grooming and pampering
-                            experiences. </p>
+                        <h1>{{ Lang::get('saloon.welcome_message') }}</h1>
+                        <p> {{ Lang::get('saloon.saloon_description') }}</p>
                         @if(auth()->user() == null || empty(auth()->user()->email_verified_at))
                         @else
-                            <a class="btn" href="{{route('online.create')}}">Book Appointment<i
-                                    class="fa fa-arrow-right ms-5 arrowForbook"></i></a>
+                            <a class="btn" href="{{route('online.create')}}">{{ Lang::get('saloon.book_appointment') }}
+                                <i class="fa fa-arrow-right ms-5 arrowForbook"></i></a>
                         @endif
                     </div>
                 </div>
@@ -38,23 +35,13 @@
                 </div>
                 <div class="col-lg-7 col-md-6">
                     <div class="section-header text-left">
-                        <p>Learn About Us</p>
-                        <h2>25 Years Experience</h2>
+                        <p> {{ Lang::get('saloon.learn_about_us') }}</p>
+                        <h2> {{ Lang::get('saloon.experience_years') }}</h2>
                     </div>
                     <div class="about-text">
-                        <p> Harick Saloon is an embodiment of sophistication and skill, offering a refined environment
-                            where
-                            clients can access top-notch hairstyling, skincare, and wellness services. Our team of
-                            highly
-                            trained professionals is dedicated to enhancing your natural beauty while prioritizing the
-                            well-being of your hair and skin. </p>
+                        <p> {{ Lang::get('saloon.saloon_embodiment') }}</p>
 
-                        <p> At Harick Saloon, we believe in the power of nature. We exclusively use natural products to
-                            ensure that every treatment not only leaves you looking stunning but also promotes the
-                            long-term
-                            health and radiance of your hair and skin. Our commitment to natural ingredients reflects
-                            our
-                            dedication to your overall well-being. </p>
+                        <p> {{ Lang::get('saloon.power_of_nature') }} </p>
                     </div>
                 </div>
             </div>
@@ -63,8 +50,8 @@
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Saloon Services</p>
-                <h2>Best Saloon and Barber Services for You</h2>
+                <p>{{ Lang::get('saloon.saloon_services') }}</p>
+                <h2>{{ Lang::get('saloon.best_services') }}</h2>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -72,10 +59,8 @@
                         <div class="service-img">
                             <img src="{{asset('cd/img/service-1.jpg')}}" alt="Image">
                         </div>
-                        <h3>Hair Cut</h3>
-                        <p> A haircut is what a barber does when he trims your hair with scissors. You might decide it's
-                            time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Saloons
-                            for a haircut.</p>
+                        <h3>{{ Lang::get('saloon.hair_cut') }}</h3>
+                        <p> {{ Lang::get('saloon.haircut_description') }}</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -83,10 +68,8 @@
                         <div class="service-img">
                             <img src="{{asset('cd/img/service-2.jpg')}}" alt="Image">
                         </div>
-                        <h3>Beard Style</h3>
-                        <p> The ultimate goal of your beard style is to add contrast and dimension to your face.
-                            Different face shapes should highlight certain facial features—not every style looks great
-                            on every guy.
+                        <h3>{{ Lang::get('saloon.beard_style') }}</h3>
+                        <p> {{ Lang::get('saloon.beard_style_goal') }}
                         </p>
                     </div>
                 </div>
@@ -95,9 +78,8 @@
                         <div class="service-img">
                             <img src="{{asset('cd/img/service-3.jpg')}}" alt="Image">
                         </div>
-                        <h3>Color & Wash</h3>
-                        <p> Non-permanent hair color that lasts up to 8 shampoos gently adds color molecules to the
-                            cuticle layer of your hair it is also known as semi-permanent hair color.</p>
+                        <h3>{{ Lang::get('saloon.color_and_wash') }}</h3>
+                        <p> {{ Lang::get('saloon.hair_color_description') }}</p>
                     </div>
                 </div>
             </div>
@@ -106,8 +88,8 @@
     <div class="price">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Best Pricing</p>
-                <h2>Best Price in the City</h2>
+                <p>{{ Lang::get('saloon.our_best_pricing') }}</p>
+                <h2>{{ Lang::get('saloon.best_price_city') }}</h2>
             </div>
             <div class="row">
                 @foreach($services as $service)
@@ -140,28 +122,18 @@
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
 
-                    <p> "Hairck Saloon All Boys is my go-to spot for a fresh haircut every time. The skilled stylists
-                        here truly understand the latest trends and always deliver a cut that suits my style. The
-                        atmosphere is lively, and the staff is friendly, making it a great experience overall. I
-                        wouldn't trust anyone else with my hair!" </p>
-                    <h2>nord charls</h2>
+                    <p> {{ Lang::get('saloon.hairck_saloon_spot') }} </p>
+                    <h2>{{ Lang::get('saloon.nord_charls') }}</h2>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-                    <p>"I've been a loyal customer of Hairck Saloon All Boys for years, and I can confidently say it's
-                        the best men's Saloon in town. The attention to detail and precision in their haircuts is
-                        unmatched. The staff is professional, and the ambiance is comfortable. I always leave feeling
-                        rejuvenated and looking sharp. Highly recommend!" </p>
-                    <h2>adam vice</h2>
+                    <p>{{ Lang::get('saloon.loyal_customer') }} </p>
+                    <h2>{{ Lang::get('saloon.adam_vice') }}</h2>
                 </div>
                 <div class="testimonial-item">
                     <img src="{{asset('cd/img/testimonial-1.jpg')}}" alt="Image">
-                    <p>"Hairck Saloon All Boys has consistently exceeded my expectations. The stylists are not only
-                        skilled but also attentive to my preferences. Whether I want a classic look or something more
-                        contemporary, they always deliver. The Saloon has a cool vibe, and the personalized service
-                        makes me feel like a valued client. I wouldn't consider going anywhere else for my grooming
-                        needs." </p>
-                    <h2>john doe</h2>
+                    <p>{{ Lang::get('saloon.exceeded_expectations') }} </p>
+                    <h2>{{ Lang::get('saloon.john_doe') }}</h2>
                 </div>
             </div>
         </div>
@@ -169,8 +141,8 @@
     <div class="team">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Barber Team</p>
-                <h2>Meet Our Hair Cut Expert Barber</h2>
+                <p>{{ Lang::get('saloon.our_barber_team') }}</p>
+                <h2>{{ Lang::get('saloon.meet_our_expert') }}</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -179,8 +151,8 @@
                             <img src="{{asset('cd/img/team-1.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>Master Barber</p>
+                            <h2>{{ Lang::get('saloon.adam_phillips') }}</h2>
+                            <p>{{ Lang::get('saloon.master_barber') }}</p>
                         </div>
                     </div>
                 </div>
@@ -190,8 +162,8 @@
                             <img src="{{asset('cd/img/team-2.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Dylan Adams</h2>
-                            <p>Hair Expert</p>
+                            <h2>{{ Lang::get('saloon.dylan_adams') }}</h2>
+                            <p>{{ Lang::get('saloon.hair_expert') }}</p>
                         </div>
                     </div>
                 </div>
@@ -201,8 +173,8 @@
                             <img src="{{asset('cd/img/team-3.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Gloria Edwards</h2>
-                            <p>Beard Expert</p>
+                            <h2>{{ Lang::get('saloon.gloria_edwards') }}</h2>
+                            <p>{{ Lang::get('saloon.beard_expert') }}</p>
                         </div>
                     </div>
                 </div>
@@ -212,8 +184,8 @@
                             <img src="{{asset('cd/img/team-4.jpg')}}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Josh Dunn</h2>
-                            <p>Color Expert</p>
+                            <h2>{{ Lang::get('saloon.josh_dunn') }}</h2>
+                            <p>{{ Lang::get('saloon.color_expert') }}</p>
                         </div>
                     </div>
                 </div>
@@ -224,7 +196,7 @@
 @section('custom_js')
     <script>
         @if (\Session::has('msg'))
-        toastr.success('You are successfully logged in');
+        toastr.success({{ Lang::get('saloon.success_login_message') }});
         {{\Session::forget('msg')}}
         @endif
     </script>
