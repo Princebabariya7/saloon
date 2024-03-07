@@ -28,9 +28,9 @@
                             </li>
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
-                            <li class="nav-item mt-1 mb-1 mr-1">
-                                {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], config('app.locale'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
-                            </li>
+{{--                            <li class="nav-item mt-1 mb-1 mr-1">--}}
+{{--                                {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], config('app.locale'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}--}}
+{{--                            </li>--}}
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </li>
@@ -246,34 +246,6 @@
                 $('#search').val('');
                 $('#myDropdown').val('');
                 $('.search-btn').trigger('click');
-            });
-        });
-
-        // Add the language switch logic
-        $('#languageDropdown').change(function () {
-            var selectedLanguage = $(this).val();
-            console.log(selectedLanguage);
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            // Your AJAX request here
-            $.ajax({
-                url: '{{route('online.setLocale')}}',
-                type: 'POST',
-                data: {locale: selectedLanguage},
-                success: function (response) {
-                    // Refresh the page or update content based on the new locale
-                    location.reload();
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error updating language:', error);
-                    console.log(xhr.responseText);
-                }
-
             });
         });
     </script>

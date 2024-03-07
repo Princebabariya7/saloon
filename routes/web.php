@@ -33,6 +33,8 @@ Route::group(['prefix' => 'frontend'], function ()
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
         Route::get('terms', [HomeController::class, 'terms'])->name('terms');
         Route::get('privacy', [HomeController::class, 'privacy'])->name('privacy');
+        Route::post('/set-locale', [HomeController::class, 'setLocale'])->name('online.setLocale');
+
     });
 
     Route::post('store', [RegisterDate::class, 'store'])->name('user.info.store');
@@ -54,7 +56,6 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::get('create', [AppointmentController::class, 'create'])->name('online.create');
             Route::post('fetch/services', [AppointmentController::class, 'fetchServices'])->name('online.fetch.services');
             Route::post('fetch/timeslot', [AppointmentController::class, 'timeSlot'])->name('online.fetch.timeslot');
-            Route::post('/set-locale', [AppointmentController::class, 'setLocale'])->name('online.setLocale');
         });
 
         Route::group(['prefix' => 'payment'], function ()
@@ -81,8 +82,6 @@ Route::group(['prefix' => 'frontend'], function ()
 
 Route::group(['prefix' => 'backend'], function ()
 {
-//    Route::get('appointment_details', [App\Http\Controllers\Backend\DashboardController::class, 'appointmentDetails'])->name('admin.appointment.details');
-//    Route::get('orders_details', [App\Http\Controllers\Backend\DashboardController::class, 'orderDetails'])->name('admin.order.details');
     Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.index')->middleware('LogoutMiddleware');
 
     Route::prefix('Admin')->group(function ()
