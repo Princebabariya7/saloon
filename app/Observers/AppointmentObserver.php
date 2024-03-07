@@ -20,7 +20,6 @@ class AppointmentObserver
             $appointmentDetail = AppointmentDetail::create([
                 'appointment_id' => $appointment->id,
                 'service_id'     => $serviceId,
-//                'user_id'        => auth()->user()->id,
             ]);
             $serviceName[]     = $appointmentDetail->services->name;
         }
@@ -28,10 +27,9 @@ class AppointmentObserver
             'date'           => Carbon::create($appointmentData['date'])->format('Y-m-d'),
             'slot'           => $appointmentData['time'],
             'appointment_id' => $appointment->id,
-//            'user_id'        => auth()->user()->id,
         ];
         AppointmentSlot::create($input);
-        $appointmentEmailData = [
+        $appointmentEmailData            = [
             'user'     => auth()->user()->firstname,
             'category' => $appointmentDetail->services->categories->type,
             'date'     => Carbon::parse($appointmentDetail->appointment->date)->format('d-m-Y'),
