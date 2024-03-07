@@ -1525,3 +1525,8 @@ body {
 .registration-form .text_simple {
     font-size: 14px !important;
 }
+
+.lang{
+    background: #1D2434;
+    color: #ffff;
+}
