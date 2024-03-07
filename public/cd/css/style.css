@@ -155,7 +155,6 @@ a:focus {
     }
 }
 
-
 /**********************************/
 /*********** Nav Bar CSS **********/
 /**********************************/
@@ -247,7 +246,6 @@ a:focus {
         box-shadow: none;
     }
 }
-
 
 /*******************************/
 /********** Hero CSS ***********/
@@ -474,7 +472,6 @@ a:focus {
     }
 }
 
-
 /*******************************/
 /******* Page Header CSS *******/
 /*******************************/
@@ -535,7 +532,6 @@ a:focus {
     }
 }
 
-
 /*******************************/
 /******* Section Header ********/
 /*******************************/
@@ -565,7 +561,6 @@ a:focus {
         font-size: 30px;
     }
 }
-
 
 /*******************************/
 /********** About CSS **********/
@@ -648,7 +643,6 @@ a:focus {
     }
 }
 
-
 /*******************************/
 /********* Service CSS *********/
 /*******************************/
@@ -722,7 +716,6 @@ a:focus {
     border-color: #1d2434;
 }
 
-
 /*******************************/
 /********* Pricing CSS *********/
 /*******************************/
@@ -790,7 +783,6 @@ a:focus {
     color: #333333;
 }
 
-
 /*******************************/
 /*********** Team CSS **********/
 /*******************************/
@@ -852,7 +844,6 @@ a:focus {
 .team .team-item:hover .team-img::after {
     border-color: lightslategrey;
 }
-
 
 /*******************************/
 /******* Testimonial CSS *******/
@@ -940,7 +931,6 @@ a:focus {
     color: #1d2434;
     background: lightslategrey;
 }
-
 
 /*******************************/
 /*********** Blog CSS **********/
@@ -1085,7 +1075,6 @@ a:focus {
     color: #999999;
 }
 
-
 /*******************************/
 /******** Portfolio CSS ********/
 /*******************************/
@@ -1163,7 +1152,6 @@ a:focus {
     object-fit: cover;
 }
 
-
 /*******************************/
 /********* Contact CSS *********/
 /*******************************/
@@ -1235,7 +1223,6 @@ a:focus {
     }
 }
 
-
 /*******************************/
 /******* Single Page CSS *******/
 /*******************************/
@@ -1275,7 +1262,6 @@ a:focus {
 .single .ol-group {
     padding-left: 18px;
 }
-
 
 /*******************************/
 /********* Footer CSS **********/
@@ -1433,8 +1419,7 @@ a:focus {
         display: inline-block;
     }
 }
-
-----
+/**/
 body {
     background-color: #dee9ff;
 }
@@ -1448,8 +1433,6 @@ body {
     max-width: 400px;
     margin: auto;
     padding: 40px 20px;
-    /*border-top-left-radius: 30px;*/
-    /*border-top-right-radius: 30px;*/
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 
@@ -1467,15 +1450,12 @@ body {
 }
 
 .registration-form .create-account {
-    /*border-radius: 30px;*/
-    /*padding: 10px 20px;*/
     font-size: 14px;
     font-weight: bold;
     background-color: #5791ff;
     border: none;
     color: white;
     float: right;
-    /*margin-top: 20px;*/
 
 }
 
@@ -1485,8 +1465,6 @@ body {
     margin: auto;
     padding: 17px 0;
     text-align: center;
-    /*border-bottom-left-radius: 30px;*/
-    /*border-bottom-right-radius: 30px;*/
     color: #9fadca;
     border-top: 1px solid #dee9ff;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
@@ -1502,7 +1480,6 @@ body {
     margin: 0 3px;
     color: #5691ff;
     border: 1px solid;
-    /*border-radius: 50%;*/
     width: 45px;
     display: inline-block;
     height: 45px;
