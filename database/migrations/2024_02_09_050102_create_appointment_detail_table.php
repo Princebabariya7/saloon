@@ -14,7 +14,6 @@ class CreateAppointmentDetailTable extends Migration
             $table->id();
             $table->integer('appointment_id');
             $table->integer('service_id');
-            $table->integer('user_id');
             $table->timestamps();
         });
     }
