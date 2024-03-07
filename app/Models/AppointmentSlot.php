@@ -9,7 +9,7 @@ class AppointmentSlot extends Model
 {
     use HasFactory;
     protected $table = 'appointment_time_slot';
-    protected $fillable = ['date', 'slot', 'appointment_id', 'user_id'];
+    protected $fillable = ['date', 'slot', 'appointment_id'];
 
     protected $attributes = [
         'date'       => 'not selected',

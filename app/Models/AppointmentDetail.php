@@ -12,7 +12,7 @@ class AppointmentDetail extends Model
     use HasFactory, Sortable;
 
     protected $table    = 'appointment_detail';
-    protected $fillable = ['appointment_id', 'service_id', 'user_id'];
+    protected $fillable = ['appointment_id', 'service_id'];
 
     protected $attributes = [
         'appointment_id' => 'not selected',
