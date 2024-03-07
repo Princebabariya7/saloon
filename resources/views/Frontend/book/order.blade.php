@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h2 class="font-weight-normal">Online Booking</h2>
+                <h2 class="font-weight-normal">{{ Lang::get('saloon.online_booking') }}</h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="cate col-md-12">
                         <div class="form-group">
-                            <label>Select Categories</label>
+                            <label>{{ Lang::get('saloon.category_select') }}</label>
                             <div class="select2-secondary">
                                 {!! Form::select('categories[]', $category, ($editMode) ? $category_id : null , ['id'=>'categories', 'class' => 'form-control']) !!}
                             </div>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-12 service-select">
                         <div class="form-group">
-                            <label>Select Service</label>
+                            <label>{{ Lang::get('saloon.service_select') }}</label>
                             @if($editMode)
                                 <div class="select2-secondary">
                                     {!! Form::select('service_id[]', [],   $service_id, ['id'=>'services', 'class' => 'form-control', 'disabled'=>true]) !!}
@@ -46,20 +46,20 @@
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="form-group clearfix">
-                    <label>Preferred Booking Type</label>
+                    <label>{{ Lang::get('saloon.booking_type') }}</label>
                     <div class="col-md-12 text-center mx-auto">
                         <div class="form-check form-check-inline">
                             {{ Form::radio('type', 'Appointment', ($editMode && $type=='Appointment') ? true : null, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
-                            <label class="form-check-label ml-2" for="inlineRadio1">Appointment</label>
+                            <label class="form-check-label ml-2" for="inlineRadio1">{{ Lang::get('saloon.appointments') }}</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {{ Form::radio('type', 'HomeService', ($editMode && $type=='HomeService') ? true : null, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
-                            <label class="form-check-label ml-2" for="inlineRadio2">HomeService</label>
+                            <label class="form-check-label ml-2" for="inlineRadio2">{{ Lang::get('saloon.home_service') }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Preferred Booking Date</label>
+                    <label>{{ Lang::get('saloon.booking_date_form') }}</label>
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
                         {!! Form::text('date',($editMode) ? $date : null, ['class' => 'form-control appointment-date datetimepicker-input', 'data-target' => '#reservationdate' , 'autocomplete' => 'off']) !!}
                         <div class="input-group-append" data-target="#reservationdate"
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputStatus">Preferred Booking Slot</label>
+                    <label for="inputStatus">{{ Lang::get('saloon.booking_slot') }}</label>
                     <div class="input-group date" id="appointmentTime" data-target-input="nearest">
                         {!! Form::text('time', ($editMode) ? $timeSlot : null, ['id' => 'selectedTimeSlot', 'class' => 'form-control appointment_time', 'data-target' => '#appointmentTime', 'autocomplete' => 'off']) !!}
                         <div class="input-group-append">
@@ -85,7 +85,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="timeSlotModalLabel">
-                                    <i class="fa fa-clock"></i> Select Time Slot
+                                    <i class="fa fa-clock"></i> {{ Lang::get('saloon.time_slot_select') }}
                                     <span class="badge badge-info slotDay"></span>
                                 </h5>
                             </div>
@@ -93,7 +93,7 @@
                                 <div class="list-group" id="date-slot">
                                     @if($timeSlots == null)
                                         <h6 class="modal-title text-danger font-weight-bold" id="timeSlotModalLabel">
-                                            Please Select Preferred Booking Date</h6>
+                                            {{ Lang::get('saloon.select_book_date') }}</h6>
                                     @endif
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn">Confirm Booking
+                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn">{{ Lang::get('saloon.confirm_booking') }}
                     </button>
                 </div>
                 {!! Form::close() !!}
