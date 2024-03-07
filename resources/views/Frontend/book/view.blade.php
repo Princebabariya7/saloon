@@ -28,9 +28,6 @@
                             </li>
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
-{{--                            <li class="nav-item mt-1 mb-1 mr-1">--}}
-{{--                                {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], config('app.locale'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}--}}
-{{--                            </li>--}}
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </li>
