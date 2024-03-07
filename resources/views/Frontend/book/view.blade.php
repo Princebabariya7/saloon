@@ -16,9 +16,7 @@
                 <div class="card my-5">
                     <div class="card-header">
                         {!! Form::open(['route' => ['online.index'], 'method'=>'get', 'id' => 'filter', 'class' => 'form-inline m-0', 'autocomplete' => 'off']) !!}
-
                         <ul class="nav nav-pills nav-search pt-1">
-
                             <li class="nav-item mr-1">
                                 <div class="input-group mb-1">
                                     {!! Form::text('search', request('search'),['id' => 'search', 'class' => 'h-auto form-control form-control-sm inline','placeholder' => 'Search','autocomplete' =>'off']) !!}
@@ -58,7 +56,7 @@
                                 <th class="text-center">
                                     {{ Lang::get('saloon.status') }}
                                 </th>
-                                <th class="text-right" scope="col">Action</th>
+                                <th class="text-center pr-0">Action</th>
                             </tr>
                             </thead>
                             @if(count($appointments) != 0)
@@ -123,12 +121,11 @@
                                         @else
                                             <td class="project-actions text-right">
                                                 <button type="button"
-                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn"
+                                                        class="btn btn-light border btn-sm dropdown-toggle modelBtn mr-0"
                                                         data-bs-toggle="dropdown">
                                                     Action
                                                 </button>
                                                 <div class="action-btn">
-
                                                     <ul class="dropdown-menu">
                                                         @if($detail->status != 'Success')
                                                             <li>
@@ -139,16 +136,16 @@
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown-divider"></li>
+                                                            <li>
+                                                                <a class="dropdown-item" data-target="#exampleModal"
+                                                                   data-toggle="modal"
+                                                                   href="{{route('online.edit',$detail->id)}}">
+                                                                    <i class="fa fa-edit"> </i> Edit
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-divider"></li>
                                                         @else
                                                         @endif
-                                                        <li>
-                                                            <a class="dropdown-item" data-target="#exampleModal"
-                                                               data-toggle="modal"
-                                                               href="{{route('online.edit',$detail->id)}}">
-                                                                <i class="fa fa-edit"> </i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li class="dropdown-divider"></li>
                                                         <li>
                                                             <a class="dropdown-item delete_pop text-danger"
                                                                href="#"
@@ -204,22 +201,20 @@
 @section('custom_js')
     <script>
         @if (\Session::has('msg'))
-        toastr.success('{{ __('saloon.your_order_booked') }}');
+        toastr.success("{{ __('saloon.your_order_booked') }}");
         {{ \Session::forget('msg') }}
         @endif
-
         $(document).ready(function () {
             $('.delete_pop').click(function () {
                 var $_this = $(this);
-
                 Swal.fire({
-                    title: '{{ __('saloon.confirm_delete_title') }}',
-                    text: '{{ __('saloon.confirm_delete_text') }}',
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: '{{ __('saloon.confirm_delete_button') }}'
+                    confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed)
                     {
@@ -234,16 +229,13 @@
                     }
                 });
             });
-
             @if (\Session::has('update'))
-            toastr.success('{{ __('saloon.update_message') }}');
+            toastr.success('your order has been updated');
             {{ \Session::forget('update') }}
             @endif
-
             $('#myDropdown').change(function () {
                 $('.search-btn').trigger('click');
             });
-
             $('.clear').click(function () {
                 $('#search').val('');
                 $('#myDropdown').val('');
@@ -269,7 +261,7 @@
                 data: {locale: selectedLanguage},
                 success: function (response) {
                     // Refresh the page or update content based on the new locale
-                    // location.reload();
+                    location.reload();
                 },
                 error: function (xhr, status, error) {
                     console.error('Error updating language:', error);
