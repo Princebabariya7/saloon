@@ -4,9 +4,9 @@ return [
 //    For Appointment Page
 'order_list'                => 'आदेश सूची',
 'search'                    => 'खोज',
-'english'                   => 'अंग्रेज़ी',
+'english'                   => 'English',
 'hindi'                     => 'हिन्दी',
-'gujarati'                     => 'गुजराती',
+'gujarati'                     => 'ગુજરાતી',
 'user_name'                 => 'उपयोगकर्ता नाम',
 'category'                  => 'श्रेणी',
 'service_name'              => 'सेवा का नाम',

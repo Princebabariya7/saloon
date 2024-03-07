@@ -5,7 +5,7 @@ return [
 'order_list'                => 'Appointment',
 'search'                    => 'Search',
 'english'                   => 'English',
-'hindi'                     => 'Hindi',
+'hindi'                     => 'हिन्दी',
 'gujarati'                     => 'ગુજરાતી',
 'user_name'                 => 'User Name',
 'category'                  => 'Category',
