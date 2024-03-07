@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\PriceController;
 use App\Http\Controllers\Frontend\RegisterDate;
 use App\Http\Controllers\Frontend\VerificationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend as BackendController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('EmailVerificationMiddleware');
 Route::group(['prefix' => 'verification'], function ()
@@ -80,45 +81,45 @@ Route::group(['prefix' => 'frontend'], function ()
 
 Route::group(['prefix' => 'backend'], function ()
 {
-    Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.index')->middleware('LogoutMiddleware');
+    Route::get('dashboard', [BackendController\DashboardController::class, 'index'])->name('dashboard.index')->middleware('LogoutMiddleware');
 
     Route::prefix('Admin')->group(function ()
     {
-        Route::get('logout', [App\Http\Controllers\Backend\AdminController::class, 'logout'])->name('admin.logout');
-        Route::get('sign_in', [App\Http\Controllers\Backend\AdminController::class, 'signIn'])->name('admin.sign_in');
-        Route::get('sign_up', [App\Http\Controllers\Backend\AdminController::class, 'signUp'])->name('admin.sign_up');
-        Route::get('forgot_password', [App\Http\Controllers\Backend\AdminController::class, 'forgot'])->name('admin.forgot_password');
+        Route::get('logout', [BackendController\AdminController::class, 'logout'])->name('admin.logout');
+        Route::get('sign_in', [BackendController\AdminController::class, 'signIn'])->name('admin.sign_in');
+        Route::get('sign_up', [BackendController\AdminController::class, 'signUp'])->name('admin.sign_up');
+        Route::get('forgot_password', [BackendController\AdminController::class, 'forgot'])->name('admin.forgot_password');
     });
 
     Route::prefix('users')->group(function ()
     {
-        Route::get('/', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'index'])->name('admin.user.index');
-        Route::post('store', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'store'])->name('admin.user.store');
-        Route::get('{id}/show', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'show'])->name('admin.user.show');
-        Route::get('{id}/delete', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'destroy'])->name('admin.user.delete');
-        Route::post('login', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'login'])->name('admin.user.login');
-        Route::post('forgot', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'forgot'])->name('admin.user.forgot');
-        Route::get('{id}/edit', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'edit'])->name('admin.user.edit');
-        Route::put('{id}/update', [App\Http\Controllers\Backend\AdminRegistrationController::class, 'update'])->name('admin.user.update');
+        Route::get('/', [BackendController\AdminRegistrationController::class, 'index'])->name('admin.user.index');
+        Route::post('store', [BackendController\AdminRegistrationController::class, 'store'])->name('admin.user.store');
+        Route::get('{id}/show', [BackendController\AdminRegistrationController::class, 'show'])->name('admin.user.show');
+        Route::get('{id}/delete', [BackendController\AdminRegistrationController::class, 'destroy'])->name('admin.user.delete');
+        Route::post('login', [BackendController\AdminRegistrationController::class, 'login'])->name('admin.user.login');
+        Route::post('forgot', [BackendController\AdminRegistrationController::class, 'forgot'])->name('admin.user.forgot');
+        Route::get('{id}/edit', [BackendController\AdminRegistrationController::class, 'edit'])->name('admin.user.edit');
+        Route::put('{id}/update', [BackendController\AdminRegistrationController::class, 'update'])->name('admin.user.update');
     });
 
     Route::middleware(['LogoutMiddleware'])->group(function ()
     {
-        Route::get('profile', [App\Http\Controllers\Backend\UserController::class, 'profile'])->name('user.profile');
-        Route::get('change-password', [App\Http\Controllers\Backend\UserController::class, 'changePassword'])->name('profile.change-password');
-        Route::post('change-password', [App\Http\Controllers\Backend\UserController::class, 'changePassword'])->name('user.change_password.post');
+        Route::get('profile', [BackendController\UserController::class, 'profile'])->name('user.profile');
+        Route::get('change-password', [BackendController\UserController::class, 'changePassword'])->name('profile.change-password');
+        Route::post('change-password', [BackendController\UserController::class, 'changePassword'])->name('user.change_password.post');
 
         Route::group(['prefix' => 'appointments'], function ()
         {
-            Route::get('/', [\App\Http\Controllers\Backend\AppointmentController::class, 'index'])->name('admin.appointment.index');
-            Route::get('create', [\App\Http\Controllers\Backend\AppointmentController::class, 'create'])->name('admin.appointment.create');
-            Route::post('store', [\App\Http\Controllers\Backend\AppointmentController::class, 'store'])->name('admin.appointment.store');
-            Route::get('{id}/edit', [\App\Http\Controllers\Backend\AppointmentController::class, 'edit'])->name('admin.appointment.edit');
-            Route::put('{id}/update', [\App\Http\Controllers\Backend\AppointmentController::class, 'update'])->name('admin.appointment.update');
-            Route::get('{id}/delete', [\App\Http\Controllers\Backend\AppointmentController::class, 'destroy'])->name('admin.appointment.delete');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\AppointmentController::class, 'show'])->name('admin.appointment.show');
-            Route::post('fetch/services', [\App\Http\Controllers\Backend\AppointmentController::class, 'fetchServices'])->name('admin.fetch.services');
-            Route::post('fetch/timeslot', [\App\Http\Controllers\Backend\AppointmentController::class, 'timeSlot'])->name('admin.fetch.timeslot');
+            Route::get('/', [BackendController\AppointmentController::class, 'index'])->name('admin.appointment.index');
+            Route::get('create', [BackendController\AppointmentController::class, 'create'])->name('admin.appointment.create');
+            Route::post('store', [BackendController\AppointmentController::class, 'store'])->name('admin.appointment.store');
+            Route::get('{id}/edit', [BackendController\AppointmentController::class, 'edit'])->name('admin.appointment.edit');
+            Route::put('{id}/update', [BackendController\AppointmentController::class, 'update'])->name('admin.appointment.update');
+            Route::get('{id}/delete', [BackendController\AppointmentController::class, 'destroy'])->name('admin.appointment.delete');
+            Route::get('{id}/show', [BackendController\AppointmentController::class, 'show'])->name('admin.appointment.show');
+            Route::post('fetch/services', [BackendController\AppointmentController::class, 'fetchServices'])->name('admin.fetch.services');
+            Route::post('fetch/timeslot', [BackendController\AppointmentController::class, 'timeSlot'])->name('admin.fetch.timeslot');
         });
 
         Route::group(['prefix' => 'categories'], function ()
@@ -156,22 +157,22 @@ Route::group(['prefix' => 'backend'], function ()
 
         Route::group(['prefix' => 'prices'], function ()
         {
-            Route::get('/', [\App\Http\Controllers\Backend\PriceController::class, 'index'])->name('admin.price.index');
-            Route::get('create', [\App\Http\Controllers\Backend\PriceController::class, 'create'])->name('admin.price.create');
-            Route::post('store', [\App\Http\Controllers\Backend\PriceController::class, 'store'])->name('admin.price.store');
-            Route::get('{id}/edit', [\App\Http\Controllers\Backend\PriceController::class, 'edit'])->name('admin.price.edit');
-            Route::put('{id}/update', [\App\Http\Controllers\Backend\PriceController::class, 'update'])->name('admin.price.update');
-            Route::get('{id}/delete', [\App\Http\Controllers\Backend\PriceController::class, 'destroy'])->name('admin.price.delete');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\PriceController::class, 'show'])->name('admin.price.show');
+            Route::get('/', [BackendController\PriceController::class, 'index'])->name('admin.price.index');
+            Route::get('create', [BackendController\PriceController::class, 'create'])->name('admin.price.create');
+            Route::post('store', [BackendController\PriceController::class, 'store'])->name('admin.price.store');
+            Route::get('{id}/edit', [BackendController\PriceController::class, 'edit'])->name('admin.price.edit');
+            Route::put('{id}/update', [BackendController\PriceController::class, 'update'])->name('admin.price.update');
+            Route::get('{id}/delete', [BackendController\PriceController::class, 'destroy'])->name('admin.price.delete');
+            Route::get('{id}/show', [BackendController\PriceController::class, 'show'])->name('admin.price.show');
         });
 
         Route::group(['prefix' => 'payments'], function ()
         {
-            Route::get('/', [\App\Http\Controllers\Backend\PaymentController::class, 'index'])->name('admin.payment.index');
-            Route::get('{id}/create', [\App\Http\Controllers\Backend\PaymentController::class, 'create'])->name('admin.payment.create');
-            Route::post('store', [\App\Http\Controllers\Backend\PaymentController::class, 'store'])->name('admin.payment.store');
-            Route::get('{id}/show', [\App\Http\Controllers\Backend\PaymentController::class, 'show'])->name('admin.payment.show');
-            Route::get('{id}/pending', [\App\Http\Controllers\Backend\PaymentController::class, 'pending'])->name('admin.payment.pending');
+            Route::get('/', [BackendController\PaymentController::class, 'index'])->name('admin.payment.index');
+            Route::get('{id}/create', [BackendController\PaymentController::class, 'create'])->name('admin.payment.create');
+            Route::post('store', [BackendController\PaymentController::class, 'store'])->name('admin.payment.store');
+            Route::get('{id}/show', [BackendController\PaymentController::class, 'show'])->name('admin.payment.show');
+            Route::get('{id}/pending', [BackendController\PaymentController::class, 'pending'])->name('admin.payment.pending');
         });
     });
 });
