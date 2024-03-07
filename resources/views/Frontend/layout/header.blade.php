@@ -28,7 +28,7 @@
             <div class="col-md-6">
                 <div class="top-bar-right">
                     <div class="social align-items-center">
-                        {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi'),'gu' => __('saloon.gujarati')],config('app.locale'), ['class' => 'form-control form-control-sm lang', 'id' => 'languageDropdown']) !!}
+                        {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi'),'gu' => __('saloon.gujarati')],config('app.locale'), ['class' => 'form-control form-control-sm lang-btn', 'id' => 'languageDropdown']) !!}
                     </div>
                 </div>
             </div>
