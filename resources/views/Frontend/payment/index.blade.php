@@ -27,7 +27,6 @@
                             <div class="form-group">
                                 <label for="Billing_email">Customer Email</label>
                                 {!! Form::text('buyer_email', $buyer_email, ['class' => 'form-control form-control-sm', 'id' => 'Billing_email', 'placeholder' => 'Enter your email', 'autocomplete' => 'off']) !!}
-                                {{ Form::hidden('total', request('total')) }}
                             </div>
                         </div>
                     </div>
@@ -106,8 +105,10 @@
 
             function stripeTokenHandler(token)
             {
-                var hiddenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
-                formElement.append(hiddenInput);
+                var hiddenTokenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
+                var hiddenTotalInput = $('<input type="hidden" name="total">').val({{request('total')}});
+                formElement.append(hiddenTokenInput);
+                formElement.append(hiddenTotalInput);
                 console.log(formElement.attr('action'));
                 $.ajax({
                     type: "POST",
