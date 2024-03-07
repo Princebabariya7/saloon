@@ -22,10 +22,9 @@ class PaymentController extends Controller
         try
         {
             Stripe::setApiKey(config('services.stripe.secret'));
-
-            $total  = session()->get('totalPrice');
+//            $total  = session()->get('totalPrice');
             $intent = PaymentIntent::create([
-                'amount'               => $total * 100,
+                'amount'               => $request->total * 100,
                 'currency'             => 'usd',
                 'payment_method_types' => ['card'],
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
@@ -64,7 +63,7 @@ class PaymentController extends Controller
                 ], 500);
             }
             //dd($intentResponse);
-            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
+            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $request->total]);
             $statusData        = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
             $status            = $statusData['status'] ? 'Success' : 'Pending';
             Payment::create([
@@ -72,14 +71,14 @@ class PaymentController extends Controller
                 'buyer_email'        => $request->buyer_email,
                 'transaction_id'     => $request->stripeToken,
                 'transaction_detail' => json_encode($intentResponse),
-                'total'              => $total,
+                'total'              => $request->total,
                 'gateway'            => 'Stripe',
                 'appointment_id'     => $request->token,
                 'status'             => $status,
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
-            session()->forget('totalPrice');
+//            session()->forget('totalPrice');
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'Payment Was Successfully', 'url' => route('online.index')], 200);
         }
