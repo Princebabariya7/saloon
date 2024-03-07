@@ -9,11 +9,9 @@ use Kyslik\ColumnSortable\Sortable;
 class Payment extends Model
 {
     use HasFactory , Sortable;
-    protected $fillable = ['buyer_name','buyer_email','appointment_id','gateway','transaction_id','transaction_detail','status','total'];
+    protected $fillable = ['appointment_id','gateway','transaction_id','transaction_detail','status','total'];
 
     protected $attributes = [
-        'buyer_name' => 'not selected',
-        'buyer_email' => 'not selected',
         'gateway'=>'not selected',
         'transaction_id'=>'not selected',
         'transaction_detail'=>'not selected',
