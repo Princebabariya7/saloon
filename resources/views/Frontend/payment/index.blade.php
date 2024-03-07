@@ -27,6 +27,7 @@
                             <div class="form-group">
                                 <label for="Billing_email">Customer Email</label>
                                 {!! Form::text('buyer_email', $buyer_email, ['class' => 'form-control form-control-sm', 'id' => 'Billing_email', 'placeholder' => 'Enter your email', 'autocomplete' => 'off']) !!}
+                                {{ Form::hidden('total', request('total')) }}
                             </div>
                         </div>
                     </div>
@@ -51,6 +52,7 @@
                                 <h6 class="text-light text-bold"><i class="fa fa-inr" aria-hidden="true"></i>
                                     {{request('total')}}</h6>
                             </button>
+
                         </div>
                         <div id="error-message">
                         </div>
