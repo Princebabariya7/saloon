@@ -22,7 +22,7 @@ class AppointmentController extends Controller
         $status      = $request->input('status', '');
         $type        = $request->input('type', '');
         $dateRange   = $request->input('anotherInput', '');
-        $currentDate = \Carbon\Carbon::now();
+        $currentDate = Carbon::now();
         $direction   = $request->input('direction', 'asc');
         if (!in_array($direction, ['asc', 'desc']))
         {

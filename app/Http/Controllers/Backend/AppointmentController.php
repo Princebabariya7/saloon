@@ -73,54 +73,6 @@ class AppointmentController extends Controller
             ->with('currentDate', $currentDate);
     }
 
-
-//    public function index(Request $request)
-//    {
-//        $search      = $request->input('search', '');
-//        $status      = $request->input('status', '');
-//        $type        = $request->input('type', '');
-//        $dateRange   = $request->input('anotherInput', '');
-//        $currentDate = Carbon::now();
-//        $direction   = $request->input('direction', 'asc');
-//
-//        if (!in_array($direction, ['asc', 'desc'])) {
-//            $direction = 'asc';
-//        }
-//
-//        $query = AppointmentDetail::select('appointment_detail.*')
-//            ->leftJoin('users', 'users.id', '=', 'appointment_detail.user_id')
-//            ->leftJoin('appointments', 'appointments.id', '=', 'appointment_detail.appointment_id')
-//            ->leftJoin('services', 'services.id', '=', 'appointment_detail.service_id')
-//            ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
-//            ->search($search)
-//            ->statusType($status, $type);
-//
-//        // Check if $request->sort is set and not empty before applying orderBy
-//        if ($request->has('sort') && $request->sort != '') {
-//            $query->orderBy($request->sort, $direction);
-//        }
-//
-//        // Add this condition to filter by date range
-//        if ($dateRange) {
-//            $dateRange = explode(' - ', $dateRange);
-//            $startDate = Carbon::createFromFormat('m/d/Y', $dateRange[0])->startOfDay();
-//            $endDate   = Carbon::createFromFormat('m/d/Y', $dateRange[1])->endOfDay();
-//            $query->whereBetween('appointments.date', [$startDate, $endDate]);
-//        }
-//
-//        // If a specific type is provided, apply a where clause
-//        if ($type) {
-//            $query->where('appointments.type', $type);
-//        }
-//
-//        $AppointmentDetail = $query->paginate(5);
-//
-//        return view('Backend.appointment.index')
-//            ->with('appointments', $AppointmentDetail)
-//            ->with('currentDate', $currentDate);
-//    }
-
-
     public function create()
     {
         $category  = Category::getList();

@@ -29,6 +29,10 @@
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
+                                {!! Form::text('daterange', request('anotherInput') , ['class' => 'form-control form-control-sm float-right', 'id' => 'reservation', 'placeholder' => 'Select Date']) !!}
+                                {!! Form::hidden('anotherInput', request('anotherInput') , ['id'=>'anotherInput' , 'placeholder'=>'Selected Date Range']) !!}
+                            </li>
+                            <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
                             </li>
                         </ul>
@@ -189,7 +193,7 @@
                         <div class="pagination pagination-sm  float-right">
                             {{ $appointments->appends(request()->input())->links() }}
                         </div>
-                        @if(request('search') != '' || request('status') != '')
+                        @if(request('search') != '' || request('status') != ''|| request('anotherInput') != '')
                             <i class="fa fa-filter"></i> {{ $appointments->total()}} Records Match
                             <a href="#" class="btn-link clear">Clear</a>
                         @endif
@@ -240,8 +244,26 @@
             $('.clear').click(function () {
                 $('#search').val('');
                 $('#myDropdown').val('');
+                $('#anotherInput').val('');
                 $('.search-btn').trigger('click');
             });
+        });
+
+        $('#reservation').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('#reservation').on('apply.daterangepicker', function (ev, picker) {
+            var startDate = picker.startDate.format('MM/DD/YYYY');
+            var endDate = picker.endDate.format('MM/DD/YYYY');
+
+            // Update the input field with the selected date range
+            $('#anotherInput').val(startDate + ' - ' + endDate);
+
+            $('#filter').submit();
         });
     </script>
 
