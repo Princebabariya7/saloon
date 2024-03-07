@@ -1419,10 +1419,6 @@ a:focus {
         display: inline-block;
     }
 }
-----
-body {
-    background-color: #dee9ff;
-}
 
 .registration-form {
     padding: 40px 0;
