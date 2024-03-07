@@ -12,8 +12,6 @@ class CreatePaymentsTable extends Migration
         Schema::create('payment', function (Blueprint $table)
         {
             $table->id();
-            $table->string('buyer_name', 50);
-            $table->string('buyer_email', 50);
             $table->string('transaction_id');
             $table->json('transaction_detail');
             $table->integer('total');
