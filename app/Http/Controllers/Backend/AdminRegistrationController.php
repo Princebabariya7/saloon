@@ -102,9 +102,6 @@ class AdminRegistrationController extends Controller
             if ($user->user_status == "User")
             {
                 $user->delete();
-                $user->appointment()->delete();
-                $user->appointments()->delete();
-                $user->appointmentDetail()->delete();
             }
             else
             {

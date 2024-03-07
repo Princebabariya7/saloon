@@ -46,36 +46,6 @@ class RegisterDate extends Controller
         }
     }
 
-//    public function login(LoginRequest $request)
-//    {
-//        try
-//        {
-//            $credit = $request->only('email', 'password');
-//            if (Auth::attempt($credit))
-//            {
-//                if (auth()->user()->user_status == "User")
-//                {
-//                    session()->put('msg', 'You Are Logged in');
-//                    return redirect()->route('home');
-//                }
-//                elseif (auth()->user()->user_status == "Admin")
-//                {
-//                    session()->put('msg', 'You Are Logged in');
-//                    return redirect()->route('dashboard.index');
-//                }
-//            }
-//            else
-//            {
-//                session()->put('wrongPass', 'please check your email and password ');
-//                return redirect()->back();
-//            }
-//        }
-//        catch (\Exception $e)
-//        {
-//            return redirect()->back()->with('error', $e->getMessage());
-//        }
-//    }
-
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([

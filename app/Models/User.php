@@ -37,15 +37,6 @@ class User extends Authenticatable
         return $this->hasMany(Appointment::class, 'user_id', 'id');
     }
 
-    public function appointments()
-    {
-        return $this->hasMany(AppointmentSlot::class, 'user_id', 'id');
-    }
-    public function appointmentDetail()
-    {
-        return $this->hasMany(AppointmentDetail::class, 'user_id', 'id');
-    }
-
     public function scopeSearch($query, $search)
     {
         if ($search)
