@@ -101,7 +101,6 @@
                                                                    href="{{route('online.edit',$detail->id)}}">
                                                                     <i class="fa fa-edit"> </i>
                                                                     {{ Lang::get('saloon.edit') }}
-
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown-divider"></li>
@@ -113,7 +112,6 @@
                                                                data-href="{{route('online.delete',$detail->id)}}">
                                                                 <i class="fa fa-trash"></i>
                                                                 {{ Lang::get('saloon.delete') }}
-
                                                             </a>
                                                         </li>
                                                     </ul>
