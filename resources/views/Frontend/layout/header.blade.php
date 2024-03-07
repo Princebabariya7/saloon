@@ -47,15 +47,15 @@
         </button>
         <div class="navbar-collapse justify-content-between collapse" id="navbarCollapse">
             <div class="navbar-nav ml-auto">
-                <a href="{{route('home')}}" class="nav-item nav-link">Home</a>
-                <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
-                <a href="{{route('price')}}" class="nav-item nav-link">Price</a>
-                <a href="{{route('team')}}" class="nav-item nav-link">Barber</a>
-                <a href="{{route('gallery')}}" class="nav-item nav-link">Gallery</a>
+                <a href="{{route('home')}}" class="nav-item nav-link">{{ Lang::get('saloon.home') }}</a>
+                <a href="{{route('service')}}" class="nav-item nav-link">{{ Lang::get('saloon.service') }}</a>
+                <a href="{{route('price')}}" class="nav-item nav-link">{{ Lang::get('saloon.price') }}</a>
+                <a href="{{route('team')}}" class="nav-item nav-link">{{ Lang::get('saloon.barber') }}</a>
+                <a href="{{route('gallery')}}" class="nav-item nav-link">{{ Lang::get('saloon.gallery') }}</a>
                 @if(auth()->user() == null)
 
                 @elseif(!empty(auth()->user()->email_verified_at))
-                    <a href="{{route('online.index')}}" class="nav-item nav-link">Appointments</a>
+                    <a href="{{route('online.index')}}" class="nav-item nav-link">{{ Lang::get('saloon.appointments') }}</a>
 
                 @endif
             </div>

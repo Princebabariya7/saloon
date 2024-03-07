@@ -3,12 +3,10 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="footer-contact">
-                    <h2>Saloon Address</h2>
+                    <h2>{{ Lang::get('saloon.saloon_address') }}</h2>
                     <address>
                         <i class="fas fa-map-marker-alt pr-1"></i>
-                             Shop No.5, Hill Town complex,<br>
-                            opp. Eagle Academy,New India Colony,
-                        Ahmedabad
+                        {{ Lang::get('saloon.address_details') }}
                         </address>
                     <p><i class="fa fa-envelope"></i>haricksaloon@gmail.com</p>
                     <div class="footer-social">
@@ -22,19 +20,19 @@
             </div>
             <div class="col-md-4">
                 <div class="footer-link">
-                    <h2>Quick Links</h2>
-                    <a href="{{route('terms')}}">Terms of use</a>
-                    <a href="{{route('privacy')}}">Privacy policy</a>
-                    <a href="{{route('home')}}">Help</a>
+                    <h2>{{ Lang::get('saloon.quick_links') }}</h2>
+                    <a href="{{route('terms')}}">{{ Lang::get('saloon.terms_of_use') }}</a>
+                    <a href="{{route('privacy')}}">{{ Lang::get('saloon.privacy_policy') }}</a>
+                    <a href="{{route('home')}}">{{ Lang::get('saloon.help') }}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="footer-newsletter">
                     <div class="text">
-                        <p>Opening Hour Mon - Fri</p>
-                        <h2>9:00 AM - 9:00 PM</h2>
-                        <p>Call Us For Appointment</p>
-                        <h2>+91 99952 52456</h2>
+                        <p>{{ Lang::get('saloon.opening_hours') }}</p>
+                        <h2>{{ Lang::get('saloon.opening_hours_details') }}</h2>
+                        <p>{{ Lang::get('saloon.call_for_appointment') }}</p>
+                        <h2>{{ Lang::get('saloon.contact_number') }}</h2>
                     </div>
                 </div>
             </div>

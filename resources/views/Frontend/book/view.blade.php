@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">Appointment</h1>
+                <h1 class="login_logo font-weight-normal">{{ Lang::get('saloon.order_list') }}</h1>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
                                                                 <a class="dropdown-item"
                                                                    href="{{route('payment.pending',$detail->id)}}">
                                                                     <i class="fa fa-credit-card" aria-hidden="true"></i>
-                                                                    Make Payment
+                                                                    {{ Lang::get('saloon.make_payment') }}
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown-divider"></li>
@@ -102,7 +102,9 @@
                                                             <li>
                                                                 <a class="dropdown-item"
                                                                    href="{{route('online.edit',$detail->id)}}">
-                                                                    <i class="fa fa-edit"> </i> Edit
+                                                                    <i class="fa fa-edit"> </i>
+                                                                    {{ Lang::get('saloon.edit') }}
+
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown-divider"></li>
@@ -112,7 +114,9 @@
                                                             <a class="dropdown-item  delete_pop text-danger"
                                                                href="#"
                                                                data-href="{{route('online.delete',$detail->id)}}">
-                                                                <i class="fa fa-trash"></i> Delete
+                                                                <i class="fa fa-trash"></i>
+                                                                {{ Lang::get('saloon.delete') }}
+
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -132,7 +136,7 @@
                                                                 <a class="dropdown-item"
                                                                    href="{{route('payment.pending',$detail->id)}}">
                                                                     <i class="fa fa-credit-card" aria-hidden="true"></i>
-                                                                    Make Payment
+                                                                    {{ Lang::get('saloon.make_payment') }}
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown-divider"></li>
@@ -140,7 +144,8 @@
                                                                 <a class="dropdown-item" data-target="#exampleModal"
                                                                    data-toggle="modal"
                                                                    href="{{route('online.edit',$detail->id)}}">
-                                                                    <i class="fa fa-edit"> </i> Edit
+                                                                    <i class="fa fa-edit"> </i>
+                                                                    {{ Lang::get('saloon.edit') }}
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown-divider"></li>
@@ -150,7 +155,8 @@
                                                             <a class="dropdown-item delete_pop text-danger"
                                                                href="#"
                                                                data-href="{{route('online.delete',$detail->id)}}">
-                                                                <i class="fa fa-trash"></i> Delete
+                                                                <i class="fa fa-trash"></i>
+                                                                {{ Lang::get('saloon.delete') }}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -201,20 +207,20 @@
 @section('custom_js')
     <script>
         @if (\Session::has('msg'))
-        toastr.success("{{ __('saloon.your_order_booked') }}");
+        toastr.success("{{ Lang::get('saloon.your_order_booked') }}");
         {{ \Session::forget('msg') }}
         @endif
         $(document).ready(function () {
             $('.delete_pop').click(function () {
                 var $_this = $(this);
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'You won\'t be able to revert this!',
+                    title: '{{ Lang::get('saloon.are_you_sure') }}',
+                    text: '{{ Lang::get('saloon.delete_confirmation') }}',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: '{{ Lang::get('saloon.delete_confirmation_title') }}'
                 }).then((result) => {
                     if (result.isConfirmed)
                     {
@@ -230,7 +236,7 @@
                 });
             });
             @if (\Session::has('update'))
-            toastr.success('your order has been updated');
+            toastr.success('{{ Lang::get('saloon.update_message') }}');
             {{ \Session::forget('update') }}
             @endif
             $('#myDropdown').change(function () {

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'order_list' => 'Order List',
+    'order_list' => 'Appointment',
     'search' => 'Search',
     'english' => 'English',
     'hindi' => 'Hindi',
@@ -22,7 +22,23 @@ return [
     'clear' => 'Clear',
     'your_order_booked' => 'Your order has been booked',
     'are_you_sure' => 'Are you sure?',
-    'delete_confirmation' => 'You won\'t be able to revert this!',
+    'delete_confirmation' => 'You will not be able to revert this!',
     'delete_confirmation_title' => 'Yes, delete it!',
     'update_message' => 'Your order has been updated',
+    'home' => 'Home',
+    'service' => 'Service',
+    'price' => 'Price',
+    'barber' => 'Barber',
+    'gallery' => 'Gallery',
+    'appointments' => 'Appointments',
+    'saloon_address' => 'Salon Address',
+    'address_details' => 'Shop No. 5, Hill Town Complex, Opp. Eagle Academy, New India Colony, Ahmedabad',
+    'quick_links' => 'Quick Links',
+    'terms_of_use' => 'Terms of Use',
+    'privacy_policy' => 'Privacy Policy',
+    'help' => 'Help',
+    'opening_hours' => 'Opening Hours (Mon - Fri)',
+    'opening_hours_details' => '9:00 AM - 9:00 PM',
+    'call_for_appointment' => 'Call Us For Appointment',
+    'contact_number' => '+91 99952 52456',
 ];
