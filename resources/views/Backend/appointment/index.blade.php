@@ -1,4 +1,3 @@
-@php use Illuminate\Support\Facades\Lang; @endphp
 @extends ('Backend.layout.index')
 @section("title")
     Appointments
@@ -68,26 +67,26 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>@sortablelink('users.firstname',__('saloon.user_name'))</th>
-                                <th>@sortablelink('categories.type', __('saloon.category'))</th>
-                                <th>@sortablelink('services.name', __('saloon.service_name'))</th>
+                                <th>@sortablelink('User Name')</th>
+                                <th>@sortablelink('Category')</th>
+                                <th>@sortablelink('Service')</th>
                                 <th>
-                                    {{ Lang::get('saloon.type') }}
+                                    Type
                                 </th>
                                 <th>
-                                    {{ Lang::get('saloon.booking_date') }}
+                                    Booking Date
                                 </th>
                                 <th>
-                                    {{ Lang::get('saloon.app_date') }}
+                                    Appointment Date
                                 </th>
                                 <th>
-                                    {{ Lang::get('saloon.time') }}
+                                    Time
                                 </th>
                                 <th class="text-center">
-                                    {{ Lang::get('saloon.status') }}
+                                    Status
                                 </th>
                                 <th class="text-right">
-                                    {{ Lang::get('saloon.action') }}
+                                   Action
                                 </th>
                             </tr>
                             </thead>
@@ -99,35 +98,35 @@
                                         <td>
                                             {{$detail->getUsername()}}
                                         </td>
-                                        @if($detail->date > $currentDate->toDateString())
+{{--                                        @if($detail->date > $currentDate->toDateString())--}}
                                             <td>
                                                 <a href="{{route('admin.appointment.edit',$detail->id)}}">
                                                     {{ $detail->category }}
                                                 </a>
                                             </td>
-                                        @else
-                                            <td class="project-actions">
-                                                <!-- Button trigger modal -->
-                                                <a data-toggle="modal"
-                                                   data-target="#exampleModal"
-                                                   href="{{route('admin.appointment.edit',$detail->id)}}">
-                                                    {{ $detail->category }}
-                                                </a>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="p-3 bg-danger">
-                                                                <h5 class="modal-title text-light text-center"
-                                                                    id="exampleModalLabel">This Appointment Can't Be
-                                                                    Changable </h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        @endif
+{{--                                        @else--}}
+{{--                                            <td class="project-actions">--}}
+{{--                                                <!-- Button trigger modal -->--}}
+{{--                                                <a data-toggle="modal"--}}
+{{--                                                   data-target="#exampleModal"--}}
+{{--                                                   href="{{route('admin.appointment.edit',$detail->id)}}">--}}
+{{--                                                    {{ $detail->category }}--}}
+{{--                                                </a>--}}
+{{--                                                <!-- Modal -->--}}
+{{--                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"--}}
+{{--                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
+{{--                                                    <div class="modal-dialog" role="document">--}}
+{{--                                                        <div class="modal-content">--}}
+{{--                                                            <div class="p-3 bg-danger">--}}
+{{--                                                                <h5 class="modal-title text-light text-center"--}}
+{{--                                                                    id="exampleModalLabel">This Appointment Can't Be--}}
+{{--                                                                    Changable </h5>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </td>--}}
+{{--                                        @endif--}}
                                         <td>
                                             {{$detail->name}}
                                         </td>
@@ -152,7 +151,7 @@
                                                 <span class="badge badge-danger">Cancel</span>
                                             @endif
                                         </td>
-                                        @if($detail->date > $currentDate->toDateString())
+{{--                                        @if($detail->date > $currentDate->toDateString())--}}
                                             <td class="project-actions text-right">
                                                 <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                         data-bs-toggle="dropdown">
@@ -191,61 +190,61 @@
                                                     </li>
                                                 </ul>
                                             </td>
-                                        @else
-                                            <td class="project-actions text-right">
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"
-                                                        data-bs-toggle="dropdown">
-                                                    Action
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item small"
-                                                           href="{{route('admin.appointment.show',$detail->id)}}">
-                                                            <i class="fa fa-eye"></i> View
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item  small" data-target="#exampleModal"
-                                                           data-toggle="modal"
-                                                           href="{{route('admin.appointment.edit',$detail->id)}}">
-                                                            <i class="fa fa-pen"></i> Edit
-                                                        </a>
-                                                    </li>
-                                                    @if($detail->status != 'Success')
-                                                        <li class="dropdown-divider"></li>
-                                                        <li>
-                                                            <a class="dropdown-item small"
-                                                               href="{{route('admin.payment.pending',$detail->id)}}">
-                                                                <i class="fas fa-credit-card"></i> Payment
-                                                            </a>
-                                                        </li>
-                                                    @else
-                                                    @endif
-                                                    <li class="dropdown-divider"></li>
-                                                    <li>
-                                                        <a class="dropdown-item small appointment-delete text-danger"
-                                                           href="#"
-                                                           data-href="{{route('admin.appointment.delete',$detail->id)}}">
-                                                            <i class="fa fa-trash"></i> Delete
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="p-3 bg-danger">
-                                                                <h5 class="modal-title text-light text-center"
-                                                                    id="exampleModalLabel">This Appointment Can't Be
-                                                                    Changable </h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        @endif
+{{--                                        @else--}}
+{{--                                            <td class="project-actions text-right">--}}
+{{--                                                <!-- Button trigger modal -->--}}
+{{--                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"--}}
+{{--                                                        data-bs-toggle="dropdown">--}}
+{{--                                                    Action--}}
+{{--                                                </button>--}}
+{{--                                                <ul class="dropdown-menu">--}}
+{{--                                                    <li>--}}
+{{--                                                        <a class="dropdown-item small"--}}
+{{--                                                           href="{{route('admin.appointment.show',$detail->id)}}">--}}
+{{--                                                            <i class="fa fa-eye"></i> View--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li>--}}
+{{--                                                        <a class="dropdown-item  small" data-target="#exampleModal"--}}
+{{--                                                           data-toggle="modal"--}}
+{{--                                                           href="{{route('admin.appointment.edit',$detail->id)}}">--}}
+{{--                                                            <i class="fa fa-pen"></i> Edit--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
+{{--                                                    @if($detail->status != 'Success')--}}
+{{--                                                        <li class="dropdown-divider"></li>--}}
+{{--                                                        <li>--}}
+{{--                                                            <a class="dropdown-item small"--}}
+{{--                                                               href="{{route('admin.payment.pending',$detail->id)}}">--}}
+{{--                                                                <i class="fas fa-credit-card"></i> Payment--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                    @else--}}
+{{--                                                    @endif--}}
+{{--                                                    <li class="dropdown-divider"></li>--}}
+{{--                                                    <li>--}}
+{{--                                                        <a class="dropdown-item small appointment-delete text-danger"--}}
+{{--                                                           href="#"--}}
+{{--                                                           data-href="{{route('admin.appointment.delete',$detail->id)}}">--}}
+{{--                                                            <i class="fa fa-trash"></i> Delete--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
+{{--                                                </ul>--}}
+{{--                                                <!-- Modal -->--}}
+{{--                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"--}}
+{{--                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
+{{--                                                    <div class="modal-dialog" role="document">--}}
+{{--                                                        <div class="modal-content">--}}
+{{--                                                            <div class="p-3 bg-danger">--}}
+{{--                                                                <h5 class="modal-title text-light text-center"--}}
+{{--                                                                    id="exampleModalLabel">This Appointment Can't Be--}}
+{{--                                                                    Changable </h5>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </td>--}}
+{{--                                        @endif--}}
                                     </tr>
                                 @endforeach
                                 </tbody>
