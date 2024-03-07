@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">{{ $orderListTranslation }}</h1>
+                <h1 class="login_logo font-weight-normal">Appointment</h1>
             </div>
         </div>
     </div>
@@ -31,9 +31,7 @@
                         </ul>
                         <ul class="nav nav-pills  ml-auto">
                             <li class="nav-item mt-1 mb-1 mr-1">
-                                {{--                                {!! Form::select('language', ['en' => 'English', 'hi' => 'Hindi'], null, ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}--}}
-                                {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], null, ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
-
+                                {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], config('app.locale'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
                             </li>
                             <li class="nav-item mt-1 mb-1 mr-1">
                                 {!! Form::select('status',[''=>'Please Select' ,'Pending' => 'Pending','Success' => 'Success','Cancel' => 'Cancel'], request('status'),['class'=>'form-control form-control-sm' , 'id'=>'myDropdown']) !!}
