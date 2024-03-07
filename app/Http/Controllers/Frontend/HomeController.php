@@ -89,7 +89,6 @@ class HomeController extends Controller
                 'setting_value' => $locale,
             ]);
         }
-
         return response()->json(['success' => true]);
     }
 }

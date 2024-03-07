@@ -27,7 +27,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-        $lang =SettingsModel::find(1)->setting_value;
-        Config::set('app.locale', $lang);
+        try
+        {
+            $lang = SettingsModel::find(1)->setting_value;
+            Config::set('app.locale', $lang);
+        }catch (\Exception $e) {
+
+            return $e->getMessage();
+        }
     }
 }
