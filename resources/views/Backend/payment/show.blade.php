@@ -39,14 +39,6 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <td>Customer Name:</td>
-                                <td>{{ $payment->buyer_name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td>{{$payment->buyer_email}}</td>
-                            </tr>
-                            <tr>
                                 <td>Transaction id:</td>
                                 <td>{{$payment->transaction_id}}</td>
                             </tr>

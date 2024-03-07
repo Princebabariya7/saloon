@@ -49,11 +49,10 @@
                         <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>@sortablelink('buyer_name','Customer Name')</th>
-                                <th>@sortablelink('buyer_email','Email')</th>
                                 <th>@sortablelink('transaction_id','TransactionId')</th>
                                 <th>@sortablelink('total','Amount')</th>
                                 <th class="text-center">@sortablelink('status','Status')</th>
+                                <th class="text-center">Created At</th>
                                 <th class="text-right">Action</th>
                             </tr>
                             </thead>
@@ -61,11 +60,7 @@
                                 <tbody>
                                 @foreach($payments as $payment)
                                     <tr>
-                                        <td>
-                                            <a href="{{route('admin.payment.show',$payment->id)}}">{{$payment->buyer_name}}</a>
-                                        </td>
-                                        <td>{{$payment->buyer_email}}</td>
-                                        <td>{{$payment->transaction_id}}</td>
+                                        <td><a href="{{route('admin.payment.show',$payment->id)}}">{{$payment->transaction_id}}</a></td>
                                         <td><i class="fas fa-rupee-sign"></i> {{$payment->total}}</td>
                                         <td class="project-state">
                                             @if($payment->status =='Pending')
@@ -76,6 +71,8 @@
                                                 <span class="badge badge-danger">Cancel</span>
                                             @endif
                                         </td>
+                                        <td class="text-center">{{ $payment->created_at->format('F d, Y H:i:s') }}</td>
+
                                         <td class="project-actions text-right">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                     data-bs-toggle="dropdown">

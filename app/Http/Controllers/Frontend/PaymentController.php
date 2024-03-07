@@ -61,8 +61,6 @@ class PaymentController extends Controller
             $statusData        = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
             $status            = $statusData['status'] ? 'Success' : 'Pending';
             Payment::create([
-                'buyer_name'         => $request->buyer_name,
-                'buyer_email'        => $request->buyer_email,
                 'transaction_id'     => $request->stripeToken,
                 'transaction_detail' => json_encode($intentResponse),
                 'total'              => $request->total,

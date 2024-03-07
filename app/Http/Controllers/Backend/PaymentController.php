@@ -75,8 +75,6 @@ class PaymentController extends Controller
             $status            = $statusData['status'] ? 'Success' : 'Pending';
 
             Payment::create([
-                'buyer_name'         => $request->buyer_name,
-                'buyer_email'        => $request->buyer_email,
                 'transaction_id'     => $request->stripeToken,
                 'transaction_detail' => json_encode($intentResponse),
                 'total'              => $request->total,
