@@ -6,7 +6,7 @@
     <div class="page-header m-0">
         <div class="container">
             <div class="row justify-content-around">
-                <h1 class="login_logo font-weight-normal">Login</h1>
+                <h1 class="login_logo font-weight-normal">{{ Lang::get('saloon.log_in') }}</h1>
             </div>
         </div>
     </div>
@@ -17,23 +17,23 @@
                 <span><i class="icon icon-user"></i></span>
             </div>
             <div class="form-group">
-                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => 'Enter Your Email' ,'value' => '{{old(email)}}' , 'autocomplete' => 'off']) !!}
+                {!! Form::text('email', null ,['class' =>'form-control item' , 'placeholder' => __('saloon.enter_your_email') ,'value' => '{{old(email)}}' , 'autocomplete' => 'off']) !!}
             </div>
             <div class="form-group">
-                {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>'Enter Your Password']) !!}
+                {!! Form::password('password', ['class' => 'form-control item' ,'placeholder' =>__('saloon.enter_your_password')]) !!}
             </div>
             <div class="form-group">
-                {!! Form::button('Log In', ['type' =>'submit','class'=>'btn btn-sm btn-block create-account']) !!}
+                {!! Form::button(__('saloon.log_in'), ['type' =>'submit','class'=>'btn btn-sm btn-block create-account']) !!}
             </div>
 
             {!! Form::close() !!}
 
             <div class="social-media">
                 <p class="mb-1">
-                    <a href="{{route('forgot')}}" class="text_simple">I forgot my password</a>
+                    <a href="{{route('forgot')}}" class="text_simple">{{ Lang::get('saloon.forgot_password') }}</a>
                 </p>
                 <p class="mb-0">
-                    <a href="{{route('user.register')}}" class="text-center text_simple">Register a new account</a>
+                    <a href="{{route('user.register')}}" class="text-center text_simple">{{ Lang::get('saloon.register_new_account') }}</a>
                 </p>
             </div>
         </div>

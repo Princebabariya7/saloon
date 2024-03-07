@@ -6,6 +6,7 @@ return [
 'search'                    => 'खोज',
 'english'                   => 'अंग्रेज़ी',
 'hindi'                     => 'हिन्दी',
+'gujarati'                     => 'गुजराती',
 'user_name'                 => 'उपयोगकर्ता नाम',
 'category'                  => 'श्रेणी',
 'service_name'              => 'सेवा का नाम',
@@ -33,6 +34,10 @@ return [
 'barber'                    => 'नाई',
 'gallery'                   => 'गैलरी',
 'appointments'              => 'अपॉइंटमेंट्स',
+'sign_up' => 'साइन अप',
+'sign_in' => 'साइन इन',
+
+//      For Footer
 'saloon_address'            => 'सैलून पता',
 'address_details'           => 'शॉप नंबर 5, हिल टाउन कॉम्प्लेक्स, ऑपॉ. ईगल एकेडमी, न्यू इंडिया कॉलोनी, अहमदाबाद',
 'quick_links'               => 'त्वरित लिंक्स',
@@ -110,4 +115,29 @@ return [
 //      For Main Gallery Page
 'barber_image_gallery' => 'बार्बर इमेज गैलरी',
 'some_images_from_our_barber_gallery' => 'हमारी बार्बर गैलरी से कुछ छवियाँ',
+
+
+//      For Login pages
+'enter_your_email' => 'अपना ईमेल दर्ज करें',
+'enter_your_password' => 'अपना पासवर्ड दर्ज करें',
+'log_in' => 'लॉग इन करें',
+'forgot_password' => 'मैं अपना पासवर्ड भूल गया हूँ',
+'register_new_account' => 'नया खाता रजिस्टर करें',
+'forgot_password_page' => 'पासवर्ड भूल गए',
+'you_forgot_password' => 'क्या आपने अपना पासवर्ड भूल गए हैं?',
+'retrieve_new_password' => 'यहां आप आसानी से एक नया पासवर्ड प्राप्त कर सकते हैं।',
+'enter_password' => 'पासवर्ड दर्ज करें',
+'reenter_password' => 'पासवर्ड फिर से दर्ज करें',
+'update_password' => 'पासवर्ड अपडेट करें',
+'create_account' => 'खाता बनाएं',
+'enter_first_name' => 'पहला नाम दर्ज करें',
+'enter_last_name' => 'अंतिम नाम दर्ज करें',
+'male' => 'पुरुष',
+'female' => 'महिला',
+'enter_mobile' => 'मोबाइल दर्ज करें',
+'address' => 'पता',
+'city' => 'शहर',
+'state' => 'राज्य',
+'zipcode' => 'ज़िपकोड',
+'already_have_account' => 'मेरे पास पहले से ही खाता है',
 ];

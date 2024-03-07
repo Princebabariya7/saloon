@@ -6,12 +6,12 @@
                     <div class="top-bar-left">
                         <div class="text">
                             <a href="{{route('user.register')}}">
-                                <h2>Sign Up</h2>
+                                <h2>{{ Lang::get('saloon.sign_up') }}</h2>
                             </a>
                         </div>
                         <div class="text">
                             <a href="{{route('user.login')}}">
-                                <h2>Sign In</h2>
+                                <h2>{{ Lang::get('saloon.sign_in') }}</h2>
                             </a>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
             <div class="col-md-6">
                 <div class="top-bar-right">
                     <div class="social align-items-center">
-                        {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi')], config('app.locale'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
+                        {!! Form::select('language', ['en' => __('saloon.english'), 'hi' => __('saloon.hindi'),'gu' => __('saloon.gujarati')],config('app.locale'), ['class' => 'form-control form-control-sm', 'id' => 'languageDropdown']) !!}
                     </div>
                 </div>
             </div>

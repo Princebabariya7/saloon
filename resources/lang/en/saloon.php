@@ -6,6 +6,7 @@ return [
 'search'                    => 'Search',
 'english'                   => 'English',
 'hindi'                     => 'Hindi',
+'gujarati'                     => 'ગુજરાતી',
 'user_name'                 => 'User Name',
 'category'                  => 'Category',
 'service_name'              => 'Service',
@@ -34,6 +35,8 @@ return [
 'barber'                    => 'Barber',
 'gallery'                   => 'Gallery',
 'appointments'              => 'Appointments',
+'sign_up' => 'Sign Up',
+'sign_in' => 'Sign In',
 
 //      For Footer
 'saloon_address'            => 'Salon Address',
@@ -102,4 +105,30 @@ return [
 //      For Main Gallery Page
 'barber_image_gallery' => 'Barber Image Gallery',
 'some_images_from_our_barber_gallery' => 'Some Images From Our Barber Gallery',
+
+
+//      For Login pages
+'enter_your_email' => 'Enter Your Email',
+'enter_your_password' => 'Enter Your Password',
+'log_in' => 'Log In',
+'forgot_password' => 'I forgot my password',
+'register_new_account' => 'Register a new account',
+'forgot_password_page' => 'Forgot Password',
+'you_forgot_password' => 'You forgot your password?',
+'retrieve_new_password' => 'Here you can easily retrieve a new password.',
+'enter_password' => 'Enter Password',
+'reenter_password' => 'Reenter Password',
+'update_password' => 'Update Password',
+'create_account' => 'Create Account',
+'enter_first_name' => 'Enter First Name',
+'enter_last_name' => 'Enter Last Name',
+'male' => 'Male',
+'female' => 'Female',
+'enter_mobile' => 'Enter Mobile',
+'address' => 'Address',
+'city' => 'City',
+'state' => 'State',
+'zipcode' => 'Zipcode',
+'already_have_account' => 'I already have an account',
+
 ];
