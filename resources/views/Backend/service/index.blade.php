@@ -54,7 +54,7 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="card-body table-responsive p-0 ">
-                        <table class="table table-striped projects">
+                        <table class="table table-striped table-sm projects">
                             <thead>
                             <tr>
                                 <th>

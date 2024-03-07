@@ -57,6 +57,10 @@
                                 <td>User Status:</td>
                                 <td>{{$user->user_status}}</td>
                             </tr>
+                            <tr>
+                                <td>Created at:</td>
+                                <td>{{ $user->created_at->format('F d, Y H:i:s') }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

@@ -46,7 +46,7 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="card-body table-responsive p-0 ">
-                        <table class="table table-striped projects">
+                        <table class="table table-striped table-sm projects">
                             <thead>
                             <tr>
                                 <th>
@@ -60,6 +60,9 @@
                                 </th>
                                 <th>
                                     Mobile
+                                </th>
+                                <th>
+                                    Created At
                                 </th>
                                 <th class="text-center">
                                     Status
@@ -87,6 +90,7 @@
                                         <td>
                                             {{$user->mobile}}
                                         </td>
+                                        <td>{{ $user->created_at->format('F d, Y H:i:s') }}</td>
                                         <td class="project-state">
                                             @if($user->user_status =='Admin')
                                                 <span class="badge badge-danger">Admin</span>
