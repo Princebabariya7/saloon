@@ -52,7 +52,6 @@
                                 <h6 class="text-light text-bold"><i class="fa fa-inr" aria-hidden="true"></i>
                                     {{request('total')}}</h6>
                             </button>
-
                         </div>
                         <div id="error-message">
                         </div>
