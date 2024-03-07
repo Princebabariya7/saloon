@@ -63,8 +63,6 @@ Route::group(['prefix' => 'frontend'], function ()
             Route::get('{id}/create', [PaymentController:: class, 'create'])->name('payment.page');
             Route::get('{id}/pending', [PaymentController:: class, 'pending'])->name('payment.pending');
             Route::post('store', [PaymentController::class, 'store'])->name('payment.info.store');
-            Route::get('index', [PaymentController::class, 'index'])->name('payment.index');
-            Route::get('invoice', [PaymentController::class, 'invoice'])->name('payment.invoice');
         });
 
         Route::group(['prefix' => 'price'], function ()
