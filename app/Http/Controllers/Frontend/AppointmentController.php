@@ -70,9 +70,9 @@ class AppointmentController extends Controller
         {
             $query->where('appointments.type', $type);
         }
-        $AppointmentDetail = $query->paginate(5);
+        $appointmentDetail = $query->paginate(5);
 
-        return view('Frontend.book.view')->with('appointments', $AppointmentDetail)
+        return view('Frontend.book.view')->with('appointments', $appointmentDetail)
             ->with('currentDate', $currentDate);
     }
 
