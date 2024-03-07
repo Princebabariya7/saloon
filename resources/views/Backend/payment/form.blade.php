@@ -123,8 +123,10 @@
 
             function stripeTokenHandler(token)
             {
-                var hiddenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
-                formElement.append(hiddenInput);
+                var hiddenTokenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
+                var hiddenTotalInput = $('<input type="hidden" name="total">').val({{request('total')}});
+                formElement.append(hiddenTokenInput);
+                formElement.append(hiddenTotalInput);
                 // Now submit the form via AJAX
                 $.ajax({
                     type: "POST",
