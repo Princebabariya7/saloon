@@ -14,7 +14,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        return view('Frontend.payment.view')->with('data', Payment::all());
+        //
     }
 
     public function store(PaymentRequest $request)
@@ -30,11 +30,6 @@ class PaymentController extends Controller
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
-//            $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $total]);
-//
-//            $statusData = json_decode($transactionDetail, true);
-//
-//            $status = $statusData['status'] ? 'Success' : 'Pending';
             if ($intent->status === 'requires_action' || $intent->status === 'requires_source_action')
             {
                 $intentResponse = response()->json([
@@ -62,7 +57,6 @@ class PaymentController extends Controller
                     'details' => $intent->last_payment_error ? $intent->last_payment_error->message : '',
                 ], 500);
             }
-            //dd($intentResponse);
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $request->total]);
             $statusData        = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
             $status            = $statusData['status'] ? 'Success' : 'Pending';
@@ -78,7 +72,6 @@ class PaymentController extends Controller
                 'updated_at'         => now(),
                 'created_at'         => now(),
             ]);
-//            session()->forget('totalPrice');
             session()->put('msg', 'payment accepted');
             return response()->json(['status' => true, 'message' => 'Payment Was Successfully', 'url' => route('online.index')], 200);
         }
@@ -104,8 +97,4 @@ class PaymentController extends Controller
         return redirect(route('payment.page', ['id' => $appointmentId->appointment_id, 'total' => $total]));
     }
 
-    public function invoice()
-    {
-        return view('Frontend.order.orderInvoice');
-    }
 }
