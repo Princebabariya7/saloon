@@ -46,5 +46,32 @@
 <!-- Bootstrap 5 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $('#languageDropdown').change(function () {
+        var selectedLanguage = $(this).val();
+        console.log(selectedLanguage);
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        // Your AJAX request here
+        $.ajax({
+            url: '{{route('online.setLocale')}}',
+            type: 'POST',
+            data: {locale: selectedLanguage},
+            success: function (response) {
+                // Refresh the page or update content based on the new locale
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.error('Error updating language:', error);
+                console.log(xhr.responseText);
+            }
+
+        });
+    });
+</script>
 @yield('custom_js')
