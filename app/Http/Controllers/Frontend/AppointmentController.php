@@ -9,6 +9,7 @@ use App\Models\AppointmentSlot;
 use App\Models\Category;
 use App\Models\Appointment;
 use App\Models\Service;
+use App\Models\SettingsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
@@ -27,10 +28,10 @@ class AppointmentController extends Controller
         {
             $direction = 'asc';
         }
+        $user = auth()->user()->id;
 
         $query = Appointment::with('details')
             ->select(
-                'appointment_detail.id',
                 'appointments.date',
                 'appointments.time',
                 'users.firstname',
@@ -39,14 +40,16 @@ class AppointmentController extends Controller
                 'services.name',
                 'appointments.type',
                 'appointments.status',
-                'appointments.created_at'
+                'appointments.created_at',
+                'appointment_detail.id'
             )
             ->leftJoin('users', 'users.id', '=', 'appointments.user_id')
             ->leftJoin('appointment_detail', 'appointments.id', '=', 'appointment_detail.appointment_id')
             ->leftJoin('services', 'services.id', '=', 'appointment_detail.service_id')
             ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
             ->search($search)
-            ->statusType($status, $type);
+            ->statusType($status, $type)
+            ->where('appointments.user_id', '=', $user);
 
         // Check if $request->sort is set and not empty before applying orderBy
         if ($request->has('sort') && $request->sort != '')
@@ -67,7 +70,6 @@ class AppointmentController extends Controller
         {
             $query->where('appointments.type', $type);
         }
-
         $AppointmentDetail = $query->paginate(5);
 
         return view('Frontend.book.view')->with('appointments', $AppointmentDetail)
