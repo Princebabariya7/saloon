@@ -246,18 +246,26 @@ class AppointmentController extends Controller
             '8:00 PM - 9:00 PM'   => '8:00 PM - 9:00 PM',
         ];
     }
+
     public function setLocale(Request $request)
     {
-        $locale = $request->input('locale', 'en'); // Default to English if no locale is provided
-        dd($locale);
+        $locale = $request->input('locale', 'en');
         App::setLocale($locale);
 
-        // You can store the selected locale in the session if needed
-//        $request->session()->put('locale', $locale);
+        $existingSetting = SettingsModel::where('setting_key', 'language')->first();
+
+        if ($existingSetting)
+        {
+            $existingSetting->update(['setting_value' => $locale]);
+        }
+        else
+        {
+            SettingsModel::create([
+                'setting_key'   => 'language',
+                'setting_value' => $locale,
+            ]);
+        }
 
         return response()->json(['success' => true]);
     }
-
-
-
 }
