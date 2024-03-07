@@ -16,7 +16,7 @@ class PaymentController extends Controller
     {
         $search   = $request->input('search', '');
         $status   = $request->input('status', '');
-        $payments = Payment::search($search)->status($status)->sortable()->paginate(5);
+        $payments = Payment::search($search)->status($status)->sortable()->paginate(10);
 
         return view('Backend.payment.index')
             ->with('payments', $payments);

@@ -39,7 +39,7 @@ class ServiceController extends Controller
         {
             $query->orderBy($request->sort, $direction);
         }
-        $services = $query->paginate(5);
+        $services = $query->paginate(10);
         return view('Backend.service.index')
             ->with('services', $services);
     }

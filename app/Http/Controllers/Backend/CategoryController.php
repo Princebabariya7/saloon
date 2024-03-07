@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $search     = $request->input('search', '');
         $status     = $request->input('status', '');
-        $categories = Category::search($search)->status($status)->sortable()->paginate(5);
+        $categories = Category::search($search)->status($status)->sortable()->paginate(10);
 
         return view('Backend.category.index')
             ->with('categories', $categories);

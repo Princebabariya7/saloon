@@ -24,7 +24,7 @@ class PriceController extends Controller
         })->when($status, function ($query) use ($status)
         {
             return $query->where('status', $status);
-        })->sortable(['price' => 'asc'])->paginate(5);
+        })->sortable(['price' => 'asc'])->paginate(10);
 
         return view('Backend.price.index')->with('prices', $prices);
     }

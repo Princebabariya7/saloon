@@ -66,7 +66,7 @@ class AppointmentController extends Controller
         {
             $query->where('appointments.type', $type);
         }
-        $AppointmentDetail = $query->paginate(5);
+        $AppointmentDetail = $query->paginate(10);
 
         return view('Backend.appointment.index')
             ->with('appointments', $AppointmentDetail)

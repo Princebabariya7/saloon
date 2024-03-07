@@ -17,7 +17,7 @@ class AdminRegistrationController extends Controller
     {
         $search = $request->input('search', '');
         $status = $request->input('status', '');
-        $users  = User::search($search)->status($status)->sortable()->paginate(5);
+        $users  = User::search($search)->status($status)->sortable()->paginate(10);
 
         return view('Backend.user.index')
             ->with('users', $users);

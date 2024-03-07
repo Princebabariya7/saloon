@@ -14,7 +14,7 @@ class GalleryController extends Controller
     {
         $search    = $request->input('search', '');
         $status    = $request->input('status', '');
-        $galleries = Gallery::search($search)->status($status)->sortable()->paginate(5);
+        $galleries = Gallery::search($search)->status($status)->sortable()->paginate(10);
         return view('Backend.gallery.index')
             ->with('galleries', $galleries);
     }
