@@ -33,7 +33,8 @@
                     <a href="{{route('forgot')}}" class="text_simple">{{ Lang::get('saloon.forgot_password') }}</a>
                 </p>
                 <p class="mb-0">
-                    <a href="{{route('user.register')}}" class="text-center text_simple">{{ Lang::get('saloon.register_new_account') }}</a>
+                    <a href="{{route('user.register')}}"
+                       class="text-center text_simple">{{ Lang::get('saloon.register_new_account') }}</a>
                 </p>
             </div>
         </div>
@@ -47,23 +48,23 @@
         @endforeach
         @endif
         @if (\Session::has('forgot'))
-        toastr.success('Your Password Was Changed!');
+        toastr.success('{{ Lang::get('saloon.password_change') }}');
         {{\Session::forget('forgot')}}
         @endif
         @if (\Session::has('registerMsg'))
-        toastr.success('You Are Successfully Registered Please Verify Your Email');
+        toastr.success('{{ Lang::get('saloon.successfully_registered') }}');
         {{\Session::forget('registerMsg')}}
         @endif
         @if (\Session::has('wrongPass'))
-        toastr.error('Please Check Your Email And Password ');
+        toastr.error('{{ Lang::get('saloon.check_email') }}');
         {{\Session::forget('wrongPass')}}
         @endif
         @if (\Session::has('logout'))
-        toastr.success('You Are Successfully Logged Out');
+        toastr.success('{{ Lang::get('saloon.logged_out') }}');
         {{\Session::forget('logout')}}
         @endif
         @if (\Session::has('email_verified'))
-        toastr.error('Your Email Is Not verified');
+        toastr.error('{{ Lang::get('saloon.email_validation') }}');
         {{\Session::forget('email_verified')}}
         @endif
     </script>

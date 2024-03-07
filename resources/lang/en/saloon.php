@@ -142,5 +142,12 @@ return [
 'state'                               => 'State',
 'zipcode'                             => 'Zipcode',
 'already_have_account'                => 'I already have an account',
+'password_change'                     => 'Your Password Was Changed!',
+'successfully_registered'             => 'You Are Successfully Registered Please Verify Your Email',
+'check_email'                         => 'Please Check Your Email And Password',
+'logged_out'                          => 'You Are Successfully Logged Out',
+'email_validation'                    => 'Your Email Is Not verified',
+'email_already_registered'            => 'This Email Address Is Already Registered',
+'verify_email'                        => 'You Are Successfully Registered Please Verify Your Email',
 
 ];

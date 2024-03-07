@@ -50,11 +50,13 @@
                     <div class="col-md-12 text-center mx-auto">
                         <div class="form-check form-check-inline">
                             {{ Form::radio('type', 'Appointment', ($editMode && $type=='Appointment') ? true : null, ['class' => 'form-check-input', 'id' => 'inlineRadio1']) }}
-                            <label class="form-check-label ml-2" for="inlineRadio1">{{ Lang::get('saloon.appointments') }}</label>
+                            <label class="form-check-label ml-2"
+                                   for="inlineRadio1">{{ Lang::get('saloon.appointments') }}</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {{ Form::radio('type', 'HomeService', ($editMode && $type=='HomeService') ? true : null, ['class' => 'form-check-input', 'id' => 'inlineRadio2']) }}
-                            <label class="form-check-label ml-2" for="inlineRadio2">{{ Lang::get('saloon.home_service') }}</label>
+                            <label class="form-check-label ml-2"
+                                   for="inlineRadio2">{{ Lang::get('saloon.home_service') }}</label>
                         </div>
                     </div>
                 </div>
@@ -101,7 +103,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm simple_btn">{{ Lang::get('saloon.confirm_booking') }}
+                    <button type="submit" id="saveButton"
+                            class="btn btn-primary btn-sm simple_btn">{{ Lang::get('saloon.confirm_booking') }}
                     </button>
                 </div>
                 {!! Form::close() !!}
@@ -196,6 +199,7 @@
             AjaxTimeSlot();
             @endif
         });
+
         function AjaxTimeSlot()
         {
             $.ajaxSetup({
@@ -214,6 +218,7 @@
                 },
             });
         }
+
         function selectTimeSlot(timeSlot)
         {
             // Set the selected time slot to the input field

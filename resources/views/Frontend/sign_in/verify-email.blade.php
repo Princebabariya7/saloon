@@ -44,7 +44,7 @@
 @section('custom_js')
     <script>
         @if (\Session::has('registerMsg'))
-        toastr.success('You Are Successfully Registered Please Verify Your Email');
+        toastr.success('{{ Lang::get('saloon.verify_email') }}');
         {{\Session::forget('registerMsg')}}
         @endif
     </script>
