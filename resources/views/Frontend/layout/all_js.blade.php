@@ -63,7 +63,6 @@
             type: 'POST',
             data: {locale: selectedLanguage},
             success: function (response) {
-                // Refresh the page or update content based on the new locale
                 location.reload();
             },
             error: function (xhr, status, error) {
