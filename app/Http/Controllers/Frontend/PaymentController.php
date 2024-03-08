@@ -63,7 +63,7 @@ class PaymentController extends Controller
                 'transaction_detail' => json_encode($intentResponse),
                 'total'              => $request->total,
                 'gateway'            => 'Stripe',
-                'appointment_id'     => $request->token,
+                'appointment_id'     => $request->id,
                 'status'             => $status,
                 'updated_at'         => now(),
                 'created_at'         => now(),
@@ -79,7 +79,7 @@ class PaymentController extends Controller
 
     public function create($token)
     {
-        return view('Frontend.payment.index')->with('token', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
+        return view('Frontend.payment.index')->with('id', $token)->with('buyer_name', auth()->user()->firstname)->with('buyer_email', auth()->user()->email);
     }
 
     public function pending($token)
@@ -89,8 +89,11 @@ class PaymentController extends Controller
         $servicesIds       = $appointmentDetail->pluck('service_id')->toArray();
         $services          = Service::whereIn('id', $servicesIds)->get();
         $total             = $services->sum('price');
-
-        return redirect(route('payment.page', ['id' => $appointmentId->appointment_id, 'total' => $total]));
+        return view('Frontend.Payment.index')
+            ->with('id', $appointmentId->id)
+            ->with('total', $total)
+            ->with('buyer_name', auth()->user()->firstname)
+            ->with('buyer_email', auth()->user()->email);
     }
 
 }

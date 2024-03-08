@@ -9,8 +9,7 @@ class PaymentObserver
 {
     public function created(Payment $payment)
     {
-        $appointments = Appointment::find($payment->appointment_id);
-
+        $appointments = Appointment::find($payment->id);
         if ($payment->status == 'Success')
         {
             $appointments->status = 'Success';

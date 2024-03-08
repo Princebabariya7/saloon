@@ -103,7 +103,12 @@ class AppointmentController extends Controller
             $services    = Service::whereIn('id', $request->service_id)->get();
             $total       = $services->sum('price');
             session()->put('totalPrice', $total);
-            return redirect(route('payment.page', ['id' => $appointment->id, 'total' => $total]));
+//            return redirect(route('payment.page', ['id' => $appointment->id, 'total' => $total]));
+            return view('Frontend.Payment.index')
+                ->with('id', $appointment->id)
+                ->with('total', $total)
+                ->with('buyer_name',auth()->user()->firstname)
+                ->with('buyer_email',auth()->user()->email);
         }
         catch (\Exception $e)
         {

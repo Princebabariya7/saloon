@@ -12,7 +12,6 @@
     </div>
     <div class="container appointment  mt-3">
         {{ Form::open(['route' => ['payment.info.store'], 'method'=>'post','id'=>"payment-form" ]) }}
-        {{ Form::hidden('token',$token) }}
         <div class="w-100">
             <div class="card  mx-3">
                 <div class="card-body">
@@ -49,7 +48,7 @@
                             <button type="submit" id="submit" class="btn btn-sm btn-primary float-right"
                                     style="margin-right: 5px; float: left; margin-bottom: 20px;">MAKE PAYMENT
                                 <h6 class="text-light text-bold"><i class="fa fa-inr" aria-hidden="true"></i>
-                                    {{request('total')}}</h6>
+                                    {{$total}}</h6>
                             </button>
                         </div>
                         <div id="error-message">
@@ -106,9 +105,11 @@
             function stripeTokenHandler(token)
             {
                 var hiddenTokenInput = $('<input type="hidden" name="stripeToken">').val(token.id);
-                var hiddenTotalInput = $('<input type="hidden" name="total">').val({{request('total')}});
+                var hiddenTotalInput = $('<input type="hidden" name="total">').val({{$total}});
+                var hiddenIdInput = $('<input type="hidden" name="id">').val({{$id}});
                 formElement.append(hiddenTokenInput);
                 formElement.append(hiddenTotalInput);
+                formElement.append(hiddenIdInput);
                 console.log(formElement.attr('action'));
                 $.ajax({
                     type: "POST",
