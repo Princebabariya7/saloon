@@ -130,7 +130,7 @@ You can simply add this code after the `div.sidebar`:
 ```html
 <div class="sidebar-custom">
   <a href="#" class="btn btn-link"><i class="fas fa-cogs"></i></a>
-  <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Help</a>
+  <a href="#" class="btn btn-sm btn-secondary hide-on-collapse pos-right">Help</a>
 </div>
 ```
 
