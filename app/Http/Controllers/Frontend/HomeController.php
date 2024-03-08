@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     public function forgot()
     {
-        return view('Frontend.sign_in.forgot');
+        return view('Frontend.sign_in.forgetPassword');
     }
 
     public function gallery()

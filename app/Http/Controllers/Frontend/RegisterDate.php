@@ -78,19 +78,19 @@ class RegisterDate extends Controller
         ])->onlyInput('email');
     }
 
-    public function forgot(ForgotRequest $request)
-    {
-        try
-        {
-            $user           = User::whereEmail($request->email)->first();
-            $user->password = Hash::make($request->input('password'));
-            $user->update();
-            session()->put('forgot', 'your password has been changed');
-            return view('Frontend.sign_in.login');
-        }
-        catch (\Exception $e)
-        {
-            return redirect()->back()->with('error', $e->getMessage());
-        }
-    }
+//    public function forgot(ForgotRequest $request)
+//    {
+//        try
+//        {
+//            $user           = User::whereEmail($request->email)->first();
+//            $user->password = Hash::make($request->input('password'));
+//            $user->update();
+//            session()->put('forgot', 'your password has been changed');
+//            return view('Frontend.sign_in.login');
+//        }
+//        catch (\Exception $e)
+//        {
+//            return redirect()->back()->with('error', $e->getMessage());
+//        }
+//    }
 }
