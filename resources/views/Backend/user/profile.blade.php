@@ -56,15 +56,15 @@
                     {!! Form::open(['route' => 'profile.change-password', 'method' => 'post']) !!}
                     <div class="form-group">
                         {!! Form::label('current_password', 'Current Password') !!}
-                        {!! Form::password('current_password', ['class' => 'form-control']) !!}
+                        {!! Form::password('current_password', ['class' => 'form-control form-control-sm']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('new_password', 'New Password') !!}
-                        {!! Form::password('new_password', ['class' => 'form-control']) !!}
+                        {!! Form::password('new_password', ['class' => 'form-control form-control-sm']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('confirm_password', 'Confirm Password') !!}
-                        {!! Form::password('confirm_password', ['class' => 'form-control']) !!}
+                        {!! Form::password('confirm_password', ['class' => 'form-control form-control-sm']) !!}
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary">Change Password</button>
                     {!! Form::close() !!}
