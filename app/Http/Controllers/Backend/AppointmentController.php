@@ -16,12 +16,12 @@ class AppointmentController extends Controller
 {
     public function index(Request $request)
     {
-        $search      = $request->input('search', '');
-        $status      = $request->input('status', '');
-        $type        = $request->input('type', '');
-        $dateRange   = $request->input('anotherInput', '');
+        $search = $request->input('search', '');
+        $status = $request->input('status', '');
+        $type = $request->input('type', '');
+        $dateRange = $request->input('anotherInput', '');
         $currentDate = Carbon::now();
-        $direction   = $request->input('direction', 'asc');
+        $direction = $request->input('direction', 'asc');
         if (!in_array($direction, ['asc', 'desc']))
         {
             $direction = 'asc';
@@ -58,7 +58,7 @@ class AppointmentController extends Controller
         {
             $dateRange = explode(' - ', $dateRange);
             $startDate = Carbon::createFromFormat('m/d/Y', $dateRange[0])->startOfDay();
-            $endDate   = Carbon::createFromFormat('m/d/Y', $dateRange[1])->endOfDay();
+            $endDate = Carbon::createFromFormat('m/d/Y', $dateRange[1])->endOfDay();
             $query->whereBetween('appointments.date', [$startDate, $endDate]);
         }
 
@@ -75,7 +75,7 @@ class AppointmentController extends Controller
 
     public function create()
     {
-        $category  = Category::getList();
+        $category = Category::getList();
         $timeSlots = [];
         return view('Backend.appointment.form')
             ->with('status', ['' => 'Select one', 'Pending' => 'Pending', 'Success' => 'Success', 'Cancel' => 'Cancel'])
@@ -90,17 +90,17 @@ class AppointmentController extends Controller
         try
         {
             $appointment = Appointment::create([
-                'type'       => $request->type,
-                'date'       => Carbon::create($request->date)->format('Y-m-d'),
-                'time'       => $request->time,
-                'user_id'    => auth()->user()->id,
-                'status'     => $request->status,
+                'type' => $request->type,
+                'date' => Carbon::create($request->date)->format('Y-m-d'),
+                'time' => $request->time,
+                'user_id' => auth()->user()->id,
+                'status' => $request->status,
                 'updated_at' => now(),
                 'created_at' => Carbon::now(),
             ]);
             session()->put('AppointmentData', $request->all());
             $services = Service::whereIn('id', $request->service_id)->get();
-            $total    = $services->sum('price');
+            $total = $services->sum('price');
             session()->put('totalPrice', $total);
             session()->put('add', 'data add');
             return view('Backend.payment.form')
@@ -125,10 +125,10 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
-        $category        = Category::getList();
-        $appointment     = AppointmentDetail::find($id);
+        $category = Category::getList();
+        $appointment = AppointmentDetail::find($id);
         $appointmentSlot = AppointmentSlot::find($appointment->appointment_id);
-        $timeSlots       = [];
+        $timeSlots = [];
 
         return view('Backend.appointment.form')
             ->with('appointment', $appointment)
@@ -147,19 +147,19 @@ class AppointmentController extends Controller
     public function update(AppointmentUpdateRequest $request, $id)
     {
         $appointmentsDetail = AppointmentDetail::find($id);
-        $appointment        = Appointment::find($appointmentsDetail->appointment_id);
-        $appointmentSlot    = AppointmentSlot::find($appointmentsDetail->appointment_id);
+        $appointment = Appointment::find($appointmentsDetail->appointment_id);
+        $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
 
         foreach (request('service_id') as $serviceId)
         {
             $appointmentsDetail->service_id = $serviceId;
-            $dateTime                       = Carbon::create($request->date)->format('Y-m-d');
-            $appointment->type              = $request->input('type');
-            $appointment->time              = $request->input('time');
-            $appointment->date              = $dateTime;
-            $appointment->status            = $request->input('status');
-            $appointmentSlot->date          = $dateTime;
-            $appointmentSlot->slot          = $request->input('time');
+            $dateTime = Carbon::create($request->date)->format('Y-m-d');
+            $appointment->type = $request->input('type');
+            $appointment->time = $request->input('time');
+            $appointment->date = $dateTime;
+            $appointment->status = $request->input('status');
+            $appointmentSlot->date = $dateTime;
+            $appointmentSlot->slot = $request->input('time');
 
             $appointmentSlot->update();
             $appointment->update();
@@ -175,12 +175,12 @@ class AppointmentController extends Controller
         try
         {
             $appointmentsDetail = AppointmentDetail::find($id);
-            $appointmentsCount  = AppointmentDetail::find($id)->where('appointment_id', '=', $appointmentsDetail->appointment_id);
+            $appointmentsCount = AppointmentDetail::find($id)->where('appointment_id', '=', $appointmentsDetail->appointment_id);
 
             if ($appointmentsCount->count() == 1)
             {
                 $appointmentSlot = AppointmentSlot::find($appointmentsDetail->appointment_id);
-                $appointment     = Appointment::find($appointmentsDetail->appointment_id);
+                $appointment = Appointment::find($appointmentsDetail->appointment_id);
                 $appointmentSlot->delete();
                 $appointment->delete();
             }
@@ -206,16 +206,16 @@ class AppointmentController extends Controller
             }
             return response()->json(
                 [
-                    'status'   => true,
+                    'status' => true,
                     'services' => $service,
-                    'message'  => ''
+                    'message' => ''
                 ], 200);
         }
         catch (\Exception $e)
         {
             return response()->json(
                 [
-                    'status'  => false,
+                    'status' => false,
                     'message' => $e->getMessage()
                 ], 400);
         }
@@ -223,10 +223,10 @@ class AppointmentController extends Controller
 
     public function timeSlot()
     {
-        $date     = Carbon::create(\request()->date)->format('Y-m-d');
-        $slots    = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
+        $date = Carbon::create(\request()->date)->format('Y-m-d');
+        $slots = AppointmentSlot::where('date', $date)->pluck('slot', 'slot')->toArray();
         $slotList = $this->slotList();
-        $slotDay  = (Carbon::create(\request()->date)->dayName);
+        $slotDay = (Carbon::create(\request()->date)->dayName);
         return response()->json(
             [
                 'slotHtml' => view('Backend.appointment.fetch_timeslot')
@@ -240,18 +240,18 @@ class AppointmentController extends Controller
     public function slotList()
     {
         return [
-            '9:00 AM - 10:00 AM'  => '9:00 AM - 10:00 AM',
+            '9:00 AM - 10:00 AM' => '9:00 AM - 10:00 AM',
             '10:00 AM - 11:00 AM' => '10:00 AM - 11:00 AM',
             '11:00 AM - 12:00 PM' => '11:00 AM - 12:00 PM',
-            '12:00 PM - 1:00 PM'  => '12:00 PM - 1:00 PM',
-            '1:00 PM - 2:00 PM'   => '1:00 PM - 2:00 PM',
-            '2:00 PM - 3:00 PM'   => '2:00 PM - 3:00 PM',
-            '3:00 PM - 4:00 PM'   => '3:00 PM - 4:00 PM',
-            '4:00 PM - 5:00 PM'   => '4:00 PM - 5:00 PM',
-            '5:00 PM - 6:00 PM'   => '5:00 PM - 6:00 PM',
-            '6:00 PM - 7:00 PM'   => '6:00 PM - 7:00 PM',
-            '7:00 PM - 8:00 PM'   => '7:00 PM - 8:00 PM',
-            '8:00 PM - 9:00 PM'   => '8:00 PM - 9:00 PM',
+            '12:00 PM - 1:00 PM' => '12:00 PM - 1:00 PM',
+            '1:00 PM - 2:00 PM' => '1:00 PM - 2:00 PM',
+            '2:00 PM - 3:00 PM' => '2:00 PM - 3:00 PM',
+            '3:00 PM - 4:00 PM' => '3:00 PM - 4:00 PM',
+            '4:00 PM - 5:00 PM' => '4:00 PM - 5:00 PM',
+            '5:00 PM - 6:00 PM' => '5:00 PM - 6:00 PM',
+            '6:00 PM - 7:00 PM' => '6:00 PM - 7:00 PM',
+            '7:00 PM - 8:00 PM' => '7:00 PM - 8:00 PM',
+            '8:00 PM - 9:00 PM' => '8:00 PM - 9:00 PM',
         ];
     }
 }
