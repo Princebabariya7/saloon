@@ -42,16 +42,16 @@
                         <table class="table table-striped table-sm ordertable">
                             <thead>
                             <tr>
-                                <th>@sortablelink('users.firstname',__('saloon.user_name'))</th>
-                                <th>@sortablelink('categories.type', __('saloon.category'))</th>
-                                <th>@sortablelink('services.name', __('saloon.service_name'))</th>
-                                <th>
+                                <th class="text-center">@sortablelink('users.firstname',__('saloon.user_name'))</th>
+                                <th class="text-center">@sortablelink('categories.type', __('saloon.category'))</th>
+                                <th class="text-center">@sortablelink('services.name', __('saloon.service_name'))</th>
+                                <th class="text-center">
                                     {{ Lang::get('saloon.type') }}
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     {{ Lang::get('saloon.app_date') }}
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     {{ Lang::get('saloon.time') }}
                                 </th>
                                 <th class="text-center">
@@ -64,13 +64,13 @@
                                 <tbody>
                                 @foreach($appointments as $detail)
                                     <tr>
-                                        <td>{{$detail->getUsername()}}</td>
-                                        <td>{{$detail->category}}</td>
-                                        <td>{{$detail->name}}</td>
-                                        <td>{{$detail->type}}</td>
-                                        <td>{{$detail->date}}</td>
-                                        <td>{{$detail->time}}</td>
-                                        <td>
+                                        <td class="text-center">{{$detail->getUsername()}}</td>
+                                        <td class="text-center">{{$detail->category}}</td>
+                                        <td class="text-center">{{$detail->name}}</td>
+                                        <td class="text-center">{{$detail->type}}</td>
+                                        <td class="text-center">{{$detail->date}}</td>
+                                        <td class="text-center">{{$detail->time}}</td>
+                                        <td class="text-center">
                                             @if($detail->status =='Pending')
                                                 <span class="badge badge-warning">Pending</span>
                                             @elseif($detail->status =='Success')
