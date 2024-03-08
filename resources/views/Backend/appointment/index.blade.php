@@ -85,7 +85,7 @@
                                 <th class="text-center">
                                     Status
                                 </th>
-                                <th class="text-right">
+                                <th class="text-center">
                                     Action
                                 </th>
                             </tr>
