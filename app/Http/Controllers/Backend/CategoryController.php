@@ -33,7 +33,7 @@ class CategoryController extends Controller
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        session()->put('add', 'data add');
+        session()->put('addCategory', 'data add');
         return redirect(route('admin.category.index'));
     }
 

@@ -172,9 +172,9 @@
                 $('.search').trigger('click');
             })
         });
-        @if (\Session::has('add'))
+        @if (\Session::has('addCategory'))
         toastr.success('Your Data Has Successfully Added!');
-        {{ \Session::forget('add') }}
+        {{ \Session::forget('addCategory') }}
         @endif
         @if (\Session::has('update'))
         toastr.success('Your Data Has Successfully Updated!');
