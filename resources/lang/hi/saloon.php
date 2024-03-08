@@ -18,6 +18,7 @@ return [
 'make_payment'                        => 'भुगतान करें',
 'edit'                                => 'संपादित करें',
 'delete'                              => 'हटाएं',
+'cancel'                              => 'रद्द करें',
 'no_data_found'                       => 'कोई डेटा नहीं मिला',
 'filter_records'                      => 'रिकॉर्ड मेल',
 'clear'                               => 'साफ करें',

@@ -19,6 +19,7 @@ return [
 'make_payment'              => 'Make Payment',
 'edit'                      => 'Edit',
 'delete'                    => 'Delete',
+'cancel'                    => 'Cancel',
 'no_data_found'             => 'No Data Found',
 'filter_records'            => 'Records Match',
 'clear'                     => 'Clear',

@@ -19,6 +19,7 @@ return [
 'make_payment'                        => 'ચુકવો',
 'edit'                                => 'સંપાદિત કરો',
 'delete'                              => 'કાઢો',
+'cancel'                              => 'રદ કરો',
 'no_data_found'                       => 'કોઈ ડેટા મળ્યું નથી',
 'filter_records'                      => 'રેકોર્ડ્સ મેળવી',
 'clear'                               => 'સ્પષ્ટ',
@@ -100,7 +101,7 @@ return [
 'beard_expert'                        => 'દાઢ એકઝર્ટ',
 'josh_dunn'                           => 'જોશ ડન',
 'color_expert'                        => 'રંગ એકઝર્ટ',
-'login_message'               => 'તમે સફળતાપૂર્વક લોગ ઇન થયા છો',
+'login_message'                       => 'તમે સફળતાપૂર્વક લોગ ઇન થયા છો',
 
 //      For Main Service Page
 'service_main_page'                   => 'સેવા',

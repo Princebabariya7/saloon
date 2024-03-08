@@ -115,7 +115,7 @@
                                                                href="#"
                                                                data-href="{{route('online.delete',$detail->id)}}">
                                                                 <i class="fa fa-trash"></i>
-                                                                {{ Lang::get('saloon.delete') }}
+                                                                {{ Lang::get('saloon.cancel') }}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -155,7 +155,7 @@
                                                                href="#"
                                                                data-href="{{route('online.delete',$detail->id)}}">
                                                                 <i class="fa fa-trash"></i>
-                                                                {{ Lang::get('saloon.delete') }}
+                                                                {{ Lang::get('saloon.cancel') }}
                                                             </a>
                                                         </li>
                                                     </ul>
