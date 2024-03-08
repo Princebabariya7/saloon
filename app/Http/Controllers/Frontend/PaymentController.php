@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Requests\Frontend\PaymentRequest;
+use App\Models\Appointment;
 use App\Models\AppointmentDetail;
 use App\Models\Payment;
 use App\Models\Service;
@@ -84,16 +85,31 @@ class PaymentController extends Controller
 
     public function pending($token)
     {
-        $appointmentId     = AppointmentDetail::find($token);
-        $appointmentDetail = AppointmentDetail::where('appointment_id', AppointmentDetail::find($token)->appointment_id)->get();
-        $servicesIds       = $appointmentDetail->pluck('service_id')->toArray();
-        $services          = Service::whereIn('id', $servicesIds)->get();
-        $total             = $services->sum('price');
-        return view('Frontend.Payment.index')
-            ->with('id', $appointmentId->id)
-            ->with('total', $total)
-            ->with('buyer_name', auth()->user()->firstname)
-            ->with('buyer_email', auth()->user()->email);
+        try
+        {
+            $appointmentId = AppointmentDetail::find($token);
+            $ifSuccess     = Appointment::find($appointmentId->appointment_id)->status;
+            if ($ifSuccess == 'Pending')
+            {
+                $appointmentDetail = AppointmentDetail::where('appointment_id', AppointmentDetail::find($token)->appointment_id)->get();
+                $servicesIds       = $appointmentDetail->pluck('service_id')->toArray();
+                $services          = Service::whereIn('id', $servicesIds)->get();
+                $total             = $services->sum('price');
+                return view('Frontend.payment.index')
+                    ->with('id', $appointmentId->id)
+                    ->with('total', $total)
+                    ->with('buyer_name', auth()->user()->firstname)
+                    ->with('buyer_email', auth()->user()->email);
+            }
+            else
+            {
+                return redirect(route('online.index'));
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
 }

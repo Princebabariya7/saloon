@@ -103,7 +103,7 @@ class AppointmentController extends Controller
             $total    = $services->sum('price');
             session()->put('totalPrice', $total);
             session()->put('add', 'data add');
-            return view('Backend.Payment.form')
+            return view('Backend.payment.form')
                 ->with('id', $appointment->id)
                 ->with('total', $total)
                 ->with('buyer_name', auth()->user()->firstname)
