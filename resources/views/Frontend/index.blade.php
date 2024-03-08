@@ -195,9 +195,9 @@
 @endsection
 @section('custom_js')
     <script>
-        @if (\Session::has('msg'))
-        toastr.success({{ Lang::get('saloon.success_login_message') }});
-        {{\Session::forget('msg')}}
+        @if (\Session::has('msgUser'))
+        toastr.success('{{ Lang::get('saloon.login_message') }}');
+        {{\Session::forget('msgUser')}}
         @endif
     </script>
 @endsection

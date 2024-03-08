@@ -59,7 +59,7 @@ class RegisterDate extends Controller
             {
                 if (auth()->user()->user_status == "User")
                 {
-                    session()->put('msg', 'You Are Logged in');
+                    session()->put('msgUser', 'You Are Logged in');
                     return redirect()->route('home');
                 }
                 elseif (auth()->user()->user_status == "Admin")
