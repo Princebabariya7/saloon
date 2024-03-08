@@ -105,9 +105,8 @@ class PaymentController extends Controller
         $servicesIds = $appointmentDetail->pluck('service_id')->toArray();
         $services = Service::whereIn('id', $servicesIds)->get();
         $total = $services->sum('price');
-
         return view('Backend.payment.form')
-            ->with('id', $appointmentId->id)
+            ->with('id', $appointmentId->appointment_id)
             ->with('total', $total)
             ->with('buyer_name', auth()->user()->firstname)
             ->with('buyer_email', auth()->user()->email);

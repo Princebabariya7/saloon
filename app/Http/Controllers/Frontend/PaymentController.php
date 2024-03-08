@@ -96,7 +96,7 @@ class PaymentController extends Controller
                 $services          = Service::whereIn('id', $servicesIds)->get();
                 $total             = $services->sum('price');
                 return view('Frontend.payment.index')
-                    ->with('id', $appointmentId->id)
+                    ->with('id', $appointmentId->appointment_id)
                     ->with('total', $total)
                     ->with('buyer_name', auth()->user()->firstname)
                     ->with('buyer_email', auth()->user()->email);
