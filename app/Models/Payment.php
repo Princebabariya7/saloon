@@ -8,25 +8,18 @@ use Kyslik\ColumnSortable\Sortable;
 
 class Payment extends Model
 {
-    use HasFactory , Sortable;
-    protected $fillable = ['appointment_id','gateway','transaction_id','transaction_detail','status','total'];
+    use HasFactory, Sortable;
+
+    protected $fillable = ['appointment_id', 'gateway', 'transaction_id', 'transaction_detail', 'status', 'total'];
 
     protected $attributes = [
-        'gateway'=>'not selected',
-        'transaction_id'=>'not selected',
-        'transaction_detail'=>'not selected',
-        'status'=>'not selected',
-        'total'=>'not selected',
+        'gateway'            => 'not selected',
+        'transaction_id'     => 'not selected',
+        'transaction_detail' => 'not selected',
+        'status'             => 'not selected',
+        'total'              => 'not selected',
     ];
-        protected $table = 'payment';
-
-
-//    public function getTransactionAmountAttribute()
-//    {
-//        $transaction_detail = json_decode($this->transaction_detail);
-//
-//        return $transaction_detail->total;
-//    }
+    protected $table      = 'payment';
 
     public function scopeSearch($query, $search)
     {

@@ -31,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
         {
             $lang = SettingsModel::find(1)->setting_value;
             Config::set('app.locale', $lang);
-        }catch (\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
 
             return $e->getMessage();
         }

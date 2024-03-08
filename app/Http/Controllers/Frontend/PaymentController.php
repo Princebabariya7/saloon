@@ -22,7 +22,6 @@ class PaymentController extends Controller
         try
         {
             Stripe::setApiKey(config('services.stripe.secret'));
-//            $total  = session()->get('totalPrice');
             $intent = PaymentIntent::create([
                 'amount'               => $request->total * 100,
                 'currency'             => 'usd',
@@ -35,7 +34,6 @@ class PaymentController extends Controller
                 $intentResponse = response()->json([
                     'status'            => 'requires_action',
                     'payment_intent_id' => $intent->id,
-                    //'client_secret'     => $intent->client_secret,
                     'message'           => 'Payment requires additional action',
                 ]);
             }

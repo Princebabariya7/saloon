@@ -18,8 +18,6 @@ class UpdateUserRequest extends FormRequest
             'lastname'  => 'required|alpha',
             'mobile'    => 'required|numeric|digits:10',
             'email'     => 'required|email',
-            //'password'   => ['required', 'string', 'min:8', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&]/',],
-            //'repassword' => 'required|same:password',
             'address'   => 'required',
             'city'      => 'required',
             'state'     => 'required',
