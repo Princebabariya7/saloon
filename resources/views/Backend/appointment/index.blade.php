@@ -67,9 +67,9 @@
                         <table class="table table-striped table-sm projects">
                             <thead>
                             <tr>
-                                <th>@sortablelink('User Name')</th>
-                                <th>@sortablelink('Category')</th>
-                                <th>@sortablelink('Service')</th>
+                                <th>@sortablelink('users.firstname',__('saloon.user_name'))</th>
+                                <th>@sortablelink('categories.type', __('saloon.category'))</th>
+                                <th>@sortablelink('services.name', __('saloon.service_name'))</th>
                                 <th>
                                     Type
                                 </th>
