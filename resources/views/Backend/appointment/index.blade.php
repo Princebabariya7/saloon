@@ -67,16 +67,16 @@
                         <table class="table table-striped table-sm projects">
                             <thead>
                             <tr>
-                                <th>@sortablelink('users.firstname',__('saloon.user_name'))</th>
-                                <th>@sortablelink('categories.type', __('saloon.category'))</th>
-                                <th>@sortablelink('services.name', __('saloon.service_name'))</th>
+                                <th class="text-center">@sortablelink('users.firstname',__('saloon.user_name'))</th>
+                                <th class="text-center">@sortablelink('categories.type', __('saloon.category'))</th>
+                                <th class="text-center">@sortablelink('services.name', __('saloon.service_name'))</th>
                                 <th class="text-center">
                                     Type
                                 </th>
                                 <th class="text-center">
                                     Booking Date
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Appointment Date
                                 </th>
                                 <th class="text-center">
@@ -95,30 +95,30 @@
                                 @foreach($appointments as $detail)
 
                                     <tr>
-                                        <td>
+                                        <td class="text-center">
                                             {{$detail->getUsername()}}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{route('admin.appointment.edit',$detail->id)}}">
                                                 {{ $detail->category }}
                                             </a>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{$detail->name}}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{$detail->type}}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{$detail->created_at}}
                                         </td>
                                         <td class="text-center">
                                             {{$detail->date}}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{$detail->time}}
                                         </td>
-                                        <td class="project-state">
+                                        <td class="project-state text-center">
                                             @if($detail->status =='Pending')
                                                 <span class="badge badge-warning">Pending</span>
                                             @elseif($detail->status =='Success')
@@ -127,7 +127,7 @@
                                                 <span class="badge badge-danger">Cancel</span>
                                             @endif
                                         </td>
-                                        <td class="project-actions text-right">
+                                        <td class="project-actions text-center">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                                     data-bs-toggle="dropdown">
                                                 Action
