@@ -40,7 +40,6 @@ class PaymentController extends Controller
                 'payment_method_data'  => ['type' => 'card', 'card' => ['token' => $request->stripeToken]]
             ]);
             $intent->confirm();
-            //  $intentResponse    = response()->json(['clientSecret' => $intent->client_secret]);
 
             if ($intent->status === 'requires_action' || $intent->status === 'requires_source_action')
             {
@@ -69,7 +68,7 @@ class PaymentController extends Controller
                     'details' => $intent->last_payment_error ? $intent->last_payment_error->message : '',
                 ], 500);
             }
-            //dd($intentResponse);
+
             $transactionDetail = json_encode(['status' => true, 'message' => 'Payment Was Successfully', 'total' => $request->total]);
             $statusData        = json_decode($transactionDetail, true); // Decode the JSON string to an associative array
             $status            = $statusData['status'] ? 'Success' : 'Pending';
