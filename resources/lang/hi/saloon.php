@@ -26,6 +26,9 @@ return [
 'delete_confirmation'                 => 'आप इसे पुनः प्राप्त नहीं कर पाएंगे!',
 'delete_confirmation_title'           => 'हाँ, इसे हटाएं!',
 'update_message'                      => 'आपका आदेश अपडेट किया गया है',
+'delete_message'                      => 'रिकॉर्ड सफलतापूर्वक हटा दिया गया',
+'delete_failure_message'              => 'रिकॉर्ड मिटाया नहीं गया था',
+
 
 //      For Appointment Form
 'online_booking'                      => 'ऑनलाइन दर्ज करना',

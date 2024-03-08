@@ -27,6 +27,9 @@ return [
 'delete_confirmation'                 => 'તમે આને પછી પરત આવવાના યોગ્ય નથી!',
 'delete_confirmation_title'           => 'હા, તેને કાઢો!',
 'update_message'                      => 'તમારો ઓર્ડર અપડેટ થઇ છે',
+'delete_message'                      => 'રેકોર્ડ સફળતાપૂર્વક કાઢવામાં આવ્યો',
+'delete_failure_message'              => 'રેકોર્ડ ડિલીટ થયો નથી',
+
 
 //      For Appointment Form
 'online_booking'                      => 'ઓનલાઈન બુકિંગ',

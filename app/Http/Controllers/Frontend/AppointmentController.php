@@ -172,11 +172,11 @@ class AppointmentController extends Controller
             }
             $appointmentsDetail->delete();
 
-            return response()->json(['status' => true, 'message' => 'Record deleted successfully'], 200);
+            return response()->json(['status' => true, 'message' => trans('saloon.delete_message')], 200);
         }
         catch (\Exception $e)
         {
-            return response()->json(['status' => false, 'message' => 'Record was not deleted'], 400);
+            return response()->json(['status' => false, 'message' => trans('saloon.delete_failure_message')], 400);
         }
     }
 

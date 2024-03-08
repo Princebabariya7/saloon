@@ -27,6 +27,8 @@ return [
 'delete_confirmation'       => 'You will not be able to revert this!',
 'delete_confirmation_title' => 'Yes, delete it!',
 'update_message'            => 'Your order has been updated',
+'delete_message'            => 'Record deleted successfully',
+'delete_failure_message'    => 'Record was not deleted',
 
 //      For Appointment Form
 'online_booking'            => 'Online Booking',
