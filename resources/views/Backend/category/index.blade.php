@@ -52,7 +52,7 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="card-body table-responsive p-0 ">
-                        <table class="table table-striped table-sm projects">
+                        <table class="table table-striped table-sm projects" style="display: inline-table;">
                             <thead>
                             <tr>
                                 <th>@sortablelink('type','Type')</th>

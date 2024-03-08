@@ -103,7 +103,7 @@ class AppointmentController extends Controller
             $services    = Service::whereIn('id', $request->service_id)->get();
             $total       = $services->sum('price');
             session()->put('totalPrice', $total);
-            return view('Frontend.Payment.index')
+            return view('Frontend.payment.index')
                 ->with('id', $appointment->id)
                 ->with('total', $total)
                 ->with('buyer_name', auth()->user()->firstname)
