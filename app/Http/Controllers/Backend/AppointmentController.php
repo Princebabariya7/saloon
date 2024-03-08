@@ -103,7 +103,11 @@ class AppointmentController extends Controller
             $total    = $services->sum('price');
             session()->put('totalPrice', $total);
             session()->put('add', 'data add');
-            return redirect(route('admin.payment.create', ['id' => $appointment->id, 'total' => $total]));
+            return view('Backend.Payment.form')
+                ->with('id', $appointment->id)
+                ->with('total', $total)
+                ->with('buyer_name', auth()->user()->firstname)
+                ->with('buyer_email', auth()->user()->email);
         }
         catch (\Exception $e)
         {

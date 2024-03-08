@@ -78,7 +78,7 @@ class PaymentController extends Controller
                 'transaction_detail' => json_encode($intentResponse),
                 'total'              => $request->total,
                 'gateway'            => 'Stripe',
-                'appointment_id'     => $request->token,
+                'appointment_id'     => $request->id,
                 'status'             => $status,
                 'updated_at'         => now(),
                 'created_at'         => now(),
@@ -106,6 +106,10 @@ class PaymentController extends Controller
         $services          = Service::whereIn('id', $servicesIds)->get();
         $total             = $services->sum('price');
 
-        return redirect(route('admin.payment.create', ['id' => $appointmentId->appointment_id, 'total' => $total]));
+        return view('Backend.Payment.form')
+            ->with('id', $appointmentId->id)
+            ->with('total', $total)
+            ->with('buyer_name', auth()->user()->firstname)
+            ->with('buyer_email', auth()->user()->email);
     }
 }
