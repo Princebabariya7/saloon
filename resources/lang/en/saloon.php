@@ -54,7 +54,7 @@ return [
 'sign_in'                   => 'Sign In',
 
 //      For Footer
-'saloon_address'            => 'Salon Address',
+'saloon_address'            => 'Saloon Address',
 'address_details'           => 'Shop No. 5, Hill Town Complex, Opp. Eagle Academy, New India Colony, Ahmedabad',
 'quick_links'               => 'Quick Links',
 'terms_of_use'              => 'Terms of Use',
@@ -66,17 +66,17 @@ return [
 'contact_number'            => '+91 99952 52456',
 
 //      For Main index Page
-'welcome_message'           => 'Welcome To Hairck Salon',
-'saloon_description'        => 'Welcome to Hairck Salon, where beauty meets sophistication. Our Salon is a haven of elegance and expertise, dedicated to delivering the ultimate in grooming and pampering experiences.',
+'welcome_message'           => 'Welcome To Hairck Saloon',
+'saloon_description'        => 'Welcome to Hairck Saloon, where beauty meets sophistication. Our Saloon is a haven of elegance and expertise, dedicated to delivering the ultimate in grooming and pampering experiences.',
 'book_appointment'          => 'Book Appointment',
 'learn_about_us'            => 'Learn About Us',
 'experience_years'          => '25 Years Experience',
-'saloon_embodiment'         => 'Hairck Salon is an embodiment of sophistication and skill, offering a refined environment where clients can access top-notch hairstyling, skincare, and wellness services. Our team of highly trained professionals is dedicated to enhancing your natural beauty while prioritizing the well-being of your hair and skin.',
-'power_of_nature'           => 'At Hairck Salon, we believe in the power of nature. We exclusively use natural products to ensure that every treatment not only leaves you looking stunning but also promotes the long-term health and radiance of your hair and skin. Our commitment to natural ingredients reflects our dedication to your overall well-being.',
-'saloon_services'           => 'Our Salon Services',
-'best_services'             => 'Best Salon and Barber Services for You',
+'saloon_embodiment'         => 'Hairck Saloon is an embodiment of sophistication and skill, offering a refined environment where clients can access top-notch hairstyling, skincare, and wellness services. Our team of highly trained professionals is dedicated to enhancing your natural beauty while prioritizing the well-being of your hair and skin.',
+'power_of_nature'           => 'At Hairck Saloon, we believe in the power of nature. We exclusively use natural products to ensure that every treatment not only leaves you looking stunning but also promotes the long-term health and radiance of your hair and skin. Our commitment to natural ingredients reflects our dedication to your overall well-being.',
+'saloon_services'           => 'Our Saloon Services',
+'best_services'             => 'Best Saloon and Barber Services for You',
 'hair_cut'                  => 'Hair Cut',
-'haircut_description'       => 'A haircut is what a barber does when he trims your hair with scissors. You might decide it\'s time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Salons for a haircut.',
+'haircut_description'       => 'A haircut is what a barber does when he trims your hair with scissors. You might decide it\'s time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Saloons for a haircut.',
 'beard_style'               => 'Beard Style',
 'beard_style_goal'          => 'The ultimate goal of your beard style is to add contrast and dimension to your face. Different face shapes should highlight certain facial features—not every style looks great on every guy.',
 'color_and_wash'            => 'Color & Wash',
@@ -103,7 +103,7 @@ return [
 //      For Main Service Page
 
 'service_main_page'                => 'Service',
-'best_services_main_page'          => 'Best Salon and Barber Services for You',
+'best_services_main_page'          => 'Best Saloon and Barber Services for You',
 'hair_cut_main_page'               => 'Hair Cut',
 'haircut_description_main_page'    => 'A haircut is what a barber does when he trims your hair with scissors. You might decide it is time for a haircut when your bangs are hanging in your eyes. Some people go to fancy Saloons for a haircut.',
 'beard_style_main_page'            => 'Beard Style',

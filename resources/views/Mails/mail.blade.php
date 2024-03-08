@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salon Order Confirmation</title>
+    <title>Saloon Order Confirmation</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -54,8 +54,8 @@
 <body>
 <div class="container">
     <h1 style="color: #ff6600;">Hairck Saloon</h1>
-    <h2 style="color: #ff6600;">Salon Appointment Confirmation</h2>
-    <p style="color: #555;">Thank you for choosing Hairck Salon! Your order has been confirmed.</p>
+    <h2 style="color: #ff6600;">Saloon Appointment Confirmation</h2>
+    <p style="color: #555;">Thank you for choosing Hairck Saloon! Your order has been confirmed.</p>
     <p style="color: #555;"><strong>Details of your order:</strong></p>
     <table>
         <tr>
