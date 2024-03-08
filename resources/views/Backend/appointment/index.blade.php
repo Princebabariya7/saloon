@@ -70,16 +70,16 @@
                                 <th>@sortablelink('users.firstname',__('saloon.user_name'))</th>
                                 <th>@sortablelink('categories.type', __('saloon.category'))</th>
                                 <th>@sortablelink('services.name', __('saloon.service_name'))</th>
-                                <th>
+                                <th class="text-center">
                                     Type
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Booking Date
                                 </th>
                                 <th>
                                     Appointment Date
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Time
                                 </th>
                                 <th class="text-center">
@@ -112,7 +112,7 @@
                                         <td>
                                             {{$detail->created_at}}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{$detail->date}}
                                         </td>
                                         <td>
