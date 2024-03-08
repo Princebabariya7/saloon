@@ -27,6 +27,7 @@ return [
 'delete_confirmation'       => 'You will not be able to revert this!',
 'delete_confirmation_title' => 'Yes, delete it!',
 'update_message'            => 'Your order has been updated',
+'login_message'            => 'Your Are Successfully Logged In!',
 'delete_message'            => 'Record deleted successfully',
 'delete_failure_message'    => 'Record was not deleted',
 
@@ -98,7 +99,6 @@ return [
 'beard_expert'              => 'Beard Expert',
 'josh_dunn'                 => 'Josh Dunn',
 'color_expert'              => 'Color Expert',
-'success_login_message'     => 'You are successfully logged in',
 
 //      For Main Service Page
 

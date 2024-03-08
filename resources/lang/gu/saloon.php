@@ -100,7 +100,7 @@ return [
 'beard_expert'                        => 'દાઢ એકઝર્ટ',
 'josh_dunn'                           => 'જોશ ડન',
 'color_expert'                        => 'રંગ એકઝર્ટ',
-'success_login_message'               => 'તમે સફળતાપૂર્વક લોગ ઇન થયા છો',
+'login_message'               => 'તમે સફળતાપૂર્વક લોગ ઇન થયા છો',
 
 //      For Main Service Page
 'service_main_page'                   => 'સેવા',

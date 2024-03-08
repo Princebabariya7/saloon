@@ -112,7 +112,7 @@ return [
 'beard_expert'                        => 'बीयर्ड एक्सपर्ट',
 'josh_dunn'                           => 'जोश डन',
 'color_expert'                        => 'कलर एक्सपर्ट',
-'success_login_message'               => 'आप सफलतापूर्वक लॉग इन कर चुके हैं',
+'login_message'                       => 'आप सफलतापूर्वक लॉग इन कर चुके हैं',
 
 //      For Main Service Page
 'service_main_page'                   => 'सेवा',
