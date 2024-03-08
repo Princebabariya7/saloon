@@ -7,10 +7,10 @@
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-8">
                         <h1><i class="fas fa-tachometer-alt"></i> Dashboard </h1>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">
                                 <a href="{{route('dashboard.index')}}">Home</a>
