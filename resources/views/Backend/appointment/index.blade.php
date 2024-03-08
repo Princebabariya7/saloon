@@ -160,7 +160,7 @@
                                                     <a class="dropdown-item small appointment-delete text-danger"
                                                        href="#"
                                                        data-href="{{route('admin.appointment.delete',$detail->id)}}">
-                                                        <i class="fa fa-trash"></i> Delete
+                                                        <i class="fa fa-trash"></i> Cancel
                                                     </a>
                                                 </li>
                                             </ul>
