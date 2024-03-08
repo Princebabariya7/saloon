@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="sign_in_btn mt-4">
-                {!! Form::button('Sign In', ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::button('Sign In', ['type' => 'submit', 'class' => 'btn btn-sm btn-primary btn-block']) !!}
             </div>
             {!! Form::close() !!}
 

@@ -51,7 +51,7 @@
                                     </li>
                                 </ul>
                                 <div class="row justify-content-center">
-                                    <button type="button" class="btn btn-secondary"><a href="#" class="text-light">return to
+                                    <button type="button" class="btn btn-sm btn-secondary"><a href="#" class="text-light">return to
                                             home</a></button>
                                 </div>
                             </div>

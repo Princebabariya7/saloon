@@ -22,14 +22,14 @@
                                 </li>
                             </ul>
                             <div class="row justify-content-center mb-3">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                         data-target="#changePasswordModal">
                                     Change Password
                                 </button>
                             </div>
 
                             <div class="row justify-content-center">
-                                <button type="button" class="btn btn-secondary">
+                                <button type="button" class="btn btn-sm btn-secondary">
                                     <a href="{{ route('dashboard.index') }}" class="text-light">
                                         Back to home
                                     </a>
@@ -66,7 +66,7 @@
                         {!! Form::label('confirm_password', 'Confirm Password') !!}
                         {!! Form::password('confirm_password', ['class' => 'form-control']) !!}
                     </div>
-                    <button type="submit" class="btn btn-primary">Change Password</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Change Password</button>
                     {!! Form::close() !!}
                 </div>
             </div>

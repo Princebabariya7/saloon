@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mt-4">
-                    {!! Form::button('Request new password', ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::button('Request new password', ['type' => 'submit', 'class' => 'btn btn-sm btn-primary btn-block']) !!}
                 </div>
             </div>
             {!! Form::close() !!}

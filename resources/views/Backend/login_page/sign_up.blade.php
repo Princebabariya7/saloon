@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="register_btn mt-4">
-                {!! Form::button('Register', ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::button('Register', ['type' => 'submit', 'class' => 'btn btn-sm btn-primary btn-block']) !!}
             </div>
             {!! Form::close() !!}
             <a href="{{route('admin.sign_in')}}" class="text-center pt-2 mt-3 d-block border-top">Sign in</a>
