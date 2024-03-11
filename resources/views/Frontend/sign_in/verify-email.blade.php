@@ -3,15 +3,6 @@
     Verify Email
     @endsection
 @section('mainContent')
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-{{--    <meta charset="UTF-8">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-{{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
-{{--    @include('Frontend.layout.all_css')--}}
-{{--</head>--}}
-{{--<body>--}}
 <div class="page-header m-0">
     <div class="container">
         <div class="row justify-content-around">
@@ -38,8 +29,6 @@
         </div>
     </div>
 </div>
-</body>
-</html>
 @endsection
 @section('custom_js')
     <script>
