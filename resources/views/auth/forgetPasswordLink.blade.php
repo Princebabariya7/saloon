@@ -10,11 +10,10 @@
             </div>
         </div>
     </div>
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+    <main class="login-form">
+        <div class="cotainer mt-5 mb-5">
+            <div class="col-md-6 mx-auto">
+                <div class="card m-0">
                     <div class="card-header">Reset Password</div>
                     <div class="card-body">
 
@@ -68,6 +67,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 @endsection
