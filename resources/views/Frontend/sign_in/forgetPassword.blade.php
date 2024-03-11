@@ -74,13 +74,13 @@
                         @if ($errors->has('email'))
                             <span class="text-danger">{{ $errors->first('email') }}</span>
                         @endif
+                        {{--                        @if (Session::has('message'))--}}
+                        {{--                            <div class="alert alert-success" role="alert">--}}
+                        {{--                                {{ Session::get('message') }}--}}
+                        {{--                            </div>--}}
+                        {{--                        @endif--}}
                     </div>
                     <div class="form-group float-right">
-                        @if (Session::has('message'))
-                            <div class="alert alert-success" role="alert">
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
                         {!! Form::button('Send Password Reset Link', ['type' => 'submit', 'class' => 'btn btn-sm btn-primary']) !!}
                     </div>
                     {!! Form::close() !!}
@@ -130,4 +130,12 @@
             {{--            </div>--}}
         </div>
     </main>
+@endsection
+@section('custom_js')
+    <script>
+        @if (\Session::has('message'))
+        toastr.success('{{ Session::get('message') }}');
+        {{\Session::forget('message')}}
+        @endif
+    </script>
 @endsection
