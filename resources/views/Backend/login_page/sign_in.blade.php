@@ -33,10 +33,10 @@
             </div>
             {!! Form::close() !!}
 
-            <p class="mb-1"><a href="{{route('admin.forgot_password')}}" class="text-center d-block pt-2">I forgot my
+            <p class="mb-1"><a href="{{route('forgot')}}" class="text-center d-block pt-2">I forgot my
                     password</a></p>
             <p class="mb-0">
-                <a href="{{route('admin.sign_up')}}" class="text-center d-block pt-2">Register a new admin</a>
+                <a href="{{route('user.register')}}" class="text-center d-block pt-2">Register a new admin</a>
             </p>
         </div>
     </div>

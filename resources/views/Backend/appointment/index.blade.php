@@ -248,7 +248,6 @@
                 var startDate = picker.startDate.format('MM/DD/YYYY');
                 var endDate = picker.endDate.format('MM/DD/YYYY');
 
-                // Update the input field with the selected date range
                 $('#anotherInput').val(startDate + ' - ' + endDate);
 
                 $('#filter').submit();
