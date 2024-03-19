@@ -93,7 +93,7 @@
         // Set your publishable key: remember to change this to your live publishable key in production
         // See your keys here: https://dashboard.stripe.com/apikeys
         $(document).ready(function () {
-            var stripe = Stripe('pk_test_51Oh3DySJVbxBeWNZmETZLr6xYA9iBDWcRZtwVNuuER07GavyTFefKgr1UzZiQ66cxfafkN62lfooMCp3TgaarT9o00VpYkC88e');
+            var stripe = Stripe('please enter your sripe key');
             var elements = stripe.elements();
             // Create and mount the Payment Element
             var paymentElement = elements.create('card');
